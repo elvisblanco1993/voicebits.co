@@ -42,7 +42,7 @@
                             </div>
                             <div class="col-span-2 sm:col-span-1 flex items-center sm:justify-end">
                                 <div>
-                                    <span class="text-3xl font-black">$46</span> / month
+                                    <span class="text-3xl font-black">$36</span> / month
                                 </div>
                             </div>
                         </div>
@@ -62,7 +62,7 @@
                             </div>
                             <div class="col-span-2 sm:col-span-1 flex items-center sm:justify-end">
                                 <div>
-                                    <span class="text-3xl font-black">$86</span> / month
+                                    <span class="text-3xl font-black">$66</span> / month
                                 </div>
                             </div>
                         </div>
