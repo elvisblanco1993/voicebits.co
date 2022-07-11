@@ -23,15 +23,13 @@ class ConfirmOwnership extends Component
             return redirect()->route('show.import.start');
         }
 
+        // Import the podcast
         if (!$this->podcast->imported_at) {
-            ImportPodcast::dispatch($this->podcast_id);
-            DB::table('temporary_podcasts')->where('id', $this->podcast_id)->update([
+            ImportPodcast::dispatch($this->podcast->id);
+            DB::table('temporary_podcasts')->where('id', $this->podcast->id)->update([
                 'imported_at' => now()
             ]);
         }
-
-        $this->episodes = DB::table('temporary_episodes')->where('temp_podcast_id', $this->podcast_id)->get();
-        $this->batch = Bus::batch([])->onQueue('import-episodes')->dispatch();
     }
 
     public function render()
@@ -44,16 +42,18 @@ class ConfirmOwnership extends Component
 
     public function importEpisodes()
     {
+        $episodes = DB::table('temporary_episodes')->where('temp_podcast_id', $this->podcast_id)->get();
+        $batch = Bus::batch([])->onQueue('import-episodes')->name($this->podcast->name . " episodes")->dispatch();
         // Import all episodes
         try {
-            foreach ($this->episodes as $episode) {
-                $this->batch->add(
+            foreach ($episodes as $episode) {
+                $batch->add(
                     new ImportEpisodes($episode->id)
                 );
             }
         } catch (\Throwable $th) {
             Log::error($th);
         }
-        return $this->batch;
+        return $batch;
     }
 }

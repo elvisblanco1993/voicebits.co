@@ -25,7 +25,7 @@
                             <td>
                                 {{ $episode->title }}
                             </td>
-                            <td>{{ ( is_int($episode->track_length) ) ? gmdate("i:s", (int) $episode->track_length) : $episode->track_length }}</td>
+                            <td>{{  ( is_numeric($episode->track_length) ) ? gmdate("i:s", (int) $episode->track_length) : $episode->track_length }}</td>
                             <td>{{ Carbon\Carbon::parse($episode->published_at)->format("M d, Y") }}</td>
                             <td>
                                 @if (!$episode->published_at || $episode->published_at > now())
