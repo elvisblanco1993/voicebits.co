@@ -55,7 +55,7 @@
             </div>
             <div class="mt-6">
                 <x-jet-label for="url" value="Podcast url" />
-                <div class="mt-1 flex rounded-md shadow-sm">
+                <div class="mt-1 flex rounded-lg shadow-sm">
                     <span class="inline-flex flex-none items-center px-3 rounded-l-md border border-r-0 border-gray-300 bg-gray-50 text-gray-500 text-sm"> https://voicebits.co/show/ </span>
                     <input type="text" wire:model="url" id="url"
                         class="border-gray-300 focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50 rounded-r-md shadow-sm w-full"

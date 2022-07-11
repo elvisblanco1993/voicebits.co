@@ -4,7 +4,7 @@
         <div class="mt-10 flex items-center justify-between">
             <div class="text-xl font-bold">Episodes</div>
             <a href="{{ route('episode.create', ['show' => $show]) }}"
-                class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring focus:ring-gray-300 disabled:opacity-25 transition"
+                class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-lg font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring focus:ring-gray-300 disabled:opacity-25 transition"
                 >New Episode</a>
         </div>
 
@@ -29,9 +29,9 @@
                             <td>{{ Carbon\Carbon::parse($episode->published_at)->format("M d, Y") }}</td>
                             <td>
                                 @if (!$episode->published_at || $episode->published_at > now())
-                                    <span class="text-xs font-medium text-slate-600 bg-slate-200 px-3 py-1 rounded-md uppercase tracking-wider">Draft</span>
+                                    <span class="text-xs font-medium text-slate-600 bg-slate-200 px-3 py-1 rounded-lg uppercase tracking-wider">Draft</span>
                                 @else
-                                    <span class="text-xs font-medium text-green-600 bg-green-200 px-3 py-1 rounded-md uppercase tracking-wider">Published</span>
+                                    <span class="text-xs font-medium text-green-600 bg-green-200 px-3 py-1 rounded-lg uppercase tracking-wider">Published</span>
                                 @endif
                             </td>
                             <td class="flex items-center justify-end">

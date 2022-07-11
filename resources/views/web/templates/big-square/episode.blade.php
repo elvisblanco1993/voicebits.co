@@ -50,9 +50,9 @@
                 </div>
                 <div class="flex items-center justify-center gap-8 py-2">
                     <a href=""
-                        class="px-4 py-2 header-link border rounded-md transition-all">Episodes</a>
+                        class="px-4 py-2 header-link border rounded-lg transition-all">Episodes</a>
                     <a href=""
-                        class="px-4 py-2 header-link border rounded-md transition-all">About</a>
+                        class="px-4 py-2 header-link border rounded-lg transition-all">About</a>
                 </div>
             </div>
         </header>

@@ -54,12 +54,12 @@
                     <button
                         id="episodes"
                         @click="selected = $el.id"
-                        class="px-4 py-2 header-link border rounded-md transition-all"
+                        class="px-4 py-2 header-link border rounded-lg transition-all"
                     >Episodes</button>
                     <button
                         id="about"
                         @click="selected = $el.id"
-                        class="px-4 py-2 header-link border rounded-md transition-all"
+                        class="px-4 py-2 header-link border rounded-lg transition-all"
                     >About</button>
                 </div>
             </div>

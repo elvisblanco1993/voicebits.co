@@ -15,7 +15,7 @@
         {{-- Content section --}}
         <div class="mt-4 w-full bg-white rounded-lg shadow p-8">
             <div class="">
-                <div class="h-16 px-4 rounded-md border-dashed border border-gray-400 bg-white flex items-center justify-between">
+                <div class="h-16 px-4 rounded-lg border-dashed border border-gray-400 bg-white flex items-center justify-between">
                     <div class="flex items-center">
                         <audio id="audio" src="{{ route('episode.preview', ['episode' => $episode->guid]) }}"></audio>
                         <button id="audioPlayBtn" onclick="togglePlay()" class="text-blue-500">
