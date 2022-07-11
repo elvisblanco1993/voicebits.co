@@ -6,6 +6,7 @@ use Carbon\Carbon;
 use App\Models\Podcast;
 use Illuminate\Bus\Queueable;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Bus;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Facades\Storage;
@@ -95,5 +96,28 @@ class ImportPodcast implements ShouldQueue, ShouldBeUnique
         } catch (\Throwable $th) {
             Log::error($th);
         }
+
+        // Start importing episodes to the podcast
+        $this->importEpisodes();
+    }
+
+    /**
+     * Queue episodes for importing
+     */
+    public function importEpisodes()
+    {
+        $episodes = DB::table('temporary_episodes')->where('temp_podcast_id', $this->temp_podcast->id)->get();
+        $batch = Bus::batch([])->onQueue('import-episodes')->name($this->temp_podcast->name . " episodes")->dispatch();
+        // Import all episodes
+        try {
+            foreach ($episodes as $episode) {
+                $batch->add(
+                    new ImportEpisodes($episode->id)
+                );
+            }
+        } catch (\Throwable $th) {
+            Log::error($th);
+        }
+        return $batch;
     }
 }

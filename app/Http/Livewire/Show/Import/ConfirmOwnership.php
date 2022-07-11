@@ -23,7 +23,7 @@ class ConfirmOwnership extends Component
             return redirect()->route('show.import.start');
         }
 
-        // Import the podcast
+        // Import the podcast & episodes
         if (!$this->podcast->imported_at) {
             ImportPodcast::dispatch($this->podcast->id);
             DB::table('temporary_podcasts')->where('id', $this->podcast->id)->update([
@@ -34,26 +34,8 @@ class ConfirmOwnership extends Component
 
     public function render()
     {
-        $this->importEpisodes();
         return view('livewire.show.import.confirm-ownership', [
             'podcast' => $this->podcast
         ]);
-    }
-
-    public function importEpisodes()
-    {
-        $episodes = DB::table('temporary_episodes')->where('temp_podcast_id', $this->podcast_id)->get();
-        $batch = Bus::batch([])->onQueue('import-episodes')->name($this->podcast->name . " episodes")->dispatch();
-        // Import all episodes
-        try {
-            foreach ($episodes as $episode) {
-                $batch->add(
-                    new ImportEpisodes($episode->id)
-                );
-            }
-        } catch (\Throwable $th) {
-            Log::error($th);
-        }
-        return $batch;
     }
 }
