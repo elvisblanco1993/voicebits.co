@@ -73,8 +73,7 @@ class ImportEpisodes implements ShouldQueue, ShouldBeUnique
             ]);
 
             // Deletes temporary episode record.
-            $episode->delete();
-
+            DB::table('temporary_episodes')->where('id', $this->episode_id)->delete();
         } catch (\Throwable $th) {
             Log::error($th);
         }

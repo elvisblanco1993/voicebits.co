@@ -1,8 +1,9 @@
 <?php
 
-use App\Http\Controllers\WebController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\WebController;
+use App\Http\Controllers\DocumentationController;
 
 /**
  * Subdomain routes
@@ -62,3 +63,4 @@ Route::middleware([
  * Public routes
  */
 Route::get('/', [WebController::class, 'home'])->name('home');
+Route::get('/documentation', [DocumentationController::class, 'index'])->name('documentation');

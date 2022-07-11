@@ -2,6 +2,7 @@
 
 namespace App\Actions\Fortify;
 
+use App\Jobs\SendWelcomeEmail;
 use App\Models\Team;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
@@ -35,14 +36,19 @@ class CreateNewUser implements CreatesNewUsers
                 'email' => $input['email'],
                 'password' => Hash::make($input['password']),
             ]), function (User $user) {
+
                 $this->createTeam($user);
+
                 $user->currentTeam->createAsStripeCustomer([
                     'name' => $user->currentTeam->name,
                     'email' => $user->email,
                 ]);
+
                 $user->currentTeam->update([
                     'trial_ends_at' => now()->addDays(14),
                 ]);
+
+                SendWelcomeEmail::dispatch($user->email);
             });
         });
     }
