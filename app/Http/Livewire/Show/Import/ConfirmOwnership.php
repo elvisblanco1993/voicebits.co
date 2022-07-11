@@ -8,11 +8,12 @@ use App\Jobs\CreateEpisodes;
 use App\Jobs\ImportEpisodes;
 use Illuminate\Support\Facades\Bus;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 
 class ConfirmOwnership extends Component
 {
     public $podcast_id, $uniqid;
-    protected $podcast;
+    protected $podcast, $episodes, $batch;
 
     public function mount()
     {
@@ -28,6 +29,9 @@ class ConfirmOwnership extends Component
                 'imported_at' => now()
             ]);
         }
+
+        $this->episodes = DB::table('temporary_episodes')->where('temp_podcast_id', $this->podcast_id)->get();
+        $this->batch = Bus::batch([])->onQueue('import-episodes')->dispatch();
     }
 
     public function render()
@@ -38,16 +42,18 @@ class ConfirmOwnership extends Component
         ]);
     }
 
-    public function importEpisodes() {
+    public function importEpisodes()
+    {
         // Import all episodes
-        $episodes = DB::table('temporary_episodes')->where('temp_podcast_id', $this->podcast_id)->get();
-        $batch = Bus::batch([])->onQueue('import-episodes')->dispatch();
-
-        foreach ($episodes as $episode) {
-            $batch->add(
-                new ImportEpisodes($episode->id)
-            );
+        try {
+            foreach ($this->episodes as $episode) {
+                $this->batch->add(
+                    new ImportEpisodes($episode->id)
+                );
+            }
+        } catch (\Throwable $th) {
+            Log::error($th);
         }
-        return $batch;
+        return $this->batch;
     }
 }
