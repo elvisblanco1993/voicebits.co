@@ -42,7 +42,7 @@
                 border: 1px solid {{ $podcast->website->body_text_color ?? "#F8FAFC" }};
             }
 
-            .episode-description {
+            .episode-description, footer {
                 color: {{ $podcast->website->body_text_color ?? "#F8FAFC" }};
             }
 
@@ -60,14 +60,14 @@
     </head>
     <body class="antialiased min-h-screen">
 
-        <nav class="w-full h-16 border-b">
-            <div class="max-w-7xl mx-auto h-full flex items-center justify-between px-4 sm:px-0">
+        <nav class="w-full h-16">
+            <div class="max-w-7xl mx-auto h-full flex items-center justify-between px-4 sm:px-6 lg:px-8">
                 <a href="{{ url()->current() }}" class="font-bold">{{ $podcast->name }}</a>
                 @include('web.templates.classic.social')
             </div>
         </nav>
 
-        <header class="mt-24 py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 border border-black lg:rounded-lg">
+        <header class="mt-24 py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 lg:rounded-lg">
             <div class="grid grid-cols-4 gap-8">
                 <div class="col-span-4 sm:col-span-1">
                     <img src="{{ Storage::url($podcast->cover) }}" alt="{{ $podcast->name }}" class="object-center object-cover rounded-lg">
@@ -95,8 +95,8 @@
             @include('web.templates.classic.episodes')
         </main>
 
-        <footer>
-            <div class="text-center text-sm text-slate-500 px-4 sm:px-6 lg:px-8 py-6">
+        <footer class="fixed bottom-0 w-full opacity-75">
+            <div class="text-center text-sm px-4 sm:px-6 lg:px-8 py-6">
                 Podcast powered and distributed by <a href="https://voicebits.co" target="_blank" class="underline">Voicebits</a>
             </div>
         </footer>
