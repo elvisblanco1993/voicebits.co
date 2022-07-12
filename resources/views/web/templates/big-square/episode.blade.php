@@ -7,7 +7,7 @@
 
         <title>{{ $podcast->name . ' | ' . config('app.name', 'Laravel') }}</title>
 
-        <link rel="stylesheet" href="{{ mix('css/app.css') }}">
+        @vite('resources/css/app.css')
         @livewireStyles
 
         {{-- Used-defined styles --}}
@@ -30,7 +30,7 @@
             }
         </style>
 
-        <script src="{{ mix('js/app.js') }}" defer></script>
+        @vite('resources/js/app.js')
     </head>
     <body class="antialiased min-h-screen">
         @include('web.partials.player', ['podacst' => $podcast])
