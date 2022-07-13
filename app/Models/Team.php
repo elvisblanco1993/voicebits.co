@@ -8,6 +8,7 @@ use Laravel\Jetstream\Events\TeamDeleted;
 use Laravel\Jetstream\Events\TeamUpdated;
 use Laravel\Jetstream\Team as JetstreamTeam;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use function Illuminate\Events\queueable;
 
 class Team extends JetstreamTeam
 {
@@ -48,6 +49,18 @@ class Team extends JetstreamTeam
         'updated' => TeamUpdated::class,
         'deleted' => TeamDeleted::class,
     ];
+
+    /**
+     * Sync Stripe & Voicebits Team Information
+     */
+    protected static function booted()
+    {
+        static::updated(queueable(function ($customer) {
+            if ($customer->hasStripeId()) {
+                $customer->syncStripeCustomerDetails();
+            }
+        }));
+    }
 
     public function podcasts()
     {

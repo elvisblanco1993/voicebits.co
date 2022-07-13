@@ -16,6 +16,7 @@ class PlaysCounter extends Model
         'region',
         'country',
         'downloads',
+        'webplayer'
     ];
 
     public function episodes()

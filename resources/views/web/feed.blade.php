@@ -7,7 +7,7 @@
         <description>{{ $podcast->description }}</description>
         <link>{{ config('app.url') . "/shows/" . $podcast->url }}</link>
         <image>
-            <url>{{ asset($podcast->cover) }}</url>
+            <url>{{ Storage::url($podcast->cover) }}</url>
             <title>{{ $podcast->name }}</title>
             <link>{{ config('app.url') . "/shows/" . $podcast->url }}</link>
         </image>
@@ -25,7 +25,7 @@
         </itunes:owner>
         <itunes:explicit>{{ ($podcast->explicit) ? "Yes" : "No" }}</itunes:explicit>
         <itunes:category text="{{ $podcast->category }}" />
-        <itunes:image href="{{ asset($podcast->cover) }}" />
+        <itunes:image href="{{ Storage::url($podcast->cover) }}" />
         @forelse ($podcast->episodes as $episode)
             <item>
                 <title>{{ $episode->title }}</title>
@@ -37,7 +37,7 @@
                 <itunes:explicit>{{ ($episode->explicit) ? "Yes" : "No" }}</itunes:explicit>
                 <itunes:duration>{{ $episode->track_length }}</itunes:duration>
                 @if ($episode->cover)
-                    <itunes:image href="{{ asset($episode->cover) }}"/>
+                    <itunes:image href="{{ Storage::url($episode->cover) }}"/>
                 @endif
                 @if ($episode->podcast->type === "serial")
                     <itunes:episode>{{ $episode->number }}</itunes:episode>
