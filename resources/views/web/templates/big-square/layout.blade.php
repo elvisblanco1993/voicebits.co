@@ -11,7 +11,6 @@
 
         @vite('resources/css/app.css')
         @livewireStyles
-
         {{-- Used-defined styles --}}
         <style>
             header {

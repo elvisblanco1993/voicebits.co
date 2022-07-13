@@ -32,7 +32,7 @@
                 <description>{{ $episode->description }}</description>
                 <guid>{{ $episode->guid }}</guid>
                 <pubDate>{{ date('r', strtotime($episode->created_at)) }}</pubDate>
-                <enclosure length="{{ $episode->track_size }}" type="audio/mpeg" url="{{ route('episode.play', ['url' => $podcast->url, 'episode' => $episode->guid]) }}"/>
+                <enclosure length="{{ $episode->track_size }}" type="audio/mpeg" url="{{ route('episode.play', ['url' => $podcast->url, 'episode' => $episode->guid, 'webplayer' => 0]) }}"/>
                 <itunes:summary>{{ $episode->description }}</itunes:summary>
                 <itunes:explicit>{{ ($episode->explicit) ? "Yes" : "No" }}</itunes:explicit>
                 <itunes:duration>{{ $episode->track_length }}</itunes:duration>

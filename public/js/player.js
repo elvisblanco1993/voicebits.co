@@ -2,7 +2,6 @@ const player = new Plyr('#player');
 let tmp = localStorage.getItem('guid') ?? null;
 let episode_link = document.getElementsByClassName('episode-link');
 
-
 // Initialize player
 window.onload = () => {
     if (document.querySelectorAll('.episode-btn')[0]) {
@@ -18,6 +17,8 @@ function play(guid) {
     if (tmp == guid) {
         if (player.currentTime == 0) {
             setPlayerUrl(guid);
+            // Registers unique play
+            Livewire.emit('countPlay');
         }
 
         if (player.paused) {
