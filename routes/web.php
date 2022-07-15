@@ -9,8 +9,8 @@ use App\Http\Controllers\DocumentationController;
  * Subdomain routes
  */
 Route::domain('{url}.' . config('app.url'))->group(function() {
-    Route::get('/', [App\Http\Controllers\PodcastWebsiteController::class, 'show'])->name('podcast.public.episodes');
-    Route::get('/episode/{episode}', [App\Http\Controllers\PodcastWebsiteController::class, 'episode'])->name('podcast.public.episode');
+    Route::get('/', [App\Http\Controllers\PodcastController::class, 'show'])->name('podcast.public.episodes');
+    Route::get('/episode/{episode}', [App\Http\Controllers\PodcastController::class, 'episode'])->name('podcast.public.episode');
     Route::get('/feed', [App\Http\Controllers\PodcastController::class, 'feed'])->name('show.feed');
     Route::get('/play/{episode}/{webplayer}', [App\Http\Controllers\EpisodeController::class, 'play'])->name('episode.play');
 });
@@ -32,6 +32,8 @@ Route::middleware([
     })->name('billing');
 
     Route::middleware('subscribed')->group(function () {
+
+        Route::get('/phpinfo', function() {dd( phpinfo() );});
         /**
          * Podcast routes
          */
