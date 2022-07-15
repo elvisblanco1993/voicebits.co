@@ -89,7 +89,7 @@ class Create extends Component
         $this->validateOnly($track, [
             'title' => 'required',
             'description' => 'required',
-            'track' => 'required|file|mimes:mp3'
+            'track' => 'required|file|mimes:mp3|max:102400'
         ]);
     }
 }
