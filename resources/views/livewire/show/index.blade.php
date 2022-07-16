@@ -14,7 +14,7 @@
                     <div class="w-full sm:flex items-center gap-8 mt-4 hover:bg-slate-50 p-4 border border-slate-200 rounded-lg">
                         <div class="w-full sm:w-1/4 md:w-1/6 lg:w-1/12 flex-none">
                             @if ($podcast->cover)
-                            <img src="{{ Storage::url($podcast->cover) }}" alt="{{ $podcast->name }}" class="w-full aspect-video sm:aspect-square object-center object-cover">
+                            <img src="{{ Storage::url($podcast->cover) }}" alt="{{ $podcast->name }}" class="w-full aspect-video sm:aspect-square object-center object-cover rounded-lg shadow-lg">
                             @else
                                 <div class="w-full aspect-video sm:aspect-square bg-blue-100 flex items-center justify-center">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="w-20 md:w-16 h-20 md:h-16 text-blue-500" fill="currentColor" class="bi bi-soundwave" viewBox="0 0 16 16">

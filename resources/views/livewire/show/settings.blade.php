@@ -42,6 +42,15 @@
                 <x-jet-input-error for="type" class="text-sm text-red-600 mt-2"/>
             </div>
             <div class="mt-6">
+                <x-jet-label for="explicit" value="Podcast content" />
+                <select wire:model.defer="explicit" id="explicit" class="input">
+                    <option value="" disabled="">Choose one option...</option>
+                    <option value="false">Clean</option>
+                    <option value="true">Explicit</option>
+                </select>
+                <x-jet-input-error for="explicit" class="text-sm text-red-600 mt-2"/>
+            </div>
+            <div class="mt-6">
                 <x-jet-label for="timezone" value="Publishing timezone" />
                 <select wire:model.defer="timezone" id="timezone" class="input">
                     @include('layouts.partials.timezones-list')
@@ -65,8 +74,59 @@
             </div>
         </div>
 
+        {{-- Funding --}}
+        <div class="mt-10 flex items-center justify-between">
+            <div class="text-xl font-bold">Funding</div>
+            <x-jet-button wire:click="save">Save changes</x-jet-button>
+        </div>
+        <div class="mt-4 w-full bg-white rounded-lg shadow p-8">
+            <label for="funding-btn" class="flex items-center">
+                <input type="checkbox" name="funding" wire:model="funding" id="funding-btn" class="rounded">
+                @if ($funding)
+                    <span class="ml-3 text-sm font-semibold text-slate-600">Funding enabled. Click to disable.</span>
+                @else
+                    <span class="ml-3 text-sm font-semibold text-slate-600">Enable Funding</span>
+                @endif
+            </label>
+
+            @if ($funding)
+                <div class="mt-6">
+                    <x-jet-label for="funding_text" value="Button label" />
+                    <x-jet-input type="text" id="funding_text" wire:model.defer="funding_text" placeholder="Support the show!" class="mt-1 w-full"/>
+                    <x-jet-input-error for="funding_text" class="text-sm text-red-600 mt-2"/>
+                </div>
+                <div class="mt-6">
+                    <x-jet-label for="funding_url" value="Button url" />
+                    <x-jet-input type="url" id="funding_url" wire:model.defer="funding_url" placeholder="https://link_to_funding_site.com" class="mt-1 w-full"/>
+                    <x-jet-input-error for="funding_url" class="text-sm text-red-600 mt-2"/>
+                </div>
+            @endif
+        </div>
+
+        {{-- Lock podcast --}}
+        <div class="mt-10 flex items-center justify-between">
+            <div>
+                <div class="text-xl font-bold">Lock feed</div>
+                <p class="block text-sm font-semibold text-slate-600">When this value is present and set to “yes”, the podcast feed cannot be imported or migrated to other platforms  that respect the tag.</p>
+            </div>
+            <x-jet-button wire:click="save">Save changes</x-jet-button>
+        </div>
+        <div class="mt-4 w-full bg-white rounded-lg shadow p-8">
+            <label for="is_locked-btn" class="flex items-center">
+                <input type="checkbox" name="is_locked" wire:model="is_locked" id="is_locked-btn" class="rounded">
+                @if ($is_locked)
+                    <span class="ml-3 text-sm font-semibold text-slate-600">Feed locked. Click to unlock.</span>
+                @else
+                    <span class="ml-3 text-sm font-semibold text-slate-600">Lock podcast feed</span>
+                @endif
+            </label>
+        </div>
+
         {{-- Cover art --}}
-        <div class="mt-6 text-xl font-bold">Cover artwork</div>
+        <div class="mt-10 flex items-center justify-between">
+            <div class="text-xl font-bold">Cover artwork</div>
+            <x-jet-button wire:click="save">Save changes</x-jet-button>
+        </div>
         <div class="mt-4 w-full bg-white rounded-lg shadow p-8">
             <div class="grid grid-cols-4 gap-8">
                 <div class="col-span-4 sm:col-span-1">

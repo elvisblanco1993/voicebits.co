@@ -37,7 +37,6 @@ class Edit extends Component
     public function save()
     {
         $this->validate();
-
         try {
             // Upload track
             if ($this->track) {

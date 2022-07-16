@@ -14,7 +14,7 @@ class Settings extends Component
     use WithFileUploads;
 
     public $show, $podcast;
-    public $name, $description, $url, $category, $language, $type, $author, $cover, $explicit, $timezone;
+    public $name, $description, $url, $category, $language, $type, $author, $cover, $explicit, $is_locked, $funding, $funding_text, $funding_url, $timezone;
 
     public function mount()
     {
@@ -27,7 +27,16 @@ class Settings extends Component
         $this->type = $this->podcast->type;
         $this->author = $this->podcast->author;
         $this->timezone = $this->podcast->timezone;
-        $this->explicit = $this->podcast->explicit;
+        $this->explicit = ($this->podcast->explicit) ? "true" : "false";
+        $this->is_locked = $this->podcast->is_locked;
+        $this->funding = $this->podcast->funding;
+        $this->funding_text = $this->podcast->funding_text;
+        $this->funding_url = $this->podcast->funding_url;
+    }
+
+    public function render()
+    {
+        return view('livewire.show.settings');
     }
 
     public function rules()
@@ -75,7 +84,12 @@ class Settings extends Component
                 'author' => $this->author,
                 'timezone' => $this->timezone,
                 'url' => str($this->url)->slug(),
-                'cover' => ($this->cover) ? $new_cover_file : $this->podcast->cover
+                'cover' => ($this->cover) ? $new_cover_file : $this->podcast->cover,
+                'explicit' => ($this->explicit === "true") ? 1 : 0,
+                'is_locked' => $this->is_locked,
+                'funding' => $this->funding,
+                'funding_text' => $this->funding_text,
+                'funding_url' => $this->funding_url,
             ]);
 
             if ($this->url) {
@@ -83,7 +97,6 @@ class Settings extends Component
                     'podcast_id' => $this->podcast->id,
                 ]);
             }
-
             session()->flash('flash.banner', 'Your changes were successfully saved.');
             session()->flash('flash.bannerStyle', 'success');
         } catch (\Throwable $th) {
@@ -104,10 +117,5 @@ class Settings extends Component
             ]);
         }
         return redirect()->route('show.settings', ['show' => $this->podcast->id]);
-    }
-
-    public function render()
-    {
-        return view('livewire.show.settings');
     }
 }

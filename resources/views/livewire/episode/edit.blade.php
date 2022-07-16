@@ -26,7 +26,7 @@
                         </button>
                         <div class="ml-2 text-slate-600">
                             <div>{{ $episode->title }}</div>
-                            <div class="text-xs">{{ ( is_int($episode->track_length) ) ? gmdate("i:s", (int) $episode->track_length) : $episode->track_length }}</div>
+                            <div class="text-xs">{{ ( is_numeric($episode->track_length) ) ? gmdate("i:s", (int) $episode->track_length) : $episode->track_length }}</div>
                         </div>
                     </div>
 

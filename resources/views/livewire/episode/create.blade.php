@@ -23,7 +23,7 @@
                                 <path fill-rule="evenodd" d="M10 8V3a2 2 0 1 0-4 0v5a2 2 0 1 0 4 0zM8 0a3 3 0 0 0-3 3v5a3 3 0 0 0 6 0V3a3 3 0 0 0-3-3z"></path>
                             </svg>
                             @if ($track)
-                                <span class="block font-semibold text-sm text-green-500">Track file ready.</span>
+                                <span class="block font-semibold text-sm text-green-500">Your track is now ready.</span>
                                 {{-- Get the audio duration --}}
                                     <audio id="audio_temp" src="{{ $track->temporaryUrl() }}" preload="metadata"></audio>
                                     <script>

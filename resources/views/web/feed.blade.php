@@ -1,7 +1,7 @@
 @php
    echo "<?xml version='1.0' encoding='UTF-8'?>" . PHP_EOL;
 @endphp
-<rss version="2.0" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd">
+<rss version="2.0" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:podcast="https://podcastindex.org/namespace/1.0">
     <channel>
         <title>{{ $podcast->name }}</title>
         <description>{{ $podcast->description }}</description>
@@ -26,6 +26,10 @@
         <itunes:explicit>{{ ($podcast->explicit) ? "Yes" : "No" }}</itunes:explicit>
         <itunes:category text="{{ $podcast->category }}" />
         <itunes:image href="{{ Storage::url($podcast->cover) }}" />
+        <podcast:locked owner="{{ $podcast->team->owner->email }}">{{ $podcast->is_locked ? 'yes' : 'no' }}</podcast:locked>
+        @if ($podcast->funding)
+            <podcast:funding url="{{ $podcast->funding_url }}">{{ $podcast->funding_text }}</podcast:funding>
+        @endif
         @forelse ($podcast->episodes as $episode)
             <item>
                 <title>{{ $episode->title }}</title>

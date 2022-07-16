@@ -22,6 +22,11 @@ class Podcast extends Model
         'type',
         'cover',
         'timezone',
+        'explicit',
+        'is_locked',
+        'funding',
+        'funding_text',
+        'funding_url',
     ];
 
     protected $with = 'episodes';

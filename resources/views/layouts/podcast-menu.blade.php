@@ -1,7 +1,7 @@
 <div class="grid grid-cols-6 gap-8">
     <div class="col-span-6 sm:col-span-1">
         @if ($podcast->cover)
-            <img src="{{ Storage::url($podcast->cover) }}" alt="{{ $podcast->name }}" class="w-full aspect-square object-center object-cover">
+            <img src="{{ Storage::url($podcast->cover) }}" alt="{{ $podcast->name }}" class="w-full aspect-square object-center object-cover rounded-lg shadow-lg">
         @else
         <div class="w-full aspect-square bg-blue-100 flex items-center justify-center">
             <svg xmlns="http://www.w3.org/2000/svg" class="w-20 h-20 text-blue-500" fill="currentColor" class="bi bi-soundwave" viewBox="0 0 16 16">
