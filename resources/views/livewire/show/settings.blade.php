@@ -166,5 +166,12 @@
                 </div>
             </div>
         </div>
+
+        <div class="mt-10 flex items-center justify-between">
+            <div class="text-xl font-bold text-red-600">Danger zone</div>
+        </div>
+        <div class="mt-4 w-full bg-red-200 rounded-lg p-8">
+            @livewire('show.delete', ['show' => $podcast->id])
+        </div>
     </div>
 </div>
