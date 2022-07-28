@@ -22,7 +22,7 @@
             <div class="hidden sm:flex sm:items-center sm:ml-6">
                 @if (!Auth::user()->currentTeam->subscribed('voicebits'))
                     <div class="px-3 py-1 bg-amber-100 border border-amber-300 rounded-lg text-sm text-amber-800">
-                        Your trial ends in {{ Carbon\Carbon::parse(Auth::user()->currentTeam->trial_ends_at)->diffInDays() }} days
+                        Your trial ends in {{ Carbon\Carbon::parse(Auth::user()->currentTeam->trial_ends_at)->diffForHumans() }}
                     </div>
                 @endif
                 <!-- Teams Dropdown -->

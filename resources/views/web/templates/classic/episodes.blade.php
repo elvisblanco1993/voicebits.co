@@ -1,42 +1,22 @@
-<div class="text-xl font-bold">
-    Latest episodes
-</div>
-<div class="mt-6"></div>
-@forelse ($podcast->episodes as $episode)
-<div @class([
-        'py-4 px-4 lg:rounded-lg border episode-container border-opacity-50',
-        'mb-4' => !$loop->last
-    ])
-    x-data="{ expanded: false }"
->
-
-    <div class="flex items-center justify-between">
-    <div class="flex items-center gap-4">
-            <button class="episode-btn" id="{{ $episode->guid }}" onclick="play('{{ $episode->guid }}')">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-            </button>
-            <div class="">
-                <div class="">{{ $episode->title }}</div>
+<div class="my-12 max-w-3xl mx-auto px-4 sm:px-6 md:px-8 lg:px-0">
+    @forelse ($podcast->episodes as $episode)
+        <article @class([
+            'w-full py-4',
+            'border-t' => !$loop->first
+        ])>
+            <time class="order-first font-mono text-xs leading-7" datetime="">{{ Carbon\Carbon::parse($episode->published_at)->format('M d,Y') }}</time>
+            <h2 class="mt-1 text-lg font-bold">{{ $episode->title }}</h2>
+            <p class="truncate text-base description">{!! $episode->description !!}</p>
+            <div class="mt-4 flex items-center gap-4">
+                <button id="{{ $episode->guid }}" onclick="play('{{ $episode->guid }}')" class="episode-btn flex items-center text-sm font-bold leading-6">
+                    <svg xmlns='http://www.w3.org/2000/svg' fill='currentColor' class='h-6 w-6 fill-current' viewBox='0 0 16 16'><path d='m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z'/></svg>
+                    <span class='ml-3' aria-hidden='true'>Listen</span>
+                </button>
+                <span class="text-sm font-bold divider" aria-hidden="true">/</span>
+                <a href="" class="episode-notes flex items-center text-sm font-bold leading-6" aria-label="Show notes for episode: Episode number one">Show notes</a>
             </div>
-        </div>
+        </article>
+    @empty
 
-        <button @click="expanded = ! expanded">
-            <svg x-show="!expanded" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                <path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd" />
-            </svg>
-            <svg x-show="expanded" x-cloak xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                <path fill-rule="evenodd" d="M3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd" />
-            </svg>
-        </button>
-    </div>
-
-    <div class="prose max-w-full episode-description" x-show="expanded" x-collapse x-cloak>
-        {!! Str::markdown($episode->description) !!}
-    </div>
+    @endforelse
 </div>
-@empty
-
-@endforelse

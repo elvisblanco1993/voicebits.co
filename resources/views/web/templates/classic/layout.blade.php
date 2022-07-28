@@ -4,15 +4,10 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
-
         <title>{{ $podcast->name . ' | ' . config('app.name', 'Laravel') }}</title>
-
-
-
         @vite('resources/css/app.css')
         @livewireStyles
-
-        {{-- Used-defined styles --}}
+        {{-- User-defined styles --}}
         <style>
             header {
                 background-color: {{ $podcast->website->header_background ?? "#0F172A" }};
@@ -25,6 +20,7 @@
                 border-radius: 2px;
                 margin-right: 4px;
             }
+
             .header-link:hover {
                 background-color: {{ $podcast->website->header_link_color ?? "#CBD5E1" }};
                 color: {{ $podcast->website->header_background ?? '#0F172A' }};
@@ -35,70 +31,66 @@
                 color: {{ $podcast->website->body_text_color ?? "#F8FAFC" }};
                 --plyr-audio-controls-background: {{ $podcast->website->body_background ?? "#0F172A" }};
                 --plyr-audio-control-color: {{ $podcast->website->body_text_color ?? "#F8FAFC" }};
+                --plyr-color-main: {{ $podcast->website->body_link_color ?? "#00b3ff" }};
             }
 
-            .episode-container {
-                border: 1px solid {{ $podcast->website->body_text_color ?? "#F8FAFC" }};
-            }
-
-            .episode-description, footer {
-                color: {{ $podcast->website->body_text_color ?? "#F8FAFC" }};
-            }
-
-            #player-container {
-                border-radius: 0.5rem;
-                background-color: {{ $podcast->website->body_background ?? '#0F172A' }};
+            time {
                 color: {{ $podcast->website->body_text_color ?? '#F8FAFC' }};
-                border-bottom: 1px solid  {{ $podcast->website->header_background ?? '#0F172A' }};
+                opacity: 0.9;
+            }
+
+            article > h2 {
+                color: {{ $podcast->website->body_text_color ?? '#F8FAFC' }};
+            }
+
+            article > .description {
+                color: {{ $podcast->website->body_text_color ?? '#F8FAFC' }};
+                opacity: 0.9;
+            }
+
+            .episode-btn,
+            .episode-notes {
+                color: {{ $podcast->website->body_link_color ?? '#F8FAFC' }};
+                opacity: 0.9;
+            }
+            .episode-btn:hover,
+            .episode-notes:hover {
+                color: {{ $podcast->website->body_link_color ?? '#F8FAFC' }};
+                opacity: 1;
             }
 
         </style>
-
-        <script defer src="https://unpkg.com/@alpinejs/collapse@3.x.x/dist/cdn.min.js"></script>
         @vite('resources/js/app.js')
     </head>
     <body class="antialiased min-h-screen">
 
-        <nav class="w-full h-16">
-            <div class="max-w-7xl mx-auto h-full flex items-center justify-between px-4 sm:px-6 lg:px-8">
-                <a href="{{ url()->current() }}" class="font-bold">{{ $podcast->name }}</a>
-                @include('web.templates.classic.social')
-            </div>
-        </nav>
-
-        <header class="mt-24 py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 lg:rounded-lg">
-            <div class="grid grid-cols-4 gap-8">
-                <div class="col-span-4 sm:col-span-1">
-                    <img src="{{ Storage::url($podcast->cover) }}" alt="{{ $podcast->name }}" class="object-center object-cover rounded-lg">
+        <header class="pb-12">
+            <nav class="w-full h-16">
+                <div class="max-w-7xl mx-auto h-full flex items-center justify-between px-4 sm:px-6 md:px-8 lg:px-4">
+                    <a href="{{ url()->current() }}" class="text-xl font-bold uppercase">
+                        <img src="{{ Storage::url($podcast->cover) }}" alt="{{ $podcast->name }}" class="w-12 aspect-square object-cover object-center rounded-lg">
+                    </a>
+                    @include('web.templates.classic.social')
                 </div>
-                <div class="col-span-4 sm:col-span-3">
-                    <h1 class="text-2xl font-extrabold">
-                        {{ $podcast->name }}
-                    </h1>
-                    <p class="mt-4 text-base text-opacity-70">
-                        {{ $podcast->description }}
-                    </p>
-                    <div class="mt-6">
-                        @include('web.templates.classic.distributors')
+            </nav>
+
+            <div class="max-w-7xl mx-auto mt-12 px-4 sm:px-6 md:px-8 lg:px-4 text-center">
+                <h1 class="text-7xl font-black">{{ $podcast->name }}</h1>
+                <div class="my-12"></div>
+                <div class="max-w-3xl mx-auto text-center md:text-left">
+                    @include('web.partials.player')
+                    <div class="mt-2 flex items-center gap-3">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w-6 h-6 animate-pulse" viewBox="0 0 16 16">
+                            <path d="M3.05 3.05a7 7 0 0 0 0 9.9.5.5 0 0 1-.707.707 8 8 0 0 1 0-11.314.5.5 0 0 1 .707.707zm2.122 2.122a4 4 0 0 0 0 5.656.5.5 0 1 1-.708.708 5 5 0 0 1 0-7.072.5.5 0 0 1 .708.708zm5.656-.708a.5.5 0 0 1 .708 0 5 5 0 0 1 0 7.072.5.5 0 1 1-.708-.708 4 4 0 0 0 0-5.656.5.5 0 0 1 0-.708zm2.122-2.12a.5.5 0 0 1 .707 0 8 8 0 0 1 0 11.313.5.5 0 0 1-.707-.707 7 7 0 0 0 0-9.9.5.5 0 0 1 0-.707zM10 8a2 2 0 1 1-4 0 2 2 0 0 1 4 0z"/>
+                        </svg>
+                        <p class="text-sm font-light tracking-wider">Now playing: <span id="player-title"></span></p>
                     </div>
-                </div>
-
-                <div class="col-span-4">
-                    @include('web.partials.player', ['podacst' => $podcast])
                 </div>
             </div>
         </header>
 
-        {{-- Content area --}}
-        <main class="py-12 max-w-7xl mx-auto">
-            @include('web.templates.classic.episodes')
-        </main>
+        @include('web.templates.classic.episodes')
 
-        <footer class="fixed bottom-0 w-full opacity-75">
-            <div class="text-center text-sm px-4 sm:px-6 lg:px-8 py-6">
-                Podcast powered and distributed by <a href="https://voicebits.co" target="_blank" class="underline">Voicebits</a>
-            </div>
-        </footer>
         @livewireScripts
     </body>
 </html>

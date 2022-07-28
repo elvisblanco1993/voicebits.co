@@ -93,7 +93,7 @@
                 </div>
             </main>
             <div class="col-span-6 fixed bottom-0 w-full">
-                @include('web.partials.player', ['podacst' => $podcast])
+                @include('web.partials.player', ['podcast' => $podcast])
             </div>
         </div>
         @livewireScripts

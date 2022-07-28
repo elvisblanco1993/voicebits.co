@@ -13,9 +13,9 @@
                     <div class="text-xs uppercase text-slate-600 flex items-center gap-1">
                         <span>{{ Carbon\Carbon::parse($episode->published_at)->format('M d, Y') }}</span>
                         |
-                        <span>{{ (is_int($episode->track_length)) ? gmdate("i:s", (int) $episode->track_length) : $episode->track_length }}</span>
-                        |
+                        <span>{{ (is_numeric($episode->track_length)) ? gmdate("i:s", (int) $episode->track_length) : $episode->track_length }}</span>
                         <span>
+                            |
                             @if ($episode->season)
                                 S{{$episode->season}}
                             @endif
