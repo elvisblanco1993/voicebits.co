@@ -21,8 +21,9 @@
 
             <div class="hidden sm:flex sm:items-center sm:ml-6">
                 @if (!Auth::user()->currentTeam->subscribed('voicebits'))
-                    <div class="px-3 py-1 bg-amber-100 border border-amber-300 rounded-lg text-sm text-amber-800">
-                        Your trial ends in {{ Carbon\Carbon::parse(Auth::user()->currentTeam->trial_ends_at)->diffForHumans() }}
+                    <div class="px-3 py-1 bg-amber-100 border border-amber-300 rounded-lg text-sm text-amber-800 flex items-center">
+                        <span>Your trial ends on {{ date("m/d/Y", strtotime(Auth::user()->currentTeam->trial_ends_at)) }}</span>
+                        <a href="/signup" class="ml-2 text-blue-50 py-0.5 px-2 bg-blue-600 rounded-md uppercase text-xs">Sign up</a>
                     </div>
                 @endif
                 <!-- Teams Dropdown -->

@@ -17,24 +17,24 @@
         <div class="sm:flex items-center justify-between border-b">
             <div class="sm:flex items-center m-0">
                 <a href="{{ route('show', ['show' => $podcast->id]) }}" @class([
-                    'block w-full text-center text-sm font-semibold text-slate-600 p-3 border-b-4 border-white hover:border-b-blue-500 hover:text-blue-500 transition-all',
+                    'block w-full text-center text-sm font-semibold text-slate-600 p-3 border-b-4 border-slate-100 hover:border-b-blue-500 hover:text-blue-500 transition-all',
                     'border-b-2 border-b-blue-500 text-blue-600' => request()->routeIs('show')
                 ])>Dashboard</a>
                 <a href="{{ route('episodes', ['show' => $podcast->id]) }}" @class([
-                    'block w-full text-center text-sm font-semibold text-slate-600 p-3 border-b-4 border-white hover:border-b-blue-500 hover:text-blue-500 transition-all',
+                    'block w-full text-center text-sm font-semibold text-slate-600 p-3 border-b-4 border-slate-100 hover:border-b-blue-500 hover:text-blue-500 transition-all',
                     'border-b-2 border-b-blue-500 text-blue-600' => request()->routeIs('episodes')
                 ])>Episodes</a>
                 @if ($podcast->isReadyToDistribute())
                     <a href="{{ route('show.social', ['show' => $podcast->id]) }}" @class([
-                        'block w-full text-center text-sm font-semibold text-slate-600 p-3 border-b-4 border-white hover:border-b-blue-500 hover:text-blue-500 transition-all',
+                        'block w-full text-center text-sm font-semibold text-slate-600 p-3 border-b-4 border-slate-100 hover:border-b-blue-500 hover:text-blue-500 transition-all',
                         'border-b-2 border-b-blue-500 text-blue-600' => request()->routeIs('show.social')
                     ])>Social</a>
                     <a href="{{ route('show.distribution', ['show' => $podcast->id]) }}" @class([
-                        'block w-full text-center text-sm font-semibold text-slate-600 p-3 border-b-4 border-white hover:border-b-blue-500 hover:text-blue-500 transition-all',
+                        'block w-full text-center text-sm font-semibold text-slate-600 p-3 border-b-4 border-slate-100 hover:border-b-blue-500 hover:text-blue-500 transition-all',
                         'border-b-2 border-b-blue-500 text-blue-600' => request()->routeIs('show.distribution')
                     ])>Distribution</a>
                     <a href="{{ route('show.website', ['show' => $podcast->id]) }}" @class([
-                        'block w-full text-center text-sm font-semibold text-slate-600 p-3 border-b-4 border-white hover:border-b-blue-500 hover:text-blue-500 transition-all',
+                        'block w-full text-center text-sm font-semibold text-slate-600 p-3 border-b-4 border-slate-100 hover:border-b-blue-500 hover:text-blue-500 transition-all',
                         'border-b-2 border-b-blue-500 text-blue-600' => request()->routeIs('show.website')
                     ])>Website</a>
                 @endif
@@ -42,7 +42,7 @@
             <div class="m-0">
                 <a href="{{ route('show.settings', ['show' => $podcast->id]) }}"
                     @class([
-                        'flex items-center w-full text-center text-sm font-semibold text-slate-600 p-3 border-b-4 border-white hover:border-b-blue-400 hover:text-blue-500 transition-all',
+                        'flex items-center w-full text-center text-sm font-semibold text-slate-600 p-3 border-b-4 border-slate-100 hover:border-b-blue-400 hover:text-blue-500 transition-all',
                         'border-b-2 border-b-blue-500 text-blue-600' => request()->routeIs('show.settings')
                     ])>
                     <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="currentColor" class="bi bi-gear" viewBox="0 0 16 16">

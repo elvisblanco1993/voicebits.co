@@ -4,6 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
+        <link rel="shortcut icon" href="{{ asset('logo-mark.svg') }}" type="image/svg">
 
         <title>{{ config('app.name', 'Laravel') }}</title>
 
@@ -17,7 +18,7 @@
     <body class="font-sans antialiased bg-white">
         <x-jet-banner />
 
-        <div class="min-h-screen bg-white">
+        <div class="min-h-screen bg-gray-100">
             @livewire('navigation-menu')
 
             <!-- Page Heading -->

@@ -1,5 +1,5 @@
 <div>
-    <div class="my-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         @include('layouts.podcast-menu')
 
         <div class="mt-10 flex items-center justify-between">

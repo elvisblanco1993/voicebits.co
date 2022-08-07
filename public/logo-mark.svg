@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<svg width="25mm" height="16mm" viewBox="0 0 25 16" version="1.1" id="svg5" xmlns="http://www.w3.org/2000/svg">
-  <g id="layer1" style="filter: none;">
+<svg viewBox="0 0 460 290" xmlns="http://www.w3.org/2000/svg">
+  <g id="layer1" style="filter: none;" transform="matrix(18.620739, 0, 0, 18.620739, -2.759202, -3.965947)">
     <g id="g357" transform="rotate(90,116.37393,16.961192)" style="fill:#000000;fill-opacity:1;fill-rule:nonzero">
       <rect style="stroke-width: 0.17484; fill-rule: nonzero; paint-order: fill; fill: rgb(0, 153, 255);" id="rect184" width="5" height="3" x="104.91274" y="108.75182" ry="1.5"/>
       <rect style="stroke-width: 0.247261; fill-rule: nonzero; paint-order: fill; fill: rgb(0, 153, 255);" id="rect344" width="10" height="3" x="99.912743" y="114.04347" ry="1.5"/>

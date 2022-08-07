@@ -53,7 +53,6 @@ function setPlayerUrl(guid) {
     Livewire.emit('getEpisodeUrl', guid);
     Livewire.on('gotEpisodeUrl', (url, title) => {
         document.getElementById("player").src = url;
-        document.getElementById("player-title").innerText = title;
     });
 }
 

@@ -37,7 +37,7 @@ class Create extends Component
                 'author' => $this->author,
                 'timezone' => $this->timezone,
             ]);
-            session()->flash('flash.banner', 'Your show is now ready. See more retails below.');
+            session()->flash('flash.banner', 'Your show is now ready. See more details below.');
             session()->flash('flash.bannerStyle', 'success');
         } catch (\Throwable $th) {
             Log::error($th);

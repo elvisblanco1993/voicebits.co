@@ -1,23 +1,64 @@
-<div class="max-w-7xl mx-auto text-center px-4 sm:px-6 lg:px-8 text-slate-800">
-    <div class="py-20 lg:py-32">
-        <div class="">
-            <h2 class="text-3xl lg:text-4xl font-extrabold">Host as many shows as you want.</h2>
-            <p class="mt-6 text-lg font-medium text-slate-600">We don't charge you extra for additional podcasts. Seriously.</p>
+<div class="block max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-slate-800 dark:text-white">
+    <div class="grid grid-cols-2 gap-8">
+        <div class="col-span-2 md:col-span-1 p-8 rounded-xl shadow bg-white dark:bg-gray-800 text-center md:text-left">
+            <h2 class="text-xl font-medium">Unlimited shows and episodes.</h2>
+            <p class="mt-4">Because you only pay per overall downloads, you can create unlimited podcasts and episodes on your dashboard at no extra cost.</p>
+            <a href="" class="inline-block mt-4 text-sky-500">Tell me more -></a>
+        </div>
+        <div class="col-span-2 md:col-span-1 p-8 rounded-xl shadow bg-white dark:bg-gray-800 text-center md:text-left">
+            <h2 class="text-xl font-medium">Easy podcast distribution.</h2>
+            <p class="mt-4">Voicebits automatically generates RSS feeds for all your shows, which allows you to easily distribute them in all the major podcatchers.</p>
+            <a href="" class="inline-block mt-4 text-sky-500">How to distribute my podcast -></a>
+        </div>
+        <div class="col-span-2 md:col-span-1 p-8 rounded-xl shadow bg-white dark:bg-gray-800 text-center md:text-left">
+            <h2 class="text-xl font-medium">Podcast websites for everyone.</h2>
+            <p class="mt-4">With Voicebits you get a domain for each of your shows. Choose a template, customize it, and you are good to go.</p>
+            <a href="" class="inline-block mt-4 text-sky-500">Show me a podcast's website -></a>
+        </div>
+        <div class="col-span-2 md:col-span-1 p-8 rounded-xl shadow bg-white dark:bg-gray-800 text-center md:text-left">
+            <h2 class="text-xl font-medium">Embedded player.</h2>
+            <p class="mt-4">Is always time to increase your audience. With Voicebits' embedded player, you can drop your episodes anywhere you want, exposing your show to people who might be interested on what you have to say.</p>
+            <a href="" class="inline-block mt-4 text-sky-500">Try the embedded player -></a>
+        </div>
+        <div class="col-span-2 md:col-span-1 p-8 rounded-xl shadow bg-white dark:bg-gray-800 text-center md:text-left">
+            <h2 class="text-xl font-medium">Simple but powerful analytics.</h2>
+            <p class="mt-4">With Voicebits, you can see where are your listeners from, and other important first-party metrics that can help you understand who are on the other side of your microphone.</p>
+            <a href="" class="inline-block mt-4 text-sky-500">Learn more about analytics -></a>
+        </div>
+        <div class="col-span-2 md:col-span-1 p-8 rounded-xl shadow bg-white dark:bg-gray-800 text-center md:text-left">
+            <h2 class="text-xl font-medium">First class, in house support.</h2>
+            <p class="mt-4">When you have an issue, you get to talk directly with Voicebits creator. We are a small business, and we love podcasts as much as we love helping you.</p>
+            <a href="" class="inline-block mt-4 text-sky-500">Get support -></a>
         </div>
     </div>
-
-    <div class="py-20 lg:py-32">
-        <h2 class="text-3xl lg:text-4xl font-extrabold">Bring your shows in a few clicks.</h2>
-        <p class="mt-6 text-lg font-medium text-slate-600">Use our importer tool to bring your podcasts to Voicebits. Wherever they are located, we can automatically import them for you.</p>
-    </div>
-
-    <div class="py-20 lg:py-32">
-        <h2 class="text-3xl lg:text-4xl font-extrabold">Easy distribution.</h2>
-        <p class="mt-6 text-lg font-medium text-slate-600">Voicebits generates RSS feeds for all your shows, which allows you to easily distribute them in all the major podcast hosting platforms.</p>
-    </div>
-
-    <div class="py-20 lg:py-32">
-        <h2 class="text-3xl lg:text-4xl font-extrabold">Podcast websites.</h2>
-        <p class="mt-6 text-lg font-medium text-slate-600">With Voicebits you get a domain for each of your shows. Choose a template, customize it, and you are good to go.</p>
-    </div>
 </div>
+
+{{-- <div class="max-w-7xl mx-auto text-center px-4 sm:px-6 lg:px-8 text-slate-800 dark:text-white">
+    <div class="py-20">
+        <h2 class="text-3xl lg:text-4xl font-extrabold">Unlimited shows. Unlimited episodes.</h2>
+        <p class="mt-6 text-lg font-medium text-slate-600 dark:text-gray-300">Because you only pay per overall downloads, you can create unlimited podcasts and episodes on your dashboard.</p>
+        <a href="" class="inline-block mt-3 font-bold text-blue-500 hover:underline">Learn more -></a>
+        <img src="https://images.unsplash.com/photo-1554200876-980213841c94?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80" alt="" class="w-full aspect-video object-cover mt-6 rounded-3xl">
+    </div>
+
+    <div class="py-20">
+        <h2 class="text-3xl lg:text-4xl font-extrabold">Easy podcast distribution.</h2>
+        <p class="mt-6 text-lg font-medium text-slate-600 dark:text-gray-300">Voicebits automatically generates RSS feeds for all your shows, which allows you to easily distribute them in all the major podcatchers.</p>
+        <a href="" class="inline-block mt-3 font-bold text-blue-500 hover:underline">Learn more -></a>
+        <img src="https://images.unsplash.com/photo-1554200876-980213841c94?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80" alt="" class="w-full aspect-video object-cover mt-6 rounded-3xl">
+    </div>
+
+    <div class="py-20">
+        <h2 class="text-3xl lg:text-4xl font-extrabold">Podcast websites.</h2>
+        <p class="mt-6 text-lg font-medium text-slate-600 dark:text-gray-300">With Voicebits you get a domain for each of your shows. Choose a template, customize it, and you are good to go.</p>
+        <a href="" class="inline-block mt-3 font-bold text-blue-500 hover:underline">Learn more -></a>
+        <img src="https://images.unsplash.com/photo-1554200876-980213841c94?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80" alt="" class="w-full aspect-video object-cover mt-6 rounded-3xl">
+    </div>
+
+    <div class="py-20">
+        <h2 class="text-3xl lg:text-4xl font-extrabold">Embedded player.</h2>
+        <p class="mt-6 text-lg font-medium text-slate-600 dark:text-gray-300">How does this sound? Now you can embed single episodes into any website with a few clicks.</p>
+        <a href="" class="inline-block mt-3 font-bold text-blue-500 hover:underline">Learn more -></a>
+        <img src="https://images.unsplash.com/photo-1554200876-980213841c94?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80" alt="" class="w-full aspect-video object-cover mt-6 rounded-3xl">
+    </div>
+</div> --}}
