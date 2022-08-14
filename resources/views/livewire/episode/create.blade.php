@@ -1,5 +1,5 @@
 <div>
-    <div class="my-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex items-center justify-between">
             <div class="flex items-center gap-3">
                 <a href="{{ route('episodes', ['show' => $show]) }}" class="hover:text-blue-500 transition-all">

@@ -76,7 +76,7 @@
 
             <div class="max-w-7xl mx-auto mt-12 px-4 sm:px-6 md:px-8 lg:px-4 text-center">
                 <h1 class="text-7xl font-black">{{ $podcast->name }}</h1>
-                <div class="my-12"></div>
+                <div class="py-12"></div>
                 <div class="max-w-3xl mx-auto text-center md:text-left">
                     @include('web.partials.player')
                     <div class="mt-2 flex items-center gap-3">

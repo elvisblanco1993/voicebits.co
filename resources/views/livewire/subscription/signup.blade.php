@@ -1,5 +1,5 @@
 <div>
-    <div class="my-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="grid grid-cols-2 gap-8">
             <div class="col-span-2 sm:col-span-1">
                 <div class="prose">

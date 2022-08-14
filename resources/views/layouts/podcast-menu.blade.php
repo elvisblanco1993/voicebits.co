@@ -33,10 +33,17 @@
                         'block w-full text-center text-sm font-semibold text-slate-600 p-3 border-b-4 border-slate-100 hover:border-b-blue-500 hover:text-blue-500 transition-all',
                         'border-b-2 border-b-blue-500 text-blue-600' => request()->routeIs('show.distribution')
                     ])>Distribution</a>
-                    <a href="{{ route('show.website', ['show' => $podcast->id]) }}" @class([
-                        'block w-full text-center text-sm font-semibold text-slate-600 p-3 border-b-4 border-slate-100 hover:border-b-blue-500 hover:text-blue-500 transition-all',
-                        'border-b-2 border-b-blue-500 text-blue-600' => request()->routeIs('show.website')
-                    ])>Website</a>
+
+                    {{--
+                        Website feature
+                        This feature is currently in beta and is not available for production yet.
+                    --}}
+                    @if (config('app.env') === 'local')
+                        <a href="{{ route('show.website', ['show' => $podcast->id]) }}" @class([
+                            'block w-full text-center text-sm font-semibold text-slate-600 p-3 border-b-4 border-slate-100 hover:border-b-blue-500 hover:text-blue-500 transition-all',
+                            'border-b-2 border-b-blue-500 text-blue-600' => request()->routeIs('show.website')
+                        ])>Website</a>
+                    @endif
                 @endif
             </div>
             <div class="m-0">

@@ -1,4 +1,4 @@
-<div class="my-12 max-w-3xl mx-auto px-4 sm:px-6 md:px-8 lg:px-0">
+<div class="py-12 max-w-3xl mx-auto px-4 sm:px-6 md:px-8 lg:px-0">
     @forelse ($podcast->episodes as $episode)
         <article @class([
             'w-full py-4',

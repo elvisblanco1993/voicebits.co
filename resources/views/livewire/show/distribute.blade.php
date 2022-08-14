@@ -1,5 +1,5 @@
 <div>
-    <div class="my-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         @include('layouts.podcast-menu')
         <div class="mt-10 flex items-center justify-between">
             <div class="text-xl font-bold">Distribute your show</div>
@@ -17,7 +17,7 @@
                     >Copy</button>
                 </div>
             </div>
-            <div class="my-12 border-t border-slate-200"></div>
+            <div class="py-12 border-t border-slate-200"></div>
             <div class="mt-4">
                 <x-jet-label for="apple" value="Apple Podcasts"/>
                 <x-jet-input id="apple" type="url" wire:model="apple" placeholder="e.g. https://podcasts.apple.com" class="mt-1 w-full truncate"/>

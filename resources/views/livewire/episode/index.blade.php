@@ -1,5 +1,5 @@
 <div>
-    <div class="my-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         @include('layouts.podcast-menu')
         <div class="mt-10 flex items-center justify-between">
             <div class="text-xl font-bold">Episodes</div>
@@ -21,7 +21,7 @@
                 </thead>
                 <tbody>
                     @forelse ($episodes as $episode)
-                        <tr>
+                        <tr class="">
                             <td>
                                 {{ $episode->title }}
                             </td>
@@ -34,9 +34,10 @@
                                     <span class="text-xs font-medium text-green-600 bg-green-200 px-3 py-1 rounded-lg uppercase tracking-wider">Published</span>
                                 @endif
                             </td>
-                            <td class="flex items-center justify-end">
+                            <td class="flex items-center justify-end gap-2">
+                                <button>Embed</button>
                                 <a href="{{ route('episode.edit', ['show' => $episode->podcast_id, 'episode' => $episode->id]) }}">
-                                    View episode details
+                                    Details
                                 </a>
                             </td>
                         </tr>

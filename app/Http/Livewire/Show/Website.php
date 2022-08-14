@@ -14,6 +14,9 @@ class Website extends Component
 
     public function mount()
     {
+        if (config('app.env') === 'production') {
+            return redirect()->route('shows');
+        }
         $this->podcast = Podcast::findorfail($this->show);
         $this->template = $this->podcast->website->template;
         $this->language = $this->podcast->website->language;

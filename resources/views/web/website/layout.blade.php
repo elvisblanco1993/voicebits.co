@@ -17,6 +17,7 @@
         @include('web.website.partials.navbar')
         @include('web.website.partials.hero')
         @include('web.website.partials.features')
+        @include('web.website.partials.cta')
         @include('web.website.partials.footer')
         @livewireScripts
     </body>
