@@ -35,14 +35,13 @@
                                 @endif
                             </td>
                             <td class="flex items-center justify-end gap-2">
-                                <button>Embed</button>
+                                <a href="{{ route('episode.embed', ['guid' => $episode->guid]) }}">Embed</a>
                                 <a href="{{ route('episode.edit', ['show' => $episode->podcast_id, 'episode' => $episode->id]) }}">
                                     Details
                                 </a>
                             </td>
                         </tr>
                     @empty
-
                     @endforelse
                 </tbody>
             </table>

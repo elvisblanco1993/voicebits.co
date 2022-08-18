@@ -8,9 +8,7 @@
         font-family: 'Inter', sans-serif;
     }
 
-    [x-cloak] {
-        @apply hidden;
-    }
+    [x-cloak] { display: none !important; }
 
     .input {
         @apply border-gray-300 focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50 rounded-lg shadow-sm mt-1 w-full;
