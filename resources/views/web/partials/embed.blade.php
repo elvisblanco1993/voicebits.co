@@ -96,7 +96,7 @@
                     <h1 class="text-lg font-bold text-white">Share</h1>
                     <div class="mt-4 flex items-center">
                         <label for="embedded_url" class="text-xs text-white font-semibold">EMBED</label>
-                        <input type="text" name="embedded_url" id="embedded_url" value='<iframe width="100%" height="180" frameborder="no" scrolling="no" seamless src="{{ $embed_url }}"></iframe>' class="ml-4 px-2 py-1 text-xs rounded-md bg-slate-600 text-white w-full">
+                        <input type="text" name="embedded_url" id="embedded_url" value='<embed width="100%" height="180" frameborder="no" scrolling="no" seamless src="{{ $embed_url }}">' class="ml-4 px-2 py-1 text-xs rounded-md bg-slate-600 text-white w-full">
                     </div>
                 </div>
                 <div class="mt-4">

@@ -69,7 +69,7 @@
         </div>
 
         {{-- Episode Options --}}
-        <div class="mt-6 text-xl font-bold">Optional</div>
+        <div class="mt-6 text-xl font-bold">Options</div>
         <div class="mt-4 w-full bg-white rounded-lg shadow p-8">
             <div class="grid grid-cols-2 gap-8">
                 <div class="col-span-2 sm:col-span-1">
@@ -158,11 +158,28 @@
                 </div>
             </div>
         </div>
+
+        {{-- Sharing options --}}
+        <div class="mt-6 text-xl font-bold">Share</div>
+        <div class="mt-4 w-full bg-white rounded-lg shadow p-8">
+            <div class="">
+                <div class="flex items-center justify-between">
+                    <label for="embed" class="block font-medium text-sm text-gray-700">Embed</label>
+                    <button class="flex items-center space-x-2 text-sm text-slate-600 hover:text-blue-600 transition-all" onclick="copyEmbed()">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M8 2a1 1 0 000 2h2a1 1 0 100-2H8z" />
+                            <path d="M3 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v6h-4.586l1.293-1.293a1 1 0 00-1.414-1.414l-3 3a1 1 0 000 1.414l3 3a1 1 0 001.414-1.414L10.414 13H15v3a2 2 0 01-2 2H5a2 2 0 01-2-2V5zM15 11h2a1 1 0 110 2h-2v-2z" />
+                        </svg>
+                        <span id="embed_alert">Copy</span>
+                    </button>
+                </div>
+                <x-jet-input id="embed" type="text" class="w-full mt-1" wire:model.defer="embed_url"/>
+            </div>
+        </div>
     </div>
 
+    // Audio previewer
     <script>
-
-        // Audio previewer
         var audio = document.getElementById("audio");
         function togglePlay() {
             return audio.paused ? audio.play() : audio.pause();
@@ -173,5 +190,18 @@
         audio.onpause = function() {
             document.getElementById('audioPlayBtn').innerHTML = "<svg xmlns='http://www.w3.org/2000/svg' class='h-10 w-10' fill='none' viewBox='0 0 24 24' stroke='currentColor' stroke-width='2'><path stroke-linecap='round' stroke-linejoin='round' d='M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z' /><path stroke-linecap='round' stroke-linejoin='round' d='M21 12a9 9 0 11-18 0 9 9 0 0118 0z' /></svg>";
         };
+    </script>
+
+    {{-- Copy to clipboard --}}
+    <script>
+        function copyEmbed() {
+            let source = '{!! $embed_url !!}';
+            navigator.clipboard.writeText(source);
+            console.log(source);
+            document.getElementById("embed_alert").innerText = "Copied!";
+            setInterval(() => {
+                document.getElementById("embed_alert").innerText = "Copy";
+            }, 5000);
+        }
     </script>
 </div>

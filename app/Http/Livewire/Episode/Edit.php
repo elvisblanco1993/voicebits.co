@@ -32,6 +32,8 @@ class Edit extends Component
         $this->type = $this->episode->type;
         $this->explicit = ($this->episode->explicit) ? "true" : "false";
         $this->track_url = $this->episode->track_url;
+        $this->embed_url = route('episode.embed', ['guid' => $this->episode->guid]);
+        $this->embed_url = '<embed width="100%" height="160" frameborder="no" scrolling="no" seamless src="' . $this->embed_url . '">';
     }
 
     public function save()

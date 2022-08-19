@@ -29,16 +29,13 @@
                             <td>{{ Carbon\Carbon::parse($episode->published_at)->format("M d, Y") }}</td>
                             <td>
                                 @if (!$episode->published_at || $episode->published_at > now())
-                                    <span class="text-xs font-medium text-slate-600 bg-slate-200 px-3 py-1 rounded-lg uppercase tracking-wider">Draft</span>
+                                    <span class="text-xs font-medium text-slate-600 bg-slate-200 px-3 py-1 rounded-lg uppercase tracking-wider">{{__("Draft")}}</span>
                                 @else
-                                    <span class="text-xs font-medium text-green-600 bg-green-200 px-3 py-1 rounded-lg uppercase tracking-wider">Published</span>
+                                    <span class="text-xs font-medium text-green-600 bg-green-200 px-3 py-1 rounded-lg uppercase tracking-wider">{{__("Published")}}</span>
                                 @endif
                             </td>
-                            <td class="flex items-center justify-end gap-2">
-                                <a href="{{ route('episode.embed', ['guid' => $episode->guid]) }}">Embed</a>
-                                <a href="{{ route('episode.edit', ['show' => $episode->podcast_id, 'episode' => $episode->id]) }}">
-                                    Details
-                                </a>
+                            <td class="flex items-center justify-end space-x-3">
+                                <a href="{{ route('episode.edit', ['show' => $episode->podcast_id, 'episode' => $episode->id]) }}" class="uppercase text-xs">Edit</a>
                             </td>
                         </tr>
                     @empty
