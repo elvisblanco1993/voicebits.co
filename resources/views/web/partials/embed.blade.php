@@ -15,7 +15,7 @@
 <body>
     <div class="w-full h-40 bg-slate-700 p-4 rounded-lg border border-slate-700">
         <div x-data="{ share: false, info: false, main: true }" class="h-full w-full flex justify-start space-x-4">
-            <img src="{{ $cover }}" alt="{{ $title }}" class="w-28 sm:w-32 h-28 sm:h-32 rounded shadow">
+            <img src="{{ $cover }}" alt="{{ $title }}" class="w-28 sm:w-32 h-28 sm:h-32 objcet-center object-cover rounded shadow">
             <div x-show="main" class="w-full">
                 <div class="flex items-start justify-between">
                     <div class="">
