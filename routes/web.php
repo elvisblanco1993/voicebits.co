@@ -8,14 +8,14 @@ use App\Http\Controllers\DocumentationController;
 /**
  * Subdomain routes
  */
-Route::middleware('xframe.options')->domain('{url}.' . config('app.url'))->group(function() {
+Route::domain('{url}.' . config('app.url'))->group(function() {
     Route::get('/', [App\Http\Controllers\PodcastController::class, 'show'])->name('podcast.website');
     Route::get('/episode/{episode}', [App\Http\Controllers\PodcastController::class, 'episode'])->name('podcast.episode');
     Route::get('/feed', [App\Http\Controllers\PodcastController::class, 'feed'])->name('show.feed');
     Route::get('/play/{episode}/{webplayer}', [App\Http\Controllers\EpisodeController::class, 'play'])->name('episode.play');
 });
 
-Route::get('/embed/{guid}', [App\Http\Controllers\EpisodeController::class, 'embed'])->name('episode.embed');
+Route::middleware('xframe.options')->get('/embed/{guid}', [App\Http\Controllers\EpisodeController::class, 'embed'])->name('episode.embed');
 
 /**
  * Protected routes
@@ -24,7 +24,6 @@ Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
     'verified',
-    'xframe.options'
 ])->group(function () {
     Route::get('/signup', App\Http\Livewire\Subscription\Signup::class)->name('signup');
     Route::get('/billing-portal', function(Request $request) {
@@ -67,5 +66,5 @@ Route::middleware([
 /**
  * Public routes
  */
-Route::middleware('xframe.options')->get('/', [WebController::class, 'home'])->name('home');
-Route::middleware('xframe.options')->get('/documentation', [DocumentationController::class, 'index'])->name('documentation');
+Route::get('/', [WebController::class, 'home'])->name('home');
+Route::get('/documentation', [DocumentationController::class, 'index'])->name('documentation');

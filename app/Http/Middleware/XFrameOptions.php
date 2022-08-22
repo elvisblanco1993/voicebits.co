@@ -16,7 +16,6 @@ class XFrameOptions
      */
     public function handle(Request $request, Closure $next)
     {
-        dd($request);
         $response = $next($request);
         // $response->header('X-Frame-Options: SAMEORIGIN');
         $response->headers->remove('X-Frame-Options: SAMEORIGIN');
