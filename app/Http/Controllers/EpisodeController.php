@@ -43,7 +43,6 @@ class EpisodeController extends Controller
         $episode = Episode::where('guid', $guid)->firstOrFail();
         $cover = Storage::disk(config('filesystems.default'))->url($episode->cover ?? $episode->podcast->cover);
         $track = route('episode.play', ['url' => $episode->podcast->url, 'episode' => $guid, 'webplayer' => 1]);
-        request()->headers->remove('X-Frame-Options: SAMEORIGIN');
         return view('web.partials.embed', [
             'track' => $track,
             'cover' => $cover,
