@@ -173,12 +173,12 @@
                         <span id="embed_alert">Copy</span>
                     </button>
                 </div>
-                <x-jet-input id="embed" type="text" class="w-full mt-1" wire:model.defer="embed_url"/>
+                <pre class="mt-2 rounded overflow-auto bg-gray-800 py-1"><code class="text-xs text-green-400 px-2">{{$embed_url}}</code></pre>
             </div>
         </div>
     </div>
 
-    // Audio previewer
+    {{-- Audio previewer --}}
     <script>
         var audio = document.getElementById("audio");
         function togglePlay() {
