@@ -4,19 +4,28 @@ namespace App\Http\Livewire\Episode;
 
 use App\Models\Podcast;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class Index extends Component
 {
-    public $show, $episodes, $podcast;
+    use WithPagination;
+
+    public $show, $podcast, $search = '';
 
     public function mount()
     {
         $this->podcast = Podcast::find($this->show);
-        $this->episodes = $this->podcast->episodes()->orderBy('published_at', 'DESC')->get();
     }
 
     public function render()
     {
-        return view('livewire.episode.index');
+        return view('livewire.episode.index', [
+            'episodes' => $this->podcast->episodes()->where('title', 'like', '%'.$this->search.'%')->orderBy('published_at', 'DESC')->paginate(10)
+        ]);
+    }
+
+    public function updatingSearch()
+    {
+        $this->resetPage();
     }
 }

@@ -2,7 +2,7 @@
     <div class="py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         @include('layouts.podcast-menu')
         <div class="mt-10 flex items-center justify-between">
-            <div class="text-xl font-bold">Episodes</div>
+            <x-jet-input type="search" wire:model="search" placeholder="Search by name"/>
             <a href="{{ route('episode.create', ['show' => $show]) }}"
                 class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-lg font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring focus:ring-gray-300 disabled:opacity-25 transition"
                 >New Episode</a>
@@ -14,7 +14,7 @@
                 <tr>
                     <th>Name</th>
                     <th>Length</th>
-                    <th>Publish Date</th>
+                    <th>Published At</th>
                     <th>Status</th>
                     <th class="sr-only">Options</th>
                 </tr>
@@ -42,6 +42,8 @@
                     @endforelse
                 </tbody>
             </table>
+
+            {{ $episodes->links() }}
         </div>
     </div>
 </div>

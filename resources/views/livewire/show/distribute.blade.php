@@ -17,7 +17,7 @@
                     >Copy</button>
                 </div>
             </div>
-            <div class="py-12 border-t border-slate-200"></div>
+            <div class="my-12 border-t border-slate-200"></div>
             <div class="mt-4">
                 <x-jet-label for="apple" value="Apple Podcasts"/>
                 <x-jet-input id="apple" type="url" wire:model="apple" placeholder="e.g. https://podcasts.apple.com" class="mt-1 w-full truncate"/>
