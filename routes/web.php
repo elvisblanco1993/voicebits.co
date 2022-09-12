@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ArticleController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\WebController;
@@ -61,6 +62,13 @@ Route::middleware([
         Route::get('/shows/{show}/episode/create', App\Http\Livewire\Episode\Create::class)->name('episode.create');
         Route::get('/shows/{show}/episode/{episode}/edit', App\Http\Livewire\Episode\Edit::class)->name('episode.edit');
         Route::get('/episode/preview/{episode}/', [App\Http\Controllers\EpisodeController::class, 'preview'])->name('episode.preview');
+
+        /**
+         * Article routes
+         */
+        Route::get('/articles', App\Http\Livewire\Article\Index::class)->name('article.index');
+        Route::get('/articles/create', App\Http\Livewire\Article\Create::class)->name('article.create');
+        Route::get('/articles/{article}/edit', App\Http\Livewire\Article\Edit::class)->name('article.edit');
     });
 });
 
@@ -69,5 +77,7 @@ Route::middleware([
  */
 Route::middleware('xframe.options')->group(function () {
     Route::get('/', [WebController::class, 'home'])->name('home');
-    Route::get('/documentation', [DocumentationController::class, 'index'])->name('documentation');
+    Route::get('/pricing', [WebController::class, 'index'])->name('pricing');
+    Route::get('/blog', [ArticleController::class, 'index'])->name('blog.index');
+    Route::get('/blog/{article}', [ArticleController::class, 'show'])->name('blog.article');
 });

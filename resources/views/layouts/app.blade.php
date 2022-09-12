@@ -11,33 +11,28 @@
         <!-- Styles -->
         @vite('resources/css/app.css')
         @livewireStyles
-
-        <!-- Scripts -->
-        @vite('resources/js/app.js')
     </head>
-    <body class="font-sans antialiased bg-white">
+    <body class="font-sans antialiased">
         <x-jet-banner />
-
         <div class="min-h-screen bg-gray-100">
-            @livewire('navigation-menu')
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="py-6 md:py-24">
+                    <div class="grid grid-cols-4 gap-12">
+                        <aside class="col-span-4 md:col-span-1">
+                            @livewire('navigation-menu')
+                        </aside>
 
-            <!-- Page Heading -->
-            @if (isset($header))
-                <header class="bg-white shadow">
-                    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                        {{ $header }}
+                        <main class="col-span-4 md:col-span-3">
+                            {{ $slot }}
+                        </main>
                     </div>
-                </header>
-            @endif
-
-            <!-- Page Content -->
-            <main>
-                {{ $slot }}
-            </main>
+                </div>
+            </div>
         </div>
 
         @stack('modals')
 
         @livewireScripts
     </body>
+    @vite('resources/js/app.js')
 </html>
