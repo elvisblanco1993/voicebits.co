@@ -62,7 +62,7 @@
                 <x-jet-input type="text" id="author" wire:model.defer="author" class="mt-1 w-full"/>
                 <x-jet-input-error for="author" class="text-sm text-red-600 mt-2"/>
             </div>
-            <div class="mt-6">
+            <div class="mt-6" id="show-url">
                 <x-jet-label for="url" value="Podcast url" />
                 <div class="mt-1 flex">
                     <input type="text" wire:model="url" id="url"
@@ -72,7 +72,7 @@
                     <span class="inline-flex flex-none items-center px-3 rounded-r-md border border-l-0 border-gray-300 bg-gray-50 text-gray-500 text-sm">.voicebits.co</span>
 
                 </div>
-                <a href="https://{{str($podcast->name)->slug()}}.voicebits.co" target="_blank" class="mt-1 text-xs font-medium tracking-wider text-blue-500">https://{{str($podcast->name)->slug()}}.voicebits.co</a>
+                <a href="https://{{str($podcast->name)->slug()}}.voicebits.co" target="_blank" class="mt-1 text-xs font-medium tracking-wider text-[#0099ff]">https://{{str($podcast->name)->slug()}}.voicebits.co</a>
             </div>
         </div>
 
@@ -109,9 +109,9 @@
         <div class="mt-10 flex items-center justify-between">
             <div>
                 <div class="text-xl font-bold">Lock feed</div>
-                <p class="block text-sm font-semibold text-slate-600">When this value is present and set to “yes”, the podcast feed cannot be imported or migrated to other platforms  that respect the tag.</p>
+                <p class="block text-sm font-semibold text-slate-600 max-w-xl">When this value is present and set to “yes”, the podcast feed cannot be imported or migrated to other platforms  that respect the tag.</p>
             </div>
-            <x-jet-button wire:click="save">Save changes</x-jet-button>
+            <x-jet-button wire:click="save" class="flex-none">Save changes</x-jet-button>
         </div>
         <div class="mt-4 w-full bg-white rounded-lg shadow p-8">
             <label for="is_locked-btn" class="flex items-center">
@@ -125,7 +125,7 @@
         </div>
 
         {{-- Cover art --}}
-        <div class="mt-10 flex items-center justify-between">
+        <div class="mt-10 flex items-center justify-between" id="artwork">
             <div class="text-xl font-bold">Cover artwork</div>
             <x-jet-button wire:click="save">Save changes</x-jet-button>
         </div>
@@ -138,7 +138,7 @@
                         <img src="{{ $cover->temporaryUrl() }}" class="w-full aspect-square object-center object-cover">
                     @else
                         <div class="w-full aspect-square bg-blue-100 flex items-center justify-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="w-20 h-20 text-blue-500" fill="currentColor" class="bi bi-soundwave" viewBox="0 0 16 16">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-20 h-20 text-[#0099ff]" fill="currentColor" class="bi bi-soundwave" viewBox="0 0 16 16">
                                 <path fill-rule="evenodd" d="M8.5 2a.5.5 0 0 1 .5.5v11a.5.5 0 0 1-1 0v-11a.5.5 0 0 1 .5-.5zm-2 2a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zm4 0a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zm-6 1.5A.5.5 0 0 1 5 6v4a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm8 0a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm-10 1A.5.5 0 0 1 3 7v2a.5.5 0 0 1-1 0V7a.5.5 0 0 1 .5-.5zm12 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0V7a.5.5 0 0 1 .5-.5z"/>
                             </svg>
                         </div>
