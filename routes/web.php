@@ -29,8 +29,7 @@ Route::middleware([
 ])->group(function () {
     Route::get('/signup', App\Http\Livewire\Subscription\Signup::class)->name('signup');
     Route::get('/billing-portal', function(Request $request) {
-        return $request->user()->currentTeam
-        ->redirectToBillingPortal(
+        return $request->user()->redirectToBillingPortal(
             route('shows')
         );
     })->name('billing');

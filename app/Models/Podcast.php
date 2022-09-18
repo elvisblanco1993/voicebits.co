@@ -69,4 +69,9 @@ class Podcast extends Model
             'description' => $this->description,
         ];
     }
+
+    public function users()
+    {
+        return $this->belongsToMany(User::class)->withTimestamps();
+    }
 }

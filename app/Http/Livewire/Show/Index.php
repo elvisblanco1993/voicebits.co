@@ -12,7 +12,7 @@ class Index extends Component
     public function render()
     {
         return view('livewire.show.index', [
-            'podcasts' => Podcast::search($this->search)->where('team_id', Auth::user()->currentTeam->id)->get()
+            'podcasts' => auth()->user()->podcasts()->where('name', 'like', '%' . $this->search . '%')->get()
         ]);
     }
 }

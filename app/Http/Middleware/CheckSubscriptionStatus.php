@@ -17,10 +17,10 @@ class CheckSubscriptionStatus
     public function handle(Request $request, Closure $next)
     {
         $user = $request->user();
-        if (!$user->currentTeam->onTrial()) {
-            if ($user->currentTeam->subscribed('voicebits')) {
-                if ($user->currentTeam->subscription('voicebits')->hasIncompletePayment()) {
-                    return redirect()->route('cashier.payment', $user->currentTeam->subscription('voicebits')->latestPayment()->id);
+        if (!$user->onTrial()) {
+            if ($user->subscribed('voicebits')) {
+                if ($user->subscription('voicebits')->hasIncompletePayment()) {
+                    return redirect()->route('cashier.payment', $user->subscription('voicebits')->latestPayment()->id);
                 } else {
                     return $next($request);
                 }

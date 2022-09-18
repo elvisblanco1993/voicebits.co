@@ -15,9 +15,7 @@
     </head>
     <body class="antialiased min-h-screen bg-gray-100 dark:bg-gray-900">
         @include('web.website.partials.navbar')
-        @include('web.website.partials.hero')
-        @include('web.website.partials.features')
-        @include('web.website.partials.cta')
+        @yield('content')
         @include('web.website.partials.footer')
         @livewireScripts
     </body>

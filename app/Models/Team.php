@@ -13,7 +13,6 @@ use function Illuminate\Events\queueable;
 class Team extends JetstreamTeam
 {
     use HasFactory;
-    use Billable;
 
     /**
      * The attributes that should be cast.
