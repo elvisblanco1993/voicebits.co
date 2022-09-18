@@ -7,6 +7,7 @@ use App\Models\Team;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
 use Laravel\Fortify\Contracts\CreatesNewUsers;
 use Laravel\Jetstream\Jetstream;
@@ -44,13 +45,9 @@ class CreateNewUser implements CreatesNewUsers
                         'email' => $user->email,
                     ]);
 
-                    try {
-                        $user->update([
-                            'trial_ends_at' => now()->addDays(14),
-                        ]);
-                    } catch (\Throwable $th) {
-                        throw $th;
-                    }
+                    $user->update([
+                        'trial_ends_at' => now()->addDays(14),
+                    ]);
                 } else {
                     // If the user has been invited to podcasts, then complete invitation process.
                     foreach (DB::table('podcast_invitations')->where('email', $user->email)->get() as $invitation) {

@@ -11,7 +11,7 @@ class Signup extends Component
 
     public function mount()
     {
-        if (auth()->user()->subscribed('voicebits')) {
+        if (auth()->user()->onTrial() && !auth()->user()->subscribed('voicebits')) {
             return redirect()->route('shows');
         }
     }
@@ -33,8 +33,7 @@ class Signup extends Component
                 break;
         }
 
-        return auth()->user()->currentTeam
-            ->newSubscription('voicebits', $price)
+        return auth()->user()->newSubscription('voicebits', $price)
             ->allowPromotionCodes()
             ->checkout([
             'success_url' => route('shows'),
