@@ -39,12 +39,12 @@ class CreateNewUser implements CreatesNewUsers
 
                 $this->createTeam($user);
 
-                $user->currentTeam->createAsStripeCustomer([
-                    'name' => $user->currentTeam->name,
+                $user->createAsStripeCustomer([
+                    'name' => $user->name,
                     'email' => $user->email,
                 ]);
 
-                $user->currentTeam->update([
+                $user->update([
                     'trial_ends_at' => now()->addDays(14),
                 ]);
 
