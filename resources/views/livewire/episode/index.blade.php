@@ -1,5 +1,5 @@
 <div>
-    <div class="py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-0">
         @include('layouts.podcast-menu')
         <div class="mt-10 flex items-center justify-between">
             <x-jet-input type="search" wire:model="search" placeholder="Search by name"/>

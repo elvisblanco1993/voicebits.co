@@ -1,5 +1,5 @@
 <div>
-    <div class="px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+    <div class="px-4 sm:px-6 lg:px-0 flex items-center justify-between">
         <h1 class="text-4xl font-bold">Podcasts</h1>
         @can('create_podcasts')
             <div class="flex items-center gap-4">
@@ -15,7 +15,7 @@
             </div>
         @endcan
     </div>
-    <div class="py-6 px-4 sm:px-6 lg:px-8">
+    <div class="py-6 px-4 sm:px-6 lg:px-0">
         <x-jet-input type="text" wire:model="search" placeholder="Search by name" class="w-full md:w-1/2"/>
         <div class="mt-6 w-full">
             @forelse ($podcasts as $podcast)
