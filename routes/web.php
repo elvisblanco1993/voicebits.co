@@ -35,8 +35,6 @@ Route::middleware([
     })->name('billing');
 
     Route::middleware('subscribed')->group(function () {
-
-        Route::get('/phpinfo', function() {dd( phpinfo() );});
         /**
          * Podcast routes
          */

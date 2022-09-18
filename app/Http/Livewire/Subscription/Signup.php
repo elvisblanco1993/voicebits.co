@@ -11,7 +11,7 @@ class Signup extends Component
 
     public function mount()
     {
-        if (auth()->user()->onTrial() && !auth()->user()->subscribed('voicebits')) {
+        if (auth()->user()->subscribed('voicebits')) {
             return redirect()->route('shows');
         }
     }

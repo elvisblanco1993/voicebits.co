@@ -32,7 +32,10 @@ class AuthServiceProvider extends ServiceProvider
             return $user->subscribed('voicebits') ? true : false;
         });
 
-        Gate::define('create_podcast', function (User $user) {
+        Gate::define('create_podcasts', function (User $user) {
+            return ($user->subscribed('voicebits') || $user->onTrial()) ? true : false;
+        });
+        Gate::define('manage_podcasts', function (User $user) {
             return ($user->subscribed('voicebits') || $user->onTrial()) ? true : false;
         });
     }

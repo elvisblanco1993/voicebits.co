@@ -28,7 +28,6 @@ class Create extends Component
 
         try {
             $podcast = Podcast::create([
-                'team_id' => Auth::user()->currentTeam->id,
                 'name' => $this->name,
                 'description' => $this->description,
                 'category' => $this->category,
@@ -36,6 +35,9 @@ class Create extends Component
                 'type' => $this->type,
                 'author' => $this->author,
                 'timezone' => $this->timezone,
+            ]);
+            auth()->user()->podcasts()->attach($podcast->id, [
+                'role' => 'admin',
             ]);
             session()->flash('flash.banner', 'Your show is now ready. See more details below.');
             session()->flash('flash.bannerStyle', 'success');

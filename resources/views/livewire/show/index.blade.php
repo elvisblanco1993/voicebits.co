@@ -1,7 +1,7 @@
 <div>
     <div class="px-4 sm:px-6 lg:px-8 flex items-center justify-between">
         <h1 class="text-4xl font-bold">Podcasts</h1>
-        @can('create_podcast')
+        @can('create_podcasts')
             <div class="flex items-center gap-4">
                 <a href="{{ route('show.import.start') }}">
                     <span class="hidden md:inline-block">Import</span>
