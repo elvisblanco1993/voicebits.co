@@ -15,7 +15,6 @@ return new class extends Migration
     {
         Schema::create('podcasts', function (blueprint $table) {
             $table->id();
-            $table->foreignId('team_id');
             $table->string('name');
             $table->longText('description');
             $table->string('url')->nullable();

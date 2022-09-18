@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use Laravel\Cashier\Billable;
 use Laravel\Jetstream\Events\TeamCreated;
 use Laravel\Jetstream\Events\TeamDeleted;
 use Laravel\Jetstream\Events\TeamUpdated;
@@ -48,21 +47,4 @@ class Team extends JetstreamTeam
         'updated' => TeamUpdated::class,
         'deleted' => TeamDeleted::class,
     ];
-
-    /**
-     * Sync Stripe & Voicebits Team Information
-     */
-    protected static function booted()
-    {
-        static::updated(queueable(function ($customer) {
-            if ($customer->hasStripeId()) {
-                $customer->syncStripeCustomerDetails();
-            }
-        }));
-    }
-
-    public function podcasts()
-    {
-        return $this->hasMany(Podcast::class);
-    }
 }

@@ -37,34 +37,34 @@ class CreateNewUser implements CreatesNewUsers
                 'password' => Hash::make($input['password']),
             ]), function (User $user) {
 
-                $this->createTeam($user);
+                // Runs if the user being created has not been invited by an existing user
+                if (!$this->invited($user->email)) {
+                    $user->createAsStripeCustomer([
+                        'name' => $user->name,
+                        'email' => $user->email,
+                    ]);
 
-                $user->createAsStripeCustomer([
-                    'name' => $user->name,
-                    'email' => $user->email,
-                ]);
-
-                $user->update([
-                    'trial_ends_at' => now()->addDays(14),
-                ]);
+                    try {
+                        $user->update([
+                            'trial_ends_at' => now()->addDays(14),
+                        ]);
+                    } catch (\Throwable $th) {
+                        throw $th;
+                    }
+                } else {
+                    // If the user has been invited to podcasts, then complete invitation process.
+                    foreach (DB::table('podcast_invitations')->where('email', $user->email)->get() as $invitation) {
+                        $user->podcasts()->attach($invitation->podcast_id, ['role' => $invitation->role]);
+                    }
+                }
 
                 SendWelcomeEmail::dispatch($user->email);
             });
         });
     }
 
-    /**
-     * Create a personal team for the user.
-     *
-     * @param  \App\Models\User  $user
-     * @return void
-     */
-    protected function createTeam(User $user)
+    protected function invited($email) : bool
     {
-        $user->ownedTeams()->save(Team::forceCreate([
-            'user_id' => $user->id,
-            'name' => explode(' ', $user->name, 2)[0]."'s Team",
-            'personal_team' => true,
-        ]));
+        return DB::table('podcast_invitations')->where('email', $email)->exists();
     }
 }

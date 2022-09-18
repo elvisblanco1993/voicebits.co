@@ -11,6 +11,7 @@ use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Jetstream\HasTeams;
 use Laravel\Sanctum\HasApiTokens;
+use function Illuminate\Events\queueable;
 
 class User extends Authenticatable
 {
@@ -28,7 +29,13 @@ class User extends Authenticatable
      * @var string[]
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name',
+        'email',
+        'password',
+        'stripe_id',
+        'pm_type',
+        'pm_last_four',
+        'trial_ends_at'
     ];
 
     /**
@@ -61,6 +68,18 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+    /**
+     * Sync Stripe & Voicebits Team Information
+     */
+    protected static function booted()
+    {
+        static::updated(queueable(function ($customer) {
+            if ($customer->hasStripeId()) {
+                $customer->syncStripeCustomerDetails();
+            }
+        }));
+    }
 
     public function podcasts()
     {

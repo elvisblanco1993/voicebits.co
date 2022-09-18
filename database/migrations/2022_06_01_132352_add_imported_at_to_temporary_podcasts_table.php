@@ -26,7 +26,7 @@ return new class extends Migration
     public function down()
     {
         Schema::table('temporary_podcasts', function (Blueprint $table) {
-            //
+            $table->dropColumn('imported_at');
         });
     }
 };
