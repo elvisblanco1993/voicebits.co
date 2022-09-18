@@ -76,7 +76,7 @@ Route::middleware([
  */
 Route::middleware('xframe.options')->group(function () {
     Route::get('/', [WebController::class, 'home'])->name('home');
-    Route::get('/pricing', [WebController::class, 'index'])->name('pricing');
+    Route::get('/pricing', [WebController::class, 'pricing'])->name('pricing');
     Route::get('/blog', [ArticleController::class, 'index'])->name('blog.index');
     Route::get('/blog/{article}', [ArticleController::class, 'show'])->name('blog.article');
 });

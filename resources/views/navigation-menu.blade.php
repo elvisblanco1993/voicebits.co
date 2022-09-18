@@ -30,15 +30,6 @@
                 'block font-semibold px-4 py-2 rounded-lg hover:text-[#0099ff] transition-all',
                 'text-[#0099ff]' => request()->routeIs('profile.show')
             ])>{{ __('Account') }}</a>
-            {{-- @if (Laravel\Jetstream\Jetstream::hasTeamFeatures())
-                <a href="{{ route('teams.show', Auth::user()->currentTeam->id) }}" @class([
-                    'block font-semibold px-4 py-2 rounded-lg hover:text-[#0099ff] transition-all',
-                    'text-[#0099ff]' => request()->routeIs('teams.show')
-                ])>
-                    {{ __('Team Settings') }}
-                </a>
-
-            @endif --}}
             @can('manage_billing')
                 <a href="{{ route('billing') }}" @class([
                     'block font-semibold px-4 py-2 rounded-lg hover:text-[#0099ff] transition-all',
