@@ -1,12 +1,12 @@
 <div>
-    <div class="px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+    <div class="px-4 sm:px-6 lg:px-0 flex items-center justify-between">
         <h1 @class([
             'text-4xl font-bold',
             'text-slate-400' => ($title)
         ])>Editing article</h1>
     </div>
 
-    <div class="py-6 px-4 sm:px-6 lg:px-8">
+    <div class="py-6 px-4 sm:px-6 lg:px-0">
         <input type="text" id="title" wire:model.defer="title" placeholder="Title" autofocus
             class="w-full border-none rounded-lg focus:ring focus:ring-sky-200 text-2xl font-bold"/>
         <x-jet-input-error for="title" class="mt-1" />

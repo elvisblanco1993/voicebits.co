@@ -1,5 +1,5 @@
 <div>
-    <div class="px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+    <div class="px-4 sm:px-6 lg:px-0 flex items-center justify-between">
         <h1 class="text-4xl font-bold">Articles</h1>
         <div>
             <a href="{{ route('article.create') }}"
@@ -8,7 +8,7 @@
         </div>
     </div>
 
-    <div class="py-6 px-4 sm:px-6 lg:px-8">
+    <div class="py-6 px-4 sm:px-6 lg:px-0">
         <x-jet-input type="text" wire:model="search" placeholder="Search by title" class="w-full md:w-1/2"/>
         {{-- Content --}}
         <div class="mt-4 prose max-w-full">
