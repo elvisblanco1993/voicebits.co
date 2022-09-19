@@ -36,7 +36,7 @@ class Create extends Component
                 'timezone' => $this->timezone,
             ]);
             auth()->user()->podcasts()->attach($podcast->id, [
-                'role' => 'admin',
+                'role' => 'owner',
                 'permissions' => json_encode(config('auth.podcast_permissions')),
             ]);
             session()->flash('flash.banner', 'Your show is now ready. See more details below.');
