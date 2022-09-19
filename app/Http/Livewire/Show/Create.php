@@ -25,7 +25,6 @@ class Create extends Component
     public function save()
     {
         $this->validate();
-
         try {
             $podcast = Podcast::create([
                 'name' => $this->name,
@@ -38,6 +37,7 @@ class Create extends Component
             ]);
             auth()->user()->podcasts()->attach($podcast->id, [
                 'role' => 'admin',
+                'permissions' => json_encode(config('auth.podcast_permissions')),
             ]);
             session()->flash('flash.banner', 'Your show is now ready. See more details below.');
             session()->flash('flash.bannerStyle', 'success');

@@ -20,10 +20,12 @@
                     'flex items-center w-full text-center text-sm font-semibold text-slate-600 p-3 hover:text-blue-600 transition-all',
                     'text-blue-600' => request()->routeIs('show')
                 ])>Dashboard</a>
-                <a href="{{ route('episodes', ['show' => $podcast->id]) }}" @class([
-                    'flex items-center w-full text-center text-sm font-semibold text-slate-600 p-3 hover:text-blue-600 transition-all',
-                    'text-blue-600' => request()->routeIs('episodes')
-                ])>Episodes</a>
+                @can('view_episodes', $podcast)
+                    <a href="{{ route('episodes', ['show' => $podcast->id]) }}" @class([
+                        'flex items-center w-full text-center text-sm font-semibold text-slate-600 p-3 hover:text-blue-600 transition-all',
+                        'text-blue-600' => request()->routeIs('episodes')
+                    ])>Episodes</a>
+                @endcan
                 @if ($podcast->isReadyToDistribute())
                     <a href="{{ route('show.social', ['show' => $podcast->id]) }}" @class([
                         'flex items-center w-full text-center text-sm font-semibold text-slate-600 p-3 hover:text-blue-600 transition-all',
@@ -45,16 +47,20 @@
                         ])>Website</a>
                     @endif
                 @endif
-                <a href="{{ route('show.users', ['show' => $podcast->id]) }}"@class([
-                    'flex items-center w-full text-center text-sm font-semibold text-slate-600 p-3 hover:text-blue-600 transition-all',
-                    'text-blue-600' => request()->routeIs('show.users')
-                ])>Users</a>
+                @can('view_users', $podcast)
+                    <a href="{{ route('show.users', ['show' => $podcast->id]) }}"@class([
+                        'flex items-center w-full text-center text-sm font-semibold text-slate-600 p-3 hover:text-blue-600 transition-all',
+                        'text-blue-600' => request()->routeIs('show.users')
+                    ])>Users</a>
+                @endcan
             </div>
             <div class="m-0">
-                <a href="{{ route('show.settings', ['show' => $podcast->id]) }}"@class([
-                    'flex items-center w-full text-center text-sm font-semibold text-slate-600 p-3 hover:text-blue-600 transition-all',
-                    'text-blue-600' => request()->routeIs('show.settings')
-                ])>Settings</a>
+                @can('edit_podcast', $podcast)
+                    <a href="{{ route('show.settings', ['show' => $podcast->id]) }}"@class([
+                        'flex items-center w-full text-center text-sm font-semibold text-slate-600 p-3 hover:text-blue-600 transition-all',
+                        'text-blue-600' => request()->routeIs('show.settings')
+                    ])>Settings</a>
+                @endcan
             </div>
         </div>
     </div>

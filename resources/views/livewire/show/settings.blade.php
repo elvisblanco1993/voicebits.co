@@ -169,11 +169,13 @@
             </div>
         </div>
 
-        <div class="mt-10 flex items-center justify-between">
-            <div class="text-xl font-bold text-red-600">Danger zone</div>
-        </div>
-        <div class="mt-4 w-full bg-red-200 rounded-lg p-8">
-            @livewire('show.delete', ['show' => $podcast->id])
-        </div>
+        @can('delete_podcast', $podcast)
+            <div class="mt-10 flex items-center justify-between">
+                <div class="text-xl font-bold text-red-600">Danger zone</div>
+            </div>
+            <div class="mt-4 w-full bg-red-200 rounded-lg p-8">
+                @livewire('show.delete', ['show' => $podcast->id])
+            </div>
+        @endcan
     </div>
 </div>
