@@ -45,13 +45,16 @@
                         ])>Website</a>
                     @endif
                 @endif
+                <a href="{{ route('show.users', ['show' => $podcast->id]) }}"@class([
+                    'flex items-center w-full text-center text-sm font-semibold text-slate-600 p-3 hover:text-blue-600 transition-all',
+                    'text-blue-600' => request()->routeIs('show.users')
+                ])>Users</a>
             </div>
             <div class="m-0">
-                <a href="{{ route('show.settings', ['show' => $podcast->id]) }}"
-                    @class([
-                        'flex items-center w-full text-center text-sm font-semibold text-slate-600 p-3 hover:text-blue-600 transition-all',
-                        'text-blue-600' => request()->routeIs('show.settings')
-                    ])>Settings</a>
+                <a href="{{ route('show.settings', ['show' => $podcast->id]) }}"@class([
+                    'flex items-center w-full text-center text-sm font-semibold text-slate-600 p-3 hover:text-blue-600 transition-all',
+                    'text-blue-600' => request()->routeIs('show.settings')
+                ])>Settings</a>
             </div>
         </div>
     </div>

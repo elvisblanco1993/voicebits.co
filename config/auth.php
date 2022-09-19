@@ -108,4 +108,20 @@ return [
 
     'password_timeout' => 10800,
 
+    /**
+     * User Permissions
+     */
+    'permissions' => [
+        'podcast.create',
+        'podcast.social',
+        'podcast.distribute',
+        'podcast.website',
+        'podcast.settings',
+        'podcast.delete',
+        'episode.upload',
+        'episode.edit',
+        'episode.delete',
+        'billing.manage',
+    ],
+
 ];

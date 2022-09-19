@@ -40,10 +40,11 @@ Route::middleware([
          */
         Route::get('/shows', App\Http\Livewire\Show\Index::class)->name('shows');
         Route::get('/shows/{show}', App\Http\Livewire\Show\Dashboard::class)->name('show');
-        Route::get('/shows/{show}/settings', App\Http\Livewire\Show\Settings::class)->name('show.settings');
         Route::get('/shows/{show}/social', App\Http\Livewire\Show\Social::class)->name('show.social');
         Route::get('/shows/{show}/distribution', App\Http\Livewire\Show\Distribute::class)->name('show.distribution');
         Route::get('/shows/{show}/website', App\Http\Livewire\Show\Website::class)->name('show.website');
+        Route::get('/shows/{show}/users', App\Http\Livewire\Show\User\Index::class)->name('show.users');
+        Route::get('/shows/{show}/settings', App\Http\Livewire\Show\Settings::class)->name('show.settings');
 
         /**
          * Podcast Import routes

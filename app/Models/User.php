@@ -83,6 +83,6 @@ class User extends Authenticatable
 
     public function podcasts()
     {
-        return $this->belongsToMany(Podcast::class)->withTimestamps();
+        return $this->belongsToMany(Podcast::class)->withTimestamps()->withPivot('permissions');
     }
 }
