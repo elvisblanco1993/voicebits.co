@@ -13,13 +13,17 @@
             </div>
             <div class="mt-4">
                 <x-jet-label for="permissions" value="{{ __('Permissions') }}" />
-                <div class="grid grid-cols-3 gap-8 mt-2">
-                    <div class="col-span-1">
-                        <label for="resource.create" class="mt-2 flex items-center">
-                            <input type="checkbox" name="permissions" wire:model="permissions" id="resource.create" value="resource.create">
-                            <span class="text-sm ml-2">Create folders</span>
-                        </label>
-                    </div>
+                <div class="grid grid-cols-3 gap-2 mt-2">
+                    @forelse ($podcast_permissions as $permission => $val)
+                        <div class="col-span-1">
+                            <label for="{{$val}}" class="mt-2 flex items-center">
+                                <input type="checkbox" name="permissions" wire:model="permissions" id="{{$val}}" value="{{$val}}">
+                                <span class="text-sm ml-2">{{ str_replace('_', ' ', $val) }}</span>
+                            </label>
+                        </div>
+                    @empty
+
+                    @endforelse
                 </div>
                 <x-jet-input-error for="permissions" />
             </div>

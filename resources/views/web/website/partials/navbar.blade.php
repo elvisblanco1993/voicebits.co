@@ -11,7 +11,7 @@
                     </a>
 
                     <div class="hidden md:flex items-center gap-x-6 text-sm">
-                        <a href="#features" class="inline-block rounded-lg py-1 px-2 text-sm text-slate-700 dark:text-white hover:bg-slate-100 dark:hover:bg-gray-800 hover:text-slate-900 dark:hover:text-white">Features</a>
+                        <a href="{{ route('home') }}?#features" class="inline-block rounded-lg py-1 px-2 text-sm text-slate-700 dark:text-white hover:bg-slate-100 dark:hover:bg-gray-800 hover:text-slate-900 dark:hover:text-white">Features</a>
                         <a href="{{ route('pricing') }}" class="inline-block rounded-lg py-1 px-2 text-sm text-slate-700 dark:text-white hover:bg-slate-100 dark:hover:bg-gray-800 hover:text-slate-900 dark:hover:text-white">Pricing</a>
                         <a href="{{ route('blog.index') }}" class="inline-block rounded-lg py-1 px-2 text-sm text-slate-700 dark:text-white hover:bg-slate-100 dark:hover:bg-gray-800 hover:text-slate-900 dark:hover:text-white">Articles</a>
                     </div>

@@ -112,18 +112,18 @@ return [
      * User Permissions
      */
     'podcast_permissions' => [
-        'podcast_social',
-        'podcast_distribute',
-        'podcast_website',
-        'podcast_settings',
-        'podcast_delete',
-        'episode_view',
-        'episode_upload',
-        'episode_edit',
-        'episode_delete',
-        'user_view',
-        'user_invite',
-        'user_delete'
+        'manage_social',
+        'manage_distribution',
+        'manage_website',
+        'edit_podcast',
+        'delete_podcast',
+        'view_episodes',
+        'upload_episodes',
+        'edit_episodes',
+        'delete_episodes',
+        'view_users',
+        'invite_users',
+        'delete_users'
     ],
 
 ];

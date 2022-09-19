@@ -13,4 +13,11 @@ class ArticleController extends Controller
             'articles' => Article::whereNotNull('published_at')->get()
         ]);
     }
+
+    public function show($article)
+    {
+        return view('web.articles.show', [
+            'article' => Article::where('slug', $article)->firstOrFail()
+        ]);
+    }
 }

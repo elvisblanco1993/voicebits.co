@@ -45,6 +45,7 @@ class Create extends Component
         try {
             $article = Article::create([
                 'title' => $this->title,
+                'slug' => str($this->title)->slug(),
                 'content' => $this->content,
                 'image' => $stored_image,
                 'author' => $this->author,

@@ -1,12 +1,12 @@
 @extends('web.website.layout')
 @section('content')
     <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-0 text-slate-800 dark:text-white">
-        <div class="py-20 grid grid-cols-2 gap-4 items-center">
-            <div class="col-span-2 md:col-span-1">
+        <div class="py-20 grid grid-cols-12 gap-4 items-center">
+            <div class="col-span-12 md:col-span-8">
                 <h1 class="text-5xl lg:text-6xl font-extrabold">News and Updates from Voicebits</h1>
                 <p class="mt-6 text-lg sm:text-xl dark:text-gray-300 font-medium">We often publish articles about Voicebits news and features, as well as topics of interest in the podcasting industry.</p>
             </div>
-            <div class="hidden md:block md:col-span-1">
+            <div class="hidden md:block md:col-span-4">
                 <img src="{{ asset('blog-hero.svg') }}" alt="" class="w-full mx-auto">
             </div>
         </div>
