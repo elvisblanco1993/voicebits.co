@@ -17,6 +17,9 @@ class CheckSubscriptionStatus
     public function handle(Request $request, Closure $next)
     {
         $user = $request->user();
+        if (!$user->stripe_id) {
+            return $next($request);
+        }
         if ($user->onTrial()) {
             return $next($request);
         }

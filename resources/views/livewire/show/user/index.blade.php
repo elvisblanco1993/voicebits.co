@@ -3,7 +3,7 @@
         @include('layouts.podcast-menu')
         <div class="mt-10 flex items-center justify-between">
             <x-jet-input type="search" wire:model="search" placeholder="Search by name"/>
-            @livewire('show.user.invite')
+            @livewire('show.user.invite', ['podcast' => $podcast->id])
         </div>
 
         <div class="mt-4 prose max-w-full">
@@ -18,6 +18,22 @@
                 </tr>
                 </thead>
                 <tbody>
+                    @forelse ($invitations as $invitation)
+                        <tr class="">
+                            <td>
+                                {{ $invitation->email }}
+                            </td>
+                            <td> - </td>
+                            <td>
+                                <span class="text-xs font-medium text-slate-600 bg-slate-200 px-4 py-1 rounded-full border border-slate-300 uppercase tracking-wider">{{__("Invited")}}</span>
+                            </td>
+                            <td class="capitalize"> - </td>
+                            <td class="flex items-center justify-end space-x-3">
+
+                            </td>
+                        </tr>
+                    @empty
+                    @endforelse
                     @forelse ($users as $user)
                         <tr class="">
                             <td>

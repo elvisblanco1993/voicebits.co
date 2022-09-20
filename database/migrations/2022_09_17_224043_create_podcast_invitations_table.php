@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('podcast_id')->constrained()->cascadeOnDelete();
             $table->string('email');
-            $table->string('role')->nullable();
+            $table->string('permissions')->nullable();
             $table->timestamps();
             $table->unique(['podcast_id', 'email']);
         });

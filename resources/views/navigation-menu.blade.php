@@ -17,12 +17,14 @@
                 {{ __('Podcasts') }}
             </a>
 
-            <a href="{{ route('article.index') }}" @class([
-                'block font-semibold px-4 py-2 rounded-lg hover:text-[#0099ff] transition-all',
-                'text-[#0099ff]' => request()->routeIs('article.index')
-            ])>
-                {{ __('Articles') }}
-            </a>
+            @can('manage_platform')
+                <a href="{{ route('article.index') }}" @class([
+                    'block font-semibold px-4 py-2 rounded-lg hover:text-[#0099ff] transition-all',
+                    'text-[#0099ff]' => request()->routeIs('article.index')
+                ])>
+                    {{ __('Articles') }}
+                </a>
+            @endcan
         </div>
 
         <div class="mt-6 py-2 border-t text-slate-500">

@@ -51,7 +51,7 @@ class CreateNewUser implements CreatesNewUsers
                 } else {
                     // If the user has been invited to podcasts, then complete invitation process.
                     foreach (DB::table('podcast_invitations')->where('email', $user->email)->get() as $invitation) {
-                        $user->podcasts()->attach($invitation->podcast_id, ['role' => $invitation->role]);
+                        $user->podcasts()->attach($invitation->podcast_id, ['permissions' => $invitation->permissions]);
                     }
                 }
 

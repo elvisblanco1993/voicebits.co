@@ -30,7 +30,7 @@
         </x-slot>
         <x-slot name="footer">
             <x-jet-secondary-button wire:click="$toggle('modal')">Dismiss</x-jet-secondary-button>
-            <x-jet-button wire:click="save" class="ml-4">Send invitation</x-jet-button>
+            <x-jet-button wire:click="invite" class="ml-4">Send invitation</x-jet-button>
         </x-slot>
     </x-jet-dialog-modal>
 </div>
