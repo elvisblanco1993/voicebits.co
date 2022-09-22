@@ -2,16 +2,17 @@
 
 namespace App\Models;
 
+use Laravel\Cashier\Billable;
+use Laravel\Jetstream\HasTeams;
+use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Support\Facades\DB;
+use Laravel\Jetstream\HasProfilePhoto;
+use Illuminate\Notifications\Notifiable;
+use function Illuminate\Events\queueable;
+use Laravel\Fortify\TwoFactorAuthenticatable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
-use Laravel\Cashier\Billable;
-use Laravel\Fortify\TwoFactorAuthenticatable;
-use Laravel\Jetstream\HasProfilePhoto;
-use Laravel\Jetstream\HasTeams;
-use Laravel\Sanctum\HasApiTokens;
-use function Illuminate\Events\queueable;
 
 class User extends Authenticatable
 {
@@ -84,5 +85,10 @@ class User extends Authenticatable
     public function podcasts()
     {
         return $this->belongsToMany(Podcast::class)->withTimestamps()->withPivot(['permissions', 'role']);
+    }
+
+    public function hasPendingInvitations()
+    {
+        return DB::table('podcast_invitations')->where('email', $this->email)->exists();
     }
 }

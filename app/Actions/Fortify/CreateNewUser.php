@@ -48,13 +48,7 @@ class CreateNewUser implements CreatesNewUsers
                     $user->update([
                         'trial_ends_at' => now()->addDays(14),
                     ]);
-                } else {
-                    // If the user has been invited to podcasts, then complete invitation process.
-                    foreach (DB::table('podcast_invitations')->where('email', $user->email)->get() as $invitation) {
-                        $user->podcasts()->attach($invitation->podcast_id, ['permissions' => $invitation->permissions]);
-                    }
                 }
-
                 SendWelcomeEmail::dispatch($user->email);
             });
         });

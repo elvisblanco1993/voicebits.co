@@ -18,6 +18,19 @@
     <div class="py-6 px-4 sm:px-6 lg:px-0">
         <x-jet-input type="text" wire:model="search" placeholder="Search by name" class="w-full md:w-1/2"/>
         <div class="mt-6 w-full">
+            {{-- Invitation --}}
+            @if (Auth::user()->hasPendingInvitations())
+                @forelse (DB::table('podcast_invitations')->where('email', Auth::user()->email)->get() as $invitation)
+                    <div class="mb-4 w-full px-4 py-1.5 text-sm bg-slate-200 text-center rounded-full border border-slate-300">
+                        <span class="inline-flex space-x-1">
+                            <span>You have been invited to join <strong>{{ App\Models\Podcast::findOrFail($invitation->podcast_id)->first()->name }}</strong> as a team member.</span>
+                            @livewire('show.user.accept-invitation', ['podcast' => $invitation->podcast_id, 'user' => $invitation->email])
+                        </span>
+                    </div>
+                @empty
+                @endforelse
+            @endif
+            {{-- End - Invitation --}}
             @forelse ($podcasts as $podcast)
                 <a href="{{ route('show', ['show' => $podcast->id]) }}">
                     <div class="w-full sm:flex items-center gap-8 mt-4 hover:bg-slate-50 p-4 border border-slate-200 rounded-lg">

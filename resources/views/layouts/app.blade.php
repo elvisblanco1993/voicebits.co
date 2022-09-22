@@ -23,11 +23,13 @@
                         </aside>
 
                         <main class="col-span-4 md:col-span-3">
+                            {{-- Trial --}}
                             @if (Auth::user()->onTrial())
                                 <div class="mb-4 w-full px-4 py-1.5 text-sm bg-slate-200 text-center rounded-full border border-slate-300">
                                     You have {{ abs(round((strtotime(Auth::user()->trial_ends_at) - strtotime(now()))/86400)) }} days left on your trial. If you are enjoying Voicebits, you can <a href="{{ route('signup') }}" class="text-blue-600">sign up here</a>.
                                 </div>
                             @endif
+                            {{-- End - Trial --}}
                             {{ $slot }}
                         </main>
                     </div>
