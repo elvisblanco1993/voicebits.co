@@ -11,16 +11,16 @@
 
         <div class="mt-6 text-slate-500">
             <a href="{{ route('shows') }}" @class([
-                'block font-semibold px-4 py-2 rounded-lg hover:text-[#0099ff] transition-all',
-                'text-[#0099ff]' => request()->routeIs('shows')
+                'block font-semibold px-4 py-2 rounded-lg hover:text-indigo-600 transition-all',
+                'text-indigo-600' => request()->routeIs('shows')
             ])>
                 {{ __('Podcasts') }}
             </a>
 
             @can('manage_platform')
                 <a href="{{ route('article.index') }}" @class([
-                    'block font-semibold px-4 py-2 rounded-lg hover:text-[#0099ff] transition-all',
-                    'text-[#0099ff]' => request()->routeIs('article.index')
+                    'block font-semibold px-4 py-2 rounded-lg hover:text-indigo-600 transition-all',
+                    'text-indigo-600' => request()->routeIs('article.index')
                 ])>
                     {{ __('Articles') }}
                 </a>
@@ -29,19 +29,19 @@
 
         <div class="mt-6 py-2 border-t text-slate-500">
             <a href="{{ route('profile.show') }}" @class([
-                'block font-semibold px-4 py-2 rounded-lg hover:text-[#0099ff] transition-all',
-                'text-[#0099ff]' => request()->routeIs('profile.show')
+                'block font-semibold px-4 py-2 rounded-lg hover:text-indigo-600 transition-all',
+                'text-indigo-600' => request()->routeIs('profile.show')
             ])>{{ __('Account') }}</a>
             @can('manage_billing')
                 <a href="{{ route('billing') }}" @class([
-                    'block font-semibold px-4 py-2 rounded-lg hover:text-[#0099ff] transition-all',
-                    'text-[#0099ff]' => request()->routeIs('billing')
+                    'block font-semibold px-4 py-2 rounded-lg hover:text-indigo-600 transition-all',
+                    'text-indigo-600' => request()->routeIs('billing')
                 ])>
                     {{ __('Billing') }}
                 </a>
             @endcan
             <a href="" @class([
-                'block font-semibold px-4 py-2 rounded-lg hover:text-[#0099ff] transition-all',
+                'block font-semibold px-4 py-2 rounded-lg hover:text-indigo-600 transition-all',
             ])>{{ __('Support') }}</a>
 
             <form method="POST" action="{{ route('logout') }}" x-data>

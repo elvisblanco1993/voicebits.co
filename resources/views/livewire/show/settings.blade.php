@@ -72,7 +72,7 @@
                     <span class="inline-flex flex-none items-center px-3 rounded-r-md border border-l-0 border-gray-300 bg-gray-50 text-gray-500 text-sm">.voicebits.co</span>
 
                 </div>
-                <a href="https://{{str($podcast->name)->slug()}}.voicebits.co" target="_blank" class="mt-1 text-xs font-medium tracking-wider text-[#0099ff]">https://{{str($podcast->name)->slug()}}.voicebits.co</a>
+                <a href="https://{{str($podcast->name)->slug()}}.voicebits.co" target="_blank" class="mt-1 text-xs font-medium tracking-wider text-indigo-600">https://{{str($podcast->name)->slug()}}.voicebits.co</a>
             </div>
         </div>
 
@@ -138,7 +138,7 @@
                         <img src="{{ $cover->temporaryUrl() }}" class="w-full aspect-square object-center object-cover">
                     @else
                         <div class="w-full aspect-square bg-blue-100 flex items-center justify-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="w-20 h-20 text-[#0099ff]" fill="currentColor" class="bi bi-soundwave" viewBox="0 0 16 16">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-20 h-20 text-indigo-600" fill="currentColor" class="bi bi-soundwave" viewBox="0 0 16 16">
                                 <path fill-rule="evenodd" d="M8.5 2a.5.5 0 0 1 .5.5v11a.5.5 0 0 1-1 0v-11a.5.5 0 0 1 .5-.5zm-2 2a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zm4 0a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zm-6 1.5A.5.5 0 0 1 5 6v4a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm8 0a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm-10 1A.5.5 0 0 1 3 7v2a.5.5 0 0 1-1 0V7a.5.5 0 0 1 .5-.5zm12 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0V7a.5.5 0 0 1 .5-.5z"/>
                             </svg>
                         </div>
@@ -152,7 +152,7 @@
                         </div>
                         <div class="mt-6 flex items-center justify-center gap-4">
                             <div>
-                                <label for="cover" class="text-sm text-slate-600 px-3 py-2 rounded-lg border border-slate-200 hover:text-blue-600 hover:bg-blue-50 hover:border-blue-200 transition-all cursor-pointer">
+                                <label for="cover" class="text-sm text-slate-600 px-3 py-2 rounded-lg border border-slate-200 hover:text-indigo-600 hover:bg-blue-50 hover:border-blue-200 transition-all cursor-pointer">
                                     <input type="file" wire:model="cover" id="cover" accept="image/jpeg,image/png" class="sr-only">
                                     Upload artwork
                                 </label>

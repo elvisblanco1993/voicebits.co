@@ -29,7 +29,7 @@
                             </td>
                             <td class="capitalize"> - </td>
                             <td class="flex items-center justify-end space-x-3">
-
+                                @livewire('show.user.resend-invitation', ['podcast_id' => $podcast->id, 'email'=> $invitation->email], key('resend-'.$invitation->id))
                             </td>
                         </tr>
                     @empty
@@ -47,9 +47,16 @@
                                     <span class="text-xs font-medium text-green-600 bg-green-200 px-4 py-1 rounded-full border border-green-300 uppercase tracking-wider">{{__("Active")}}</span>
                                 @endif
                             </td>
-                            <td class="capitalize">{{ $user->podcasts->find($podcast->id)->pivot->role }}</td>
+                            <td>
+                                <span class="text-xs font-medium text-slate-600 bg-slate-200 px-4 py-1 rounded-full border border-slate-300 uppercase tracking-wider">
+                                    {{ $user->podcasts->find($podcast->id)->pivot->role ?? 'member' }}
+                                </span>
+                            </td>
                             <td class="flex items-center justify-end space-x-3">
-
+                                @if ($user->email !== Auth::user()->email && $user->podcasts->find($podcast->id)->pivot->role !== 'owner')
+                                    @livewire('show.user.resend-invitation', ['podcast_id' => $podcast->id, 'email'=> $user->email], key('resend-'.$user->id))
+                                    @livewire('show.user.delete', ['podcast' => $podcast->id, 'user'=> $user->id], key('unlink-'.$user->id))
+                                @endif
                             </td>
                         </tr>
                     @empty

@@ -26,7 +26,7 @@
                         <p class="mt-2 text-base">{{ Str::of($article->content)->words(35, '[...]') }}</p>
                         <div class="mt-4 text-sm font-mono">
                             <span>Written by {{ $article->author }}</span>
-                            <span class="block mt-2">{{ Carbon\Carbon::parse($article->published_at)->format('M d, Y') }} &middot; <a href="{{ route('blog.article', ['article' => $article->slug]) }}" class="underline text-[#0099ff]">Read article</a></span>
+                            <span class="block mt-2">{{ Carbon\Carbon::parse($article->published_at)->format('M d, Y') }} &middot; <a href="{{ route('blog.article', ['article' => $article->slug]) }}" class="underline text-indigo-600">Read article</a></span>
                         </div>
                     </article>
                 @else
@@ -43,7 +43,7 @@
                             <p class="mt-2 text-base">{{ Str::of($article->content)->words(35, ' [...]') }}</p>
                             <div class="mt-4 text-sm font-light">
                                 <span>Written by {{ $article->author }}</span>
-                                <span class="block mt-2">{{ Carbon\Carbon::parse($article->published_at)->format('M d, Y') }} &middot; <a href="{{ route('blog.article', ['article' => $article->slug]) }}" class="underline text-[#0099ff]">Read article</a></span>
+                                <span class="block mt-2">{{ Carbon\Carbon::parse($article->published_at)->format('M d, Y') }} &middot; <a href="{{ route('blog.article', ['article' => $article->slug]) }}" class="underline text-indigo-600">Read article</a></span>
                             </div>
                         </div>
                     </article>

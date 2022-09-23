@@ -10,7 +10,7 @@
     <img src="{{ asset($article->image) }}" alt="Image for {{ $article->title }}" class="mt-12 w-full rounded-xl aspect-video object-cover object-center">
     <div class="my-12 text-sm font-light">
         <span>Written by {{ $article->author }}</span>
-        <span class="block mt-2">{{ Carbon\Carbon::parse($article->published_at)->format('M d, Y') }} &middot; <a href="{{ route('blog.article', ['article' => $article->slug]) }}" class="underline text-[#0099ff]">Read article</a></span>
+        <span class="block mt-2">{{ Carbon\Carbon::parse($article->published_at)->format('M d, Y') }} &middot; <a href="{{ route('blog.article', ['article' => $article->slug]) }}" class="underline text-indigo-600">Read article</a></span>
     </div>
     <div class="prose dark:prose-invert prose-blue max-w-full">
         {!! Str::of($article->content)->markdown() !!}
@@ -22,7 +22,7 @@
         <ul class="mt-4 prose">
             @forelse (App\Models\Article::whereNotNull('published_at')->where('slug', '!=', $article->slug)->orderBy('published_at', 'desc')->take(3)->get() as $related_article)
                 <li class="list-disc">
-                    <a href="{{ route('blog.article', ['article' => $related_article->slug]) }}" class="text-[#0099ff] underline hover:text-blue-700">{{ $related_article->title }}</a>
+                    <a href="{{ route('blog.article', ['article' => $related_article->slug]) }}" class="text-indigo-600 underline hover:text-blue-700">{{ $related_article->title }}</a>
                 </li>
             @empty
             @endforelse
