@@ -15,24 +15,24 @@
         <div class="text-2xl font-bold">{{ $podcast->name }}</div>
 
         <div class="flex items-center justify-between border-b">
-            <div class="flex items-center m-0 overflow-auto">
+            <div class="flex items-center m-0 overflow-auto text-slate-600">
                 <a href="{{ route('show', ['show' => $podcast->id]) }}" @class([
-                    'flex items-center w-full text-center text-sm font-semibold text-slate-600 p-3 hover:text-indigo-600 transition-all',
+                    'flex items-center w-full text-center text-sm font-semibold p-3 hover:text-indigo-600 transition-all',
                     'text-indigo-600' => request()->routeIs('show')
                 ])>Dashboard</a>
                 @can('view_episodes', $podcast)
                     <a href="{{ route('episodes', ['show' => $podcast->id]) }}" @class([
-                        'flex items-center w-full text-center text-sm font-semibold text-slate-600 p-3 hover:text-indigo-600 transition-all',
+                        'flex items-center w-full text-center text-sm font-semibold p-3 hover:text-indigo-600 transition-all',
                         'text-indigo-600' => request()->routeIs('episodes')
                     ])>Episodes</a>
                 @endcan
                 @if ($podcast->isReadyToDistribute())
                     <a href="{{ route('show.social', ['show' => $podcast->id]) }}" @class([
-                        'flex items-center w-full text-center text-sm font-semibold text-slate-600 p-3 hover:text-indigo-600 transition-all',
+                        'flex items-center w-full text-center text-sm font-semibold p-3 hover:text-indigo-600 transition-all',
                         'text-indigo-600' => request()->routeIs('show.social')
                     ])>Social</a>
                     <a href="{{ route('show.distribution', ['show' => $podcast->id]) }}" @class([
-                        'flex items-center w-full text-center text-sm font-semibold text-slate-600 p-3 hover:text-indigo-600 transition-all',
+                        'flex items-center w-full text-center text-sm font-semibold p-3 hover:text-indigo-600 transition-all',
                         'text-indigo-600' => request()->routeIs('show.distribution')
                     ])>Distribution</a>
 
@@ -42,14 +42,14 @@
                     --}}
                     @if (config('app.env') === 'local')
                         <a href="{{ route('show.website', ['show' => $podcast->id]) }}" @class([
-                            'flex items-center w-full text-center text-sm font-semibold text-slate-600 p-3 hover:text-indigo-600 transition-all',
+                            'flex items-center w-full text-center text-sm font-semibold p-3 hover:text-indigo-600 transition-all',
                             'text-indigo-600' => request()->routeIs('show.website')
                         ])>Website</a>
                     @endif
                 @endif
                 @can('view_users', $podcast)
                     <a href="{{ route('show.users', ['show' => $podcast->id]) }}"@class([
-                        'flex items-center w-full text-center text-sm font-semibold text-slate-600 p-3 hover:text-indigo-600 transition-all',
+                        'flex items-center w-full text-center text-sm font-semibold p-3 hover:text-indigo-600 transition-all',
                         'text-indigo-600' => request()->routeIs('show.users')
                     ])>Team</a>
                 @endcan
@@ -57,7 +57,7 @@
             <div class="m-0">
                 @can('edit_podcast', $podcast)
                     <a href="{{ route('show.settings', ['show' => $podcast->id]) }}"@class([
-                        'flex items-center w-full text-center text-sm font-semibold text-slate-600 p-3 hover:text-indigo-600 transition-all',
+                        'flex items-center w-full text-center text-sm font-semibold p-3 hover:text-indigo-600 transition-all',
                         'text-indigo-600' => request()->routeIs('show.settings')
                     ])>Settings</a>
                 @endcan
