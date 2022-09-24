@@ -7,10 +7,22 @@ use Illuminate\Http\Request;
 
 class ArticleController extends Controller
 {
+    public $search;
+
+    public function __construct(Request $request)
+    {
+        $this->search = $request->search ?? '';
+    }
+
     public function index()
     {
         return view('web.articles.index', [
-            'articles' => Article::whereNotNull('published_at')->get()
+            'search' => $this->search,
+            'articles' => ($this->search)
+                ?
+                Article::search( $this->search )->where('published_at', '!=', null)->get()
+                :
+                Article::whereNotNull('published_at')->get()
         ]);
     }
 

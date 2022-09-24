@@ -12,7 +12,13 @@
         </div>
 
         <div class="w-12 border-t border-t-[#0099ff]/40"></div>
-        <p class="mt-12 text-2xl font-bold">Latest articles</p>
+        <div class="mt-12 sm:flex items-center justify-between">
+            <p class="text-2xl font-bold">Latest articles</p>
+            <form action="?search=" method="get">
+                <input type="search" placeholder="Search..." name="search" value="{{$search}}"
+                class="border-gray-300 focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50 rounded-lg shadow-sm dark:bg-slate-800 dark:border-gray-700 dark:focus:border-blue-600 dark:focus:ring-blue-600 dark:focus:ring-opacity-50">
+            </form>
+        </div>
 
         <div class="my-12 grid grid-cols-2 gap-8">
 
