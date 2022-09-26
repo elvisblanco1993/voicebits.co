@@ -39,7 +39,7 @@
                                     <span class="block text-xs">{{ date('Y/m/d \a\t h:i a', strtotime($article->created_at)) }}</span>
                                 @endif
                             </td>
-                            <td class="flex items-center space-x-3">
+                            <td class="flex items-center justify-end space-x-3">
                                 @livewire('article.publish', ['article' => $article->id], key('pub-' . $article->id))
                                 <a href="{{ route('article.edit', ['article' => $article->id]) }}" class="uppercase text-xs text-slate-600">
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5">
@@ -47,6 +47,7 @@
                                         <path d="M3.5 5.75c0-.69.56-1.25 1.25-1.25H10A.75.75 0 0010 3H4.75A2.75 2.75 0 002 5.75v9.5A2.75 2.75 0 004.75 18h9.5A2.75 2.75 0 0017 15.25V10a.75.75 0 00-1.5 0v5.25c0 .69-.56 1.25-1.25 1.25h-9.5c-.69 0-1.25-.56-1.25-1.25v-9.5z" />
                                     </svg>
                                 </a>
+                                @livewire('article.delete', ['article' => $article->id], key('del-' . $article->id))
                             </td>
                         </tr>
                     @empty

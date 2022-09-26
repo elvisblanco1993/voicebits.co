@@ -9,8 +9,7 @@
     <h1 class="mt-6 text-5xl lg:text-6xl font-bold">{{ $article->title }}</h1>
     <img src="{{ asset($article->image) }}" alt="Image for {{ $article->title }}" class="mt-12 w-full rounded-xl aspect-video object-cover object-center">
     <div class="my-12 text-sm font-light">
-        <span>Written by {{ $article->author }}</span>
-        <span class="block mt-2">{{ Carbon\Carbon::parse($article->published_at)->format('M d, Y') }} &middot; <a href="{{ route('blog.article', ['article' => $article->slug]) }}" class="underline text-indigo-600">Read article</a></span>
+        <span>Written by {{ $article->author}} &middot; {{ Carbon\Carbon::parse($article->published_at)->format('M d, Y') }}</span>
     </div>
     <div class="prose dark:prose-invert prose-blue max-w-full">
         {!! Str::of($article->content)->markdown() !!}

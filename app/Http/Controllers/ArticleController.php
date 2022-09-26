@@ -18,11 +18,7 @@ class ArticleController extends Controller
     {
         return view('web.articles.index', [
             'search' => $this->search,
-            'articles' => ($this->search)
-                ?
-                Article::search( $this->search )->where('published_at', '!=', null)->get()
-                :
-                Article::whereNotNull('published_at')->get()
+            'articles' => Article::where('title', 'like', '%' . $this->search . '%')->whereNotNull('published_at')->get()
         ]);
     }
 

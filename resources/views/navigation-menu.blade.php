@@ -31,7 +31,7 @@
             <a href="{{ route('profile.show') }}" @class([
                 'block font-semibold px-4 py-2 rounded-lg hover:text-indigo-600 transition-all',
                 'text-indigo-600' => request()->routeIs('profile.show')
-            ])>{{ __('Account') }}</a>
+            ])>{{ __('Profile') }}</a>
             @can('manage_billing')
                 <a href="{{ route('billing') }}" @class([
                     'block font-semibold px-4 py-2 rounded-lg hover:text-indigo-600 transition-all',
