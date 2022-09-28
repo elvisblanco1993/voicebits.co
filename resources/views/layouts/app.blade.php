@@ -20,15 +20,20 @@
                     <div class="grid grid-cols-4 gap-12">
                         <aside class="col-span-4 md:col-span-1">
                             @livewire('navigation-menu')
+                            @if (Auth::user()->onTrial() && !request()->routeIs('signup'))
+                                <div class=" leading-6 mb-4 w-full px-2 py-1.5 text-sm text-indigo-600 bg-indigo-100 rounded-lg border border-indigo-200">
+                                    You have {{ abs(round((strtotime(Auth::user()->trial_ends_at) - strtotime(now()))/86400)) }} days left on your free trial. If you are enjoying Voicebits, you can <a href="{{ route('signup') }}" class="inline-block text-yellow-700 bg-yellow-50 px-1 rounded border-b border-b-yellow-600">sign up here.</a> 🚀
+                                </div>
+                            @endif
                         </aside>
 
                         <main class="col-span-4 md:col-span-3">
                             {{-- Trial --}}
-                            @if (Auth::user()->onTrial() && !request()->routeIs('signup'))
-                                <div class="mb-4 w-full px-4 py-1.5 text-sm bg-slate-200 text-center rounded-lg border border-slate-300">
-                                    You have {{ abs(round((strtotime(Auth::user()->trial_ends_at) - strtotime(now()))/86400)) }} days left on your trial. If you are enjoying Voicebits, you can <a href="{{ route('signup') }}" class="text-indigo-600 bg-indigo-200 px-1 rounded border-b border-b-indigo-400">sign up here.</a> 🚀
+                            {{-- @if (Auth::user()->onTrial() && !request()->routeIs('signup'))
+                                <div class="mb-4 w-full px-4 py-1.5 text-sm text-indigo-600 bg-indigo-100 text-center rounded-lg border border-indigo-200">
+                                    You have {{ abs(round((strtotime(Auth::user()->trial_ends_at) - strtotime(now()))/86400)) }} days left on your free trial. If you are enjoying Voicebits, you can <a href="{{ route('signup') }}" class="text-yellow-700 bg-yellow-50 py-0.5 px-1 rounded border-b border-b-yellow-600">sign up here.</a> 🚀
                                 </div>
-                            @endif
+                            @endif --}}
                             {{-- End - Trial --}}
 
                             {{-- Content Section --}}

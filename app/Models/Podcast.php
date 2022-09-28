@@ -74,4 +74,11 @@ class Podcast extends Model
     {
         return $this->belongsToMany(User::class)->withTimestamps()->withPivot(['permissions', 'role']);
     }
+
+    public function owner()
+    {
+        return $this->belongsToMany(User::class)
+            ->wherePivot('role', 'owner')
+            ->first();
+    }
 }

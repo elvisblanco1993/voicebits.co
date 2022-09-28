@@ -21,12 +21,12 @@
         <itunes:type>{{ $podcast->type }}</itunes:type>
         <itunes:owner>
             <itunes:name>{{ $podcast->author }}</itunes:name>
-            <itunes:email>{{ $podcast->team->owner->email }}</itunes:email>
+            <itunes:email>{{ $podcast->owner()->email }}</itunes:email>
         </itunes:owner>
         <itunes:explicit>{{ ($podcast->explicit) ? "Yes" : "No" }}</itunes:explicit>
         <itunes:category text="{{ $podcast->category }}" />
         <itunes:image href="{{ Storage::url($podcast->cover) }}" />
-        <podcast:locked owner="{{ $podcast->team->owner->email }}">{{ $podcast->is_locked ? 'yes' : 'no' }}</podcast:locked>
+        <podcast:locked owner="{{ $podcast->owner()->email }}">{{ $podcast->is_locked ? 'yes' : 'no' }}</podcast:locked>
         @if ($podcast->funding)
             <podcast:funding url="{{ $podcast->funding_url }}">{{ $podcast->funding_text }}</podcast:funding>
         @endif
