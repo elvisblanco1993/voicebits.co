@@ -30,7 +30,7 @@
                         </div>
                     </div>
 
-                    <label for="track" class="text-sm text-slate-600 px-3 py-2 rounded-lg border border-slate-200 hover:text-indigo-600 hover:bg-blue-50 hover:border-blue-200 transition-all cursor-pointer">
+                    <label for="track" class="text-sm text-slate-600 px-3 py-2 rounded-lg border border-slate-200 hover:text-indigo-600 hover:bg-indigo-50 hover:border-indigo-200 transition-all cursor-pointer">
                         <input id="track" wire:model.defer="track" type="file" accept="audio/mpeg" class="sr-only">
                         @if ($track)
                         {{__("New track uploaded")}}
@@ -150,7 +150,7 @@
                     @endif
 
                     <div class="mt-4">
-                        <label for="cover" class="text-sm text-slate-600 px-3 py-2 rounded-lg border border-slate-200 hover:text-indigo-600 hover:bg-blue-50 hover:border-blue-200 transition-all cursor-pointer">
+                        <label for="cover" class="text-sm text-slate-600 px-3 py-2 rounded-lg border border-slate-200 hover:text-indigo-600 hover:bg-indigo-50 hover:border-indigo-200 transition-all cursor-pointer">
                             <input id="cover" type="file" accept="image/jpg,image/png" wire:model.defer="cover" class="sr-only">
                             Upload episode art
                         </label>

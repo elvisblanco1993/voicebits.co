@@ -4,93 +4,62 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
-        <title>{{ $podcast->name . ' | ' . config('app.name', 'Laravel') }}</title>
+        <title>{{ $podcast->name . ' | ' . config('app.name', 'Voicebits - The Podcast Hosting and Distribution Platform') }}</title>
         @vite('resources/css/app.css')
         @livewireStyles
-        {{-- User-defined styles --}}
-        <style>
-            header {
-                background-color: {{ $podcast->website->header_background ?? "#0F172A" }};
-                color: {{ $podcast->website->header_text_color ?? "#F8FAFC" }};
-                border-color: {{ $podcast->website->header_background ?? "#0F172A" }};
-            }
-            .header-link {
-                color: {{ $podcast->website->header_link_color ?? "#CBD5E1" }};
-                padding: 1px 3px 1px 3px;
-                border-radius: 2px;
-                margin-right: 4px;
-            }
-
-            .header-link:hover {
-                background-color: {{ $podcast->website->header_link_color ?? "#CBD5E1" }};
-                color: {{ $podcast->website->header_background ?? '#0F172A' }};
-            }
-
-            body {
-                background-color: {{ $podcast->website->body_background ?? "#0F172A" }};
-                color: {{ $podcast->website->body_text_color ?? "#F8FAFC" }};
-                --plyr-audio-controls-background: {{ $podcast->website->body_background ?? "#0F172A" }};
-                --plyr-audio-control-color: {{ $podcast->website->body_text_color ?? "#F8FAFC" }};
-                --plyr-color-main: {{ $podcast->website->body_link_color ?? "#00b3ff" }};
-            }
-
-            time {
-                color: {{ $podcast->website->body_text_color ?? '#F8FAFC' }};
-                opacity: 0.9;
-            }
-
-            article > h2 {
-                color: {{ $podcast->website->body_text_color ?? '#F8FAFC' }};
-            }
-
-            article > .description {
-                color: {{ $podcast->website->body_text_color ?? '#F8FAFC' }};
-                opacity: 0.9;
-            }
-
-            .episode-btn,
-            .episode-notes {
-                color: {{ $podcast->website->body_link_color ?? '#F8FAFC' }};
-                opacity: 0.9;
-            }
-            .episode-btn:hover,
-            .episode-notes:hover {
-                color: {{ $podcast->website->body_link_color ?? '#F8FAFC' }};
-                opacity: 1;
-            }
-
-        </style>
-        @vite('resources/js/app.js')
     </head>
-    <body class="antialiased min-h-screen">
+    <body class="antialiased min-h-screen max-w-5xl mx-auto px-4 sm:px-6 lg:px-0">
 
-        <header class="pb-12">
-            <nav class="w-full h-16">
-                <div class="max-w-7xl mx-auto h-full flex items-center justify-between px-4 sm:px-6 md:px-8 lg:px-4">
-                    <a href="{{ url()->current() }}" class="text-xl font-bold uppercase">
-                        <img src="{{ Storage::url($podcast->cover) }}" alt="{{ $podcast->name }}" class="w-12 aspect-square object-cover object-center rounded-lg">
-                    </a>
-                    @include('web.templates.classic.social')
-                </div>
-            </nav>
+        <header class="py-12 grid grid-cols-12 items-center gap-8">
+            <div class="col-span-12 md:col-span-4">
+                <img src="{{ Storage::url($podcast->cover) }}" alt="{{ $podcast->name }}" class="rounded-2xl shadow w-full aspect-video md:aspect-square">
+            </div>
 
-            <div class="max-w-7xl mx-auto mt-12 px-4 sm:px-6 md:px-8 lg:px-4 text-center">
-                <h1 class="text-7xl font-black">{{ $podcast->name }}</h1>
-                <div class="py-12"></div>
-                <div class="max-w-3xl mx-auto text-center md:text-left">
-                    @include('web.partials.player')
-                    <div class="mt-2 flex items-center gap-3">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w-6 h-6 animate-pulse" viewBox="0 0 16 16">
-                            <path d="M3.05 3.05a7 7 0 0 0 0 9.9.5.5 0 0 1-.707.707 8 8 0 0 1 0-11.314.5.5 0 0 1 .707.707zm2.122 2.122a4 4 0 0 0 0 5.656.5.5 0 1 1-.708.708 5 5 0 0 1 0-7.072.5.5 0 0 1 .708.708zm5.656-.708a.5.5 0 0 1 .708 0 5 5 0 0 1 0 7.072.5.5 0 1 1-.708-.708 4 4 0 0 0 0-5.656.5.5 0 0 1 0-.708zm2.122-2.12a.5.5 0 0 1 .707 0 8 8 0 0 1 0 11.313.5.5 0 0 1-.707-.707 7 7 0 0 0 0-9.9.5.5 0 0 1 0-.707zM10 8a2 2 0 1 1-4 0 2 2 0 0 1 4 0z"/>
-                        </svg>
-                        <p class="text-sm font-light tracking-wider">Now playing: <span id="player-title"></span></p>
-                    </div>
+            <div class="col-span-12 md:col-span-8">
+                <h1 class="mt-0 text-xl md:text-4xl lg:text-5xl font-bold lg:font-extrabold">{{ $podcast->name }}</h1>
+                <p class="mt-6 text-sm">By {{ $podcast->author }}</p>
+                <p class="mt-6 font-medium">{{ $podcast->description }}</p>
+                <div class="mt-6">
+                    <a href="" class="inline-block mt-1 px-4 py-1.5 border rounded-full text-sm text-slate-500 hover:text-slate-700">Listen on Spotify</a>
+                    <a href="" class="inline-block mt-1 px-4 py-1.5 border rounded-full text-sm text-slate-500 hover:text-slate-700">Listen on Apple Podcasts</a>
+                    <a href="" class="inline-block mt-1 px-4 py-1.5 border rounded-full text-sm text-slate-500 hover:text-slate-700">Listen on Google Podcasts</a>
+                    <a href="" class="inline-block mt-1 px-4 py-1.5 border rounded-full text-sm text-slate-500 hover:text-slate-700">RSS Feed</a>
                 </div>
             </div>
         </header>
 
-        @include('web.templates.classic.episodes')
+        {{-- Episodes --}}
+        <main>
+            @include('web.partials.player')
+            <span id="playingTitle"></span>
+            @forelse ($podcast->episodes as $episode)
+                <article class="mb-4 w-full p-4 rounded-xl border shadow-sm">
+                    <div class="grid grid-cols-12 items-center gap-8">
+                        <div class="col-span-2 lg:col-span-1 w-full flex items-center justify-center">
+                            <button id="{{ $episode->guid }}" onclick="play('{{ $episode->guid }}')" class="episode-btn">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-12 h-12">
+                                    <path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm14.024-.983a1.125 1.125 0 010 1.966l-5.603 3.113A1.125 1.125 0 019 15.113V8.887c0-.857.921-1.4 1.671-.983l5.603 3.113z" clip-rule="evenodd" />
+                                </svg>
+                            </button>
+                        </div>
+                        <div class="h-full col-span-10 lg:col-span-11 flex items-center justify-between">
+                            <div class="">
+                                <h2 class="text-xl font-bold text-slate-800">{{ $episode->title }}</h2>
+                                <p class="mt-1 text-base text-slate-600">{!! Str::limit($episode->description, 80, ' [...]') !!}</p>
+                            </div>
+                            <div class="h-full text-xs text-slate-500 flex flex-col justify-between items-end">
+                                <p>Jun 25, 2022</p>
+                                <p>00:24</p>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            @empty
 
+            @endforelse
+        </main>
+
+        @vite("resources/js/app.js")
         @livewireScripts
     </body>
 </html>

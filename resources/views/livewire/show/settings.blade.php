@@ -152,7 +152,7 @@
                         </div>
                         <div class="mt-6 flex items-center justify-center gap-4">
                             <div>
-                                <label for="cover" class="text-sm text-slate-600 px-3 py-2 rounded-lg border border-slate-200 hover:text-indigo-600 hover:bg-blue-50 hover:border-blue-200 transition-all cursor-pointer">
+                                <label for="cover" class="text-sm text-slate-600 px-3 py-2 rounded-lg border border-slate-200 hover:text-indigo-600 hover:bg-indigo-50 hover:border-indigo-200 transition-all cursor-pointer">
                                     <input type="file" wire:model="cover" id="cover" accept="image/jpeg,image/png" class="sr-only">
                                     Upload artwork
                                 </label>

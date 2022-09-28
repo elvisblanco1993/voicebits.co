@@ -53,6 +53,7 @@ function setPlayerUrl(guid) {
     Livewire.emit('getEpisodeUrl', guid);
     Livewire.on('gotEpisodeUrl', (url, title) => {
         document.getElementById("player").src = url;
+        document.getElementById("playingTitle").innerText = title;
     });
 }
 
@@ -61,11 +62,11 @@ function setPlayerUrl(guid) {
  */
 document.getElementById('player').onplaying = () => {
     document.querySelectorAll('.episode-btn').forEach(btn => {
-        btn.innerHTML = "<svg xmlns='http://www.w3.org/2000/svg' fill='currentColor' class='h-6 w-6 fill-current' viewBox='0 0 16 16'><path d='m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z'/></svg><span class='ml-3' aria-hidden='true'>Listen</span>"
+        btn.innerHTML = "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='currentColor' class='w-12 h-12'><path fill-rule='evenodd' d='M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm14.024-.983a1.125 1.125 0 010 1.966l-5.603 3.113A1.125 1.125 0 019 15.113V8.887c0-.857.921-1.4 1.671-.983l5.603 3.113z' clip-rule='evenodd' /></svg>";
     })
-    document.getElementById(tmp).innerHTML = "<svg xmlns='http://www.w3.org/2000/svg' fill='currentColor' class='h-6 w-6 fill-current' viewBox='0 0 16 16'><path d='M5.5 3.5A1.5 1.5 0 0 1 7 5v6a1.5 1.5 0 0 1-3 0V5a1.5 1.5 0 0 1 1.5-1.5zm5 0A1.5 1.5 0 0 1 12 5v6a1.5 1.5 0 0 1-3 0V5a1.5 1.5 0 0 1 1.5-1.5z'/></svg><span class='ml-3' aria-hidden='true'>Listen</span>";
+    document.getElementById(tmp).innerHTML = "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='currentColor' class='w-12 h-12'><path fill-rule='evenodd' d='M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zM9 8.25a.75.75 0 00-.75.75v6c0 .414.336.75.75.75h.75a.75.75 0 00.75-.75V9a.75.75 0 00-.75-.75H9zm5.25 0a.75.75 0 00-.75.75v6c0 .414.336.75.75.75H15a.75.75 0 00.75-.75V9a.75.75 0 00-.75-.75h-.75z' clip-rule='evenodd'/></svg>";
 }
 
 document.getElementById('player').onpause = () => {
-    document.getElementById(tmp).innerHTML = "<svg xmlns='http://www.w3.org/2000/svg' fill='currentColor' class='h-6 w-6 fill-current' viewBox='0 0 16 16'><path d='m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z'/></svg><span class='ml-3' aria-hidden='true'>Listen</span>";
+    document.getElementById(tmp).innerHTML = "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='currentColor' class='w-12 h-12'><path fill-rule='evenodd' d='M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm14.024-.983a1.125 1.125 0 010 1.966l-5.603 3.113A1.125 1.125 0 019 15.113V8.887c0-.857.921-1.4 1.671-.983l5.603 3.113z' clip-rule='evenodd' /></svg>";
 }
