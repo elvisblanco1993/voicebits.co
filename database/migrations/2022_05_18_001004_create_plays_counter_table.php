@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('region');
             $table->string('country');
             $table->integer('plays')->default(1);
+            $table->string('webplayer')->nullable();
             $table->timestamps();
         });
     }

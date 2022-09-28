@@ -12,10 +12,11 @@ class PodcastController extends Controller
     /**
      * Generates the rss feed for the podcast
      */
-    public function feed($url) {
+    public function feed($url, $player) {
         return response()
             ->view('web.feed', [
                 'podcast' => Podcast::where('url', $url)->first(),
+                'player' => $player,
             ])
             ->header('Content-Type', 'application/xml');
     }

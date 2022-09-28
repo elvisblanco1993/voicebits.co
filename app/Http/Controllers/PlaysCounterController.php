@@ -8,14 +8,13 @@ use Stevebauman\Location\Facades\Location;
 
 class PlaysCounterController extends Controller
 {
-    public function playCounter($episode_id, $podcast_id, $webplayer) : void
+    public function playCounter($episode_id, $podcast_id, $player) : void
     {
-        Log::info($webplayer);
         if ($position = Location::get()) {
             // Check if episode played by same person already
             $counter = \App\Models\PlaysCounter::where( 'token', session()->get('_token') )->first();
             if ( $counter ) {
-                $counter->plays ++;
+                $counter->plays = $counter->plays + 1;
                 $counter->save();
             } else {
                 \App\Models\PlaysCounter::create([
@@ -25,7 +24,7 @@ class PlaysCounterController extends Controller
                     'region' => $position->regionName,
                     'country' => $position->countryName,
                     'plays' => 1,
-                    'webplayer' => $webplayer,
+                    'webplayer' => $player,
                 ]);
             }
         } else {

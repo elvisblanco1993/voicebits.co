@@ -12,8 +12,8 @@ use App\Http\Controllers\DocumentationController;
 Route::middleware('xframe.options')->domain('{url}.' . config('app.url'))->group(function() {
     Route::get('/', [App\Http\Controllers\PodcastController::class, 'show'])->name('podcast.website');
     Route::get('/episode/{episode}', [App\Http\Controllers\PodcastController::class, 'episode'])->name('podcast.episode');
-    Route::get('/feed', [App\Http\Controllers\PodcastController::class, 'feed'])->name('show.feed');
-    Route::get('/play/{episode}/{webplayer}', [App\Http\Controllers\EpisodeController::class, 'play'])->name('episode.play');
+    Route::get('/feed/{player?}', [App\Http\Controllers\PodcastController::class, 'feed'])->name('show.feed');
+    Route::get('/play/{episode}/{player?}', [App\Http\Controllers\EpisodeController::class, 'play'])->name('episode.play');
 });
 
 Route::get('/embed/{guid}', [App\Http\Controllers\EpisodeController::class, 'embed'])->name('episode.embed');
