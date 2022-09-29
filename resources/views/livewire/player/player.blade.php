@@ -29,7 +29,7 @@
                 </div>
 
                 <div class="mx-4 w-full flex items-center">
-                    <input type="range" id="time-seeker" value="0" max="100" class="w-full">
+                    <input type="range" id="time-seeker" step="0.01" class="w-full">
                     <span class="ml-4 bg-slate-100 rounded-md px-1 py-0.25 font-mono text-sm leading-6 md:block text-slate-500" id="currentTime">00:00</span>
                     <span class="px-1 py-0.5 font-mono text-sm leading-6 md:block text-slate-500">/</span>
                     <span class="px-1 py-0.5 font-mono text-sm leading-6 md:block text-slate-500" id="totalTime">

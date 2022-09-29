@@ -4,7 +4,8 @@ let ff_btn = document.getElementById('ff');
 let rw_btn = document.getElementById('rw');
 let mute_btn = document.getElementById('mute');
 let current_time = document.getElementById('currentTime');
-let progress_bar = document.getElementById('progress');
+let progress_bar = document.getElementById('time-seeker');
+progress_bar.value = 0;
 
 let tmp = localStorage.getItem('guid') ?? null;
 
@@ -77,6 +78,12 @@ player.onpause = () => {
     play_btn.innerHTML = "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='currentColor' class='w-16 h-16'><path fill-rule='evenodd' d='M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm14.024-.983a1.125 1.125 0 010 1.966l-5.603 3.113A1.125 1.125 0 019 15.113V8.887c0-.857.921-1.4 1.671-.983l5.603 3.113z' clip-rule='evenodd' /></svg>";
 }
 
+player.onended = () => {
+    progress_bar.value = 0;
+    current_time.innerText = "00:00";
+    play_btn.innerHTML = "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='currentColor' class='w-16 h-16'><path fill-rule='evenodd' d='M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm14.024-.983a1.125 1.125 0 010 1.966l-5.603 3.113A1.125 1.125 0 019 15.113V8.887c0-.857.921-1.4 1.671-.983l5.603 3.113z' clip-rule='evenodd' /></svg>";
+}
+
 play_btn.onclick = () => {
     if (player.paused) {
         player.play();
@@ -108,9 +115,17 @@ mute_btn.onclick = () => {
 }
 
 player.ontimeupdate = () => {
-    current_time.innerText = formatTime(player.currentTime);
     document.getElementById("playing_title").innerText = "Now playing: " + localStorage.getItem('title');
-};
+    current_time.innerText = formatTime(player.currentTime);
+    // progress_bar.value = Math.ceil(player.currentTime);
+    updateProgress();
+}
+
+progress_bar.onchange = () => {
+    player.pause;
+    player.currentTime = progress_bar.value;
+    player.play;
+}
 
 function formatTime(seconds) {
     hours  = Math.floor(seconds / 3600);
@@ -120,4 +135,19 @@ function formatTime(seconds) {
     seconds = Math.floor(seconds % 60);
     seconds = (seconds >= 10) ? seconds : "0" + seconds;
     return hours + ":" + minutes + ":" + seconds;
+}
+
+function updateProgress(){
+    progress_bar.value = player.currentTime;
+    var curmins = Math.floor(player.currentTime / 60);
+    var cursecs = Math.floor(player.currentTime - curmins * 60);
+    var durmins = Math.floor(player.duration / 60);
+    var dursecs = Math.floor(player.duration - durmins * 60);
+    if(cursecs < 10){ cursecs = "0"+cursecs; }
+    if(dursecs < 10){ dursecs = "0"+dursecs; }
+    if(curmins < 10){ curmins = "0"+curmins; }
+    if(durmins < 10){ durmins = "0"+durmins; }
+    if (player.currentTime > 0 && player.currentTime < 2) {
+        progress_bar.max = player.duration;
+    }
 }
