@@ -9,36 +9,12 @@
         <div class="py-4">
             @forelse ($mostPopularByRegion as $item)
                 <li class="flex items-center justify-between">
-                    <span class="text-sm font-normal text-slate-500 text-center">{{ $item->region }} {{ $item->country }}</span>
-                    <span class="font-normal text-indigo-600">{{ $item->total }}</span>
-                </li>
-                <li class="mt-1 flex items-center justify-between">
-                    <span class="text-sm font-normal text-slate-500 text-center">{{ $item->region }} {{ $item->country }}</span>
-                    <span class="font-normal text-indigo-600">{{ $item->total }}</span>
-                </li>
-                <li class="mt-1 flex items-center justify-between">
-                    <span class="text-sm font-normal text-slate-500 text-center">{{ $item->region }} {{ $item->country }}</span>
-                    <span class="font-normal text-indigo-600">{{ $item->total }}</span>
-                </li>
-                <li class="mt-1 flex items-center justify-between">
-                    <span class="text-sm font-normal text-slate-500 text-center">{{ $item->region }} {{ $item->country }}</span>
-                    <span class="font-normal text-indigo-600">{{ $item->total }}</span>
-                </li>
-                <li class="mt-1 flex items-center justify-between">
-                    <span class="text-sm font-normal text-slate-500 text-center">{{ $item->region }} {{ $item->country }}</span>
+                    <span class="text-sm font-normal text-slate-500 text-center">{{ $item->region }}, {{ $item->country }}</span>
                     <span class="font-normal text-indigo-600">{{ $item->total }}</span>
                 </li>
             @empty
 
             @endforelse
-            {{-- <div class="col-span-2 sm:col-span-1">
-                <p class="font-normal text-xl text-indigo-600 text-center">{{ $from_third_parties }}</p>
-                <p class="text-sm font-normal text-slate-500 text-center">Podcatchers</p>
-            </div>
-            <div class="col-span-2 sm:col-span-1">
-                <p class="font-normal text-xl text-indigo-600 text-center">{{ $from_website }}</p>
-                <p class="text-sm font-normal text-slate-500 text-center">RSS/Website</p>
-            </div> --}}
         </div>
     </div>
 </div>

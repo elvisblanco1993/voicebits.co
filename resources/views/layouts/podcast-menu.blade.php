@@ -54,7 +54,7 @@
                     ])>Team</a>
                 @endcan
             </div>
-            <div class="m-0">
+            <div class="m-0 text-slate-600">
                 @can('edit_podcast', $podcast)
                     <a href="{{ route('show.settings', ['show' => $podcast->id]) }}"@class([
                         'flex items-center w-full text-center text-sm font-semibold p-3 hover:text-indigo-600 transition-all',

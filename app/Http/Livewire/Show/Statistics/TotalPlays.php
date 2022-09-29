@@ -11,7 +11,7 @@ class TotalPlays extends Component
     public function mount()
     {
         $this->totalPlays = PlaysCounter::where('podcast_id', $this->podcast)->sum('plays');
-        $this->from_website = PlaysCounter::where('podcast_id', $this->podcast)->where('webplayer', 'rss')->sum('plays');
+        $this->from_website = PlaysCounter::where('podcast_id', $this->podcast)->whereIn('webplayer', ['rss', 'web'])->sum('plays');
         $this->from_third_parties = $this->totalPlays - $this->from_website;
     }
     public function render()

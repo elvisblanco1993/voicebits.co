@@ -20,23 +20,19 @@
                 <p class="mt-6 text-sm">By {{ $podcast->author }}</p>
                 <p class="mt-6 font-medium">{{ $podcast->description }}</p>
                 <div class="mt-6">
-                    <a href="" class="inline-block mt-1 px-4 py-1.5 border rounded-full text-sm text-slate-500 hover:text-slate-700">Listen on Spotify</a>
-                    <a href="" class="inline-block mt-1 px-4 py-1.5 border rounded-full text-sm text-slate-500 hover:text-slate-700">Listen on Apple Podcasts</a>
-                    <a href="" class="inline-block mt-1 px-4 py-1.5 border rounded-full text-sm text-slate-500 hover:text-slate-700">Listen on Google Podcasts</a>
-                    <a href="" class="inline-block mt-1 px-4 py-1.5 border rounded-full text-sm text-slate-500 hover:text-slate-700">RSS Feed</a>
+                    @include('web.templates.classic.distributors')
                 </div>
             </div>
         </header>
 
         {{-- Episodes --}}
         <main>
-            @include('web.partials.player')
-            <span id="playingTitle"></span>
+            @livewire('player.player')
             @forelse ($podcast->episodes as $episode)
                 <article class="mb-4 w-full p-4 rounded-xl border shadow-sm">
                     <div class="grid grid-cols-12 items-center gap-8">
                         <div class="col-span-2 lg:col-span-1 w-full flex items-center justify-center">
-                            <button id="{{ $episode->guid }}" onclick="play('{{ $episode->guid }}')" class="episode-btn">
+                            <button id="{{ $episode->guid }}" onclick="play('{{ $episode->guid }}')" class="episode-btn text-slate-800 hover:text-slate-600 transition-all p-0">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-12 h-12">
                                     <path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm14.024-.983a1.125 1.125 0 010 1.966l-5.603 3.113A1.125 1.125 0 019 15.113V8.887c0-.857.921-1.4 1.671-.983l5.603 3.113z" clip-rule="evenodd" />
                                 </svg>
@@ -48,8 +44,8 @@
                                 <p class="mt-1 text-base text-slate-600">{!! Str::limit($episode->description, 80, ' [...]') !!}</p>
                             </div>
                             <div class="h-full text-xs text-slate-500 flex flex-col justify-between items-end">
-                                <p>Jun 25, 2022</p>
-                                <p>00:24</p>
+                                <p>{{ Carbon\Carbon::parse($episode->published_at)->format('M d, Y') }}</p>
+                                <p>{{ ( is_numeric($episode->track_length) ) ? gmdate("i:s", (int) $episode->track_length) : $episode->track_length }}</p>
                             </div>
                         </div>
                     </div>
