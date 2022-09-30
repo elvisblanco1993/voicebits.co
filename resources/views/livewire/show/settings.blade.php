@@ -66,7 +66,7 @@
                 <x-jet-label for="url" value="Podcast url" />
                 <div class="mt-1 flex">
                     <input type="text" wire:model="url" id="url"
-                        class="border-gray-300 focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50 rounded-l-md shadow-sm w-auto"
+                        class="border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-l-md shadow-sm w-auto"
                         placeholder="{{ str($podcast->name)->slug() }}"
                         @disabled($podcast->url)>
                     <span class="inline-flex flex-none items-center px-3 rounded-r-md border border-l-0 border-gray-300 bg-gray-50 text-gray-500 text-sm">.voicebits.co</span>

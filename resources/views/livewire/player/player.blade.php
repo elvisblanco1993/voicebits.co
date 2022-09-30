@@ -1,6 +1,6 @@
-<div class="my-12">
+<div class="my-3 w-full">
     <div class="w-full p-4 rounded-lg">
-        <div x-show="main" class="w-full">
+        <div class="w-full">
             <div class="w-full flex items-center justify-between">
                 <div class="text-center">
                     <div class="flex items-center gap-2">
@@ -13,8 +13,8 @@
                             </svg>
                         </button>
                         <button id="play" class="text-slate-800 hover:text-slate-600 transition-all p-0">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16" viewBox="0 0 20 20" fill="currentColor">
-                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd" />
+                            <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='currentColor' class='w-16 h-16'>
+                                <path fill-rule='evenodd' d='M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm14.024-.983a1.125 1.125 0 010 1.966l-5.603 3.113A1.125 1.125 0 019 15.113V8.887c0-.857.921-1.4 1.671-.983l5.603 3.113z' clip-rule='evenodd' />
                             </svg>
                         </button>
                         <button id="ff" title="Fast forward 15 seconds." class="text-slate-600 hover:text-slate-800 duration-300 transition-all">
@@ -49,7 +49,7 @@
                     </svg>
                 </button>
             </div>
-            <h1 class="text-base text-slate-800 font-medium truncate" id="playing_title"></h1>
+            <h1 class="text-sm text-slate-800 font-medium truncate" id="playing_title">Select an apisode to play</h1>
         </div>
     </div>
 

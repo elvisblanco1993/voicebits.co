@@ -8,10 +8,10 @@
 
     <div class="py-6 px-4 sm:px-6 lg:px-0">
         <input type="text" id="title" wire:model.defer="title" placeholder="Title" autofocus
-            class="w-full border-none rounded-lg focus:ring focus:ring-sky-200 text-2xl font-bold"/>
+            class="w-full border-none rounded-lg focus:ring focus:ring-indigo-200 text-2xl font-bold"/>
         <x-jet-input-error for="title" class="mt-1" />
         <textarea id="content" wire:model.defer="content" cols="30" rows="25" placeholder="Write something amazing..."
-            class="mt-6 w-full border-none rounded-lg focus:ring focus:ring-sky-200"
+            class="mt-6 w-full border-none rounded-lg focus:ring focus:ring-indigo-200"
         ></textarea>
         <small class="text-slate-500">Markdown is supported here.</small>
         <x-jet-input-error for="content" class="mt-1" />
@@ -47,7 +47,7 @@
         <div class="mt-6 flex items-end justify-between">
             <div class="w-1/2">
                 <x-jet-label for="author">Author</x-jet-label>
-                <input type="text" id="author" wire:model.defer="author" placeholder="{{ Auth::user()->name }}" class="flex-none w-full border-none rounded-lg focus:ring focus:ring-sky-200 text-sm"/>
+                <input type="text" id="author" wire:model.defer="author" placeholder="{{ Auth::user()->name }}" class="flex-none w-full border-none rounded-lg focus:ring focus:ring-indigo-200 text-sm"/>
                 <x-jet-input-error for="author" class="mt-1" />
             </div>
             <div class="">
