@@ -3,9 +3,11 @@
         @include('layouts.podcast-menu')
         <div class="mt-10 flex items-center justify-between">
             <x-jet-input type="search" wire:model="search" placeholder="Search by name"/>
-            <a href="{{ route('episode.create', ['show' => $show]) }}"
-                class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-lg font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring focus:ring-gray-300 disabled:opacity-25 transition"
+            @can('upload_episodes', $podcast)
+                <a href="{{ route('episode.create', ['show' => $show]) }}"
+                    class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-lg font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring focus:ring-gray-300 disabled:opacity-25 transition"
                 >New Episode</a>
+            @endcan
         </div>
 
         <div class="mt-4 prose max-w-full">
@@ -35,7 +37,9 @@
                                 @endif
                             </td>
                             <td class="flex items-center justify-end space-x-3">
-                                <a href="{{ route('episode.edit', ['show' => $episode->podcast_id, 'episode' => $episode->id]) }}" class="uppercase text-xs">Edit</a>
+                                @can('edit_episodes', $episode->podcast)
+                                    <a href="{{ route('episode.edit', ['show' => $episode->podcast_id, 'episode' => $episode->id]) }}" class="uppercase text-xs">Edit</a>
+                                @endcan
                             </td>
                         </tr>
                     @empty

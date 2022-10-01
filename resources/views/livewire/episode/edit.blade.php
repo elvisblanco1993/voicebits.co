@@ -2,7 +2,7 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-0">
         <div class="flex items-center justify-between">
             <div class="flex items-center gap-3">
-                <a href="{{ route('episodes', ['show' => $show]) }}" class="hover:text-indigo-500 transition-all">
+                <a href="{{ route('episodes', ['show' => $show]) }}" class="hover:text-blue-500 transition-all">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M11 15l-3-3m0 0l3-3m-3 3h8M3 12a9 9 0 1118 0 9 9 0 01-18 0z" />
                     </svg>
@@ -18,7 +18,7 @@
                 <div class="h-16 px-4 rounded-lg border-dashed border border-gray-400 bg-white flex items-center justify-between">
                     <div class="flex items-center">
                         <audio id="audio" src="{{ route('episode.preview', ['episode' => $episode->guid]) }}"></audio>
-                        <button id="audioPlayBtn" onclick="togglePlay()" class="text-indigo-500">
+                        <button id="audioPlayBtn" onclick="togglePlay()" class="text-blue-500">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -30,7 +30,7 @@
                         </div>
                     </div>
 
-                    <label for="track" class="text-sm text-slate-600 px-3 py-2 rounded-lg border border-slate-200 hover:text-indigo-600 hover:bg-indigo-50 hover:border-indigo-200 transition-all cursor-pointer">
+                    <label for="track" class="text-sm text-slate-600 px-3 py-2 rounded-lg border border-slate-200 hover:text-blue-600 hover:bg-blue-50 hover:border-blue-200 transition-all cursor-pointer">
                         <input id="track" wire:model.defer="track" type="file" accept="audio/mpeg" class="sr-only">
                         @if ($track)
                         {{__("New track uploaded")}}
@@ -150,7 +150,7 @@
                     @endif
 
                     <div class="mt-4">
-                        <label for="cover" class="text-sm text-slate-600 px-3 py-2 rounded-lg border border-slate-200 hover:text-indigo-600 hover:bg-indigo-50 hover:border-indigo-200 transition-all cursor-pointer">
+                        <label for="cover" class="text-sm text-slate-600 px-3 py-2 rounded-lg border border-slate-200 hover:text-blue-600 hover:bg-blue-50 hover:border-blue-200 transition-all cursor-pointer">
                             <input id="cover" type="file" accept="image/jpg,image/png" wire:model.defer="cover" class="sr-only">
                             Upload episode art
                         </label>
@@ -165,7 +165,7 @@
             <div class="">
                 <div class="flex items-center justify-between">
                     <label for="embed" class="block font-medium text-sm text-gray-700">Embed</label>
-                    <button class="flex items-center space-x-2 text-sm text-slate-600 hover:text-indigo-600 transition-all" onclick="copyEmbed()">
+                    <button class="flex items-center space-x-2 text-sm text-slate-600 hover:text-blue-600 transition-all" onclick="copyEmbed()">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                             <path d="M8 2a1 1 0 000 2h2a1 1 0 100-2H8z" />
                             <path d="M3 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v6h-4.586l1.293-1.293a1 1 0 00-1.414-1.414l-3 3a1 1 0 000 1.414l3 3a1 1 0 001.414-1.414L10.414 13H15v3a2 2 0 01-2 2H5a2 2 0 01-2-2V5zM15 11h2a1 1 0 110 2h-2v-2z" />

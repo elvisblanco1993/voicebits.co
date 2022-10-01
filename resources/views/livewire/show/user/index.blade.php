@@ -3,7 +3,9 @@
         @include('layouts.podcast-menu')
         <div class="mt-10 flex items-center justify-between">
             <x-jet-input type="search" wire:model="search" placeholder="Search by name"/>
-            @livewire('show.user.invite', ['podcast' => $podcast->id])
+            @can('invite_users',$podcast)
+                @livewire('show.user.invite', ['podcast' => $podcast->id])
+            @endcan
         </div>
 
         <div class="mt-4 prose max-w-full">
@@ -55,6 +57,7 @@
                             <td class="flex items-center justify-end space-x-3">
                                 @if ($user->email !== Auth::user()->email && $user->podcasts->find($podcast->id)->pivot->role !== 'owner')
                                     @livewire('show.user.resend-invitation', ['podcast_id' => $podcast->id, 'email'=> $user->email], key('resend-'.$user->id))
+                                    @livewire('show.user.edit', ['podcast' => $podcast->id, 'user'=> $user->id], key('edit-'.$user->id))
                                     @livewire('show.user.delete', ['podcast' => $podcast->id, 'user'=> $user->id], key('unlink-'.$user->id))
                                 @endif
                             </td>

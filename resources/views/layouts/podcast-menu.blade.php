@@ -3,8 +3,8 @@
         @if ($podcast->cover)
             <img src="{{ Storage::url($podcast->cover) }}" alt="{{ $podcast->name }}" class="w-full aspect-video sm:aspect-square object-center object-cover rounded-lg shadow-lg">
         @else
-        <div class="w-full aspect-video sm:aspect-square bg-indigo-100 flex items-center justify-center">
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-20 h-20 text-indigo-600" fill="currentColor" class="bi bi-soundwave" viewBox="0 0 16 16">
+        <div class="w-full aspect-video sm:aspect-square bg-blue-100 flex items-center justify-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-20 h-20 text-blue-600" fill="currentColor" class="bi bi-soundwave" viewBox="0 0 16 16">
                 <path fill-rule="evenodd" d="M8.5 2a.5.5 0 0 1 .5.5v11a.5.5 0 0 1-1 0v-11a.5.5 0 0 1 .5-.5zm-2 2a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zm4 0a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zm-6 1.5A.5.5 0 0 1 5 6v4a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm8 0a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm-10 1A.5.5 0 0 1 3 7v2a.5.5 0 0 1-1 0V7a.5.5 0 0 1 .5-.5zm12 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0V7a.5.5 0 0 1 .5-.5z"/>
             </svg>
         </div>
@@ -17,48 +17,50 @@
         <div class="flex items-center justify-between border-b">
             <div class="flex items-center m-0 overflow-auto text-slate-600">
                 <a href="{{ route('show', ['show' => $podcast->id]) }}" @class([
-                    'flex items-center w-full text-center text-sm font-semibold p-3 hover:text-indigo-600 transition-all',
-                    'text-indigo-600' => request()->routeIs('show')
+                    'flex items-center w-full text-center text-sm font-semibold p-3 hover:text-blue-600 transition-all',
+                    'text-blue-600' => request()->routeIs('show')
                 ])>Dashboard</a>
                 @can('view_episodes', $podcast)
                     <a href="{{ route('episodes', ['show' => $podcast->id]) }}" @class([
-                        'flex items-center w-full text-center text-sm font-semibold p-3 hover:text-indigo-600 transition-all',
-                        'text-indigo-600' => request()->routeIs('episodes')
+                        'flex items-center w-full text-center text-sm font-semibold p-3 hover:text-blue-600 transition-all',
+                        'text-blue-600' => request()->routeIs('episodes')
                     ])>Episodes</a>
                 @endcan
                 @if ($podcast->isReadyToDistribute())
-                    <a href="{{ route('show.social', ['show' => $podcast->id]) }}" @class([
-                        'flex items-center w-full text-center text-sm font-semibold p-3 hover:text-indigo-600 transition-all',
-                        'text-indigo-600' => request()->routeIs('show.social')
-                    ])>Social</a>
-                    <a href="{{ route('show.distribution', ['show' => $podcast->id]) }}" @class([
-                        'flex items-center w-full text-center text-sm font-semibold p-3 hover:text-indigo-600 transition-all',
-                        'text-indigo-600' => request()->routeIs('show.distribution')
-                    ])>Distribution</a>
+                    @can('manage_social', $podcast)
+                        <a href="{{ route('show.social', ['show' => $podcast->id]) }}" @class([
+                            'flex items-center w-full text-center text-sm font-semibold p-3 hover:text-blue-600 transition-all',
+                            'text-blue-600' => request()->routeIs('show.social')
+                        ])>Social</a>
+                    @endcan
+                    @can('manage_distribution', $podcast)
+                        <a href="{{ route('show.distribution', ['show' => $podcast->id]) }}" @class([
+                            'flex items-center w-full text-center text-sm font-semibold p-3 hover:text-blue-600 transition-all',
+                            'text-blue-600' => request()->routeIs('show.distribution')
+                        ])>Distribution</a>
+                    @endcan
 
-                    {{--
-                        Website feature
-                        This feature is currently in beta and is not available for production yet.
-                    --}}
                     @if (config('app.env') === 'local')
-                        <a href="{{ route('show.website', ['show' => $podcast->id]) }}" @class([
-                            'flex items-center w-full text-center text-sm font-semibold p-3 hover:text-indigo-600 transition-all',
-                            'text-indigo-600' => request()->routeIs('show.website')
-                        ])>Website</a>
+                        @can('manage_website', $podcast)
+                            <a href="{{ route('show.website', ['show' => $podcast->id]) }}" @class([
+                                'flex items-center w-full text-center text-sm font-semibold p-3 hover:text-blue-600 transition-all',
+                                'text-blue-600' => request()->routeIs('show.website')
+                            ])>Website</a>
+                        @endcan
                     @endif
                 @endif
                 @can('view_users', $podcast)
                     <a href="{{ route('show.users', ['show' => $podcast->id]) }}"@class([
-                        'flex items-center w-full text-center text-sm font-semibold p-3 hover:text-indigo-600 transition-all',
-                        'text-indigo-600' => request()->routeIs('show.users')
+                        'flex items-center w-full text-center text-sm font-semibold p-3 hover:text-blue-600 transition-all',
+                        'text-blue-600' => request()->routeIs('show.users')
                     ])>Team</a>
                 @endcan
             </div>
             <div class="m-0 text-slate-600">
                 @can('edit_podcast', $podcast)
                     <a href="{{ route('show.settings', ['show' => $podcast->id]) }}"@class([
-                        'flex items-center w-full text-center text-sm font-semibold p-3 hover:text-indigo-600 transition-all',
-                        'text-indigo-600' => request()->routeIs('show.settings')
+                        'flex items-center w-full text-center text-sm font-semibold p-3 hover:text-blue-600 transition-all',
+                        'text-blue-600' => request()->routeIs('show.settings')
                     ])>Settings</a>
                 @endcan
             </div>

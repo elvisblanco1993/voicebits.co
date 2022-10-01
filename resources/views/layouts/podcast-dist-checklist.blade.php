@@ -13,7 +13,7 @@
                         <div class="">
                             <div class="font-semibold text-base flex items-center">Upload cover artwork
                                 <a href="{{ route('show.settings', ['show' => $podcast->id]) }}?#artwork">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2 text-indigo-400" viewBox="0 0 20 20" fill="currentColor">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2 text-blue-400" viewBox="0 0 20 20" fill="currentColor">
                                         <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z" />
                                         <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z" />
                                     </svg>
@@ -43,7 +43,7 @@
                         <div class="">
                             <div class="font-semibold text-base flex items-center">Create your podcast url
                                 <a href="{{ route('show.settings', ['show' => $podcast->id]) }}?#show-url">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2 text-indigo-400" viewBox="0 0 20 20" fill="currentColor">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2 text-blue-400" viewBox="0 0 20 20" fill="currentColor">
                                         <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z" />
                                         <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z" />
                                     </svg>
@@ -73,7 +73,7 @@
                         <div class="">
                             <div class="font-semibold text-base flex items-center">Upload and publish an episode
                                 <a href="{{ route('episode.create', ['show' => $podcast->id]) }}">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2 text-indigo-400" viewBox="0 0 20 20" fill="currentColor">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2 text-blue-400" viewBox="0 0 20 20" fill="currentColor">
                                         <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z" />
                                         <path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z" />
                                     </svg>

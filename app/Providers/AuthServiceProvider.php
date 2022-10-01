@@ -80,8 +80,8 @@ class AuthServiceProvider extends ServiceProvider
                 ? true
                 : false;
         });
-        Gate::define('edit_episode', function (User $user, Podcast $podcast) {
-            return ( ($user->subscribed('voicebits') || $user->onTrial()) || in_array('edit_episode', json_decode($user->podcasts->find($podcast->id)->pivot->permissions)) )
+        Gate::define('edit_episodes', function (User $user, Podcast $podcast) {
+            return ( ($user->subscribed('voicebits') || $user->onTrial()) || in_array('edit_episodes', json_decode($user->podcasts->find($podcast->id)->pivot->permissions)) )
                 ? true
                 : false;
         });
@@ -99,6 +99,11 @@ class AuthServiceProvider extends ServiceProvider
         });
         Gate::define('invite_users', function (User $user, Podcast $podcast) {
             return ( ($user->subscribed('voicebits') || $user->onTrial()) || in_array('invite_users', json_decode($user->podcasts->find($podcast->id)->pivot->permissions)) )
+                ? true
+                : false;
+        });
+        Gate::define('edit_users', function (User $user, Podcast $podcast) {
+            return ( ($user->subscribed('voicebits') || $user->onTrial()) || in_array('edit_users', json_decode($user->podcasts->find($podcast->id)->pivot->permissions)) )
                 ? true
                 : false;
         });
