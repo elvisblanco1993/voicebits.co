@@ -12,13 +12,13 @@
         <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-0">
             <header class="py-12 grid grid-cols-12 items-center gap-8">
                 <div class="col-span-12 md:col-span-4">
-                    <img src="{{ Storage::url($podcast->cover) }}" alt="{{ $podcast->name }}" class="rounded-2xl shadow w-full aspect-video md:aspect-square">
+                    <img src="{{ Storage::url($podcast->cover) }}" alt="{{ $podcast->name }}" class="rounded-2xl shadow w-3/4 mx-auto md:w-full aspect-square object-center object-cover">
                 </div>
 
-                <div class="col-span-12 md:col-span-8">
-                    <h1 class="mt-0 text-xl md:text-4xl lg:text-5xl font-bold lg:font-extrabold">{{ $podcast->name }}</h1>
+                <div class="col-span-12 md:col-span-8 text-center sm:text-left">
+                    <h1 class="mt-0 text-xl md:text-4xl font-bold lg:font-extrabold">{{ $podcast->name }}</h1>
                     <p class="mt-6 text-sm">By {{ $podcast->author }}</p>
-                    <p class="mt-6 font-medium">{{ $podcast->description }}</p>
+                    <p class="mt-6 text-sm font-medium">{{ $podcast->description }}</p>
                     <div class="mt-6">
                         @include('web.templates.classic.distributors')
                     </div>
@@ -26,7 +26,7 @@
             </header>
 
             {{-- Episodes --}}
-            <main>
+            <main class="mb-12">
                 @forelse ($podcast->episodes as $episode)
                     <article class="mb-4 w-full p-4 rounded-xl border shadow-sm">
                         <div class="grid grid-cols-12 items-center gap-8">
@@ -38,9 +38,11 @@
                                 </button>
                             </div>
                             <div class="h-full col-span-10 lg:col-span-11 flex items-center justify-between">
-                                <div class="">
-                                    <h2 class="text-xl font-bold text-slate-800">{{ $episode->title }}</h2>
-                                    <p class="mt-1 text-base text-slate-600">{!! Str::limit($episode->description, 80, ' [...]') !!}</p>
+                                <div>
+                                    <a href="{{ route('podcast.episode', ['url' => $podcast->url, 'episode' => $episode->guid]) }}" class="hover:underline transition-all">
+                                        <h2 class="text-xl font-bold text-slate-800">{{ $episode->title }}</h2>
+                                    </a>
+                                    <span class="mt-1 text-sm text-slate-600">{!! strip_tags(Str::limit($episode->description, 80, ' [...]')) !!}</span>
                                 </div>
                                 <div class="h-full text-xs text-slate-500 flex flex-col justify-between items-end">
                                     <p>{{ Carbon\Carbon::parse($episode->published_at)->format('M d, Y') }}</p>
@@ -56,7 +58,7 @@
         </div>
 
         {{-- Audio Player --}}
-        <div class="sticky md:fixed inset-x-0 bottom-0 z-10 bg-white border-t border-t-slate-100">
+        <div class="sticky md:sticky inset-x-0 bottom-0 z-10 bg-white/80 border-t border-t-slate-200 backdrop-blur-md">
             <div class="max-w-5xl mx-auto">
                 @livewire('player.player')
             </div>

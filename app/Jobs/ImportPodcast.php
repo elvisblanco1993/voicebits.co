@@ -3,6 +3,7 @@
 namespace App\Jobs;
 
 use Carbon\Carbon;
+use App\Models\User;
 use App\Models\Podcast;
 use Illuminate\Bus\Queueable;
 use Illuminate\Support\Facades\DB;
@@ -44,7 +45,6 @@ class ImportPodcast implements ShouldQueue, ShouldBeUnique
         // Create Podcast
         try {
             $podcast = Podcast::create([
-                'team_id' => $this->temp_podcast->team_id,
                 'name' => $this->temp_podcast->name,
                 'description' => $feed->channel->description->__toString(),
                 'category' => $feed->xpath("//itunes:category")[0]['text']->__toString(),
@@ -52,6 +52,12 @@ class ImportPodcast implements ShouldQueue, ShouldBeUnique
                 'type' => $feed->xpath("//itunes:type")[0]->__toString(),
                 'author' => $this->temp_podcast->owner_name,
                 'timezone' => "-05:00", // defaults to US Eastern Time
+            ]);
+
+            $user = User::findOrFail($this->temp_podcast->user_id);
+            $user->podcasts()->attach($podcast->id, [
+                'role' => 'owner',
+                'permissions' => json_encode(config('auth.podcast_permissions')),
             ]);
 
             // Upload the podcast cover to storage

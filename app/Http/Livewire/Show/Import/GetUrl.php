@@ -36,17 +36,13 @@ class GetUrl extends Component
 
         $temporary_podcast = DB::table('temporary_podcasts')
             ->insertGetId([
+                'user_id' => auth()->user()->id,
                 'name' => $this->name,
                 'owner_name' => $this->owner_name,
                 'owner_email' => $this->owner_email,
                 'cover' => $this->cover,
                 'feed_url' => $this->url,
             ]);
-
-        auth()->user()->podcasts()->attach($temporary_podcast, [
-            'role' => 'admin',
-        ]);
-
         return redirect()->route('show.import.verify', ['temporary_podcast' => $temporary_podcast]);
     }
 

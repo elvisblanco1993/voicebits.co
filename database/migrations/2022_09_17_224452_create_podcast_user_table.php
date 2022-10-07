@@ -18,7 +18,7 @@ return new class extends Migration
             $table->foreignId('podcast_id');
             $table->foreignId('user_id');
             $table->string('role')->nullable();
-            $table->string('permissions')->nullable();
+            $table->longText('permissions')->nullable();
             $table->timestamps();
 
             $table->unique(['podcast_id', 'user_id']);
