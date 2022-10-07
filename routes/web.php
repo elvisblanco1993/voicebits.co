@@ -16,7 +16,7 @@ Route::middleware('xframe.options')->domain('{url}.' . config('app.url'))->group
     Route::get('/play/{episode}/{player?}', [App\Http\Controllers\EpisodeController::class, 'play'])->name('episode.play');
 });
 
-Route::get('/embed/{guid}', [App\Http\Controllers\EpisodeController::class, 'embed'])->name('episode.embed');
+Route::get('/embed/{guid}/{player}', [App\Http\Controllers\EpisodeController::class, 'embed'])->name('episode.embed');
 
 /**
  * Protected routes

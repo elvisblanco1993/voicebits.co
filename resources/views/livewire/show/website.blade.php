@@ -49,7 +49,7 @@
             </div>
         </div>
 
-        <div class="mt-6 flex items-center justify-between">
+        {{-- <div class="mt-6 flex items-center justify-between">
             <div class="text-xl font-bold">Customise template</div>
             <x-jet-button wire:click="save">Save changes</x-jet-button>
         </div>
@@ -111,7 +111,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
 
     </div>
 </div>

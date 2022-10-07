@@ -36,11 +36,11 @@ class EpisodeController extends Controller
     /**
      * Embed an episode on a third party website.
      */
-    public function embed($guid)
+    public function embed($guid, $player)
     {
         $episode = Episode::where('guid', $guid)->firstOrFail();
         $cover = Storage::disk(config('filesystems.default'))->url($episode->cover ?? $episode->podcast->cover);
-        $track = route('episode.play', ['url' => $episode->podcast->url, 'episode' => $guid, 'webplayer' => 1]);
+        $track = route('episode.play', ['url' => $episode->podcast->url, 'episode' => $guid, 'player' => $player]);
         return view('web.partials.embed', [
             'track' => $track,
             'cover' => $cover,
@@ -51,7 +51,7 @@ class EpisodeController extends Controller
             'show_author' => $episode->podcast->author,
             'show_url' => route('podcast.website', ['url' => $episode->podcast->url]),
             'episode_url' => route('podcast.episode', ['url' => $episode->podcast->url, 'episode' => $guid]),
-            'embed_url' => route('episode.embed', ['guid' => $guid]),
+            'embed_url' => route('episode.embed', ['guid' => $guid, 'player' => $player]),
         ]);
     }
 }
