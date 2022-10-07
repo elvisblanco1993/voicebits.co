@@ -85,7 +85,7 @@ class AuthServiceProvider extends ServiceProvider
                 ? true
                 : false;
         });
-        Gate::define('delete_episode', function (User $user, Podcast $podcast) {
+        Gate::define('delete_episodes', function (User $user, Podcast $podcast) {
             return ( ($user->subscribed('voicebits') || $user->onTrial()) || in_array('delete_episode', json_decode($user->podcasts->find($podcast->id)->pivot->permissions)) )
                 ? true
                 : false;

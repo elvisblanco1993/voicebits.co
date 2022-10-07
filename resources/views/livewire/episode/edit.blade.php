@@ -176,6 +176,15 @@
                 <pre class="mt-2 rounded overflow-auto bg-gray-800 py-1"><code class="text-xs text-green-400 px-2">{{$embed_url}}</code></pre>
             </div>
         </div>
+
+        @can('delete_episodes', $episode->podcast)
+            <div class="mt-10 flex items-center justify-between">
+                <div class="text-xl font-bold text-red-600">Danger zone</div>
+            </div>
+            <div class="mt-4 w-full bg-red-200 rounded-lg p-8">
+                @livewire('episode.delete', ['episode' => $episode->id])
+            </div>
+        @endcan
     </div>
 
     {{-- Audio previewer --}}
