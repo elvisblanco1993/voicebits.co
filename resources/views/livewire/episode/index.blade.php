@@ -2,51 +2,68 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-0">
         @include('layouts.podcast-menu')
         <div class="mt-10 flex items-center justify-between">
-            <x-jet-input type="search" wire:model="search" placeholder="Search by name"/>
+            <x-jet-input type="search" wire:model="search" placeholder="Search episode" class="w-1/2"/>
             @can('upload_episodes', $podcast)
                 <a href="{{ route('episode.create', ['show' => $show]) }}"
                     class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-lg font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring focus:ring-gray-300 disabled:opacity-25 transition"
-                >New Episode</a>
+                >Upload</a>
             @endcan
         </div>
 
-        <div class="mt-4 prose max-w-full">
-            <table class="table-auto w-full">
-                <thead class="text-sm text-slate-500">
-                <tr>
-                    <th>Name</th>
-                    <th>Length</th>
-                    <th>Published At</th>
-                    <th>Status</th>
-                    <th class="sr-only">Options</th>
-                </tr>
+
+        <div class="mt-4 overflow-x-auto relative shadow rounded-lg">
+            <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                    <tr>
+                        <th scope="col" class="py-3 px-6">
+                            Title
+                        </th>
+                        <th scope="col" class="py-3 px-6">
+                            Length
+                        </th>
+                        <th scope="col" class="py-3 px-6">
+                            Published at
+                        </th>
+                        <th scope="col" class="py-3 px-6">
+                            Status
+                        </th>
+                        <th scope="col" class="py-3 px-6">
+                            <span class="sr-only">Edit</span>
+                        </th>
+                    </tr>
                 </thead>
                 <tbody>
                     @forelse ($episodes as $episode)
-                        <tr class="">
-                            <td>
+                        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                            <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                 {{ $episode->title }}
+                            </th>
+                            <td class="py-4 px-6">
+                                {{  ( is_numeric($episode->track_length) ) ? gmdate("i:s", (int) $episode->track_length) : $episode->track_length }}
                             </td>
-                            <td>{{  ( is_numeric($episode->track_length) ) ? gmdate("i:s", (int) $episode->track_length) : $episode->track_length }}</td>
-                            <td>{{ Carbon\Carbon::parse($episode->published_at)->format("M d, Y") }}</td>
-                            <td>
+                            <td class="py-4 px-6">
+                                {{ Carbon\Carbon::parse($episode->published_at)->format("M d, Y") }}
+                            </td>
+                            <td class="py-4 px-6">
                                 @if (!$episode->published_at || $episode->published_at > now())
                                     <span class="text-xs font-medium text-slate-600 bg-slate-200 px-3 py-1 rounded-lg uppercase tracking-wider">{{__("Draft")}}</span>
                                 @else
                                     <span class="text-xs font-medium text-green-600 bg-green-200 px-3 py-1 rounded-lg uppercase tracking-wider">{{__("Published")}}</span>
                                 @endif
                             </td>
-                            <td class="flex items-center justify-end space-x-3">
+                            <td class="py-4 px-6 text-right">
                                 @can('edit_episodes', $episode->podcast)
                                     <a href="{{ route('episode.edit', ['show' => $episode->podcast_id, 'episode' => $episode->id]) }}" class="uppercase text-xs">Edit</a>
                                 @endcan
                             </td>
                         </tr>
                     @empty
+
                     @endforelse
                 </tbody>
             </table>
-
+        </div>
+        <div class="mt-4">
             {{ $episodes->links() }}
         </div>
     </div>

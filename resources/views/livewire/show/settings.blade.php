@@ -64,15 +64,8 @@
             </div>
             <div class="mt-6" id="show-url">
                 <x-jet-label for="url" value="Podcast url" />
-                <div class="mt-1 flex">
-                    <input type="text" wire:model="url" id="url"
-                        class="border-gray-300 focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50 rounded-l-md shadow-sm w-auto"
-                        placeholder="{{ str($podcast->name)->slug() }}"
-                        @disabled($podcast->url)>
-                    <span class="inline-flex flex-none items-center px-3 rounded-r-md border border-l-0 border-gray-300 bg-gray-50 text-gray-500 text-sm">.voicebits.co</span>
-
-                </div>
-                <a href="https://{{str($podcast->name)->slug()}}.voicebits.co" target="_blank" class="mt-1 text-xs font-medium tracking-wider text-blue-600">https://{{str($podcast->name)->slug()}}.voicebits.co</a>
+                <x-jet-input type="text" wire:model="url" id="url" class="mt-1 w-full" placeholder="{{str($podcast->name)->slug()}}" autocomplete="off"/>
+                <a href="https://{{str($podcast->name)->slug()}}.voicebits.co" target="_blank" class="mt-1 text-xs font-medium tracking-wider text-blue-600">https://{{ ($url) ? str($url)->slug() : str($podcast->name)->slug() }}.voicebits.co</a>
             </div>
         </div>
 
