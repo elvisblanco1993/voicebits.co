@@ -38,7 +38,7 @@ class EpisodeController extends Controller
      */
     public function embed($guid, $player)
     {
-        $episode = Episode::where('guid', $guid)->firstOrFail();
+        $episode = Episode::where('guid', $guid)->firstorfail();
         $cover = Storage::disk(config('filesystems.default'))->url($episode->cover ?? $episode->podcast->cover);
         $track = route('episode.play', ['url' => $episode->podcast->url, 'episode' => $guid, 'player' => $player]);
         return view('web.partials.embed', [

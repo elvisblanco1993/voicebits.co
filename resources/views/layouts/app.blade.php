@@ -20,7 +20,7 @@
                     <div class="grid grid-cols-4 gap-12">
                         <aside class="col-span-4 md:col-span-1">
                             @livewire('navigation-menu')
-                            @if (Auth::user()->onTrial() && !request()->routeIs('signup'))
+                            @if ( (Auth::user()->onTrial() && !Auth::user()->subscribed('voicebits')) && !request()->routeIs('signup') )
                                 <div class=" leading-6 mb-4 w-full px-2 py-1.5 text-sm text-blue-600 bg-blue-100 rounded-lg border border-blue-200">
                                     You have {{ abs(round((strtotime(Auth::user()->trial_ends_at) - strtotime(now()))/86400)) }} days left on your free trial. If you are enjoying Voicebits, you can <a href="{{ route('signup') }}" class="inline-block text-yellow-700 bg-yellow-50 px-1 rounded border-b border-b-yellow-600">sign up here.</a> 🚀
                                 </div>

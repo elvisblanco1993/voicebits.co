@@ -27,7 +27,9 @@
 
             {{-- Episodes --}}
             <main class="mb-12">
-                <embed width="100%" height="160" frameborder="no" scrolling="no" seamless src="https://voicebits.localhost/embed/920e862f-b507-422a-9c03-84580ba18de1/embed"/>
+                <embed width="100%" height="160" frameborder="no" scrolling="no" seamless
+                    src="{{ route('episode.embed', ['guid' => $episode->guid, 'player' => 'web']) }}"
+                />
                 <div class="mt-12 prose max-w-full">
                     {!! str($episode->description)->markdown() !!}
                 </div>
