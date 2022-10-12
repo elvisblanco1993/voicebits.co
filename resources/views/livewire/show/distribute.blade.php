@@ -8,12 +8,22 @@
 
         <div class="mt-4 w-full bg-white rounded-lg shadow p-8">
             <div class="">
-                <div class="font-semibold">Your RSS Feed</div>
+                <div class="font-semibold">Website</div>
+                <div class="mt-2 flex items-center justify-between">
+                    <span id="web" class="px-4 py-2 border border-r-0 border-gray-200 rounded-r-none rounded-lg w-full truncate">{{ route('podcast.website', ['url' => $podcast->url]) }}</span>
+                    <button class="w-auto text-center text-slate-600 px-4 py-2 rounded-l-none rounded-lg border border-slate-200 hover:text-blue-600 hover:bg-blue-50 hover:border-blue-200 transition-all"
+                    id="webBtn"
+                    onclick="copyWebsiteToClipboard()"
+                    >Copy</button>
+                </div>
+            </div>
+            <div class="mt-8">
+                <div class="font-semibold">RSS Feed</div>
                 <div class="mt-2 flex items-center justify-between">
                     <span id="rss" class="px-4 py-2 border border-r-0 border-gray-200 rounded-r-none rounded-lg w-full truncate">{{ route('show.feed', ['url' => $podcast->url, 'player' => 'rss']) }}</span>
                     <button class="w-auto text-center text-slate-600 px-4 py-2 rounded-l-none rounded-lg border border-slate-200 hover:text-blue-600 hover:bg-blue-50 hover:border-blue-200 transition-all"
                     id="rssBtn"
-                    onclick="copyToClipboard()"
+                    onclick="copyRssToClipboard()"
                     >Copy</button>
                 </div>
             </div>
@@ -111,7 +121,16 @@
         </div>
     </div>
     <script>
-        function copyToClipboard()
+        function copyWebsiteToClipboard()
+        {
+            var source = document.getElementById("web");
+            navigator.clipboard.writeText(source.innerText);
+            document.getElementById("webBtn").innerText = "Copied";
+            setTimeout(function(){
+                document.getElementById("webBtn").innerText = "Copy";
+            }, 3000);
+        }
+        function copyRssToClipboard()
         {
             var source = document.getElementById("rss");
             navigator.clipboard.writeText(source.innerText);
