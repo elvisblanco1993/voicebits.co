@@ -16,21 +16,21 @@
                             <p class="text-3xl font-extrabold">$15<span class="font-light">/</span>m</p>
                             <p>12,000 downloads per month</p>
                         </div>
-                        <div class="uppercase text-4xl font-black text-slate-400 group-hover:text-blue-500">Starter</div>
+                        <div class="uppercase text-4xl font-black text-slate-400 group-hover:text-[#0099ff]">Starter</div>
                     </button>
                     <button wire:click="save(2)" class="md:flex w-full items-center justify-between border border-slate-300 hover:border-blue-500 p-6 rounded-lg group">
                         <div class="md:flex items-center space-y-2 md:space-y-0 md:space-x-8">
                             <p class="text-3xl font-extrabold">$35<span class="font-light">/</span>m</p>
                             <p>65,000 downloads per month</p>
                         </div>
-                        <div class="uppercase text-4xl font-black text-slate-400 group-hover:text-blue-500">Business</div>
+                        <div class="uppercase text-4xl font-black text-slate-400 group-hover:text-[#0099ff]">Business</div>
                     </button>
                     <button wire:click="save(3)" class="md:flex w-full items-center justify-between border border-slate-300 hover:border-blue-500 p-6 rounded-lg group">
                         <div class="md:flex items-center space-y-2 md:space-y-0 md:space-x-8">
                             <p class="text-3xl font-extrabold">$65<span class="font-light">/</span>m</p>
                             <p>180,000 downloads per month</p>
                         </div>
-                        <div class="uppercase text-4xl font-black text-slate-400 group-hover:text-blue-500">Agency</div>
+                        <div class="uppercase text-4xl font-black text-slate-400 group-hover:text-[#0099ff]">Agency</div>
                     </button>
                 </div>
                 <div class="col-span-12 md:col-span-4 bg-slate-200 px-4 py-6 rounded-lg">
