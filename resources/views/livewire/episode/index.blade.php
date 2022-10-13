@@ -12,8 +12,8 @@
 
 
         <div class="mt-4 overflow-x-auto relative shadow rounded-lg">
-            <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+            <table class="w-full text-sm text-left text-gray-500">
+                <thead class="text-xs text-gray-700 uppercase bg-gray-50">
                     <tr>
                         <th scope="col" class="py-3 px-6">
                             Title
@@ -34,8 +34,8 @@
                 </thead>
                 <tbody>
                     @forelse ($episodes as $episode)
-                        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                            <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        <tr class="bg-white border-b hover:bg-gray-50">
+                            <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap">
                                 {{ $episode->title }}
                             </th>
                             <td class="py-4 px-6">
