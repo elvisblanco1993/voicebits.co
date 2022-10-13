@@ -9,7 +9,7 @@
         @livewireStyles
     </head>
     <body class="antialiased min-h-screen">
-        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-0">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-0 mb-44">
             <header class="py-12 grid grid-cols-12 items-center gap-8">
                 <div class="col-span-12 md:col-span-4">
                     <img src="{{ Storage::url($podcast->cover) }}" alt="{{ $podcast->name }}" class="rounded-2xl shadow w-3/4 mx-auto md:w-full aspect-square object-center object-cover">
@@ -44,7 +44,7 @@
                                     </a>
                                     <span class="mt-1 text-sm text-slate-600">{!! strip_tags(Str::limit($episode->description, 80, ' [...]')) !!}</span>
                                 </div>
-                                <div class="h-full text-xs text-slate-500 flex flex-col justify-between items-end">
+                                <div class="hidden h-full text-xs text-slate-500 md:flex flex-col justify-between items-end">
                                     <p>{{ Carbon\Carbon::parse($episode->published_at)->format('M d, Y') }}</p>
                                     <p>{{ ( is_numeric($episode->track_length) ) ? gmdate("i:s", (int) $episode->track_length) : $episode->track_length }}</p>
                                 </div>
@@ -58,7 +58,7 @@
         </div>
 
         {{-- Audio Player --}}
-        <div class="sticky md:sticky inset-x-0 bottom-0 z-10 bg-white/80 border-t border-t-slate-200 backdrop-blur-md">
+        <div class="sticky md:absolute inset-x-0 bottom-0 z-10 bg-white/80 border-t border-t-slate-200 backdrop-blur-md">
             <div class="max-w-5xl mx-auto">
                 @livewire('player.player')
             </div>
