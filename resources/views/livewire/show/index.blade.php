@@ -44,7 +44,7 @@
                             </div>
                         @endif
                         <h2 class="mt-4 sm:mt-0 text-lg lg:text-base font-bold">{{ $podcast->name }}</h2>
-                        <p class="text-sm font-medium text-slate-600">{{ $podcast->author }}</p>
+                        <p class="text-xs font-medium text-slate-600">By {{ $podcast->author }}</p>
                     </a>
                 @empty
                 @endforelse
