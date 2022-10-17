@@ -134,6 +134,26 @@
                             </label>
                         </div>
                     </div>
+                    <div class="w-full border-t mt-4"></div>
+
+                    <div class="mt-4 grid grid-cols-3 sm:gap-8">
+                        <div class="col-span-3 sm:col-span-1 flex items-center justify-between" title="When the option 'Hidden' is selected, this option removes the episode from the podcatchers that support it.">
+                            <x-jet-label for="" value="Feed status"/>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9 5.25h.008v.008H12v-.008z" />
+                            </svg>
+                        </div>
+                        <div class="col-span-3 sm:col-span-2 mt-1 sm:mt-0">
+                            <label for="public" class="flex items-center gap-2 text-sm">
+                                <input id="public" type="radio" wire:model.defer="blocked" name="blocked" value="false">
+                                <span>Public on podcatchers</span>
+                            </label>
+                            <label for="hidden" class="mt-1 flex items-center gap-2 text-sm">
+                                <input id="hidden" type="radio" wire:model.defer="blocked" name="blocked" value="true">
+                                <span>Hidden on podcatchers</span>
+                            </label>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="col-span-2 sm:col-span-1 text-center">

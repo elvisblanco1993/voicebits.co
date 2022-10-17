@@ -13,7 +13,7 @@ class Edit extends Component
 {
     use WithFileUploads;
 
-    public $show, $episode, $title, $description, $published_at, $season, $number, $type, $explicit, $cover, $track, $track_url, $track_size, $track_length;
+    public $show, $episode, $title, $description, $published_at, $season, $number, $type, $explicit, $cover, $track, $track_url, $track_size, $track_length, $blocked;
 
     protected $listeners = ['getAudioDuration'];
     public function getAudioDuration($duration)
@@ -34,6 +34,7 @@ class Edit extends Component
         $this->track_url = $this->episode->track_url;
         $this->embed_url = route('episode.embed', ['guid' => $this->episode->guid, 'player' => 'embed']);
         $this->embed_url = '<embed width="100%" height="160" frameborder="no" scrolling="no" seamless src="' . $this->embed_url . '">';
+        $this->blocked = ($this->episode->blocked) ? "true" : "false";
     }
 
     public function save()
@@ -68,6 +69,7 @@ class Edit extends Component
                 'track_url' => $this->track_url,
                 'track_size' => ($this->track) ? $this->track->getSize() : $this->episode->track_size,
                 'track_length' => ($this->track) ? $this->track_length : $this->episode->track_length,
+                'blocked' => ($this->blocked === "true") ? 1 : 0,
             ]);
             session()->flash('flash.banner', 'Your changes were saved.');
             session()->flash('flash.bannerStyle', 'success');

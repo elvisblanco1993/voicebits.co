@@ -25,6 +25,7 @@ class Episode extends Model
         'track_url',
         'track_size',
         'track_length',
+        'blocked',
     ];
 
     public function podcast()
