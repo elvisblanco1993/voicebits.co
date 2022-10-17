@@ -40,6 +40,8 @@
                 <itunes:summary>{{ $episode->description }}</itunes:summary>
                 <itunes:explicit>{{ ($episode->explicit) ? "Yes" : "No" }}</itunes:explicit>
                 <itunes:duration>{{ $episode->track_length }}</itunes:duration>
+                <itunes:episodeType>{{ $episode->type }}</itunes:episodeType>
+                <itunes:block>no</itunes:block>
                 @if ($episode->cover)
                     <itunes:image href="{{ Storage::url($episode->cover) }}"/>
                 @endif
