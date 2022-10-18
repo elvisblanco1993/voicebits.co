@@ -31,7 +31,14 @@
             <div class="font-semibold">Third Party Podcatchers</div>
             <p>Here you can add all the places where you are distributing your show. If you need help distributing your podcast, <a href="#" class="underline text-blue-600">follow this guide</a>.</p>
             <div class="mt-8">
-                <x-jet-label for="apple" value="Apple Podcasts"/>
+                <label for="apple" class="flex items-center space-x-2">
+                    @if ($podcast->apple)
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6 text-green-500">
+                            <path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z" clip-rule="evenodd" />
+                        </svg>
+                    @endif
+                    <span class="block font-medium text-sm text-gray-700">Apple Podcasts</span>
+                </label>
                 <x-jet-input id="apple" type="url" wire:model="apple" placeholder="e.g. https://podcasts.apple.com" class="mt-1 w-full truncate"/>
                 <span @class([
                     'text-sm',
@@ -39,7 +46,14 @@
                 ])>{{ route('show.feed', ['url' => $podcast->url, 'player' => 'apple-podcasts']) }}</span>
             </div>
             <div class="mt-8">
-                <x-jet-label for="spotify" value="Spotify"/>
+                <label for="spotify" class="flex items-center space-x-2">
+                    @if ($podcast->spotify)
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6 text-green-500">
+                            <path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z" clip-rule="evenodd" />
+                        </svg>
+                    @endif
+                    <span class="block font-medium text-sm text-gray-700">Spotify</span>
+                </label>
                 <x-jet-input id="spotify" type="url" wire:model="spotify" placeholder="e.g. https://www.spotify.com" class="mt-1 w-full truncate"/>
                 <span @class([
                     'text-sm',
@@ -47,7 +61,14 @@
                 ])>{{ route('show.feed', ['url' => $podcast->url, 'player' => 'spotify']) }}</span>
             </div>
             <div class="mt-8">
-                <x-jet-label for="google" value="Google Podcasts"/>
+                <label for="google" class="flex items-center space-x-2">
+                    @if ($podcast->google)
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6 text-green-500">
+                            <path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z" clip-rule="evenodd" />
+                        </svg>
+                    @endif
+                    <span class="block font-medium text-sm text-gray-700">Google Podcasts</span>
+                </label>
                 <x-jet-input id="google" type="url" wire:model="google" placeholder="e.g. https://podcasts.google.com" class="mt-1 w-full truncate"/>
                 <span @class([
                     'text-sm',
@@ -55,7 +76,14 @@
                 ])>{{ route('show.feed', ['url' => $podcast->url, 'player' => 'google-podcasts']) }}</span>
             </div>
             <div class="mt-8">
-                <x-jet-label for="stitcher" value="Stitcher"/>
+                <label for="stitcher" class="flex items-center space-x-2">
+                    @if ($podcast->stitcher)
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6 text-green-500">
+                            <path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z" clip-rule="evenodd" />
+                        </svg>
+                    @endif
+                    <span class="block font-medium text-sm text-gray-700">Stitcher</span>
+                </label>
                 <x-jet-input id="stitcher" type="url" wire:model="stitcher" placeholder="e.g. https://www.stitcher.com/s?fid=1234556@refid=vbits" class="mt-1 w-full truncate"/>
                 <span @class([
                     'text-sm',
@@ -63,7 +91,14 @@
                 ])>{{ route('show.feed', ['url' => $podcast->url, 'player' => 'stitcher']) }}</span>
             </div>
             <div class="mt-8">
-                <x-jet-label for="pocketcasts" value="Pocket Casts"/>
+                <label for="pocketcasts" class="flex items-center space-x-2">
+                    @if ($podcast->pocketcasts)
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6 text-green-500">
+                            <path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z" clip-rule="evenodd" />
+                        </svg>
+                    @endif
+                    <span class="block font-medium text-sm text-gray-700">Pocket Casts</span>
+                </label>
                 <x-jet-input id="pocketcasts" type="url" wire:model="pocketcasts" placeholder="e.g. https://pca.st/itunes/9871234" class="mt-1 w-full truncate"/>
                 <span @class([
                     'text-sm',
@@ -71,7 +106,14 @@
                 ])>{{ route('show.feed', ['url' => $podcast->url, 'player' => 'pocketcasts']) }}</span>
             </div>
             <div class="mt-8">
-                <x-jet-label for="amazon" value="Amazon Music"/>
+                <label for="amazon" class="flex items-center space-x-2">
+                    @if ($podcast->amazon)
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6 text-green-500">
+                            <path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z" clip-rule="evenodd" />
+                        </svg>
+                    @endif
+                    <span class="block font-medium text-sm text-gray-700">Amazon Music / Audible</span>
+                </label>
                 <x-jet-input id="amazon" type="url" wire:model="amazon" placeholder="e.g. https://music.amazon.com/podcasts/987654/Lorem-Ipsum" class="mt-1 w-full truncate"/>
                 <span @class([
                     'text-sm',
@@ -79,7 +121,14 @@
                 ])>{{ route('show.feed', ['url' => $podcast->url, 'player' => 'amazon-music']) }}</span>
             </div>
             <div class="mt-8">
-                <x-jet-label for="pandora" value="Pandora"/>
+                <label for="pandora" class="flex items-center space-x-2">
+                    @if ($podcast->pandora)
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6 text-green-500">
+                            <path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z" clip-rule="evenodd" />
+                        </svg>
+                    @endif
+                    <span class="block font-medium text-sm text-gray-700">Pandora</span>
+                </label>
                 <x-jet-input id="pandora" type="url" wire:model="pandora" placeholder="e.g. https://www.pandora.com/podcast/lorem-ipsum" class="mt-1 w-full truncate"/>
                 <span @class([
                     'text-sm',
@@ -87,7 +136,14 @@
                 ])>{{ route('show.feed', ['url' => $podcast->url, 'player' => 'pandora']) }}</span>
             </div>
             <div class="mt-8">
-                <x-jet-label for="iheartradio" value="iHeartRadio"/>
+                <label for="iheartradio" class="flex items-center space-x-2">
+                    @if ($podcast->iheartradio)
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6 text-green-500">
+                            <path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z" clip-rule="evenodd" />
+                        </svg>
+                    @endif
+                    <span class="block font-medium text-sm text-gray-700">iHeartRadio</span>
+                </label>
                 <x-jet-input id="iheartradio" type="url" wire:model="iheartradio" placeholder="e.g. https://www.iheart.com/podcast/lorem-ipsum" class="mt-1 w-full truncate"/>
                 <span @class([
                     'text-sm',
@@ -95,7 +151,14 @@
                 ])>{{ route('show.feed', ['url' => $podcast->url, 'player' => 'iheartradio']) }}</span>
             </div>
             <div class="mt-8">
-                <x-jet-label for="castbox" value="Castbox"/>
+                <label for="castbox" class="flex items-center space-x-2">
+                    @if ($podcast->castbox)
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6 text-green-500">
+                            <path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z" clip-rule="evenodd" />
+                        </svg>
+                    @endif
+                    <span class="block font-medium text-sm text-gray-700">Castbox</span>
+                </label>
                 <x-jet-input id="castbox" type="url" wire:model="castbox" placeholder="e.g. https://castbox.fm/vlc/9876543" class="mt-1 w-full truncate"/>
                 <span @class([
                     'text-sm',
@@ -103,7 +166,14 @@
                 ])>{{ route('show.feed', ['url' => $podcast->url, 'player' => 'castbox']) }}</span>
             </div>
             <div class="mt-8">
-                <x-jet-label for="deezer" value="Deezer"/>
+                <label for="deezer" class="flex items-center space-x-2">
+                    @if ($podcast->deezer)
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6 text-green-500">
+                            <path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z" clip-rule="evenodd" />
+                        </svg>
+                    @endif
+                    <span class="block font-medium text-sm text-gray-700">Deezer</span>
+                </label>
                 <x-jet-input id="deezer" type="url" wire:model="deezer" placeholder="e.g. https://www.deezer.com/en-show/9873" class="mt-1 w-full truncate"/>
                 <span @class([
                     'text-sm',
@@ -111,7 +181,14 @@
                 ])>{{ route('show.feed', ['url' => $podcast->url, 'player' => 'deezer']) }}</span>
             </div>
             <div class="mt-8">
-                <x-jet-label for="castro" value="Castro"/>
+                <label for="castro" class="flex items-center space-x-2">
+                    @if ($podcast->castro)
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6 text-green-500">
+                            <path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z" clip-rule="evenodd" />
+                        </svg>
+                    @endif
+                    <span class="block font-medium text-sm text-gray-700">Castro</span>
+                </label>
                 <x-jet-input id="castro" type="url" wire:model="castro" placeholder="e.g. https://castro.fm/itunes/1234654" class="mt-1 w-full truncate"/>
                 <span @class([
                     'text-sm',
