@@ -52,7 +52,7 @@
                     @endforelse
                     @forelse ($users as $user)
                         <tr class="bg-white border-b hover:bg-gray-50">
-                            <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                            <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap">
                                 {{ $user->email }}
                             </th>
                             <td class="py-4 px-6">
