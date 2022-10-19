@@ -28,7 +28,7 @@
             {{-- Episodes --}}
             <main class="mb-12">
                 @forelse ($podcast->episodes as $episode)
-                    <article class="mb-4 w-full p-4 rounded-xl border shadow-sm">
+                    <article class="mb-4 w-full p-4">
                         <div class="grid grid-cols-12 items-center gap-8">
                             <div class="col-span-2 lg:col-span-1 w-full flex items-center justify-center">
                                 <button id="{{ $episode->guid }}" onclick="play('{{ $episode->guid }}')" class="episode-btn text-slate-800 hover:text-slate-600 transition-all p-0">
@@ -51,6 +51,9 @@
                             </div>
                         </div>
                     </article>
+                    @if (!$loop->last)
+                        <div class="mb-4 border-t border-slate-200"></div>
+                    @endif
                 @empty
 
                 @endforelse
