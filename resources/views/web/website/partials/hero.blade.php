@@ -2,7 +2,7 @@
     <div class="py-20 lg:py-32">
         <div class="grid grid-cols-2 gap-8 items-center">
             <div class="col-span-2 sm:col-span-1 text-center sm:text-left">
-                <h1 class="text-5xl lg:text-6xl font-extrabold">{{ __("Bring your podcast to life.") }}</h1>
+                <h1 class="text-5xl lg:text-6xl font-extrabold">{{ __("Podcast hosting that works!") }}</h1>
 
                 <p class="mt-6 text-lg sm:text-xl dark:text-gray-300 font-medium">{{ __("Create unlimited podcasts and easily distribute them to Spotify, Apple Podcasts, Google Podcasts, and other big podcatchers.") }}</p>
 
