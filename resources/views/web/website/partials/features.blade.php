@@ -3,7 +3,7 @@
         <div class="col-span-2 md:col-span-1 p-8 rounded-xl shadow bg-white dark:bg-gray-800 text-center md:text-left">
             <h2 class="text-xl font-medium">Unlimited shows and episodes.</h2>
             <p class="mt-4">Because you only pay per overall downloads, you can create unlimited podcasts and episodes on your dashboard at no extra cost.</p>
-            <a href="https://voicebits.co/blog?search=features" class="inline-block mt-4 text-[#0099ff]">Tell me more -></a>
+            <a href="https://voicebits.co/blog?search=features" class="inline-block mt-4 text-[#0099ff]">More in our blog -></a>
         </div>
         <div class="col-span-2 md:col-span-1 p-8 rounded-xl shadow bg-white dark:bg-gray-800 text-center md:text-left">
             <h2 class="text-xl font-medium">Easy podcast distribution.</h2>

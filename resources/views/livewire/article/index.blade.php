@@ -25,7 +25,7 @@
                     @forelse ($articles as $article)
                         <tr class="">
                             <td class="text-sm">
-                                <a href="{{ route('blog.article', ['article' => str($article->title)->slug()]) }}" target="_blank">{{ $article->title }}</a>
+                                <a href="{{ route('blog.article', ['article' => $article->slug]) }}" target="_blank">{{ $article->title }}</a>
                             </td>
                             <td class="text-xs">
                                 {{ $article->author }}
