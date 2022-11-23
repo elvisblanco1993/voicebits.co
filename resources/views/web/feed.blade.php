@@ -26,7 +26,6 @@
         <itunes:category text="{{ $podcast->category }}" />
         <itunes:image href="{{ Storage::url($podcast->cover) }}" />
         <itunes:block>{{ $podcast->is_locked ? 'yes' : 'no' }}</itunes:block>
-        <googleplay:block>{{ $podcast->is_locked ? 'yes' : 'no' }}</googleplay:block>
         @if ($podcast->funding)
             <podcast:funding url="{{ $podcast->funding_url }}">{{ $podcast->funding_text }}</podcast:funding>
         @endif
@@ -42,7 +41,6 @@
                 <itunes:duration>{{  ( is_numeric($episode->track_length) ) ? gmdate("i:s", (int) $episode->track_length) : $episode->track_length }}</itunes:duration>
                 <itunes:episodeType>{{ $episode->type }}</itunes:episodeType>
                 <itunes:block>{{ $podcast->is_locked ? 'yes' : 'no' }}</itunes:block>
-                <googleplay:block>{{ $podcast->is_locked ? 'yes' : 'no' }}</googleplay:block>
                 @if ($episode->cover)
                     <itunes:image href="{{ Storage::url($episode->cover) }}"/>
                 @endif
