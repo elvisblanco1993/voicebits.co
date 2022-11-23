@@ -5,7 +5,7 @@
     <channel>
         <title>{{ $podcast->name }}</title>
         <description>{{ $podcast->description }}</description>
-        <atom:link href="{{ config('app.url') . "/shows/" . $podcast->url }}" rel="self" type="application/rss+xml" />
+        {{-- <atom:link href="{{ config('app.url') . "/shows/" . $podcast->url }}" rel="self" type="application/rss+xml" /> --}}
         <link>{{ config('app.url') . "/shows/" . $podcast->url }}</link>
         <image>
             <url>{{ Storage::url($podcast->cover) }}</url>
