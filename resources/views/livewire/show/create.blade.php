@@ -41,12 +41,15 @@
                 <x-jet-input-error for="language" class="text-sm text-red-600 mt-2"/>
             </div>
             <div class="mt-4">
-                <x-jet-label for="type" value="Podcast type" />
-                <select wire:model="type" id="type" class="input">
-                    <option value="" disabled="">Choose one option...</option>
-                    <option value="serial">Serial</option>
-                    <option value="episodic">Episodic</option>
-                </select>
+                <x-jet-label value="Podcast type" />
+                <label for="serial" class="mt-1 inline-flex items-center space-x-3 text-sm px-4 py-2 border rounded-lg cursor-pointer hover:border-blue-300">
+                    <input type="radio" name="type" wire:model="type" id="serial" value="serial" class="cursor-pointer">
+                    <span>{{ __("Serial") }}</span>
+                </label>
+                <label for="episodic" class="mt-1 mx-2 inline-flex items-center space-x-3 text-sm px-4 py-2 border rounded-lg cursor-pointer hover:border-blue-300">
+                    <input type="radio" name="type" wire:model="type" id="episodic" value="episodic" class="cursor-pointer">
+                    <span>{{ __("Episodic") }}</span>
+                </label>
                 <x-jet-input-error for="type" class="text-sm text-red-600 mt-2"/>
             </div>
             <div class="mt-4">

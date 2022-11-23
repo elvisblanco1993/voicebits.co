@@ -22,6 +22,12 @@ class Create extends Component
         'timezone' => ['required']
     ];
 
+    public function mount()
+    {
+        $this->author = auth()->user()->name;
+        $this->timezone = "-05:00";
+    }
+
     public function save()
     {
         $this->validate();

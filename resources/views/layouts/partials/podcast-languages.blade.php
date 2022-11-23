@@ -1,4 +1,7 @@
-<option value="" disabled="">Choose one option...</option>
+<option value="" disabled>Choose one option...</option>
+<option value="en">English</option>
+<option value="es">Spanish</option>
+<option disabled>-----------------------</option>
 <option value="af">Afrikaans</option>
 <option value="ak">Akan</option>
 <option value="sq">Albanian</option>
@@ -26,7 +29,6 @@
 <option value="nl-be">Dutch (Belgium)</option>
 <option value="nl-nl">Dutch (Netherlands)</option>
 <option value="dz">Dzongkha</option>
-<option value="en">English</option>
 <option value="en-au">English (Australia)</option>
 <option value="en-bz">English (Belize)</option>
 <option value="en-ca">English (Canada)</option>
@@ -133,7 +135,6 @@
 <option value="sk">Slovak</option>
 <option value="sl">Slovenian</option>
 <option value="so">Somali</option>
-<option value="es">Spanish</option>
 <option value="es-ar">Spanish (Argentina)</option>
 <option value="es-bo">Spanish (Bolivia)</option>
 <option value="es-cl">Spanish (Chile)</option>

@@ -6,7 +6,7 @@
 <option value="-08:00">(GMT -8:00) Pacific Time (US &amp; Canada)</option>
 <option value="-07:00">(GMT -7:00) Mountain Time (US &amp; Canada)</option>
 <option value="-06:00">(GMT -6:00) Central Time (US &amp; Canada), Mexico City</option>
-<option value="-05:00" selected="selected">(GMT -5:00) Eastern Time (US &amp; Canada), Bogota, Lima</option>
+<option value="-05:00">(GMT -5:00) Eastern Time (US &amp; Canada), Bogota, Lima</option>
 <option value="-04:50">(GMT -4:30) Caracas</option>
 <option value="-04:00">(GMT -4:00) Atlantic Time (Canada), Caracas, La Paz</option>
 <option value="-03:50">(GMT -3:30) Newfoundland</option>
