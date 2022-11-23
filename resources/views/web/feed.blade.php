@@ -1,10 +1,11 @@
 @php
    echo "<?xml version='1.0' encoding='UTF-8'?>" . PHP_EOL;
 @endphp
-<rss version="2.0" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd">
+<rss version="2.0" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>{{ $podcast->name }}</title>
         <description>{{ $podcast->description }}</description>
+        <atom:link href="{{ config('app.url') . "/shows/" . $podcast->url }}" rel="self" type="application/rss+xml" />
         <link>{{ config('app.url') . "/shows/" . $podcast->url }}</link>
         <image>
             <url>{{ Storage::url($podcast->cover) }}</url>
