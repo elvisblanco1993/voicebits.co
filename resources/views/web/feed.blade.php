@@ -3,7 +3,6 @@
 @endphp
 <rss version="2.0" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd">
     <channel>
-        <atom:link href="http://dallas.example.com/rss.xml" rel="self" type="application/rss+xml" />
         <title>{{ $podcast->name }}</title>
         <description>{{ $podcast->description }}</description>
         <link>{{ config('app.url') . "/shows/" . $podcast->url }}</link>
