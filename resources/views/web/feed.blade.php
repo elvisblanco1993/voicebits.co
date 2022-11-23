@@ -16,7 +16,6 @@
         <itunes:author>{{ $podcast->author }}</itunes:author>
         <copyright>{{ $podcast->author }}</copyright>
         <language>{{ $podcast->language }}</language>
-        <itunes:author>{{ $podcast->author }}</itunes:author>
         <itunes:summary>{{ $podcast->description }}</itunes:summary>
         <itunes:type>{{ $podcast->type }}</itunes:type>
         <itunes:owner>
@@ -26,7 +25,8 @@
         <itunes:explicit>{{ ($podcast->explicit) ? "Yes" : "No" }}</itunes:explicit>
         <itunes:category text="{{ $podcast->category }}" />
         <itunes:image href="{{ Storage::url($podcast->cover) }}" />
-        <podcast:locked owner="{{ $podcast->owner()->email }}">{{ $podcast->is_locked ? 'yes' : 'no' }}</podcast:locked>
+        <itunes:block>{{ $podcast->is_locked ? 'yes' : 'no' }}</itunes:block>
+        <googleplay:block>{{ $podcast->is_locked ? 'yes' : 'no' }}</googleplay:block>
         @if ($podcast->funding)
             <podcast:funding url="{{ $podcast->funding_url }}">{{ $podcast->funding_text }}</podcast:funding>
         @endif
@@ -41,7 +41,8 @@
                 <itunes:explicit>{{ ($episode->explicit) ? "Yes" : "No" }}</itunes:explicit>
                 <itunes:duration>{{  ( is_numeric($episode->track_length) ) ? gmdate("i:s", (int) $episode->track_length) : $episode->track_length }}</itunes:duration>
                 <itunes:episodeType>{{ $episode->type }}</itunes:episodeType>
-                <itunes:block>no</itunes:block>
+                <itunes:block>{{ $podcast->is_locked ? 'yes' : 'no' }}</itunes:block>
+                <googleplay:block>{{ $podcast->is_locked ? 'yes' : 'no' }}</googleplay:block>
                 @if ($episode->cover)
                     <itunes:image href="{{ Storage::url($episode->cover) }}"/>
                 @endif
