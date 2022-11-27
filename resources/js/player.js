@@ -20,7 +20,7 @@ window.onload = () => {
     }
 }
 
-function playEpisode(guid) {
+function play(guid) {
     if (tmp == guid) {
         if (player.currentTime == 0) {
             // Assign episode url to player
@@ -28,7 +28,7 @@ function playEpisode(guid) {
                 setPlayerUrl(guid);
             }
             // Registers unique play
-            Livewire.emit('countPlay');
+            // Livewire.emit('countPlay');
         }
 
         if (player.paused) {
