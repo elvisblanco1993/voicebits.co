@@ -28,7 +28,7 @@ function play(guid) {
                 setPlayerUrl(guid);
             }
             // Registers unique play
-            // Livewire.emit('countPlay');
+            Livewire.emit('countPlay');
         }
 
         if (player.paused) {
