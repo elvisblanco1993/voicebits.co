@@ -9,12 +9,6 @@ use App\Http\Controllers\DocumentationController;
 /**
  * Subdomain routes
  */
-// Route::middleware('xframe.options')->domain('{url}.' . config('app.url'))->group(function() {
-//     Route::get('/', [App\Http\Controllers\PodcastController::class, 'show'])->name('podcast.website');
-//     Route::get('/episode/{episode}', [App\Http\Controllers\PodcastController::class, 'episode'])->name('podcast.episode');
-//     Route::get('/feed/{player?}', [App\Http\Controllers\PodcastController::class, 'feed'])->name('show.feed');
-//     Route::get('/play/{episode}/{player?}', [App\Http\Controllers\EpisodeController::class, 'play'])->name('episode.play');
-// });
 Route::middleware('xframe.options')->group(function() {
     Route::get("/s/{url}", [App\Http\Controllers\PodcastController::class, 'show'])->name('podcast.website');
     Route::get("/s/{url}/episode/{episode}", [App\Http\Controllers\PodcastController::class, 'episode'])->name('podcast.episode');

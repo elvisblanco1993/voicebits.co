@@ -52,15 +52,5 @@
             <h1 class="text-sm text-slate-800 font-medium truncate" id="playing_title">Select an apisode to play</h1>
         </div>
     </div>
-
-
-
-
-
-
-
-
-
-
     <script src="{{ asset('js/player.js') }}"></script>
 </div>

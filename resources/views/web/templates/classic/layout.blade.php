@@ -31,7 +31,7 @@
                     <article class="mb-4 w-full p-4">
                         <div class="grid grid-cols-12 items-center gap-8">
                             <div class="col-span-2 lg:col-span-1 w-full flex items-center justify-center">
-                                <button id="{{ $episode->guid }}" onclick="play('{{ $episode->guid }}')" class="episode-btn text-slate-800 hover:text-slate-600 transition-all p-0">
+                                <button id="{{ $episode->guid }}" onclick="playEpisode('{{ $episode->guid }}')" class="episode-btn text-slate-800 hover:text-slate-600 transition-all p-0">
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-12 h-12">
                                         <path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm14.024-.983a1.125 1.125 0 010 1.966l-5.603 3.113A1.125 1.125 0 019 15.113V8.887c0-.857.921-1.4 1.671-.983l5.603 3.113z" clip-rule="evenodd" />
                                     </svg>
@@ -55,7 +55,6 @@
                         <div class="mb-4 border-t border-slate-200"></div>
                     @endif
                 @empty
-
                 @endforelse
             </main>
         </div>
