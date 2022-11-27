@@ -26,7 +26,7 @@ class EpisodeController extends Controller
     {
         $episode = Episode::where('guid', $episode)->first();
         // Only count plays here when playing from Third Party player.
-        (new PlaysCounterController)->playCounter($episode->id, $episode->podcast_id, $player);
+        // (new PlaysCounterController)->playCounter($episode->id, $episode->podcast_id, $player);
 
         return response(Storage::disk(config('filesystems.default'))->get($episode->track_url), 200)
             ->header('Content-Type', 'audio/mpeg')
