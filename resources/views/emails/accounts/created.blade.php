@@ -3,7 +3,7 @@
 
 Thank you for signing up for Voicebits. We always get excited when someone joins our community of creators. I was notified about your new account before we sent you this email, so I wanted to personally welcome you aboard. I will drop here a link with some useful information on how to get started.
 
-<a href="{{ route('documentation') }}">Getting started with Voicebits</a>
+<a href="https://voicebits.co/blog">Getting started with Voicebits</a>
 
 If you have any questions, just hit reply to this message, or contact me directly on the email below. I usually reply within a few hours.</br>
 
