@@ -1,4 +1,4 @@
-# Privacy Policy
+## Privacy Policy
 This Policy explains when and why we collect personal information about people who visit our website or web application, how we use it, the conditions under which we may disclose it to others and how we keep it secure.
 
 We may change this policy from time to time so please check this page occasionally to ensure that you’re happy with any changes. By using our website or web application, you’re agreeing to be bound by this policy. Where possible we will notify you of any changes of policy within Voicebits.co.
