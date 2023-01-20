@@ -32,6 +32,7 @@
                         @can('manage_billing')
                             <a class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition" href="{{ route('billing') }}">Billing</a>
                         @endcan
+                        <a class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition" href="mailto:support@voicebits.co?subject=Need help">Support</a>
                         <form method="POST" action="{{ route('logout') }}" x-data>
                             @csrf
                             <a href="{{ route('logout') }}"
@@ -82,7 +83,7 @@
                         {{ __('Billing') }}
                     </a>
                 @endcan
-                <a href="" @class([
+                <a href="mailto:support@voicebits.co?subject=Need help" @class([
                     'block font-semibold px-4 py-2 rounded-lg hover:text-blue-600 transition-all',
                 ])>{{ __('Support') }}</a>
 
