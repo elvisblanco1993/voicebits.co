@@ -7,7 +7,7 @@
                     <a href="{{ route('home') }}" class="flex items-center gap-3">
                         <img src="{{ asset('logo-mark.svg') }}" alt="" class="block h-8 w-auto">
                         <span class="text-2xl font-semibold text-slate-800 dark:text-white">voicebits</span>
-                        <span class="text-xs font-semibold tracking-wider text-slate-500 px-1 border-2 rounded-md border-slate-500">BETA</span>
+                        <sup class="text-xs font-light tracking-wider text-slate-400">beta</sup>
                     </a>
 
                     <div class="hidden md:flex items-center gap-x-6 text-sm">

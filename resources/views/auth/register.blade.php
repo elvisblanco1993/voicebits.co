@@ -4,7 +4,7 @@
             <a href="{{ route('home') }}" class="flex items-center justify-center gap-3">
                 <img src="{{ asset('logo-mark.svg') }}" alt="" class="block h-8 w-auto">
                 <span class="text-2xl font-semibold text-slate-800">voicebits</span>
-                <span class="text-xs font-semibold tracking-wider text-slate-500 px-1 border-2 rounded-md border-slate-500">BETA</span>
+                <sup class="text-xs font-light tracking-wider text-slate-400">beta</sup>
             </a>
             <div class="mt-8 block w-full mx-auto text-lg sm:text-xl lg:text-xl font-bold">Sign up and Start your 14-day Free Trial</div>
         </x-slot>
