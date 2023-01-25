@@ -34,13 +34,16 @@ class EpisodeController extends Controller
         }
 
         $path = Storage::disk(config('filesystems.default'))->get($episode->track_url);
-        dd(
-            Storage::disk(config('filesystems.default'))->readStream($episode->track_url)
-        );
-        return response($path, 200)
-            ->header('Content-Type', 'audio/mpeg')
-            ->header('Content-Disposition', 'inline')
-            ->header('Accept-Ranges', 'bytes');
+
+        // return response($path, 200)
+        //     ->header('Content-Type', 'audio/mpeg')
+        //     ->header('Content-Disposition', 'inline')
+        //     ->header('Accept-Ranges', 'bytes');
+
+        return response()->streamDownload($path, $episode->name, [
+            'Content-Type' => 'audio/mpeg',
+            'Content-Disposition' => 'inline'
+        ]);
     }
 
     /**
