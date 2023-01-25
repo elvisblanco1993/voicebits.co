@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Episode;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 
 class EpisodeController extends Controller
@@ -34,16 +35,12 @@ class EpisodeController extends Controller
         }
 
         $path = Storage::disk(config('filesystems.default'))->get($episode->track_url);
-
-        // return response($path, 200)
-        //     ->header('Content-Type', 'audio/mpeg')
-        //     ->header('Content-Disposition', 'inline')
-        //     ->header('Accept-Ranges', 'bytes');
-
-        return response()->streamDownload($path, $episode->name, [
-            'Content-Type' => 'audio/mpeg',
-            'Content-Disposition' => 'inline'
-        ]);
+        $filesize = File::size($path);
+        return response($path, 200)
+            ->header('Content-Type', 'audio/mpeg')
+            ->header('Content-Disposition', 'inline')
+            ->header('Accept-Ranges', 'bytes')
+            ->header('Content-Range', 'bytes 0-' . $filesize . '/' . $filesize);
     }
 
     /**
