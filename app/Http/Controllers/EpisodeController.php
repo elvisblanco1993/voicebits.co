@@ -36,6 +36,7 @@ class EpisodeController extends Controller
 
         $path = Storage::disk(config('filesystems.default'))->get($episode->track_url);
         $filesize = File::size($path);
+        dd($filesize);
         return response($path, 200)
             ->header('Content-Type', 'audio/mpeg')
             ->header('Content-Disposition', 'inline')
