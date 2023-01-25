@@ -11,7 +11,9 @@ class EpisodeController extends Controller
     public function preview($episode)
     {
         $episode = Episode::where('guid', $episode)->first();
-        return response(Storage::disk(config('filesystems.default'))->get($episode->track_url), 200)
+        // $path = Storage::disk(config('filesystems.default'))->get($episode->track_url);
+        $path = Storage::disk(config('filesystems.default'))->readStream($episode->track_url);
+        return response($path, 200)
             ->header('Content-Type', 'audio/mpeg')
             ->header('Content-Disposition', 'inline')
             ->header('Accept-Ranges', 'bytes');
@@ -31,7 +33,8 @@ class EpisodeController extends Controller
             (new PlaysCounterController)->playCounter($episode->id, $episode->podcast_id, $player);
         }
 
-        return response(Storage::disk(config('filesystems.default'))->get($episode->track_url), 200)
+        $path = Storage::disk(config('filesystems.default'))->readStream($episode->track_url);
+        return response($path, 200)
             ->header('Content-Type', 'audio/mpeg')
             ->header('Content-Disposition', 'inline')
             ->header('Accept-Ranges', 'bytes');
