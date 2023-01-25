@@ -33,7 +33,10 @@ class EpisodeController extends Controller
             (new PlaysCounterController)->playCounter($episode->id, $episode->podcast_id, $player);
         }
 
-        $path = Storage::disk(config('filesystems.default'))->readStream($episode->track_url);
+        $path = Storage::disk(config('filesystems.default'))->get($episode->track_url);
+        dd(
+            Storage::disk(config('filesystems.default'))->readStream($episode->track_url)
+        );
         return response($path, 200)
             ->header('Content-Type', 'audio/mpeg')
             ->header('Content-Disposition', 'inline')
