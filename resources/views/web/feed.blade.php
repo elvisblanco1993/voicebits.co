@@ -1,7 +1,7 @@
 @php
    echo "<?xml version='1.0' encoding='UTF-8'?>" . PHP_EOL;
 @endphp
-<rss version="2.0" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd">
+<rss version="2.0" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:content="http://purl.org/rss/1.0/modules/content/">
     <channel>
         <title>{{ $podcast->name }}</title>
         <description>{{ $podcast->description }}</description>
@@ -37,13 +37,13 @@
         @endif
         @forelse ($podcast->episodes as $episode)
             <item>
-                <title>{{ $episode->title }}</title>
+                <itunes:title>{{ $episode->title }}</itunes:title>
                 <description>{{ $episode->description }}</description>
                 <guid isPermaLink="false">{{ $episode->guid }}</guid>
                 <pubDate>{{ date('r', strtotime($episode->created_at)) }}</pubDate>
                 <enclosure length="{{ $episode->track_size }}" type="audio/mpeg" url="{{ route('episode.play', ['url' => $podcast->url, 'episode' => $episode->guid, 'player' => $player]) }}"/>
                 <itunes:summary>{{ $episode->description }}</itunes:summary>
-                <itunes:explicit>{{ ($episode->explicit) ? "Yes" : "No" }}</itunes:explicit>
+                <itunes:explicit>{{ ($episode->explicit) ? "true" : "false" }}</itunes:explicit>
                 <itunes:duration>{{  ( is_numeric($episode->track_length) ) ? gmdate("i:s", (int) $episode->track_length) : $episode->track_length }}</itunes:duration>
                 <itunes:episodeType>{{ $episode->type }}</itunes:episodeType>
                 <itunes:block>{{ $podcast->is_locked ? 'yes' : 'no' }}</itunes:block>
