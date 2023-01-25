@@ -13,7 +13,8 @@ class EpisodeController extends Controller
         $episode = Episode::where('guid', $episode)->first();
         return response(Storage::disk(config('filesystems.default'))->get($episode->track_url), 200)
             ->header('Content-Type', 'audio/mpeg')
-            ->header('Content-Disposition', 'inline');
+            ->header('Content-Disposition', 'inline')
+            ->header('Accept-Ranges', 'bytes');
     }
 
     /**
@@ -32,7 +33,8 @@ class EpisodeController extends Controller
 
         return response(Storage::disk(config('filesystems.default'))->get($episode->track_url), 200)
             ->header('Content-Type', 'audio/mpeg')
-            ->header('Content-Disposition', 'inline');
+            ->header('Content-Disposition', 'inline')
+            ->header('Accept-Ranges', 'bytes');
     }
 
     /**
