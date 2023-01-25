@@ -12,8 +12,7 @@ class EpisodeController extends Controller
     public function preview($episode)
     {
         $episode = Episode::where('guid', $episode)->first();
-        // $path = Storage::disk(config('filesystems.default'))->get($episode->track_url);
-        $path = Storage::disk(config('filesystems.default'))->readStream($episode->track_url);
+        $path = Storage::disk(config('filesystems.default'))->get($episode->track_url);
         return response($path, 200)
             ->header('Content-Type', 'audio/mpeg')
             ->header('Content-Disposition', 'inline')
