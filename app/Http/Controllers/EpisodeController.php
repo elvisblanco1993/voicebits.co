@@ -14,7 +14,7 @@ class EpisodeController extends Controller
     {
         $episode = Episode::where('guid', $episode)->first();
         $path = Storage::disk(config('filesystems.default'))->get($episode->track_url);
-        $filesize = (int) $episode->track_size / 1024;
+        $filesize = (int) $episode->track_size;
         $response = Response::make($path, 200);
         $response->header('Content-Type', 'audio/mpeg');
         $response->header('Content-Length', $filesize);
@@ -38,12 +38,7 @@ class EpisodeController extends Controller
         }
 
         $path = Storage::disk(config('filesystems.default'))->get($episode->track_url);
-        $filesize = (int) $episode->track_size / 1024;
-        // return response($path, 200)
-        //     ->header('Content-Type', 'audio/mpeg')
-        //     ->header('Content-Disposition', 'inline')
-        //     ->header('Accept-Ranges', 'bytes')
-        //     ->header('Content-Range', 'bytes 0-' . $filesize . '/' . $filesize);
+        $filesize = (int) $episode->track_size;
 
         $response = Response::make($path, 200);
         $response->header('Content-Type', 'audio/mpeg');
