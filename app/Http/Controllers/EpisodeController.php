@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Episode;
 use Illuminate\Http\Request;
-use Illuminate\Http\Client\Response;
+use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 
