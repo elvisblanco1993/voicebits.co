@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Episode;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
+use Symfony\Component\HttpFoundation\BinaryFileResponse;
 
 class EpisodeController extends Controller
 {
@@ -14,13 +14,10 @@ class EpisodeController extends Controller
     {
         $episode = Episode::where('guid', $episode)->first();
         $path = Storage::disk(config('filesystems.default'))->get($episode->track_url);
-        $filesize = (int) $episode->track_size;
-        $response = Response::make($path, 200);
-        $response->header('Content-Type', 'audio/mpeg');
-        $response->header('Content-Length', $filesize);
-        $response->header('Accept-Ranges', 'bytes');
-        $response->header('Content-Range', 'bytes 0-'.$filesize.'/'.$filesize);
-        return $response;
+
+        return response($path, 200)
+            ->header('Content-Type', 'audio/mpeg')
+            ->header('Content-Disposition', 'inline');
     }
 
     /**
@@ -31,21 +28,36 @@ class EpisodeController extends Controller
      */
     public function play($url, $episode, $player)
     {
+
         $episode = Episode::where('guid', $episode)->first();
         // Only count plays here when playing from Third Party player.
         if ($player != 'web') {
             (new PlaysCounterController)->playCounter($episode->id, $episode->podcast_id, $player);
         }
 
-        $path = Storage::disk(config('filesystems.default'))->get($episode->track_url);
-        $filesize = (int) $episode->track_size;
+        $file = Storage::disk(config('filesystems.default'))->get($episode->track_url);
+        $size = Storage::disk(config('filesystems.default'))->size($episode->track_url);
 
-        $response = Response::make($path, 200);
-        $response->header('Content-Type', 'audio/mpeg');
-        $response->header('Content-Length', $filesize);
-        $response->header('Accept-Ranges', 'bytes');
-        $response->header('Content-Range', 'bytes 0-'.$filesize.'/'.$filesize);
-        return $response;
+        return response($file)
+            ->withHeaders([
+                'Accept-Ranges' => "bytes",
+                'Accept-Encoding' => "gzip, deflate",
+                'Pragma' => 'public',
+                'Expires' => '0',
+                'Cache-Control' => 'must-revalidate',
+                'Content-Transfer-Encoding' => 'binary',
+                'Content-Disposition' => ' inline; filename='.$episode->track_url,
+                'Content-Length' => $size,
+                'Content-Type' => "audio/mpeg",
+                'Connection' => "Keep-Alive",
+                'Content-Range' => 'bytes 0-'.$size - 1 .'/'.$size,
+                'X-Pad' => 'avoid browser bug',
+                'Etag' => $episode->track_url,
+            ]);
+
+        // return response($path, 200)
+        //     ->header('Content-Type', 'audio/mpeg')
+        //     ->header('Content-Disposition', 'inline');
     }
 
     /**
