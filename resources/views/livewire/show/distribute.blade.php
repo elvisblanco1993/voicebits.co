@@ -31,20 +31,21 @@
             <div class="font-semibold">Third Party Podcatchers</div>
             <p>Here you can add all the places where you are distributing your show. If you need help distributing your podcast, <a href="#" class="underline text-blue-600">follow this guide</a>.</p>
             <div class="mt-8">
-                <label for="apple" class="flex items-center space-x-2">
-                    @if ($podcast->apple)
+                <label for="podcastindex" class="flex items-center space-x-2">
+                    @if ($podcast->podcastindex)
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6 text-green-500">
                             <path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z" clip-rule="evenodd" />
                         </svg>
                     @endif
-                    <span class="block font-medium text-sm text-gray-700">Apple Podcasts</span>
+                    <span class="block font-medium text-sm text-gray-700">Podcast Index</span>
                 </label>
-                <x-jet-input id="apple" type="url" wire:model="apple" placeholder="e.g. https://podcasts.apple.com" class="mt-1 w-full truncate"/>
+                <x-jet-input id="podcastindex" type="url" wire:model="podcastindex" placeholder="e.g. https://podcastindex.org" class="mt-1 w-full truncate"/>
                 <span @class([
                     'text-sm',
-                    'text-slate-400' => $podcast->apple
-                ])>{{ route('show.feed', ['url' => $podcast->url, 'player' => 'apple-podcasts']) }}</span>
+                    'text-slate-400' => $podcast->podcastindex
+                ])>{{ route('show.feed', ['url' => $podcast->url, 'player' => 'podcastindex']) }}</span>
             </div>
+
             <div class="mt-8">
                 <label for="spotify" class="flex items-center space-x-2">
                     @if ($podcast->spotify)
@@ -196,6 +197,7 @@
                 ])>{{ route('show.feed', ['url' => $podcast->url, 'player' => 'castro']) }}</span>
             </div>
         </div>
+
     </div>
     <script>
         function copyWebsiteToClipboard()

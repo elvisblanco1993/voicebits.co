@@ -9,12 +9,12 @@ use Illuminate\Support\Facades\Log;
 class Distribute extends Component
 {
     public $show, $podcast;
-    public $apple, $spotify, $google, $stitcher, $pocketcasts, $amazon, $pandora, $iheartradio, $castbox, $castro, $deezer;
+    public $podcastindex, $spotify, $google, $stitcher, $pocketcasts, $amazon, $pandora, $iheartradio, $castbox, $castro, $deezer;
 
     public function mount()
     {
         $this->podcast = Podcast::findorfail($this->show);
-        $this->apple = $this->podcast->apple;
+        $this->podcastindex = $this->podcast->podcastindex;
         $this->spotify = $this->podcast->spotify;
         $this->google = $this->podcast->google;
         $this->stitcher = $this->podcast->stitcher;
@@ -35,7 +35,7 @@ class Distribute extends Component
     public function save()
     {
         try {
-            $this->podcast->apple = $this->apple;
+            $this->podcast->podcastindex = $this->podcastindex;
             $this->podcast->spotify = $this->spotify;
             $this->podcast->google = $this->google;
             $this->podcast->stitcher = $this->stitcher;
