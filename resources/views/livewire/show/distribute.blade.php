@@ -29,7 +29,7 @@
             </div>
             <div class="my-12 border-t border-slate-200"></div>
             <div class="font-semibold">Third Party Podcatchers</div>
-            <p>Here you can add all the places where you are distributing your show. If you need help distributing your podcast, <a href="#" class="underline text-blue-600">follow this guide</a>.</p>
+            <p>Here you can add all the places where you are distributing your show. If you need help distributing your podcast, <a href="/blog/distribution-guide" class="underline text-blue-600">follow this guide</a>.</p>
             <div class="mt-8">
                 <label for="podcastindex" class="flex items-center space-x-2">
                     @if ($podcast->podcastindex)
