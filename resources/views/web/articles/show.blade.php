@@ -1,4 +1,4 @@
-@extends('web.website.layout', ['article' => $article])
+@extends('web.website.layout')
 
 @section('content')
 
