@@ -36,7 +36,6 @@ class EpisodeController extends Controller
         }
 
         $file = Storage::disk(config('filesystems.default'))->get($episode->track_url);
-        $size = Storage::disk(config('filesystems.default'))->size($episode->track_url);
 
         // return response($file)
         //     ->withHeaders([
@@ -55,7 +54,7 @@ class EpisodeController extends Controller
         //         'Etag' => $episode->track_url,
         //     ]);
 
-        return response($path, 200)
+        return response($file, 200)
             ->header('Content-Type', 'audio/mpeg')
             ->header('Content-Disposition', 'inline');
     }
