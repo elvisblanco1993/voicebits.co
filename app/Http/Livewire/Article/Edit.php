@@ -41,7 +41,7 @@ class Edit extends Component
         if ($this->image) {
 
             $this->validate([
-                'image' => 'required|image|mimes:png,jpg|max:2048',
+                'image' => 'required|image|mimes:png,jpg,webp|max:2048',
             ]);
 
             $this->deleteImage();

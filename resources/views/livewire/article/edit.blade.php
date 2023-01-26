@@ -31,7 +31,7 @@
                         <div class="text-slate-600 text-center">
                             <x-jet-input-error for="image" class="mt-1" />
                             <p class="text-slate-600 text-center">Select an image to use it as your podcast artwork.</p>
-                            <p class="mt-2 text-sm text-slate-500">PNG, JPG, up to 2MB</p>
+                            <p class="mt-2 text-sm text-slate-500">PNG, JPG, WEBP up to 2MB</p>
                         </div>
                         <div class="mt-6 flex items-center justify-center gap-4">
                             <label for="image" class="text-sm text-slate-600 px-3 py-2 rounded-lg border border-slate-200 hover:text-blue-600 hover:bg-blue-50 hover:border-blue-200 transition-all cursor-pointer">
