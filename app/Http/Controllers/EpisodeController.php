@@ -36,27 +36,28 @@ class EpisodeController extends Controller
         }
 
         $file = Storage::disk(config('filesystems.default'))->get($episode->track_url);
+        $size = Storage::disk(config('filesystems.default'))->size($episode->track_url);
 
-        // return response($file)
-        //     ->withHeaders([
-        //         'Accept-Ranges' => "bytes",
-        //         'Accept-Encoding' => "gzip, deflate",
-        //         'Pragma' => 'public',
-        //         'Expires' => '0',
-        //         'Cache-Control' => 'must-revalidate',
-        //         'Content-Transfer-Encoding' => 'binary',
-        //         'Content-Disposition' => ' inline; filename='.$episode->track_url,
-        //         'Content-Length' => $size,
-        //         'Content-Type' => "audio/mpeg",
-        //         'Connection' => "Keep-Alive",
-        //         'Content-Range' => 'bytes 0-'.$size - 1 .'/'.$size,
-        //         'X-Pad' => 'avoid browser bug',
-        //         'Etag' => $episode->track_url,
-        //     ]);
+        return response($file)
+            ->withHeaders([
+                'Accept-Ranges' => "bytes",
+                'Accept-Encoding' => "gzip, deflate",
+                'Pragma' => 'public',
+                'Expires' => '0',
+                'Cache-Control' => 'must-revalidate',
+                'Content-Transfer-Encoding' => 'binary',
+                'Content-Disposition' => ' inline; filename='.$episode->track_url,
+                'Content-Length' => $size,
+                'Content-Type' => "audio/mpeg",
+                'Connection' => "Keep-Alive",
+                'Content-Range' => 'bytes 0-'.$size - 1 .'/'.$size,
+                'X-Pad' => 'avoid browser bug',
+                'Etag' => $episode->track_url,
+            ]);
 
-        return response($file, 200)
-            ->header('Content-Type', 'audio/mpeg')
-            ->header('Content-Disposition', 'inline');
+        // return response($file, 200)
+        //     ->header('Content-Type', 'audio/mpeg')
+        //     ->header('Content-Disposition', 'inline');
     }
 
     /**
