@@ -6,7 +6,7 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <meta name="description" content="Voicebits is the hosting and distribution platform for all your podcasts." />
         <link rel="shortcut icon" href="{{ asset('logo-mark.svg') }}" type="image/svg">
-        <title>{{ config('app.name', 'Laravel') }}</title>
+        <title>{{ ($article) ? $article->title : 'Voicebits' }} {{ config('app.name', 'Laravel') }}</title>
         <link rel="canonical" href="{{ url()->current() }}">
 
         @vite('resources/css/app.css')
