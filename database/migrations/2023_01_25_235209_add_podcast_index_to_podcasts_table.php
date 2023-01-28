@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::table('podcasts', function (Blueprint $table) {
-            $table->string('podcastindex')->after('apple');
+            $table->string('podcastindex')->after('apple')->nullable();
         });
     }
 

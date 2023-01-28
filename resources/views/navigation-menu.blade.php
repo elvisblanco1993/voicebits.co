@@ -1,101 +1,78 @@
 <div>
-    <div class="flex md:block items-center justify-between">
-        <a href="{{ route('home') }}" class="inline-block md:hidden w-full">
-            <img src="{{ asset('logo-mark.svg') }}" alt="{{ config('app.name') }}" class="block h-8 md:h-6 w-auto">
-        </a>
-        {{-- Mobile Menu --}}
-        <nav class="block md:hidden antialiased w-full text-right"
-            x-data="{ menu: false }">
-            <button class="p-2 rounded-lg" @click="menu = !menu">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 9h16.5m-16.5 6.75h16.5" />
-                </svg>
-            </button>
-
-            <div x-show="menu"
-                x-cloak
-                x-transition:enter="transition ease-out duration-200"
-                x-transition:enter-start="transform opacity-0 scale-95"
-                x-transition:enter-end="transform opacity-100 scale-100"
-                x-transition:leave="transition ease-in duration-75"
-                x-transition:leave-start="transform opacity-100 scale-100"
-                x-transition:leave-end="transform opacity-0 scale-95"
-                class="absolute z-50 mt-2 60 rounded-md shadow-lg origin-top-right right-8 text-left"
-                @click.outside="menu = false">
-                <div class="rounded-md ring-1 ring-black ring-opacity-5 py-1 bg-white">
-                    <div class=" w-60">
-                        <a class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition" href="{{ route('shows') }}">Podcasts</a>
-                        @can('manage_platform')
-                            <a class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition" href="{{ route('article.index') }}">Articles</a>
-                        @endcan
-                        <a class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition" href="{{ route('profile.show') }}">Profile</a>
-                        @can('manage_billing')
-                            <a class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition" href="{{ route('billing') }}">Billing</a>
-                        @endcan
-                        <a class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition" href="mailto:support@voicebits.co?subject=Need help">Support</a>
-                        <form method="POST" action="{{ route('logout') }}" x-data>
-                            @csrf
-                            <a href="{{ route('logout') }}"
-                                @click.prevent="$root.submit();"
-                                @class([
-                                    'block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition',
-                            ])>{{ __('Log Out') }}</a>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </nav>
-        {{-- Desktop Menu --}}
-        <nav class="hidden md:block w-full antialiased">
-            <div class="flex items-center space-x-4">
+    <div class="w-full bg-slate-900 text-white text-sm">
+        <div class="max-w-5xl mx-auto h-16 flex items-center justify-between px-4 sm:px-6 lg:px-8">
+            <a href="{{ route('shows') }}" class="inline-block">
                 <img src="{{ asset('logo-mark.svg') }}" alt="{{ config('app.name') }}" class="block h-8 w-auto">
-                <h1 class="text-xl font-black text-slate-900">voicebits</h1>
-            </div>
+            </a>
 
-            <div class="mt-6 text-slate-500">
+            {{-- Desktop center--}}
+            <div class="flex items-center space-x-6">
                 <a href="{{ route('shows') }}" @class([
-                    'block font-semibold px-4 py-2 rounded-lg hover:text-blue-600 transition-all',
-                    'text-blue-600' => request()->routeIs('shows')
-                ])>
-                    {{ __('Podcasts') }}
-                </a>
-
+                    'px-3 py-0.5 rounded-full uppercase text-xs font-medium',
+                    'bg-white text-slate-800' => request()->routeIs('shows')
+                ])>Podcasts</a>
                 @can('manage_platform')
                     <a href="{{ route('article.index') }}" @class([
-                        'block font-semibold px-4 py-2 rounded-lg hover:text-blue-600 transition-all',
-                        'text-blue-600' => request()->routeIs('article.index')
-                    ])>
-                        {{ __('Articles') }}
-                    </a>
+                        'px-3 py-0.5 rounded-full uppercase text-xs font-medium',
+                        'bg-white text-slate-800' => request()->routeIs('article.index')
+                        ])>Articles</a>
                 @endcan
             </div>
 
-            <div class="mt-6 py-2 border-t text-slate-500">
-                <a href="{{ route('profile.show') }}" @class([
-                    'block font-semibold px-4 py-2 rounded-lg hover:text-blue-600 transition-all',
-                    'text-blue-600' => request()->routeIs('profile.show')
-                ])>{{ __('Profile') }}</a>
-                @can('manage_billing')
-                    <a href="{{ route('billing') }}" @class([
-                        'block font-semibold px-4 py-2 rounded-lg hover:text-blue-600 transition-all',
-                        'text-blue-600' => request()->routeIs('billing')
-                    ])>
-                        {{ __('Billing') }}
-                    </a>
-                @endcan
-                <a href="mailto:support@voicebits.co?subject=Need help" @class([
-                    'block font-semibold px-4 py-2 rounded-lg hover:text-blue-600 transition-all',
-                ])>{{ __('Support') }}</a>
+            {{-- Desktop right --}}
+            <div class="block">
+                <x-jet-dropdown>
+                    <x-slot name="trigger">
+                        @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
+                            <button class="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 transition">
+                                <img class="h-8 w-8 rounded-full object-cover" src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}" />
+                            </button>
+                        @else
+                            <span class="inline-flex rounded-md">
+                                <button type="button" class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition">
+                                    {{ Auth::user()->name }}
 
-                <form method="POST" action="{{ route('logout') }}" x-data>
-                    @csrf
-                    <a href="{{ route('logout') }}"
-                        @click.prevent="$root.submit();"
-                        @class([
-                            'block font-semibold px-4 py-2 rounded-lg hover:text-red-500 transition-all',
-                    ])>{{ __('Log Out') }}</a>
-                </form>
+                                    <svg class="ml-2 -mr-0.5 h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                    </svg>
+                                </button>
+                            </span>
+                        @endif
+                    </x-slot>
+                    <x-slot name="content">
+                        <div class="block px-4 py-2 text-xs text-gray-400">
+                            {{ __('Manage Account') }}
+                        </div>
+
+                        @can('manage_billing')
+                            <x-jet-dropdown-link href="{{ route('billing') }}">
+                                {{ __('Billing') }}
+                            </x-jet-dropdown-link>
+                        @endcan
+                        <x-jet-dropdown-link href="{{ route('profile.show') }}">
+                            {{ __('Profile') }}
+                        </x-jet-dropdown-link>
+
+                        @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
+                            <x-jet-dropdown-link href="{{ route('api-tokens.index') }}">
+                                {{ __('API Tokens') }}
+                            </x-jet-dropdown-link>
+                        @endif
+
+                        <div class="border-t border-gray-100"></div>
+
+                        <!-- Authentication -->
+                        <form method="POST" action="{{ route('logout') }}">
+                            @csrf
+                            <x-jet-dropdown-link href="{{ route('logout') }}"
+                                        onclick="event.preventDefault();
+                                            this.closest('form').submit();">
+                                {{ __('Log Out') }}
+                            </x-jet-dropdown-link>
+                        </form>
+                    </x-slot>
+                </x-jet-dropdown>
             </div>
-        </nav>
+        </div>
     </div>
 </div>

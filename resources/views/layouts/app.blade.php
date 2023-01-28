@@ -14,25 +14,20 @@
     </head>
     <body class="font-sans antialiased">
         <x-jet-banner />
-        <div class="min-h-screen bg-gray-100">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="py-6 md:py-24">
-                    <div class="grid grid-cols-4 gap-12">
-                        <aside class="col-span-4 md:col-span-1 px-4 sm:px-0">
-                            @livewire('navigation-menu')
-                            @if ( (Auth::user()->onTrial() && !Auth::user()->subscribed('voicebits')) && !request()->routeIs('signup') )
-                                <div class="leading-6 mt-4 mb-4 w-full px-2 py-1.5 text-xs md:text-sm text-blue-600 bg-blue-100 rounded-lg border border-blue-200">
-                                    You have {{ abs(round((strtotime(Auth::user()->trial_ends_at) - strtotime(now()))/86400)) }} days left on your free trial. If you are enjoying Voicebits, you can <a href="{{ route('signup') }}" class="inline-block text-yellow-700 bg-yellow-50 px-1 rounded border-b border-b-yellow-600">sign up here.</a> 🚀
-                                </div>
-                            @endif
-                        </aside>
+        <div class="min-h-screen bg-white">
+            @include('navigation-menu')
 
-                        <main class="col-span-4 md:col-span-3">
-                            {{ $slot }}
-                        </main>
-                    </div>
+            @if ( (Auth::user()->onTrial() && !Auth::user()->subscribed('voicebits')) && !request()->routeIs('signup') )
+            <div class="w-full bg-indigo-50">
+                <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-sm text-center text-indigo-600 py-2">
+                    Your trial ends in {{ abs(round((strtotime(Auth::user()->trial_ends_at) - strtotime(now()))/86400)) }} day(s). <a href="{{ route('signup') }}" class="underline">Sign up for Voicebits here</a>.
                 </div>
             </div>
+            @endif
+
+            <main class="mt-12 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+                {{ $slot }}
+            </main>
         </div>
 
         @stack('modals')
