@@ -40,7 +40,9 @@ class EpisodeController extends Controller
         $size = Storage::disk(config('filesystems.default'))->size($episode->track_url);
 
         if (request()->header('Range')) {
-            Log::info("The request asks for a range");
+            Log::info(
+                request()->header('Range')
+            );
         }
 
         return response($file)
