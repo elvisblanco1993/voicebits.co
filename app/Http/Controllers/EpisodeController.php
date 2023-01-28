@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Episode;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
 
@@ -37,6 +38,10 @@ class EpisodeController extends Controller
 
         $file = Storage::disk(config('filesystems.default'))->get($episode->track_url);
         $size = Storage::disk(config('filesystems.default'))->size($episode->track_url);
+
+        if (request()->header('Range')) {
+            Log::info("The request asks for a range");
+        }
 
         return response($file)
             ->withHeaders([
