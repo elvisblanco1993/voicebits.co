@@ -45,7 +45,7 @@ class EpisodeController extends Controller
             );
         }
 
-        return response($file)
+        return response($file, 206)
             ->withHeaders([
                 'Accept-Ranges' => "bytes",
                 'Accept-Encoding' => "gzip, deflate",
