@@ -1,11 +1,10 @@
 <div>
-    <p class="text-red-700">In this section, you can delete your podcast from Voicebits. This action cannot be undone, so please make sure you download all your episodes before you delete your show.</p>
-    <x-jet-danger-button wire:click="$toggle('modal')" class="mt-4">Delete Podcast</x-jet-danger-button>
+    <x-jet-danger-button wire:click="$toggle('modal')">Delete Podcast</x-jet-danger-button>
 
     <x-jet-confirmation-modal wire:model="modal">
-        <x-slot name="title">Are you absolutely sure?</x-slot>
+        <x-slot name="title">Delete podcast</x-slot>
         <x-slot name="content">
-            <p>You are trying to delete your podcast <strong>{{$podcast->name}}</strong>. This action cannot be undone, so please make sure you download all your data before proceeding.</p>
+            <p>Are you sure you want to delete your podcast <strong>{{$podcast->name}}</strong>?. This action cannot be undone, so please make sure you download all your data before proceeding.</p>
             <p class="mt-2">Please type <strong>{{$podcast->url}}</strong> to confirm.</p>
             <x-jet-input type="text" wire:model="verify" class="mt-1 w-full"/>
         </x-slot>

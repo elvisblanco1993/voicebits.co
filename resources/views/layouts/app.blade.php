@@ -14,7 +14,7 @@
     </head>
     <body class="font-sans antialiased">
         <x-jet-banner />
-        <div class="min-h-screen bg-white">
+        <div class="min-h-screen bg-slate-50">
             @include('navigation-menu')
 
             @if ( (Auth::user()->onTrial() && !Auth::user()->subscribed('voicebits')) && !request()->routeIs('signup') )

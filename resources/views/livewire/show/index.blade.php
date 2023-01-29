@@ -1,6 +1,9 @@
 <div>
     <div class="px-4 sm:px-6 lg:px-0 flex items-center justify-between">
-        <h1 class="text-4xl font-bold">Podcasts</h1>
+        <div class="flex items-center space-x-4">
+            <h1 class="text-4xl font-bold">Podcasts</h1>
+            @livewire('show.search')
+        </div>
         @can('create_podcasts')
             <div class="flex items-center gap-4">
                 <a href="{{ route('show.import.start') }}">
@@ -16,7 +19,6 @@
         @endcan
     </div>
     <div class="py-6 px-4 sm:px-6 lg:px-0">
-        <x-jet-input type="text" wire:model="search" placeholder="Search by name" class="w-full md:w-1/2"/>
         <div class="mt-6 w-full">
             {{-- Invitation --}}
             @if (Auth::user()->hasPendingInvitations())
@@ -33,18 +35,15 @@
             {{-- End - Invitation --}}
             <div class="w-full">
                 @forelse ($podcasts as $podcast)
-                    <a href="{{ route('show', ['show' => $podcast->id]) }}"
-                        class="grid grid-cols-6 items-center md:gap-8 rounded-lg p-2 hover:bg-white/80 hover:border-slate-200 transition-all">
+                    <a href="{{ route('show', ['show' => $podcast->id]) }}" class="flex items-center space-x-6 bg-white border border-slate-200 rounded-lg">
                         @if ($podcast->cover)
-                            <img src="{{ Storage::url($podcast->cover) }}" alt="{{ $podcast->name }}" class="col-span-6 md:col-span-1 w-full aspect-video md:aspect-square object-center object-cover rounded-lg">
+                            <img src="{{ Storage::url($podcast->cover) }}" alt="{{ $podcast->name }}" class="h-40 w-40 rounded-l-lg object-center object-cover">
                         @else
-                            <div class="col-span-6 md:col-span-1 w-full aspect-video sm:aspect-square bg-blue-100 flex items-center justify-center rounded-lg">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="w-20 md:w-16 h-20 md:h-16 text-[#0099ff]" fill="currentColor" class="bi bi-soundwave" viewBox="0 0 16 16">
-                                    <path fill-rule="evenodd" d="M8.5 2a.5.5 0 0 1 .5.5v11a.5.5 0 0 1-1 0v-11a.5.5 0 0 1 .5-.5zm-2 2a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zm4 0a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zm-6 1.5A.5.5 0 0 1 5 6v4a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm8 0a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm-10 1A.5.5 0 0 1 3 7v2a.5.5 0 0 1-1 0V7a.5.5 0 0 1 .5-.5zm12 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0V7a.5.5 0 0 1 .5-.5z"/>
-                                </svg>
+                            <div class="h-40 w-40 rounded-l-lg bg-blue-50 flex items-center justify-center">
+                                <img src="{{ asset('logo-mark.svg') }}" alt="{{ $podcast->name }}" class="w-12 h-auto">
                             </div>
                         @endif
-                        <div class="col-span-6 md:col-span-5">
+                        <div class="">
                             <h2 class="mt-4 sm:mt-0 text-xl lg:text-2xl font-bold">{{ $podcast->name }}</h2>
                             <p class="text-sm font-medium text-slate-600">By {{ $podcast->author }}</p>
                             <p class="text-sm font-medium text-slate-600">Episodes: {{ $podcast->episodes->count() }}</p>

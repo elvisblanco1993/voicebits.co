@@ -9,12 +9,13 @@ use Illuminate\Support\Facades\Log;
 class Distribute extends Component
 {
     public $show, $podcast;
-    public $podcastindex, $spotify, $google, $stitcher, $pocketcasts, $amazon, $pandora, $iheartradio, $castbox, $castro, $deezer;
+    public $podcastindex, $apple, $spotify, $google, $stitcher, $podcastaddict, $pocketcasts, $amazon, $pandora, $iheartradio, $castbox, $castro, $deezer;
 
     public function mount()
     {
         $this->podcast = Podcast::findorfail($this->show);
         $this->podcastindex = $this->podcast->podcastindex;
+        $this->apple = $this->podcast->apple;
         $this->spotify = $this->podcast->spotify;
         $this->google = $this->podcast->google;
         $this->stitcher = $this->podcast->stitcher;
@@ -22,6 +23,7 @@ class Distribute extends Component
         $this->amazon = $this->podcast->amazon;
         $this->pandora = $this->podcast->pandora;
         $this->iheartradio = $this->podcast->iheartradio;
+        $this->podcastaddict = $this->podcast->podcastaddict;
         $this->castbox = $this->podcast->castbox;
         $this->castro = $this->podcast->castro;
         $this->deezer = $this->podcast->deezer;
@@ -36,6 +38,7 @@ class Distribute extends Component
     {
         try {
             $this->podcast->podcastindex = $this->podcastindex;
+            $this->podcast->apple = $this->apple;
             $this->podcast->spotify = $this->spotify;
             $this->podcast->google = $this->google;
             $this->podcast->stitcher = $this->stitcher;
@@ -43,6 +46,7 @@ class Distribute extends Component
             $this->podcast->amazon = $this->amazon;
             $this->podcast->pandora = $this->pandora;
             $this->podcast->iheartradio = $this->iheartradio;
+            $this->podcast->podcastaddict = $this->podcastaddict;
             $this->podcast->castbox = $this->castbox;
             $this->podcast->castro = $this->castro;
             $this->podcast->deezer = $this->deezer;

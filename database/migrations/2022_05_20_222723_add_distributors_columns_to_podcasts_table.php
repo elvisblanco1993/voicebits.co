@@ -14,17 +14,18 @@ return new class extends Migration
     public function up()
     {
         Schema::table('podcasts', function (blueprint $table) {
-            $table->string('apple')->nullable();
-            $table->string('spotify')->nullable();
             $table->string('google')->nullable();
+            $table->string('spotify')->nullable();
+            $table->string('apple')->nullable();
             $table->string('stitcher')->nullable();
             $table->string('pocketcasts')->nullable();
             $table->string('amazon')->nullable();
             $table->string('pandora')->nullable();
             $table->string('iheartradio')->nullable();
             $table->string('castbox')->nullable();
-            $table->string('castro')->nullable();
+            $table->string('podcastaddict')->nullable();
             $table->string('deezer')->nullable();
+            $table->string('castro')->nullable();
         });
     }
 

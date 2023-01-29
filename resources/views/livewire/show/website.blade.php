@@ -2,8 +2,8 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-0">
         @include('layouts.podcast-menu')
 
-        <div class="mt-10">
-            <div class="text-xl font-bold">Podcast Website</div>
+        <div class="mt-6 text-xl font-bold">Podcast Website</div>
+        <div class="mt-4">
             <p class="text-base text-slate-600 font-medium">Select a template for your podcast website.</p>
 
             <div class="mt-4 grid grid-cols-4 gap-8">
