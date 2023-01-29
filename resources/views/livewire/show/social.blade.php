@@ -40,4 +40,5 @@
             <x-jet-button wire:click="save">Save changes</x-jet-button>
         </div>
     </div>
+    <div class="py-12"></div>
 </div>

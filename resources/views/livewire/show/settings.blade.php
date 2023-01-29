@@ -204,5 +204,5 @@
             </div>
         </div>
     @endcan
-    <div class="pt-12"></div>
+    <div class="py-12"></div>
 </div>
