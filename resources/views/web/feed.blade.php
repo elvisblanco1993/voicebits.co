@@ -37,6 +37,7 @@
         @endif
         @forelse ($podcast->episodes as $episode)
             <item>
+                <link>{{ config('app.url') . "/shows/" . $podcast->url }}</link>
                 <itunes:title>{{ $episode->title }}</itunes:title>
                 <description>{{ $episode->description }}</description>
                 <guid isPermaLink="false">{{ $episode->guid }}</guid>
