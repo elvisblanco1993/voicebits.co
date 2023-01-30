@@ -42,7 +42,7 @@
                 <itunes:title>{{ $episode->title }}</itunes:title>
                 <description>{{ $episode->description }}</description>
                 <guid isPermaLink="false">{{ $episode->guid }}</guid>
-                <pubDate>{{ date('r', strtotime($episode->created_at)) }}</pubDate>
+                <pubDate>{{ date(DateTime::RFC2822, strtotime($episode->created_at)) }}</pubDate>
                 <enclosure length="{{ $episode->track_size }}" type="audio/mpeg" url="{{ route('episode.play', ['url' => $podcast->url, 'episode' => $episode->guid, 'player' => $player]) }}"/>
                 <itunes:summary>{{ $episode->description }}</itunes:summary>
                 <itunes:explicit>{{ ($episode->explicit) ? "true" : "false" }}</itunes:explicit>
