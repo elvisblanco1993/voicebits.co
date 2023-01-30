@@ -4,6 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
+        <link type="application/rss+xml" rel="alternate" title="{{$podcast->name}}" href="{{ route('show.feed', ['player' => 'web', 'url' => $podcast->url]) }}"/>
         <title>{{ $podcast->name . ' | ' . config('app.name', 'Voicebits - The Podcast Hosting and Distribution Platform') }}</title>
         @vite('resources/css/app.css')
         @livewireStyles
