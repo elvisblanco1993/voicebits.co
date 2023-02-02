@@ -11,11 +11,11 @@
             type="application/rss+xml"
             href="{{ url()->current() }}"
         />
-        <link>{{ config('app.url') . "/shows/" . $podcast->url }}</link>
+        <link>{{ config('app.url') . "/s/" . $podcast->url }}</link>
         <image>
             <url>{{ Storage::url($podcast->cover) }}</url>
             <title>{{ $podcast->name }}</title>
-            <link>{{ config('app.url') . "/shows/" . $podcast->url }}</link>
+            <link>{{ config('app.url') . "/s/" . $podcast->url }}</link>
         </image>
         <generator>Voicebits Podcasts</generator>
         <lastBuildDate>{{ date('r', strtotime(now())) }}</lastBuildDate>
@@ -37,7 +37,7 @@
         @endif
         @forelse ($podcast->episodes as $episode)
             <item>
-                <link>{{ config('app.url') . "/shows/" . $podcast->url }}</link>
+                <link>{{ config('app.url') . "/s/" . $podcast->url }}</link>
                 <title>{{ $episode->title }}</title>
                 <itunes:title>{{ $episode->title }}</itunes:title>
                 <description>{{ $episode->description }}</description>
