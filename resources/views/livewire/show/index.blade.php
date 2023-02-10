@@ -35,7 +35,10 @@
             {{-- End - Invitation --}}
             <div class="w-full">
                 @forelse ($podcasts as $podcast)
-                    <a href="{{ route('show', ['show' => $podcast->id]) }}" class="flex items-center space-x-6 bg-white border border-slate-200 rounded-lg">
+                    <a href="{{ route('show', ['show' => $podcast->id]) }}" @class([
+                        'flex items-center space-x-6 bg-white border border-slate-200 rounded-lg',
+                        'mt-4' => !$loop->first
+                    ])>
                         @if ($podcast->cover)
                             <img src="{{ Storage::url($podcast->cover) }}" alt="{{ $podcast->name }}" class="h-40 w-40 rounded-l-lg object-center object-cover">
                         @else
