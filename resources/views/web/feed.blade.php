@@ -13,7 +13,7 @@
         />
         <link>{{ config('app.url') . "/s/" . $podcast->url }}</link>
         <image>
-            <url>{{ Storage::url($podcast->cover) }}</url>
+            <url>{{ config('app.url') . "/" . $podcast->cover}}</url>
             <title>{{ $podcast->name }}</title>
             <link>{{ config('app.url') . "/s/" . $podcast->url }}</link>
         </image>
@@ -30,7 +30,7 @@
         </itunes:owner>
         <itunes:explicit>{{ ($podcast->explicit) ? "Yes" : "No" }}</itunes:explicit>
         <itunes:category text="{{ $podcast->category }}" />
-        <itunes:image href="{{ Storage::url($podcast->cover) }}" />
+        <itunes:image href="{{ config('app.url') . "/" . $podcast->cover}}" />
         <itunes:block>{{ $podcast->is_locked ? 'yes' : 'no' }}</itunes:block>
         @if ($podcast->funding)
             <podcast:funding url="{{ $podcast->funding_url }}">{{ $podcast->funding_text }}</podcast:funding>
@@ -50,7 +50,7 @@
                 <itunes:episodeType>{{ $episode->type }}</itunes:episodeType>
                 <itunes:block>{{ $podcast->is_locked ? 'yes' : 'no' }}</itunes:block>
                 @if ($episode->cover)
-                    <itunes:image href="{{ Storage::url($episode->cover) }}"/>
+                    <itunes:image href="{{ config('app.url') . "/" . $episode->cover}}"/>
                 @endif
                 @if ($episode->podcast->type === "serial")
                     <itunes:episode>{{ $episode->number }}</itunes:episode>

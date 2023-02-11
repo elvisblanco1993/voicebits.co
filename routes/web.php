@@ -10,9 +10,10 @@ use App\Http\Controllers\WebController;
  */
 Route::middleware('xframe.options')->group(function() {
     Route::get("/s/{url}", [App\Http\Controllers\PodcastController::class, 'show'])->name('podcast.website');
-    Route::get("/s/{url}/episode/{episode}", [App\Http\Controllers\PodcastController::class, 'episode'])->name('podcast.episode');
     Route::get("/s/{url}/feed/{player?}", [App\Http\Controllers\PodcastController::class, 'feed'])->name('show.feed');
+    Route::get("/s/{url}/episode/{episode}", [App\Http\Controllers\PodcastController::class, 'episode'])->name('podcast.episode');
     Route::get("/s/{url}/play/{episode}/{player?}", [App\Http\Controllers\EpisodeController::class, 'play'])->name('episode.play');
+    Route::get("/podcasts/{url}/covers/{cover}", [App\Http\Controllers\PodcastController::class, 'cover'])->name('show.cover');
 });
 
 Route::get('/embed/{guid}/{player?}', [App\Http\Controllers\EpisodeController::class, 'embed'])->name('episode.embed');

@@ -51,7 +51,9 @@ class Edit extends Component
 
             // Upload artwork
             if ($this->cover) {
-                Storage::disk(config('filesystems.default'))->delete($this->episode->cover);
+                if ($this->episode->cover) {
+                    Storage::disk(config('filesystems.default'))->delete($this->episode->cover);
+                }
                 $artwork = $this->cover->storePublicly('podcasts/' . $this->episode->podcast_id . '/covers', config('filesystems.default'));
             } else {
                 $artwork = $this->episode->cover;
