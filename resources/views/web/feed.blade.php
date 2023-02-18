@@ -15,7 +15,7 @@
             <link>{{ config('app.url') . "/s/" . $podcast->url }}</link>
             <title>{{ $podcast->name }}</title>
             <url>
-                {{ config('app.url') . "/" . $podcast->cover }}
+                {{ config('app.url') . "/" . $podcast->cover . "?aid=rss_feed" }}
             </url>
         </image>
         <link>{{ config('app.url') . "/s/" . $podcast->url }}</link>
@@ -24,7 +24,7 @@
         <itunes:author>{{ $podcast->author }}</itunes:author>
         <itunes:explicit>{{ ($podcast->explicit) ? 'yes' : 'no' }}</itunes:explicit>
         <itunes:image
-            href="{{ config('app.url') . "/" . $podcast->cover }}" />
+            href="{{ config('app.url') . '/' . $podcast->cover  . '?aid=rss_feed' }}" />
         <itunes:owner>
             <itunes:name>{{ $podcast->author }}</itunes:name>
             <itunes:email>{{ $podcast->owner()->email }}</itunes:email>
@@ -51,8 +51,8 @@
                 <itunes:title>{{ $episode->title }}</itunes:title>
                 <itunes:author>{{ $podcast->author }}</itunes:author>
                 <itunes:duration>{{  ( is_numeric($episode->track_length) ) ? gmdate("i:s", (int) $episode->track_length) : $episode->track_length }}</itunes:duration>
-                <itunes:summary>{{ str($episode->description)->limit(60) }}...</itunes:summary>
-                <itunes:subtitle>{{ str($episode->description)->limit(60) }}...</itunes:subtitle>
+                <itunes:summary>{{ str($episode->description)->limit(180) }}...</itunes:summary>
+                <itunes:subtitle>{{ str($episode->description)->limit(180) }}...</itunes:subtitle>
                 <itunes:explicit>{{ ($episode->explicit) ? "yes" : "no" }}</itunes:explicit>
                 <itunes:episodeType>{{ $episode->type }}</itunes:episodeType>
                 @if ($episode->podcast->type == "serial")
