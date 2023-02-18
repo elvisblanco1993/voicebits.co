@@ -50,7 +50,7 @@
                     url="{{ route('episode.play', ['url' => $podcast->url, 'episode' => $episode->guid, 'player' => $player]) }}" />
                 <itunes:title>{{ $episode->title }}</itunes:title>
                 <itunes:author>{{ $podcast->author }}</itunes:author>
-                <itunes:duration>{{  ( is_numeric($episode->track_length) ) ? gmdate("h:i:s", (int) $episode->track_length) : $episode->track_length }}</itunes:duration>
+                <itunes:duration>{{  ( is_numeric($episode->track_length) ) ? gmdate("H:i:s", (int) $episode->track_length) : $episode->track_length }}</itunes:duration>
                 <itunes:summary>{{ str($episode->description)->limit(180) }}...</itunes:summary>
                 <itunes:subtitle>{{ str($episode->description)->limit(180) }}...</itunes:subtitle>
                 <itunes:explicit>{{ ($episode->explicit) ? "yes" : "no" }}</itunes:explicit>
