@@ -1,20 +1,11 @@
-<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-slate-800 dark:text-white">
-    <div class="py-20 lg:py-32">
-        <div class="grid grid-cols-2 gap-8 items-center">
-            <div class="col-span-2 sm:col-span-1 text-center sm:text-left">
-                <h1 class="text-5xl lg:text-6xl font-extrabold">{{ __("Podcast hosting that works!") }}</h1>
-
-                <p class="mt-6 text-lg sm:text-xl dark:text-gray-300 font-medium">{{ __("Create unlimited podcasts and easily distribute them to Spotify, Apple Podcasts, Google Podcasts, and other big podcatchers.") }}</p>
-
-                <div class="mt-6">
-                    <a href="{{ route('register') }}"
-                        role="button"
-                        class="primary-btn"
-                    >{{ __("Try Us Free for 14 Days") }}</a>
-                </div>
-            </div>
-            <div class="col-span-2 sm:col-span-1 w-full aspect-video sm:aspect-square bg-cover bg-center rounded-2xl shadow-lg"
-                style="background-image: url(https://images.unsplash.com/photo-1554200876-980213841c94?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80)">
+<div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-slate-800 dark:text-white">
+    <div class="py-20 lg:py-44">
+        <div class="text-center">
+            <h1 class="text-5xl lg:text-6xl font-extrabold text-black dark:text-white">{{__("Empower Your Podcast, Empower Your Voice.")}}</h1>
+            <p class="mt-6 dark:text-white font-medium">{{ __("Join the revolution of the audio world and become a part of the podcast community that is making waves. With our innovative hosting platform, you'll have the power to bring your audio vision to life with ease. From effortless hosting to seamless distribution, we've got you covered. Start your podcast journey today and experience the limitless possibilities of podcasting. Don't just dream of being a podcast host, be one.") }}</p>
+            <div class="mt-6 sm:flex items-center sm:space-x-6 justify-center">
+                <a href="{{ route('register') }}" role="button" class="block underline hover:text-[#0099ff] transition-all">{{ __("Explore all the features") }}</a>
+                <a href="{{ route('register') }}" role="button" class="mt-6 sm:mt-0 primary-btn">{{ __("Sign up for our free 14-day trial") }}</a>
             </div>
         </div>
     </div>

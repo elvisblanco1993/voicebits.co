@@ -9,12 +9,12 @@
                         <span class="text-2xl font-semibold text-slate-800 dark:text-white">voicebits</span>
                         <sup class="text-xs font-light tracking-wider text-slate-400">beta</sup>
                     </a>
+                </div>
 
-                    <div class="hidden md:flex items-center gap-x-6 text-sm">
-                        <a href="{{ route('home') }}?#features" class="inline-block rounded-lg py-1 px-2 text-sm text-slate-700 dark:text-white hover:bg-slate-100 dark:hover:bg-gray-800 hover:text-slate-900 dark:hover:text-white">Features</a>
-                        <a href="{{ route('pricing') }}" class="inline-block rounded-lg py-1 px-2 text-sm text-slate-700 dark:text-white hover:bg-slate-100 dark:hover:bg-gray-800 hover:text-slate-900 dark:hover:text-white">Pricing</a>
-                        <a href="{{ route('blog.index') }}" class="inline-block rounded-lg py-1 px-2 text-sm text-slate-700 dark:text-white hover:bg-slate-100 dark:hover:bg-gray-800 hover:text-slate-900 dark:hover:text-white">Articles</a>
-                    </div>
+                <div class="hidden md:flex items-center gap-x-6 text-sm">
+                    <a href="{{ route('home') }}?#features" class="inline-block rounded-lg py-1 px-2 text-sm text-slate-700 dark:text-white hover:bg-slate-100 dark:hover:bg-gray-800 hover:text-slate-900 dark:hover:text-white">Features</a>
+                    <a href="{{ route('pricing') }}" class="inline-block rounded-lg py-1 px-2 text-sm text-slate-700 dark:text-white hover:bg-slate-100 dark:hover:bg-gray-800 hover:text-slate-900 dark:hover:text-white">Pricing</a>
+                    <a href="{{ route('blog.index') }}" class="inline-block rounded-lg py-1 px-2 text-sm text-slate-700 dark:text-white hover:bg-slate-100 dark:hover:bg-gray-800 hover:text-slate-900 dark:hover:text-white">The Blog</a>
                 </div>
 
                 {{-- Login links --}}
@@ -40,7 +40,7 @@
                         <div class="my-6"></div>
                         <a href="{{ route('home') }}#features" class="block px-4 my-2.5 hover:text-sky-500">Features</a>
                         <a href="{{ route('pricing') }}" class="block px-4 my-2.5 hover:text-sky-500">Pricing</a>
-                        <a href="{{ route('blog.index') }}" class="block px-4 my-2.5 hover:text-sky-500">Articles</a>
+                        <a href="{{ route('blog.index') }}" class="block px-4 my-2.5 hover:text-sky-500">The Blog</a>
                     </div>
                 </div>
             </div>
