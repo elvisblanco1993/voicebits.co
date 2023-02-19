@@ -10,11 +10,9 @@
         <pubDate>{{ date(DateTime::RFC2822, strtotime($podcast->created_at)) }}</pubDate>
         <lastBuildDate>{{ date(DateTime::RFC2822, strtotime(now())) }}</lastBuildDate>
         <image>
-            <link>{{ config('app.url') . "/s/" . $podcast->url }}</link>
+            <url>{{ config('app.url') . "/" . $podcast->cover . "?aid=rss_feed" }}</url>
             <title>{{ $podcast->name }}</title>
-            <url>
-                {{ config('app.url') . "/" . $podcast->cover . "?aid=rss_feed" }}
-            </url>
+            <link>{{ config('app.url') . "/s/" . $podcast->url }}</link>
         </image>
         <link>{{ config('app.url') . "/s/" . $podcast->url }}</link>
         <itunes:type>{{ $podcast->type }}</itunes:type>
