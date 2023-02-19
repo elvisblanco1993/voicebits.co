@@ -1,7 +1,5 @@
-@php
-    echo "<?xml version='1.0' encoding='UTF-8'?>" . PHP_EOL;
-@endphp
-<rss version="2.0" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd">
     <channel>
         <atom:link xmlns:atom="http://www.w3.org/2005/Atom" rel="self" type="application/rss+xml" href="{{ url()->current() }}"/>
         <generator>{{ config('app.url') }}</generator>
@@ -23,14 +21,15 @@
         <itunes:summary>{{ $podcast->description }}</itunes:summary>
         <itunes:author>{{ $podcast->author }}</itunes:author>
         <itunes:explicit>{{ ($podcast->explicit) ? 'yes' : 'no' }}</itunes:explicit>
-        <itunes:image
-            href="{{ config('app.url') . '/' . $podcast->cover  . '?aid=rss_feed' }}" />
+        <itunes:image href="{{ config('app.url') . '/' . $podcast->cover  . '?aid=rss_feed' }}"/>
         <itunes:owner>
             <itunes:name>{{ $podcast->author }}</itunes:name>
             <itunes:email>{{ $podcast->owner()->email }}</itunes:email>
         </itunes:owner>
         <itunes:category text="{{ $podcast->category }}" />
-        <itunes:block>{{ $podcast->is_locked ? 'yes' : 'no' }}</itunes:block>
+        @if ($podcast->is_locked)
+            <itunes:block>yes</itunes:block>
+        @endif
         @if ($podcast->funding)
             <podcast:funding url="{{ $podcast->funding_url }}">{{ $podcast->funding_text }}</podcast:funding>
         @endif
@@ -46,8 +45,7 @@
                 <content:encoded>
                     {{ $episode->description }}
                 </content:encoded>
-                <enclosure length="{{ $episode->track_size }}" type="audio/mpeg"
-                    url="{{ route('episode.play', ['url' => $podcast->url, 'episode' => $episode->guid, 'player' => $player]) }}" />
+                <enclosure url="{{ route('episode.play', ['url' => $podcast->url, 'episode' => $episode->guid, 'player' => $player]) }}" length="{{ $episode->track_size }}" type="audio/mpeg"/>
                 <itunes:title>{{ $episode->title }}</itunes:title>
                 <itunes:author>{{ $podcast->author }}</itunes:author>
                 <itunes:duration>{{  ( is_numeric($episode->track_length) ) ? gmdate("H:i:s", (int) $episode->track_length) : $episode->track_length }}</itunes:duration>
