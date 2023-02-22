@@ -39,13 +39,13 @@ class EpisodeController extends Controller
         $file = Storage::disk(config('filesystems.default'))->get($episode->track_url);
         $size = Storage::disk(config('filesystems.default'))->size($episode->track_url);
 
-        if (request()->header('Range')) {
-            Log::info(
-                request()->header('Range')
-            );
+        $responseCode = 200;
+
+        if (request()->header('Content-Range') || request()->header('Range')) {
+            $responseCode = 206;
         }
 
-        return response($file, 206)
+        return response($file, $responseCode)
             ->withHeaders([
                 'Accept-Ranges' => "bytes",
                 'Accept-Encoding' => "gzip, deflate",
