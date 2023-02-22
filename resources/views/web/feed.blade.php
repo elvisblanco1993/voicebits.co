@@ -44,7 +44,7 @@
                 <content:encoded>
                     {{ $episode->description }}
                 </content:encoded>
-                <enclosure url="{{ route('episode.play', ['url' => $podcast->url, 'episode' => $episode->guid, 'player' => $player]) }}" length="{{ $episode->track_size }}" type="audio/mpeg"/>
+                <enclosure url="{{ route('episode.play', ['url' => $podcast->url, 'episode' => $episode->guid, 'player' => $player]) }}.mp3" length="{{ $episode->track_size }}" type="audio/mpeg"/>
                 <itunes:title>{{ $episode->title }}</itunes:title>
                 <itunes:author>{{ $podcast->author }}</itunes:author>
                 <itunes:duration>{{  ( is_numeric($episode->track_length) ) ? gmdate("H:i:s", (int) $episode->track_length) : $episode->track_length }}</itunes:duration>
