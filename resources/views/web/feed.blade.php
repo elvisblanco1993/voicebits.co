@@ -4,8 +4,9 @@
         <atom:link xmlns:atom="http://www.w3.org/2005/Atom" rel="self" type="application/rss+xml" href="{{ url()->current() }}"/>
         <generator>{{ config('app.url') }}</generator>
         <title>{{ $podcast->name }}</title>
-        <description>{{ $podcast->description }}</description>
-        <copyright>{{ $podcast->author }}</copyright>
+        <itunes:subtitle>{{ $podcast->name }}</itunes:subtitle>
+        <description><![CDATA[{{ $podcast->description }}]]></description>
+        <copyright>Copyright {{ $podcast->author }}</copyright>
         <language>{{ $podcast->language }}</language>
         <pubDate>{{ date(DateTime::RFC2822, strtotime($podcast->created_at)) }}</pubDate>
         <lastBuildDate>{{ date(DateTime::RFC2822, strtotime(now())) }}</lastBuildDate>
@@ -16,9 +17,9 @@
         </image>
         <link>{{ config('app.url') . "/s/" . $podcast->url }}</link>
         <itunes:type>{{ $podcast->type }}</itunes:type>
-        <itunes:summary>{{ $podcast->description }}</itunes:summary>
+        <itunes:summary><![CDATA[{{ $podcast->description }}]]></itunes:summary>
         <itunes:author>{{ $podcast->author }}</itunes:author>
-        <itunes:explicit>{{ ($podcast->explicit) ? 'yes' : 'no' }}</itunes:explicit>
+        <itunes:explicit>{{ ($podcast->explicit) ? 'true' : 'false' }}</itunes:explicit>
         <itunes:image href="{{ config('app.url') . '/' . $podcast->cover  . '?aid=rss_feed' }}"/>
         <itunes:owner>
             <itunes:name>{{ $podcast->author }}</itunes:name>
@@ -36,7 +37,7 @@
             <item>
                 <guid isPermaLink="false">{{ $episode->guid }}</guid>
                 <title>{{ $episode->title }}</title>
-                <description>{{ $episode->description }}</description>
+                <description><![CDATA[{{ $episode->description }}]]></description>
                 <pubDate>{{ date(DateTime::RFC2822, strtotime($episode->created_at)) }}</pubDate>
                 <author>{{ $podcast->owner()->email }} ({{ $podcast->author }})</author>
                 <link>{{ config('app.url') . "/s/" . $podcast->url }}</link>
@@ -47,8 +48,8 @@
                 <itunes:title>{{ $episode->title }}</itunes:title>
                 <itunes:author>{{ $podcast->author }}</itunes:author>
                 <itunes:duration>{{  ( is_numeric($episode->track_length) ) ? gmdate("H:i:s", (int) $episode->track_length) : $episode->track_length }}</itunes:duration>
-                <itunes:summary>{{ str($episode->description)->limit(180) }}...</itunes:summary>
-                <itunes:subtitle>{{ str($episode->description)->limit(180) }}...</itunes:subtitle>
+                <itunes:summary><![CDATA[{{ str($episode->description)->limit(180) }}...]]></itunes:summary>
+                <itunes:subtitle><![CDATA[{{ str($episode->description)->limit(180) }}...]]></itunes:subtitle>
                 <itunes:explicit>{{ ($episode->explicit) ? "yes" : "no" }}</itunes:explicit>
                 <itunes:episodeType>{{ $episode->type }}</itunes:episodeType>
                 @if ($episode->podcast->type == "serial")
