@@ -31,7 +31,7 @@ class EpisodeController extends Controller
         // Only count plays here when playing from Third Party player or when not requesting from Apple Servers.
         if ($player != 'web' && !str_contains(print_r(Location::get()->ip), '17.58.')) {
             (new PlaysCounterController)->playCounter($episode->id, $episode->podcast_id, $player);
-            Log::info(Location::get()->ip);
+            Log::info( request()->getContent() );
         }
 
         $file = Storage::disk(config('filesystems.default'))->get($episode->track_url);
