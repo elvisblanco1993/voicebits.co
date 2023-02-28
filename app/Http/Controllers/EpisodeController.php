@@ -30,7 +30,7 @@ class EpisodeController extends Controller
     public function play($url, $episode, $player)
     {
         Log::info(
-            request()->all()
+            request()
         );
 
         $episode = Episode::where('guid', $episode)->first();
