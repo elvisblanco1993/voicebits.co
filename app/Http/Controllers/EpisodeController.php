@@ -29,6 +29,7 @@ class EpisodeController extends Controller
     {
         $episode = Episode::where('guid', $episode)->first();
         // Only count plays here when playing from Third Party player.
+        Log::info(Location::get()->ip);
         if ($player != 'web' || Location::get()->ip !== '17.58.59.21') {
             (new PlaysCounterController)->playCounter($episode->id, $episode->podcast_id, $player);
         }
