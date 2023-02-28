@@ -29,7 +29,7 @@ class EpisodeController extends Controller
     {
         $episode = Episode::where('guid', $episode)->first();
         // Only count plays here when playing from Third Party player or when not requesting from Apple Servers.
-        if ($player != 'web') {
+        if ($player != 'web' && $player != 'apple.mp3') {
             (new PlaysCounterController)->playCounter($episode->id, $episode->podcast_id, $player);
         }
 
