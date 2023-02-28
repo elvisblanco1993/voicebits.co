@@ -3,9 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Episode;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\File;
-use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
 
 class EpisodeController extends Controller
