@@ -29,8 +29,7 @@ class EpisodeController extends Controller
     {
         $episode = Episode::where('guid', $episode)->first();
         // Only count plays here when playing from Third Party player.
-        Log::info(Location::get()->ip);
-        if ($player != 'web' || Location::get()->ip !== '17.58.59.21') {
+        if ($player != 'web' || $this->cidr_match(Location::get()->ip, '17.58.59.0/24')) {
             (new PlaysCounterController)->playCounter($episode->id, $episode->podcast_id, $player);
         }
 
@@ -81,5 +80,18 @@ class EpisodeController extends Controller
             'episode_url' => route('podcast.episode', ['url' => $episode->podcast->url, 'episode' => $guid]),
             'embed_url' => route('episode.embed', ['guid' => $guid, 'player' => $player]),
         ]);
+    }
+
+    private function cidr_match($ip, $range)
+    {
+        list ($subnet, $bits) = explode('/', $range);
+        if ($bits === null) {
+            $bits = 32;
+        }
+        $ip = ip2long($ip);
+        $subnet = ip2long($subnet);
+        $mask = -1 << (32 - $bits);
+        $subnet &= $mask; # nb: in case the supplied subnet wasn't correctly aligned
+        return ($ip & $mask) == $subnet;
     }
 }
