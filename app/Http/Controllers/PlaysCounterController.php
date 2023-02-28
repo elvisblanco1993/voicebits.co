@@ -2,19 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Log;
 use Stevebauman\Location\Facades\Location;
 
 class PlaysCounterController extends Controller
 {
     public function playCounter($episode_id, $podcast_id, $player)
     {
-        if (Location::get()->ip == '50.236.181.134') {
-            dd(Location::get());
-            // abort(403);
-        }
-
         if ($position = Location::get()) {
             // Check if episode played by same person already
             $counter = \App\Models\PlaysCounter::where( 'token', session()->get('_token') )->first();

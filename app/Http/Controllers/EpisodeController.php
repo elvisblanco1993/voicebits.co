@@ -4,9 +4,17 @@ namespace App\Http\Controllers;
 
 use App\Models\Episode;
 use Illuminate\Support\Facades\Storage;
+use Stevebauman\Location\Facades\Location;
 
 class EpisodeController extends Controller
 {
+    public function __construct()
+    {
+        if (Location::get()->ip == '50.236.181.134') {
+            abort(403);
+        }
+    }
+
     public function preview($episode)
     {
         $episode = Episode::where('guid', $episode)->first();
