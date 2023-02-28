@@ -7,7 +7,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
-use Symfony\Component\HttpFoundation\BinaryFileResponse;
 
 class EpisodeController extends Controller
 {
@@ -29,10 +28,6 @@ class EpisodeController extends Controller
      */
     public function play($url, $episode, $player)
     {
-        Log::info(
-            request()
-        );
-
         $episode = Episode::where('guid', $episode)->first();
         // Only count plays here when playing from Third Party player.
         if ($player != 'web') {
@@ -64,10 +59,6 @@ class EpisodeController extends Controller
                 'X-Pad' => 'avoid browser bug',
                 'Etag' => $episode->track_url,
             ]);
-
-        // return response($file, 200)
-        //     ->header('Content-Type', 'audio/mpeg')
-        //     ->header('Content-Disposition', 'inline');
     }
 
     /**
