@@ -29,6 +29,9 @@ class EpisodeController extends Controller
      */
     public function play($url, $episode, $player)
     {
+        Log::info(
+            request()->all()
+        );
 
         $episode = Episode::where('guid', $episode)->first();
         // Only count plays here when playing from Third Party player.
