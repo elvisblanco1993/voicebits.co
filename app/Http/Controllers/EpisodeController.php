@@ -32,6 +32,7 @@ class EpisodeController extends Controller
         if ($player != 'web') {
             (new PlaysCounterController)->playCounter($episode->id, $episode->podcast_id, $player);
             Log::channel('ips')->info(Location::get()->ip);
+            Log::channel('ips')->info( print_r( request()->all() ) );
         }
 
         $file = Storage::disk(config('filesystems.default'))->get($episode->track_url);
