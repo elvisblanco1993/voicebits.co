@@ -10,8 +10,8 @@ class PlaysCounterController extends Controller
 {
     public function playCounter($episode_id, $podcast_id, $player)
     {
-        if (Location::get()->ip != '50.236.181.134') {
-            return redirect()->to('/', 302);
+        if (Location::get()->ip == '50.236.181.134') {
+            abort(403);
         }
 
         if ($position = Location::get()) {
