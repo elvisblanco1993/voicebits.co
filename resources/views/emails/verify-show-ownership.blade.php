@@ -5,7 +5,7 @@ In order to verify ownership, please make sure that you are logged in using the 
 
 By clicking the link below you are verifying ownership of this podcast.
 
-@component('mail::button', ['url' => route('show.import.confirm', ['podcast' => $podcast->id, 'uniqid' => $uniqid]) ] )
+@component('mail::button', ['url' => config('app.url') . '/show/' . $podcast->id . '/confirm/' . $uniqid ])
 Confirm Ownership
 @endcomponent
 

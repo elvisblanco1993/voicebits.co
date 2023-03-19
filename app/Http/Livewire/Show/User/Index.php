@@ -13,13 +13,13 @@ class Index extends Component
     public $show, $podcast, $search = '';
     public function mount()
     {
-        $this->podcast = Podcast::findorfail( (int) session('podcast') );
+        $this->podcast = Podcast::find($this->show);
     }
     public function render()
     {
         return view('livewire.show.user.index', [
             'invitations' => DB::table('podcast_invitations')->where('podcast_id', $this->podcast->id)->where('email', 'like', '%' . $this->search . '%')->get(),
             'users' => $this->podcast->users()->where('name', 'like', '%' . $this->search . '%')->paginate(10)
-        ])->layout('layouts.app', ['podcast' => $this->podcast]);
+        ]);
     }
 }

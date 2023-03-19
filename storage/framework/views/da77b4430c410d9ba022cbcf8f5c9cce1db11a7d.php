@@ -1,2 +1,0 @@
-<input type="checkbox" <?php echo $attributes->merge(['class' => 'rounded border-gray-300 text-blue-600 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50']); ?>>
-<?php /**PATH /home/elvis/Projects/voicebits-2.0/resources/views/components/checkbox.blade.php ENDPATH**/ ?>

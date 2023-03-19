@@ -27,10 +27,7 @@ function play(guid) {
             if (player.src == '') {
                 setPlayerUrl(guid);
             }
-        }
-
-        // Records unique play
-        if (player.currentTime >= 5 && player.currentTime < 6) {
+            // Registers unique play
             Livewire.emit('countPlay');
         }
 

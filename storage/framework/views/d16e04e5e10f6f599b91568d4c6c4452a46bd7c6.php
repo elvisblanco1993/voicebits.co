@@ -1,1 +1,0 @@
-<?php /**PATH /home/elvis/Projects/voicebits-2.0/resources/views/layouts/nav.blade.php ENDPATH**/ ?>

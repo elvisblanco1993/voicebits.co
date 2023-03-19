@@ -9,12 +9,12 @@
     <div class="py-6 px-4 sm:px-6 lg:px-0">
         <input type="text" id="title" wire:model.defer="title" placeholder="Title" autofocus
             class="w-full border-none rounded-lg focus:ring focus:ring-blue-200 text-2xl font-bold"/>
-        <x-input-error for="title" class="mt-1" />
+        <x-jet-input-error for="title" class="mt-1" />
         <textarea id="content" wire:model.defer="content" cols="30" rows="25" placeholder="Write something amazing..."
             class="mt-6 w-full border-none rounded-lg focus:ring focus:ring-blue-200"
         ></textarea>
         <small class="text-slate-500">Markdown is supported here.</small>
-        <x-input-error for="content" class="mt-1" />
+        <x-jet-input-error for="content" class="mt-1" />
 
         <div class="mt-6 text-xl font-bold">Options</div>
         <div class="mt-4">
@@ -29,7 +29,7 @@
                 <div class="col-span-4 md:col-span-3 flex items-center justify-center">
                     <div>
                         <div class="text-slate-600 text-center">
-                            <x-input-error for="image" class="mt-1" />
+                            <x-jet-input-error for="image" class="mt-1" />
                             <p class="text-slate-600 text-center">Select an image to use it as your podcast artwork.</p>
                             <p class="mt-2 text-sm text-slate-500">PNG, JPG, WEBP up to 2MB</p>
                         </div>
@@ -46,12 +46,12 @@
         </div>
         <div class="mt-6 flex items-end justify-between">
             <div class="w-1/2">
-                <x-label for="author">Author</x-label>
+                <x-jet-label for="author">Author</x-jet-label>
                 <input type="text" id="author" wire:model.defer="author" placeholder="{{ Auth::user()->name }}" class="flex-none w-full border-none rounded-lg focus:ring focus:ring-blue-200 text-sm"/>
-                <x-input-error for="author" class="mt-1" />
+                <x-jet-input-error for="author" class="mt-1" />
             </div>
             <div class="">
-                <x-button wire:click="save">Save Changes</x-button>
+                <x-jet-button wire:click="save">Save Changes</x-jet-button>
             </div>
         </div>
     </div>

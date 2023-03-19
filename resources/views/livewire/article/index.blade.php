@@ -1,6 +1,6 @@
 <div>
     <div class="px-4 sm:px-6 lg:px-0 flex items-center justify-between">
-        <h1 class="text-lg font-bold">Articles</h1>
+        <h1 class="text-4xl font-bold">Articles</h1>
         <div>
             <a href="{{ route('article.create') }}"
                 class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-lg font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring focus:ring-gray-300 disabled:opacity-25 transition"
@@ -9,7 +9,7 @@
     </div>
 
     <div class="py-6 px-4 sm:px-6 lg:px-0">
-        <x-input type="text" wire:model="search" placeholder="Search by title" class="w-full md:w-1/2"/>
+        <x-jet-input type="text" wire:model="search" placeholder="Search by title" class="w-full md:w-1/2"/>
         {{-- Content --}}
         <div class="mt-4 prose max-w-full">
             <table class="table-auto w-full">

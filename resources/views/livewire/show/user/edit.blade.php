@@ -5,7 +5,7 @@
         </svg>
     </button>
 
-    <x-dialog-modal wire:model="modal">
+    <x-jet-dialog-modal wire:model="modal">
         <x-slot name="title">{{ __("Edit User Permissions") }}</x-slot>
         <x-slot name="content">
             <div class="mt-4">
@@ -21,12 +21,12 @@
 
                     @endforelse
                 </div>
-                <x-input-error for="permissions" />
+                <x-jet-input-error for="permissions" />
             </div>
         </x-slot>
         <x-slot name="footer">
-            <x-secondary-button wire:click="$toggle('modal')">Cancel</x-secondary-button>
-            <x-button wire:click="save" class="ml-4">Update Permissions</x-button>
+            <x-jet-secondary-button wire:click="$toggle('modal')">Cancel</x-jet-secondary-button>
+            <x-jet-button wire:click="save" class="ml-4">Update Permissions</x-jet-button>
         </x-slot>
-    </x-dialog-modal>
+    </x-jet-dialog-modal>
 </div>

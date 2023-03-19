@@ -14,14 +14,14 @@ class Index extends Component
 
     public function mount()
     {
-        $this->podcast = Podcast::findorfail( (int) session('podcast') );
+        $this->podcast = Podcast::find($this->show);
     }
 
     public function render()
     {
         return view('livewire.episode.index', [
             'episodes' => $this->podcast->episodes()->where('title', 'like', '%'.$this->search.'%')->orderBy('published_at', 'DESC')->paginate(10)
-        ])->layout('layouts.app',['podcast' => $this->podcast]);
+        ]);
     }
 
     public function updatingSearch()

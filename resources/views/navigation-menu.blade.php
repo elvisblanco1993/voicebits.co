@@ -14,7 +14,7 @@
 
             {{-- Desktop right --}}
             <div class="block">
-                <x-dropdown>
+                <x-jet-dropdown>
                     <x-slot name="trigger">
                         @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
                             <button class="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 transition">
@@ -38,18 +38,18 @@
                         </div>
 
                         @can('manage_billing')
-                            <x-dropdown-link href="{{ route('billing') }}">
+                            <x-jet-dropdown-link href="{{ route('billing') }}">
                                 {{ __('Billing') }}
-                            </x-dropdown-link>
+                            </x-jet-dropdown-link>
                         @endcan
-                        <x-dropdown-link href="{{ route('profile.show') }}">
+                        <x-jet-dropdown-link href="{{ route('profile.show') }}">
                             {{ __('Profile') }}
-                        </x-dropdown-link>
+                        </x-jet-dropdown-link>
 
                         @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
-                            <x-dropdown-link href="{{ route('api-tokens.index') }}">
+                            <x-jet-dropdown-link href="{{ route('api-tokens.index') }}">
                                 {{ __('API Tokens') }}
-                            </x-dropdown-link>
+                            </x-jet-dropdown-link>
                         @endif
 
                         <div class="border-t border-gray-100"></div>
@@ -57,14 +57,14 @@
                         <!-- Authentication -->
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
-                            <x-dropdown-link href="{{ route('logout') }}"
+                            <x-jet-dropdown-link href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
                                             this.closest('form').submit();">
                                 {{ __('Log Out') }}
-                            </x-dropdown-link>
+                            </x-jet-dropdown-link>
                         </form>
                     </x-slot>
-                </x-dropdown>
+                </x-jet-dropdown>
             </div>
         </div>
     </div>

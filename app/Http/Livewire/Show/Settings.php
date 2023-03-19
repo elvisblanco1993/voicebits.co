@@ -18,7 +18,7 @@ class Settings extends Component
 
     public function mount()
     {
-        $this->podcast = Podcast::findorfail( (int) session('podcast') );
+        $this->podcast = Podcast::findorfail($this->show);
         $this->name = $this->podcast->name;
         $this->description = $this->podcast->description;
         $this->url = $this->podcast->url;
@@ -36,8 +36,7 @@ class Settings extends Component
 
     public function render()
     {
-        return view('livewire.show.settings')
-            ->layout('layouts.app', ['podcast' => $this->podcast]);
+        return view('livewire.show.settings');
     }
 
     public function rules()

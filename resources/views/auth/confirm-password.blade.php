@@ -1,5 +1,5 @@
 <x-guest-layout>
-    <x-authentication-card>
+    <x-jet-authentication-card>
         <x-slot name="logo">
             <a href="{{ route('home') }}" class="flex items-center justify-center gap-3">
                 <img src="{{ asset('logo-mark.svg') }}" alt="" class="block h-8 w-auto">
@@ -12,21 +12,21 @@
             {{ __('This is a secure area of the application. Please confirm your password before continuing.') }}
         </div>
 
-        <x-validation-errors class="mb-4" />
+        <x-jet-validation-errors class="mb-4" />
 
         <form method="POST" action="{{ route('password.confirm') }}">
             @csrf
 
             <div>
-                <x-label for="password" value="{{ __('Password') }}" />
-                <x-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="current-password" autofocus />
+                <x-jet-label for="password" value="{{ __('Password') }}" />
+                <x-jet-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="current-password" autofocus />
             </div>
 
             <div class="flex justify-end mt-4">
-                <x-button class="ml-4">
+                <x-jet-button class="ml-4">
                     {{ __('Confirm') }}
-                </x-button>
+                </x-jet-button>
             </div>
         </form>
-    </x-authentication-card>
+    </x-jet-authentication-card>
 </x-guest-layout>

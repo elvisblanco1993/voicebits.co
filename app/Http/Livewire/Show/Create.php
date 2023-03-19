@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Show;
 
 use App\Models\Podcast;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use Livewire\Component;
 
@@ -25,7 +26,6 @@ class Create extends Component
     {
         $this->author = auth()->user()->name;
         $this->timezone = "-05:00";
-        $this->language = 'en';
     }
 
     public function save()
@@ -53,7 +53,7 @@ class Create extends Component
             session()->flash('flash.bannerStyle', 'danger');
             return redirect()->route('shows');
         }
-        return redirect()->route('dashboard');
+        return redirect()->route('show', ['show' => $podcast->id]);
     }
 
     public function render()

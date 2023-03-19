@@ -1,5 +1,5 @@
 <x-guest-layout>
-    <x-authentication-card>
+    <x-jet-authentication-card>
         <x-slot name="logo">
             <a href="{{ route('home') }}" class="flex items-center justify-center gap-3">
                 <img src="{{ asset('logo-mark.svg') }}" alt="" class="block h-8 w-auto">
@@ -23,9 +23,9 @@
                 @csrf
 
                 <div>
-                    <x-button type="submit">
+                    <x-jet-button type="submit">
                         {{ __('Resend Verification Email') }}
-                    </x-button>
+                    </x-jet-button>
                 </div>
             </form>
 
@@ -45,5 +45,5 @@
                 </form>
             </div>
         </div>
-    </x-authentication-card>
+    </x-jet-authentication-card>
 </x-guest-layout>

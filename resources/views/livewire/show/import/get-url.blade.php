@@ -3,13 +3,13 @@
         <div class="text-2xl font-bold">Add your podcast to Voicebits</div>
         <div class="mt-2 text-base font-normal">To get started, enter the RSS feed URL below.</div>
 
-        <x-input type="url" id="url" wire:model="url" class="mt-4 w-1/2" placeholder="https://" />
-        <x-input-error for="url"/>
+        <x-jet-input type="url" id="url" wire:model="url" class="mt-4 w-1/2" placeholder="https://" />
+        <x-jet-input-error for="url"/>
         @if (session()->has('error'))
             <p class="text-sm text-red-600">{{ session()->get('error') }}</p>
         @endif
         <div class="mt-4 flex justify-center">
-            <x-button wire:click="save">Submit</x-button>
+            <x-jet-button wire:click="save">Submit</x-jet-button>
         </div>
     </div>
 </div>

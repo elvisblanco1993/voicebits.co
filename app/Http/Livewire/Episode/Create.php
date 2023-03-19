@@ -14,7 +14,7 @@ class Create extends Component
 {
     use WithFileUploads;
 
-    public $podcast, $title, $description, $published_at, $season, $number, $type = "full", $explicit = "false", $cover, $track, $track_url, $track_size, $track_length;
+    public $show, $title, $description, $published_at, $season, $number, $type = "full", $explicit = "false", $cover, $track, $track_url, $track_size, $track_length;
 
     protected $listeners = ['getAudioDuration'];
     public function getAudioDuration($duration)
@@ -24,7 +24,7 @@ class Create extends Component
 
     public function mount()
     {
-        $this->podcast = Podcast::findorfail( (int) session('podcast') );
+        $this->show;
     }
 
     public function save()
@@ -33,16 +33,16 @@ class Create extends Component
 
         try {
             // Upload track
-            $this->track_url = $this->track->store('podcasts/' . $this->podcast->id . '/episodes', config('filesystems.default'));
+            $this->track_url = $this->track->store('podcasts/' . $this->show . '/episodes', config('filesystems.default'));
             // Upload artwork
             $artwork = ($this->cover) ?
-                $this->cover->storePublicly('podcasts/' . $this->podcast->id . '/covers', config('filesystems.default'))
+                $this->cover->storePublicly('podcasts/' . $this->show . '/covers', config('filesystems.default'))
                 :
                 null;
             // Create episode
             Episode::create([
                 'guid' => uniqid(),
-                'podcast_id' => $this->podcast->id,
+                'podcast_id' => $this->show,
                 'title' => $this->title,
                 'description' => $this->description,
                 'published_at' => ($this->published_at) ? Carbon::parse($this->published_at)->format('Y-m-d H:i:s') : null,
@@ -65,14 +65,14 @@ class Create extends Component
             session()->flash('flash.bannerStyle', 'danger');
         }
 
-        return redirect()->route('episodes');
+        return redirect()->route('episodes', ['show' => $this->show]);
     }
 
     public function render()
     {
         return view('livewire.episode.create', [
-            'podcast' => $this->podcast
-        ])->layout('layouts.app', ['podcast' => $this->podcast]);
+            'podcast' => Podcast::find($this->show)
+        ]);
     }
 
     public function rules()

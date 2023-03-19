@@ -2,14 +2,14 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-0">
         <div class="flex items-center justify-between">
             <div class="flex items-center gap-3">
-                <a href="{{ route('episodes') }}" class="hover:text-[#0099ff] transition-all">
+                <a href="{{ route('episodes', ['show' => $show]) }}" class="hover:text-[#0099ff] transition-all">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M11 15l-3-3m0 0l3-3m-3 3h8M3 12a9 9 0 1118 0 9 9 0 01-18 0z" />
                     </svg>
                 </a>
-                <div class="text-lg font-bold">New episode</div>
+                <div class="text-xl font-bold">New episode</div>
             </div>
-            <x-button wire:click="save">Save episode</x-button>
+            <x-jet-button wire:click="save">Save episode</x-jet-button>
         </div>
 
         {{-- Content section --}}
@@ -40,21 +40,21 @@
                     </div>
                     <input id="file-upload" wire:model="track" type="file" accept="audio/mpeg" class="h-full w-full opacity-0 cursor-pointer">
                 </div>
-                <x-input-error for="track" class="mt-2 text-sm text-red-600"/>
+                <x-jet-input-error for="track" class="mt-2 text-sm text-red-600"/>
             </div>
             <div class="mt-6">
                 <label for="title" class="block font-medium text-sm text-gray-700">Episode title <span class="text-red-500">*</span></label>
-                <x-input type="text" wire:model="title" id="title" placeholder="What do you want to call this episode?" class="mt-1 w-full"/>
-                <x-input-error for="title" class="mt-2 text-sm text-red-600"/>
+                <x-jet-input type="text" wire:model="title" id="title" placeholder="What do you want to call this episode?" class="mt-1 w-full"/>
+                <x-jet-input-error for="title" class="mt-2 text-sm text-red-600"/>
             </div>
             <div class="mt-6">
                 <label for="description" class="block font-medium text-sm text-gray-700">Episode description <span class="text-red-500">*</span></label>
                 <textarea wire:model="description" id="description" rows="10" class="input"></textarea>
-                <x-input-error for="description" class="mt-2 text-sm text-red-600"/>
+                <x-jet-input-error for="description" class="mt-2 text-sm text-red-600"/>
             </div>
             <div class="mt-6">
                 <label for="published_at" class="block font-medium text-sm text-gray-700">Publish date</label>
-                <x-input type="datetime-local" wire:model.defer="published_at" id="published_at" placeholder="What do you want to call this episode?" class="mt-1"/>
+                <x-jet-input type="datetime-local" wire:model.defer="published_at" id="published_at" placeholder="What do you want to call this episode?" class="mt-1"/>
                 <input type="hidden" id="timezone" name="timezone" value="{{ $podcast->timezone }}">
             </div>
         </div>
@@ -66,10 +66,10 @@
                 <div class="col-span-2 sm:col-span-1 grid">
                     <div class="grid grid-cols-3 sm:gap-8">
                         <div class="col-span-3 sm:col-span-1">
-                            <x-label for="season" value="Season number"/>
+                            <x-jet-label for="season" value="Season number"/>
                         </div>
                         <div class="col-span-3 sm:col-span-2 mt-1 sm:mt-0">
-                            <x-input type="text" id="season" wire:model="season" class="w-full"/>
+                            <x-jet-input type="text" id="season" wire:model="season" class="w-full"/>
                         </div>
                     </div>
 
@@ -77,10 +77,10 @@
 
                     <div class="mt-4 grid grid-cols-3 sm:gap-8">
                         <div class="col-span-3 sm:col-span-1">
-                            <x-label for="number" value="Episode number"/>
+                            <x-jet-label for="number" value="Episode number"/>
                         </div>
                         <div class="col-span-3 sm:col-span-2 mt-1 sm:mt-0">
-                            <x-input type="text" id="number" wire:model="number" class="w-full"/>
+                            <x-jet-input type="text" id="number" wire:model="number" class="w-full"/>
                         </div>
                     </div>
 
@@ -88,7 +88,7 @@
 
                     <div class="mt-4 grid grid-cols-3 sm:gap-8">
                         <div class="col-span-3 sm:col-span-1">
-                            <x-label for="" value="Episode type"/>
+                            <x-jet-label for="" value="Episode type"/>
                         </div>
                         <div class="col-span-3 sm:col-span-2 mt-1 sm:mt-0">
                             <label for="full" class="flex items-center gap-2 text-sm">
@@ -110,7 +110,7 @@
 
                     <div class="mt-4 grid grid-cols-3 sm:gap-8">
                         <div class="col-span-3 sm:col-span-1">
-                            <x-label for="" value="Content"/>
+                            <x-jet-label for="" value="Content"/>
                         </div>
                         <div class="col-span-3 sm:col-span-2 mt-1 sm:mt-0">
                             <label for="clean" class="flex items-center gap-2 text-sm">

@@ -4,7 +4,6 @@ namespace App\Http\Livewire\Episode;
 
 use Carbon\Carbon;
 use App\Models\Episode;
-use App\Models\Podcast;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 use Illuminate\Support\Facades\Log;
@@ -14,7 +13,7 @@ class Edit extends Component
 {
     use WithFileUploads;
 
-    public $podcast, $episode, $title, $description, $published_at, $season, $number, $type, $explicit, $cover, $track, $track_url, $track_size, $track_length, $blocked, $embed_url;
+    public $show, $episode, $title, $description, $published_at, $season, $number, $type, $explicit, $cover, $track, $track_url, $track_size, $track_length, $blocked;
 
     protected $listeners = ['getAudioDuration'];
     public function getAudioDuration($duration)
@@ -24,8 +23,7 @@ class Edit extends Component
 
     public function mount()
     {
-        $this->podcast = Podcast::findorfail( (int) session('podcast') );
-        $this->episode = Episode::findorfail($this->episode);
+        $this->episode = Episode::find($this->episode);
         $this->title = $this->episode->title;
         $this->description = $this->episode->description;
         $this->published_at = $this->episode->published_at;
@@ -82,13 +80,12 @@ class Edit extends Component
             session()->flash('flash.banner', 'Oops. We ran into an issue and coult not update your episode. Please contact us for assistance.');
             session()->flash('flash.bannerStyle', 'danger');
         }
-        return redirect()->route('episodes');
+        return redirect()->route('episodes', ['show' => $this->episode->podcast_id]);
     }
 
     public function render()
     {
-        return view('livewire.episode.edit')
-            ->layout('layouts.app', ['podcast' => $this->podcast]);
+        return view('livewire.episode.edit');
     }
 
     public function rules()

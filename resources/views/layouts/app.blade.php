@@ -8,32 +8,26 @@
 
         <title>{{ config('app.name', 'Laravel') }}</title>
 
-        <link rel="preconnect" href="https://fonts.bunny.net">
-        <link href="https://fonts.bunny.net/css?family=inter:100,200,300,400,500,600,700,800,900" rel="stylesheet" />
-
         <!-- Styles -->
         @vite('resources/css/app.css')
         @livewireStyles
     </head>
     <body class="font-sans antialiased">
-        <x-banner />
-        @if ( (Auth::user()->onTrial() && !Auth::user()->subscribed('voicebits')) && !request()->routeIs('signup') )
+        <x-jet-banner />
+        <div class="min-h-screen bg-slate-50">
+            @include('navigation-menu')
+
+            @if ( (Auth::user()->onTrial() && !Auth::user()->subscribed('voicebits')) && !request()->routeIs('signup') )
             <div class="w-full bg-indigo-50">
                 <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-sm text-center text-indigo-600 py-2">
                     Your trial ends in {{ abs(round((strtotime(Auth::user()->trial_ends_at) - strtotime(now()))/86400)) }} day(s). <a href="{{ route('signup') }}" class="underline">Sign up for Voicebits here</a>.
                 </div>
             </div>
-        @endif
-        <div class="min-h-screen max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-            <div class="grid grid-cols-12 gap-8">
-                @if (auth()->user()->podcasts->count() > 0)
-                    @livewire('show.selector')
-                    @livewire('sidenav')
-                @endif
-                <main class="col-span-12 md:col-span-9 lg:col-span-10">
-                    {{ $slot }}
-                </main>
-            </div>
+            @endif
+
+            <main class="mt-12 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+                {{ $slot }}
+            </main>
         </div>
 
         @stack('modals')

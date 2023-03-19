@@ -13,7 +13,7 @@ class Social extends Component
 
     public function mount()
     {
-        $this->podcast = Podcast::findorfail( (int) session('podcast') );
+        $this->podcast = Podcast::findorfail($this->show);
         $this->show_social = $this->podcast->show_social;
         $this->twitter = $this->podcast->twitter;
         $this->instagram = $this->podcast->instagram;
@@ -27,8 +27,7 @@ class Social extends Component
 
     public function render()
     {
-        return view('livewire.show.social')
-            ->layout('layouts.app', ['podcast' => $this->podcast]);
+        return view('livewire.show.social');
     }
 
     public function save()
@@ -51,6 +50,6 @@ class Social extends Component
             session()->flash('flash.banner', 'Oops. We ran into an issue and could not save your changes. Please contact support.');
             session()->flash('flash.bannerStyle', 'danger');
         }
-        return redirect()->route('show.social');
+        return redirect()->route('show.social', ['show' => $this->show]);
     }
 }
