@@ -65,5 +65,6 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'subscribed' => \App\Http\Middleware\CheckSubscriptionStatus::class,
         'xframe.options' => \App\Http\Middleware\XFrameOptions::class,
+        'podcast.select' => \App\Http\Middleware\SetPodcastToSession::class,
     ];
 }

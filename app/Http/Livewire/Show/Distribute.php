@@ -13,7 +13,7 @@ class Distribute extends Component
 
     public function mount()
     {
-        $this->podcast = Podcast::findorfail($this->show);
+        $this->podcast = Podcast::findorfail( (int) session('podcast') );
         $this->podcastindex = $this->podcast->podcastindex;
         $this->apple = $this->podcast->apple;
         $this->spotify = $this->podcast->spotify;
@@ -31,7 +31,8 @@ class Distribute extends Component
 
     public function render()
     {
-        return view('livewire.show.distribute');
+        return view('livewire.show.distribute')
+            ->layout('layouts.app', ['podcast' => $this->podcast]);
     }
 
     public function save()
@@ -58,6 +59,6 @@ class Distribute extends Component
             session()->flash('flash.banner', 'Oops. We ran into an issue and could not save your changes. Please contact support.');
             session()->flash('flash.bannerStyle', 'danger');
         }
-        return redirect()->route('show.distribution', ['show' => $this->show]);
+        return redirect()->route('show.distribution');
     }
 }

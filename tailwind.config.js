@@ -12,8 +12,12 @@ module.exports = {
     theme: {
         extend: {
             fontFamily: {
-                sans: ['Nunito', ...defaultTheme.fontFamily.sans],
+                sans: ['Inter', ...defaultTheme.fontFamily.sans],
+                serif: ['Fira Sans', ...defaultTheme.fontFamily.serif],
             },
+            backgroundImage: {
+                'hero': "url('../../public/voicebits2022.webp')"
+            }
         },
     },
 

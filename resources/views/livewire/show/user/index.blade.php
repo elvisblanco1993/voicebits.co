@@ -1,8 +1,8 @@
 <div>
-    @include('layouts.podcast-menu')
-    <div class="mt-6 text-xl font-bold">Team members</div>
+
+    <div class="text-lg font-bold">Team management</div>
     <div class="mt-4 flex items-center justify-between">
-        <x-jet-input type="search" wire:model="search" placeholder="Search by name" class="w-1/2"/>
+        <x-input type="search" wire:model="search" placeholder="Search by name" class="w-1/2"/>
         @can('invite_users',$podcast)
             @livewire('show.user.invite', ['podcast' => $podcast->id])
         @endcan

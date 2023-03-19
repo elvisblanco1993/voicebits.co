@@ -2,14 +2,14 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-0">
         <div class="flex items-center justify-between">
             <div class="flex items-center gap-3">
-                <a href="{{ route('episodes', ['show' => $show]) }}" class="hover:text-[#0099ff] transition-all">
+                <a href="{{ route('episodes') }}" class="hover:text-[#0099ff] transition-all">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M11 15l-3-3m0 0l3-3m-3 3h8M3 12a9 9 0 1118 0 9 9 0 01-18 0z" />
                     </svg>
                 </a>
-                <div class="text-xl font-bold">Episode details</div>
+                <div class="text-lg font-bold">Episode details</div>
             </div>
-            <x-jet-button wire:click="save">Save episode</x-jet-button>
+            <x-button wire:click="save">Save episode</x-button>
         </div>
 
         {{-- Content section --}}
@@ -50,21 +50,21 @@
                     @endif
                     {{-- End of Get the audio duration --}}
                 </div>
-                <x-jet-input-error for="track" class="mt-2 text-sm text-red-600"/>
+                <x-input-error for="track" class="mt-2 text-sm text-red-600"/>
             </div>
             <div class="mt-6">
                 <label for="title" class="block font-medium text-sm text-gray-700">Episode title <span class="text-red-500">*</span></label>
-                <x-jet-input type="text" wire:model.defer="title" id="title" placeholder="What do you want to call this episode?" class="mt-1 w-full"/>
-                <x-jet-input-error for="title" class="mt-2 text-sm text-red-600"/>
+                <x-input type="text" wire:model.defer="title" id="title" placeholder="What do you want to call this episode?" class="mt-1 w-full"/>
+                <x-input-error for="title" class="mt-2 text-sm text-red-600"/>
             </div>
             <div class="mt-6">
                 <label for="description" class="block font-medium text-sm text-gray-700">Episode description <span class="text-red-500">*</span></label>
                 <textarea wire:model.defer="description" id="description" rows="10" class="input"></textarea>
-                <x-jet-input-error for="description" class="mt-2 text-sm text-red-600"/>
+                <x-input-error for="description" class="mt-2 text-sm text-red-600"/>
             </div>
             <div class="mt-6">
                 <label for="published_at" class="block font-medium text-sm text-gray-700">Publish date</label>
-                <x-jet-input type="datetime-local" wire:model.defer="published_at" id="published_at" placeholder="What do you want to call this episode?" class="mt-1"/>
+                <x-input type="datetime-local" wire:model.defer="published_at" id="published_at" placeholder="What do you want to call this episode?" class="mt-1"/>
             </div>
         </div>
 
@@ -76,10 +76,10 @@
                     @if ($episode->podcast->type === "serial")
                     <div class="grid grid-cols-3 sm:gap-8">
                         <div class="col-span-3 sm:col-span-1">
-                            <x-jet-label for="season" value="Season number"/>
+                            <x-label for="season" value="Season number"/>
                         </div>
                         <div class="col-span-3 sm:col-span-2 mt-1 sm:mt-0">
-                            <x-jet-input type="text" id="season" wire:model.defer="season" class="w-full"/>
+                            <x-input type="text" id="season" wire:model.defer="season" class="w-full"/>
                         </div>
                     </div>
 
@@ -87,10 +87,10 @@
 
                     <div class="mt-4 grid grid-cols-3 sm:gap-8">
                         <div class="col-span-3 sm:col-span-1">
-                            <x-jet-label for="number" value="Episode number"/>
+                            <x-label for="number" value="Episode number"/>
                         </div>
                         <div class="col-span-3 sm:col-span-2 mt-1 sm:mt-0">
-                            <x-jet-input type="text" id="number" wire:model.defer="number" class="w-full"/>
+                            <x-input type="text" id="number" wire:model.defer="number" class="w-full"/>
                         </div>
                     </div>
 
@@ -99,7 +99,7 @@
 
                     <div class="mt-4 grid grid-cols-3 sm:gap-8">
                         <div class="col-span-3 sm:col-span-1">
-                            <x-jet-label for="" value="Episode type"/>
+                            <x-label for="" value="Episode type"/>
                         </div>
                         <div class="col-span-3 sm:col-span-2 mt-1 sm:mt-0">
                             <label for="full" class="flex items-center gap-2 text-sm">
@@ -121,7 +121,7 @@
 
                     <div class="mt-4 grid grid-cols-3 sm:gap-8">
                         <div class="col-span-3 sm:col-span-1">
-                            <x-jet-label for="" value="Content"/>
+                            <x-label for="" value="Content"/>
                         </div>
                         <div class="col-span-3 sm:col-span-2 mt-1 sm:mt-0">
                             <label for="clean" class="flex items-center gap-2 text-sm">
@@ -138,7 +138,7 @@
 
                     <div class="mt-4 grid grid-cols-3 sm:gap-8">
                         <div class="col-span-3 sm:col-span-1 flex items-center justify-between" title="When the option 'Hidden' is selected, this option removes the episode from the podcatchers that support it.">
-                            <x-jet-label for="" value="Feed status"/>
+                            <x-label for="" value="Feed status"/>
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9 5.25h.008v.008H12v-.008z" />
                             </svg>

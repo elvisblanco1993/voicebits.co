@@ -7,11 +7,11 @@ use Livewire\Component;
 
 class Dashboard extends Component
 {
-    public $show, $podcast;
+    public $podcast;
 
     public function mount()
     {
-        $this->podcast = Podcast::findorfail($this->show);
+        $this->podcast = Podcast::find( (int) session('podcast') );
     }
 
     public function render()

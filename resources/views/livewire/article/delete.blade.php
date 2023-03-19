@@ -5,12 +5,12 @@
         </svg>
     </button>
 
-    <x-jet-dialog-modal wire:model="modal">
+    <x-dialog-modal wire:model="modal">
         <x-slot name="title">{{ __("Delete Article") }}</x-slot>
         <x-slot name="content">{{ __("Are you sure you want to delete $article->title? This action cannot be undone, and data lost cannot be recovered.") }}</x-slot>
         <x-slot name="footer">
-            <x-jet-secondary-button wire:click="$toggle('modal')">Cancel</x-jet-secondary-button>
-            <x-jet-danger-button class="ml-4" wire:click="delete">Delete Article</x-jet-danger-button>
+            <x-secondary-button wire:click="$toggle('modal')">Cancel</x-secondary-button>
+            <x-danger-button class="ml-4" wire:click="delete">Delete Article</x-danger-button>
         </x-slot>
-    </x-jet-dialog-modal>
+    </x-dialog-modal>
 </div>
