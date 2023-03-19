@@ -9,7 +9,7 @@
         </div>
         @if (!session()->has('message'))
             <div class="mt-4 flex justify-center">
-                <x-jet-button wire:click="save">Send magic link</x-jet-button>
+                <x-button wire:click="save">Send magic link</x-button>
             </div>
         @else
             <div class="mt-4">

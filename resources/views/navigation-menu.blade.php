@@ -7,14 +7,14 @@
                 </a>
 
                 <a href="{{ route('shows') }}" @class([
-                    'px-3 py-0.5 rounded-full uppercase text-xs font-medium',
+                    'px-3 py-0.5 rounded-full uppercase text-sm font-medium',
                     'bg-white text-slate-800' => request()->routeIs('shows')
-                ])>Podcasts</a>
+                ])>Catalog</a>
             </div>
 
             {{-- Desktop right --}}
             <div class="block">
-                <x-jet-dropdown>
+                <x-dropdown>
                     <x-slot name="trigger">
                         @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
                             <button class="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 transition">
@@ -38,18 +38,18 @@
                         </div>
 
                         @can('manage_billing')
-                            <x-jet-dropdown-link href="{{ route('billing') }}">
+                            <x-dropdown-link href="{{ route('billing') }}">
                                 {{ __('Billing') }}
-                            </x-jet-dropdown-link>
+                            </x-dropdown-link>
                         @endcan
-                        <x-jet-dropdown-link href="{{ route('profile.show') }}">
+                        <x-dropdown-link href="{{ route('profile.show') }}">
                             {{ __('Profile') }}
-                        </x-jet-dropdown-link>
+                        </x-dropdown-link>
 
                         @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
-                            <x-jet-dropdown-link href="{{ route('api-tokens.index') }}">
+                            <x-dropdown-link href="{{ route('api-tokens.index') }}">
                                 {{ __('API Tokens') }}
-                            </x-jet-dropdown-link>
+                            </x-dropdown-link>
                         @endif
 
                         <div class="border-t border-gray-100"></div>
@@ -57,14 +57,14 @@
                         <!-- Authentication -->
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
-                            <x-jet-dropdown-link href="{{ route('logout') }}"
+                            <x-dropdown-link href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
                                             this.closest('form').submit();">
                                 {{ __('Log Out') }}
-                            </x-jet-dropdown-link>
+                            </x-dropdown-link>
                         </form>
                     </x-slot>
-                </x-jet-dropdown>
+                </x-dropdown>
             </div>
         </div>
     </div>

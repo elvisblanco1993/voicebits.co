@@ -9,7 +9,7 @@
                 </a>
                 <div class="text-xl font-bold">New episode</div>
             </div>
-            <x-jet-button wire:click="save">Save episode</x-jet-button>
+            <x-button wire:click="save">Save episode</x-button>
         </div>
 
         {{-- Content section --}}
@@ -40,21 +40,21 @@
                     </div>
                     <input id="file-upload" wire:model="track" type="file" accept="audio/mpeg" class="h-full w-full opacity-0 cursor-pointer">
                 </div>
-                <x-jet-input-error for="track" class="mt-2 text-sm text-red-600"/>
+                <x-input-error for="track" class="mt-2 text-sm text-red-600"/>
             </div>
             <div class="mt-6">
                 <label for="title" class="block font-medium text-sm text-gray-700">Episode title <span class="text-red-500">*</span></label>
-                <x-jet-input type="text" wire:model="title" id="title" placeholder="What do you want to call this episode?" class="mt-1 w-full"/>
-                <x-jet-input-error for="title" class="mt-2 text-sm text-red-600"/>
+                <x-input type="text" wire:model="title" id="title" placeholder="What do you want to call this episode?" class="mt-1 w-full"/>
+                <x-input-error for="title" class="mt-2 text-sm text-red-600"/>
             </div>
             <div class="mt-6">
                 <label for="description" class="block font-medium text-sm text-gray-700">Episode description <span class="text-red-500">*</span></label>
                 <textarea wire:model="description" id="description" rows="10" class="input"></textarea>
-                <x-jet-input-error for="description" class="mt-2 text-sm text-red-600"/>
+                <x-input-error for="description" class="mt-2 text-sm text-red-600"/>
             </div>
             <div class="mt-6">
                 <label for="published_at" class="block font-medium text-sm text-gray-700">Publish date</label>
-                <x-jet-input type="datetime-local" wire:model.defer="published_at" id="published_at" placeholder="What do you want to call this episode?" class="mt-1"/>
+                <x-input type="datetime-local" wire:model.defer="published_at" id="published_at" placeholder="What do you want to call this episode?" class="mt-1"/>
                 <input type="hidden" id="timezone" name="timezone" value="{{ $podcast->timezone }}">
             </div>
         </div>
@@ -66,10 +66,10 @@
                 <div class="col-span-2 sm:col-span-1 grid">
                     <div class="grid grid-cols-3 sm:gap-8">
                         <div class="col-span-3 sm:col-span-1">
-                            <x-jet-label for="season" value="Season number"/>
+                            <x-label for="season" value="Season number"/>
                         </div>
                         <div class="col-span-3 sm:col-span-2 mt-1 sm:mt-0">
-                            <x-jet-input type="text" id="season" wire:model="season" class="w-full"/>
+                            <x-input type="text" id="season" wire:model="season" class="w-full"/>
                         </div>
                     </div>
 
@@ -77,10 +77,10 @@
 
                     <div class="mt-4 grid grid-cols-3 sm:gap-8">
                         <div class="col-span-3 sm:col-span-1">
-                            <x-jet-label for="number" value="Episode number"/>
+                            <x-label for="number" value="Episode number"/>
                         </div>
                         <div class="col-span-3 sm:col-span-2 mt-1 sm:mt-0">
-                            <x-jet-input type="text" id="number" wire:model="number" class="w-full"/>
+                            <x-input type="text" id="number" wire:model="number" class="w-full"/>
                         </div>
                     </div>
 
@@ -88,7 +88,7 @@
 
                     <div class="mt-4 grid grid-cols-3 sm:gap-8">
                         <div class="col-span-3 sm:col-span-1">
-                            <x-jet-label for="" value="Episode type"/>
+                            <x-label for="" value="Episode type"/>
                         </div>
                         <div class="col-span-3 sm:col-span-2 mt-1 sm:mt-0">
                             <label for="full" class="flex items-center gap-2 text-sm">
@@ -110,7 +110,7 @@
 
                     <div class="mt-4 grid grid-cols-3 sm:gap-8">
                         <div class="col-span-3 sm:col-span-1">
-                            <x-jet-label for="" value="Content"/>
+                            <x-label for="" value="Content"/>
                         </div>
                         <div class="col-span-3 sm:col-span-2 mt-1 sm:mt-0">
                             <label for="clean" class="flex items-center gap-2 text-sm">

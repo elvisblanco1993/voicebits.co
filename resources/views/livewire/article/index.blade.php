@@ -9,7 +9,7 @@
     </div>
 
     <div class="py-6 px-4 sm:px-6 lg:px-0">
-        <x-jet-input type="text" wire:model="search" placeholder="Search by title" class="w-full md:w-1/2"/>
+        <x-input type="text" wire:model="search" placeholder="Search by title" class="w-full md:w-1/2"/>
         {{-- Content --}}
         <div class="mt-4 prose max-w-full">
             <table class="table-auto w-full">
