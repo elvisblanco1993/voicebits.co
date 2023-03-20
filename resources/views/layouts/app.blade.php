@@ -19,8 +19,8 @@
 
             @if ( (Auth::user()->onTrial() && !Auth::user()->subscribed('voicebits')) && !request()->routeIs('signup') )
             <div class="w-full bg-indigo-50">
-                <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-sm text-center text-indigo-600 py-2">
-                    Your trial ends in {{ abs(round((strtotime(Auth::user()->trial_ends_at) - strtotime(now()))/86400)) }} day(s). <a href="{{ route('signup') }}" class="underline">Sign up for Voicebits here</a>.
+                <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-sm text-center text-black py-2">
+                    Your trial expires in <strong>{{ abs(round((strtotime(Auth::user()->trial_ends_at) - strtotime(now()))/86400)) }} days</strong>. <a href="{{ route('signup') }}" class="underline">Upgrade</a> to continue using Voicebits after your trial.
                 </div>
             </div>
             @endif

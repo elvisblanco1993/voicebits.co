@@ -68,7 +68,7 @@ class Settings extends Component
                 Storage::disk(config('filesystems.default'))->delete($this->podcast->cover);
             } else {
                 $this->validate([
-                    'cover' => 'required|file|mimes:png,jpg'
+                    'cover' => 'required|image|mimes:png,jpg|dimensions:min_width=1500,max_width=3000,aspect=1/1'
                 ]);
             }
             $new_cover_file = $this->cover->storePublicly('podcasts/'.$this->podcast->id.'/covers', config('filesystems.default'));

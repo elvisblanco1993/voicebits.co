@@ -138,7 +138,7 @@
 
                     <div class="mt-4">
                         <label for="cover" class="text-sm text-slate-600 px-3 py-2 rounded-lg border border-slate-200 hover:text-blue-600 hover:bg-blue-50 hover:border-blue-200 transition-all cursor-pointer">
-                            <input id="cover" type="file" accept="image/jpg,image/png" wire:model="cover" class="sr-only">
+                            <input id="cover" type="file" accept=".png,.jpeg" wire:model="cover" class="sr-only">
                             Upload episode art
                         </label>
                     </div>

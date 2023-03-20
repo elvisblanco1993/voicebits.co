@@ -96,7 +96,7 @@
             <div class="flex items-center space-x-3 fill-slate-600">
                 <p class="text-xl font-bold">Covert artwork</p>
             </div>
-            <p class="mt-2 text-slate-600">Select an image to use it as your podcast artwork.<br>Make sure your image is between 1400x1400px and 3000x3000px, weights less than 2MB, and is in jpeg or png format.</p>
+            <p class="mt-2 text-slate-600">Select an image to use it as your podcast artwork.<br>Make sure your image is between 1500x1450 px and 3000x3000 px, weights less than 2MB, and is in jpeg or png format.</p>
             <div class="mt-2">
                 <div class="">
                     @if ($podcast->cover && !$cover)
@@ -109,6 +109,7 @@
                         </div>
                     @endif
                 </div>
+                <x-input-error for="cover"/>
             </div>
         </div>
         <div class="px-8 py-4 bg-slate-200 flex justify-between rounded-b-lg">
@@ -119,8 +120,8 @@
                     </button>
                 </div>
                 <div>
-                    <label for="cover" class="text-sm text-slate-600 px-3 py-2 rounded-lg border border-slate-200 hover:text-blue-600 hover:bg-blue-50 hover:border-blue-200 transition-all cursor-pointer">
-                        <input type="file" wire:model="cover" id="cover" accept="image/jpeg,image/png" class="sr-only">
+                    <label for="artwork" class="text-sm text-slate-600 px-3 py-2 rounded-lg border border-slate-200 hover:text-blue-600 hover:bg-blue-50 hover:border-blue-200 transition-all cursor-pointer">
+                        <input type="file" wire:model="cover" id="artwork" accept="image/jpeg,image/png" class="sr-only">
                         Upload artwork
                     </label>
                 </div>

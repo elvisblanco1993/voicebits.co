@@ -1,4 +1,4 @@
-<div class="sticky top-0 bg-gray-50/90 dark:bg-gray-900/90 text-slate-600 dark:text-white backdrop-opacity-90 backdrop-blur">
+<div class="sticky top-0 z-50 bg-gray-50/90 dark:bg-gray-900/90 text-slate-600 dark:text-white backdrop-opacity-90 backdrop-blur">
     <div class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="h-20">
             <div class="h-full flex items-center justify-between">
