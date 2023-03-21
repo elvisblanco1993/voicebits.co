@@ -12,8 +12,8 @@ class PlaysCounterController extends Controller
     {
         if ($position = Location::get()) {
             // Check if episode played by same person already
-            $token = Hash::make($position->ip . $position->postalCode);
-            $counter = \App\Models\PlaysCounter::where( 'token', $token)->first();
+            $token = $player . $position->ip . $position->postalCode;
+            $counter = \App\Models\PlaysCounter::where('token', $token)->first();
 
             if ( $counter ) {
                 $counter->update([
