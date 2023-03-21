@@ -41,7 +41,7 @@
                         @if ($podcast->cover)
                             <img src="{{ Storage::url($podcast->cover) }}" alt="{{ $podcast->name }}" class="w-full aspect-video rounded-lg object-center object-cover">
                         @else
-                            <div class="w-full rounded-lg bg-blue-50 flex items-center justify-center">
+                            <div class="w-full aspect-video rounded-lg bg-blue-50 flex items-center justify-center">
                                 <img src="{{ asset('logo-mark.svg') }}" alt="{{ $podcast->name }}" class="w-12 h-auto">
                             </div>
                         @endif
