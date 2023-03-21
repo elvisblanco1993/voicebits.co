@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\PlaysCounter;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Hash;
 use Stevebauman\Location\Facades\Location;
@@ -22,6 +23,7 @@ class PlaysCounterController extends Controller
                     'region' => $position->regionName,
                     'country' => $position->countryName,
                     'webplayer' => $player,
+                    'updated_at' => PlaysCounter::where('updated_at', '>=', Carbon::now()->subMinutes(30))->latest()->first()->updated_at ?? now()
                 ], [
                     'episode_id' => $episode_id,
             ])->increment('plays');
