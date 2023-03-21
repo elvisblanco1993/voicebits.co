@@ -29,9 +29,9 @@ class EpisodeController extends Controller
     {
         $episode = Episode::where('guid', $episode)->first();
         // Only count plays here when playing from Third Party player or when not requesting from Apple Servers.
-        if ($player != 'web' && $player != 'apple.mp3') {
+        // if ($player != 'apple.mp3') {
             (new PlaysCounterController)->playCounter($episode->id, $episode->podcast_id, $player);
-        }
+        // }
 
         $file = Storage::disk(config('filesystems.default'))->get($episode->track_url);
         $size = Storage::disk(config('filesystems.default'))->size($episode->track_url);
@@ -43,8 +43,6 @@ class EpisodeController extends Controller
             $responseCode = 206;
             $range = request()->header('Range');
         }
-
-        Log::info($range);
 
         return response($file, $responseCode)
             ->withHeaders([
