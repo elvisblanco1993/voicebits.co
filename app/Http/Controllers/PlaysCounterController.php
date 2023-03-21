@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Log;
 use Stevebauman\Location\Facades\Location;
 
 class PlaysCounterController extends Controller
