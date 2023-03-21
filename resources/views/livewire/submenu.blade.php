@@ -11,9 +11,11 @@
             @can('manage_distribution')
                 <x-nav-link href="{{ route('podcast.distribution') }}" :active="request()->routeIs('podcast.distribution')">Distribution</x-nav-link>
             @endcan
-            @can('manage_website')
-                <x-nav-link href="{{ route('podcast.website') }}" :active="request()->routeIs('podcast.website')">Website</x-nav-link>
-            @endcan
+            @if (config('app.env') == 'local')
+                @can('manage_website')
+                    <x-nav-link href="{{ route('podcast.website') }}" :active="request()->routeIs('podcast.website')">Website</x-nav-link>
+                @endcan
+            @endif
         @endif
         @can('view_users')
             <x-nav-link href="{{ route('podcast.team') }}" :active="request()->routeIs('podcast.team')">Team</x-nav-link>

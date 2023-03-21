@@ -6,7 +6,7 @@
             <div>
                 <div class="text-sm text-slate-700 font-medium">Website</div>
                 <div class="mt-2 flex items-center justify-between">
-                    <span id="web" class="px-4 py-2 border border-r-0 border-gray-200 rounded-r-none rounded-lg w-full truncate">{{ route('podcast.website', ['url' => $podcast->url]) }}</span>
+                    <span id="web" class="px-4 py-2 border border-r-0 border-gray-200 rounded-r-none rounded-lg w-full truncate">{{ route('public.podcast.website', ['url' => $podcast->url]) }}</span>
                     <button class="w-auto text-center text-slate-600 px-4 py-2 rounded-l-none rounded-lg border border-slate-200 hover:text-blue-600 hover:bg-blue-50 hover:border-blue-200 transition-all"
                     id="webBtn"
                     onclick="copyWebsiteToClipboard()"
