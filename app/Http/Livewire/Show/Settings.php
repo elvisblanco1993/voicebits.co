@@ -13,12 +13,12 @@ class Settings extends Component
 {
     use WithFileUploads;
 
-    public $show, $podcast;
+    public $podcast;
     public $name, $description, $url, $category, $language, $type, $author, $cover, $explicit, $is_locked, $funding, $funding_text, $funding_url, $timezone;
 
     public function mount()
     {
-        $this->podcast = Podcast::findorfail($this->show);
+        $this->podcast = Podcast::findorfail(session('podcast'));
         $this->name = $this->podcast->name;
         $this->description = $this->podcast->description;
         $this->url = $this->podcast->url;
@@ -105,7 +105,7 @@ class Settings extends Component
             session()->flash('flash.bannerStyle', 'danger');
         }
 
-        return redirect()->route('show.settings', ['show' => $this->podcast->id]);
+        return redirect()->route('podcast.settings');
     }
 
     public function removeArtwork()
@@ -116,6 +116,6 @@ class Settings extends Component
                 'cover' => null,
             ]);
         }
-        return redirect()->route('show.settings', ['show' => $this->podcast->id]);
+        return redirect()->route('podcast.settings');
     }
 }

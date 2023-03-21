@@ -12,7 +12,7 @@ class Signup extends Component
     public function mount()
     {
         if (auth()->user()->subscribed('voicebits')) {
-            return redirect()->route('shows');
+            return redirect()->route('podcast.catalog');
         }
     }
 
@@ -36,7 +36,7 @@ class Signup extends Component
         return auth()->user()->newSubscription('voicebits', $price)
             ->allowPromotionCodes()
             ->checkout([
-            'success_url' => route('shows'),
+            'success_url' => route('podcast.catalog'),
             'cancel_url' => route('signup'),
         ]);
     }

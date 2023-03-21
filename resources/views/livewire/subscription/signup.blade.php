@@ -1,9 +1,9 @@
 <div>
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-0">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-0">
         <div class="prose max-w-full">
-            <h1>Subscribe to Voicebits</h1>
-            <p class="lead">Hi there!</p>
-            <p>We hope you enjoyed using Voicebits so far. If you like what you see, then please subscribe to one of our plans to continue podcasting with us.</p>
+            <h1>Subscribe to Voicebits 💎</h1>
+            <p class="">Thank you for choosing Voicebits as your podcast hosting platform. We hope you are enjoying the free trial and finding it useful for your podcast needs.</p>
+            <p class="">If you think that Voicebits is the right option for you, please sign up today to continue using our services.</p>
         </div>
         <div class="my-6 w-12 border-t border-blue-300"></div>
         <div class="my-6">

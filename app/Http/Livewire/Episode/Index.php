@@ -10,11 +10,11 @@ class Index extends Component
 {
     use WithPagination;
 
-    public $show, $podcast, $search = '';
+    public $podcast, $search = '';
 
     public function mount()
     {
-        $this->podcast = Podcast::find($this->show);
+        $this->podcast = Podcast::findorfail(session('podcast'));
     }
 
     public function render()

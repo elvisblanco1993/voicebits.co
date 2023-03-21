@@ -11,7 +11,7 @@ class Dashboard extends Component
 
     public function mount()
     {
-        $this->podcast = Podcast::findorfail($this->show);
+        $this->podcast = Podcast::findorfail( (int) session('podcast') );
     }
 
     public function render()

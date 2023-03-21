@@ -51,7 +51,7 @@ class Create extends Component
             Log::error($th);
             session()->flash('flash.banner', 'Oops. We ran into an issue and coult not create your show. Please contact us for assistance.');
             session()->flash('flash.bannerStyle', 'danger');
-            return redirect()->route('shows');
+            return redirect()->route('podcast.catalog');
         }
         return redirect()->route('show', ['show' => $podcast->id]);
     }

@@ -39,7 +39,7 @@ class Delete extends Component
             $this->deletePlays();
             $this->deletePodcast();
         }
-        return redirect()->route('shows');
+        return redirect()->route('podcast.catalog');
     }
 
     private function deleteEpisodes()

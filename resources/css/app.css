@@ -1,17 +1,13 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
 @layer utilities {
-    * {
-        font-family: 'Inter', sans-serif;
-    }
 
     [x-cloak] { display: none !important; }
 
     .input {
-        @apply border-gray-300 focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50 rounded-lg shadow-sm mt-1 w-full;
+        @apply border-slate-200 focus:border-indigo-500 ring-0 rounded-md block mt-1 w-full;
     }
 
     .primary-btn {

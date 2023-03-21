@@ -1,10 +1,8 @@
 <div>
-    @include('layouts.podcast-menu')
-
-    <div class="mt-6 text-xl font-bold">Podcast Website</div>
-    <div class="mt-4">
+    @livewire('submenu')
+    <div class="py-6">
+        <div class="text-2xl font-bold">Website</div>
         <p class="text-base text-slate-600 font-medium">Select a template for your podcast website.</p>
-
         <div class="mt-4 grid grid-cols-4 gap-8">
             <div class="col-span-4 sm:col-span-2 md:col-span-1">
                 <label for="modern" wire:click="setTemplate" >
@@ -47,5 +45,4 @@
             </div>
         </div>
     </div>
-    <div class="py-12"></div>
 </div>

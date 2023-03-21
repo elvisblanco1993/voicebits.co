@@ -8,16 +8,16 @@ use Livewire\Component;
 
 class Website extends Component
 {
-    public $show, $podcast;
+    public $podcast, $template, $language;
     public $header_background, $header_text_color, $header_link_color;
     public $body_background, $body_text_color, $body_link_color;
 
     public function mount()
     {
         if (config('app.env') === 'production') {
-            return redirect()->route('shows');
+            return redirect()->route('podcast.catalog');
         }
-        $this->podcast = Podcast::findorfail($this->show);
+        $this->podcast = Podcast::findorfail(session('podcast'));
         $this->template = $this->podcast->website->template;
         $this->language = $this->podcast->website->language;
         $this->header_background = $this->podcast->website->header_background;
@@ -43,7 +43,7 @@ class Website extends Component
         } catch (\Throwable $th) {
             Log::error($th);
         }
-        return redirect()->route('show.website', ['show' => $this->podcast->id]);
+        return redirect()->route('podcast.website');
     }
 
     public function setTemplate()
@@ -55,7 +55,7 @@ class Website extends Component
         } catch (\Throwable $th) {
             Log::error($th);
         }
-        return redirect()->route('show.website', ['show' => $this->podcast->id]);
+        return redirect()->route('podcast.website');
     }
 
     public function render()

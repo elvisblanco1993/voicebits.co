@@ -13,7 +13,7 @@ class Index extends Component
     public $show, $podcast, $search = '';
     public function mount()
     {
-        $this->podcast = Podcast::find($this->show);
+        $this->podcast = Podcast::find(session('podcast'));
     }
     public function render()
     {

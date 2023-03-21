@@ -8,6 +8,9 @@
 
         <title>{{ config('app.name', 'Laravel') }}</title>
 
+        <link rel="preconnect" href="https://fonts.bunny.net">
+        <link href="https://fonts.bunny.net/css?family=fira-sans:100,200,300,400,500,600,700,800,900|inter:100,200,300,400,500,600,700,800,900" rel="stylesheet" />
+
         <!-- Styles -->
         @vite('resources/css/app.css')
 
@@ -15,7 +18,7 @@
         @vite('resources/js/app.js')
     </head>
     <body>
-        <div class="font-sans text-black antialiased">
+        <div class="font-serif text-black antialiased">
             {{ $slot }}
         </div>
     </body>

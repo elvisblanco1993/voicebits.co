@@ -8,7 +8,7 @@ use Livewire\Component;
 class GetUrl extends Component
 {
     public $url;
-    public  $name, $owner_email, $cover;
+    public  $name, $owner_email, $cover, $owner_name;
 
     protected $rules = [
         'url' => ['required', 'url']

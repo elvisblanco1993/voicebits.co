@@ -8,12 +8,12 @@ use Illuminate\Support\Facades\Log;
 
 class Distribute extends Component
 {
-    public $show, $podcast;
+    public $podcast;
     public $podcastindex, $apple, $spotify, $google, $stitcher, $podcastaddict, $pocketcasts, $amazon, $pandora, $iheartradio, $castbox, $castro, $deezer;
 
     public function mount()
     {
-        $this->podcast = Podcast::findorfail($this->show);
+        $this->podcast = Podcast::findorfail(session('podcast'));
         $this->podcastindex = $this->podcast->podcastindex;
         $this->apple = $this->podcast->apple;
         $this->spotify = $this->podcast->spotify;
@@ -58,6 +58,6 @@ class Distribute extends Component
             session()->flash('flash.banner', 'Oops. We ran into an issue and could not save your changes. Please contact support.');
             session()->flash('flash.bannerStyle', 'danger');
         }
-        return redirect()->route('show.distribution', ['show' => $this->show]);
+        return redirect()->route('podcast.distribution');
     }
 }

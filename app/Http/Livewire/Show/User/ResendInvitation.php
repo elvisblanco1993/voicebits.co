@@ -31,6 +31,6 @@ class ResendInvitation extends Component
             session()->flash('flash.banner', 'Oops! Something happened on our end, and we could not send your invitation to ' .$this->email . '. Please try again later.');
             session()->flash('flash.bannerStyle', 'danger');
         }
-        return redirect()->route('show.users', ['show' => $this->podcast_id]);
+        return redirect()->route('podcast.team');
     }
 }

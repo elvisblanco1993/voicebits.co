@@ -41,6 +41,6 @@ class AcceptInvitation extends Component
             session()->flash('flash.banner', 'Oops! Something happened on our end, and we could not process your request. Please try again later.');
             session()->flash('flash.bannerStyle', 'danger');
         }
-        return redirect()->route('shows');
+        return redirect()->route('podcast.catalog');
     }
 }

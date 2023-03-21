@@ -8,12 +8,12 @@ use Illuminate\Support\Facades\Log;
 
 class Social extends Component
 {
-    public $show, $podcast;
+    public $podcast;
     public $show_social = false, $twitter, $instagram, $facebook, $linkedin, $pinterest, $youtube, $vimeo, $medium;
 
     public function mount()
     {
-        $this->podcast = Podcast::findorfail($this->show);
+        $this->podcast = Podcast::findorfail(session('podcast'));
         $this->show_social = $this->podcast->show_social;
         $this->twitter = $this->podcast->twitter;
         $this->instagram = $this->podcast->instagram;

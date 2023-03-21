@@ -1,16 +1,9 @@
 <div>
-    <div class="w-full bg-slate-900 text-white text-sm">
-        <div class="max-w-screen-2xl mx-auto h-16 flex items-center justify-between px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center space-x-6">
-                <a href="{{ route('shows') }}" class="inline-block">
-                    <img src="{{ asset('logo-mark.svg') }}" alt="{{ config('app.name') }}" class="block h-8 w-auto">
-                </a>
+    <div class="w-full bg-slate-50 text-slate-900 text-sm border-b border-b-slate-100">
+        <div class="max-w-7xl mx-auto h-12 flex items-center justify-between px-4 sm:px-6 lg:px-8">
 
-                <a href="{{ route('shows') }}" @class([
-                    'px-3 py-0.5 rounded-full uppercase text-sm font-medium',
-                    'bg-white text-slate-800' => request()->routeIs('shows')
-                ])>Catalog</a>
-            </div>
+            {{-- Podcast switcher --}}
+            @livewire('switcher')
 
             {{-- Desktop right --}}
             <div class="block">

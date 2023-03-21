@@ -30,43 +30,39 @@ Route::middleware([
     Route::get('/signup', App\Http\Livewire\Subscription\Signup::class)->name('signup');
     Route::get('/billing-portal', function(Request $request) {
         return $request->user()->redirectToBillingPortal(
-            route('shows')
+            route('podcast.catalog')
         );
     })->name('billing');
 
-    Route::middleware('subscribed')->group(function () {
-        /**
-         * Podcast routes
-         */
-        Route::get('/shows', App\Http\Livewire\Show\Index::class)->name('shows');
-        Route::get('/shows/{show}', App\Http\Livewire\Show\Dashboard::class)->name('show');
-        Route::get('/shows/{show}/social', App\Http\Livewire\Show\Social::class)->name('show.social');
-        Route::get('/shows/{show}/distribution', App\Http\Livewire\Show\Distribute::class)->name('show.distribution');
-        Route::get('/shows/{show}/website', App\Http\Livewire\Show\Website::class)->name('show.website');
-        Route::get('/shows/{show}/users', App\Http\Livewire\Show\User\Index::class)->name('show.users');
-        Route::get('/shows/{show}/settings', App\Http\Livewire\Show\Settings::class)->name('show.settings');
+    Route::middleware(['subscribed'])->prefix('admin')->group(function () {
 
-        /**
-         * Podcast Import routes
-         */
-        Route::get('/show/import', App\Http\Livewire\Show\Import\GetUrl::class)->name('show.import.start');
-        Route::get('/show/{temporary_podcast}/verify', App\Http\Livewire\Show\Import\VerifyEmail::class)->name('show.import.verify');
-        Route::get('/show/{podcast_id}/confirm/{uniqid}', App\Http\Livewire\Show\Import\ConfirmOwnership::class)->name('show.import.confirm');
+        // Podcast creation routes
+        Route::get('/new', App\Http\Livewire\Show\Create::class)->name('podcast.create');
+        Route::get('/import', App\Http\Livewire\Show\Import\GetUrl::class)->name('podcast.import.start');
+        Route::get('/import/{temporary_podcast}/verify', App\Http\Livewire\Show\Import\VerifyEmail::class)->name('podcast.import.verify');
+        Route::get('/import/{podcast_id}/confirm/{uniqid}', App\Http\Livewire\Show\Import\ConfirmOwnership::class)->name('podcast.import.confirm');
 
-        /**
-         * Episode routes
-         */
-        Route::get('/shows/{show}/episodes', App\Http\Livewire\Episode\Index::class)->name('episodes');
-        Route::get('/shows/{show}/episode/create', App\Http\Livewire\Episode\Create::class)->name('episode.create');
-        Route::get('/shows/{show}/episode/{episode}/edit', App\Http\Livewire\Episode\Edit::class)->name('episode.edit');
-        Route::get('/episode/preview/{episode}/', [App\Http\Controllers\EpisodeController::class, 'preview'])->name('episode.preview');
+        Route::middleware('podcast.exists')->group(function () {
+            // Podcast management routes
+            Route::get('/catalog', App\Http\Livewire\Show\Index::class)->name('podcast.catalog');
+            Route::get('/dashboard', App\Http\Livewire\Show\Dashboard::class)->name('podcast.dashboard');
+            Route::get('/social', App\Http\Livewire\Show\Social::class)->name('podcast.social');
+            Route::get('/distribution', App\Http\Livewire\Show\Distribute::class)->name('podcast.distribution');
+            Route::get('/website', App\Http\Livewire\Show\Website::class)->name('podcast.website');
+            Route::get('/team', App\Http\Livewire\Show\User\Index::class)->name('podcast.team');
+            Route::get('/settings', App\Http\Livewire\Show\Settings::class)->name('podcast.settings');
 
-        /**
-         * Article routes
-         */
-        Route::get('/articles', App\Http\Livewire\Article\Index::class)->name('article.index');
-        Route::get('/articles/create', App\Http\Livewire\Article\Create::class)->name('article.create');
-        Route::get('/articles/{article}/edit', App\Http\Livewire\Article\Edit::class)->name('article.edit');
+            // Episodes management routes
+            Route::get('/episodes', App\Http\Livewire\Episode\Index::class)->name('podcast.episodes');
+            Route::get('/episode/create', App\Http\Livewire\Episode\Create::class)->name('podcast.episode.create');
+            Route::get('/episode/{episode}/edit', App\Http\Livewire\Episode\Edit::class)->name('podcast.episode.edit');
+            Route::get('/episode/preview/{episode}/', [App\Http\Controllers\EpisodeController::class, 'preview'])->name('episode.preview');
+
+            // Article routes
+            Route::get('/articles', App\Http\Livewire\Article\Index::class)->name('article.index');
+            Route::get('/articles/create', App\Http\Livewire\Article\Create::class)->name('article.create');
+            Route::get('/articles/{article}/edit', App\Http\Livewire\Article\Edit::class)->name('article.edit');
+        });
     });
 });
 
