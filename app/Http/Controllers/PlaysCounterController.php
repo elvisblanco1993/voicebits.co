@@ -20,7 +20,7 @@ class PlaysCounterController extends Controller
                 \App\Models\PlaysCounter::create([
                     'podcast_id' => $podcast_id,
                     'episode_id' => $episode_id,
-                    'token' => session()->get('_token'),
+                    'token' => $position->ip,
                     'region' => $position->regionName,
                     'country' => $position->countryName,
                     'plays' => 1,
