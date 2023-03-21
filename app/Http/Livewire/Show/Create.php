@@ -25,6 +25,7 @@ class Create extends Component
     public function mount()
     {
         $this->author = auth()->user()->name;
+        $this->language = 'en';
         $this->timezone = "-05:00";
     }
 
@@ -53,7 +54,7 @@ class Create extends Component
             session()->flash('flash.bannerStyle', 'danger');
             return redirect()->route('podcast.catalog');
         }
-        return redirect()->route('show', ['show' => $podcast->id]);
+        return redirect()->route('podcast.dashboard');
     }
 
     public function render()

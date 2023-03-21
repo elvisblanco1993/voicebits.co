@@ -13,7 +13,7 @@ class Edit extends Component
 {
     use WithFileUploads;
 
-    public $show, $episode, $title, $description, $published_at, $season, $number, $type, $explicit, $cover, $track, $track_url, $track_size, $track_length, $blocked;
+    public $show, $episode, $title, $description, $published_at, $season, $number, $type, $explicit, $cover, $track, $track_url, $track_size, $track_length, $blocked, $embed_url;
 
     protected $listeners = ['getAudioDuration'];
     public function getAudioDuration($duration)
@@ -32,7 +32,7 @@ class Edit extends Component
         $this->type = $this->episode->type;
         $this->explicit = ($this->episode->explicit) ? "true" : "false";
         $this->track_url = $this->episode->track_url;
-        $this->embed_url = route('episode.embed', ['guid' => $this->episode->guid, 'player' => 'embed']);
+        $this->embed_url = route('public.episode.embed', ['guid' => $this->episode->guid, 'player' => 'embed']);
         $this->embed_url = '<embed width="100%" height="160" frameborder="no" scrolling="no" seamless src="' . $this->embed_url . '">';
         $this->blocked = ($this->episode->blocked) ? "true" : "false";
     }
@@ -80,7 +80,7 @@ class Edit extends Component
             session()->flash('flash.banner', 'Oops. We ran into an issue and coult not update your episode. Please contact us for assistance.');
             session()->flash('flash.bannerStyle', 'danger');
         }
-        return redirect()->route('episodes', ['show' => $this->episode->podcast_id]);
+        return redirect()->route('podcast.episodes');
     }
 
     public function render()

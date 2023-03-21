@@ -28,7 +28,7 @@
             {{-- Episodes --}}
             <main class="mb-12">
                 <embed width="100%" height="160" frameborder="no" scrolling="no" seamless
-                    src="{{ route('episode.embed', ['guid' => $episode->guid, 'player' => 'web']) }}"
+                    src="{{ route('public.episode.embed', ['guid' => $episode->guid, 'player' => 'web']) }}"
                 />
                 <div class="mt-12 prose max-w-full">
                     {!! str($episode->description)->markdown() !!}

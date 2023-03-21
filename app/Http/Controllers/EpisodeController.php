@@ -37,10 +37,14 @@ class EpisodeController extends Controller
         $size = Storage::disk(config('filesystems.default'))->size($episode->track_url);
 
         $responseCode = 200;
+        $range = '0-'.$size;
 
-        if (request()->header('Content-Range') || request()->header('Range')) {
+        if (request()->header('Range')) {
             $responseCode = 206;
+            $range = request()->header('Range');
         }
+
+        Log::info($range);
 
         return response($file, $responseCode)
             ->withHeaders([
@@ -54,7 +58,7 @@ class EpisodeController extends Controller
                 'Content-Length' => $size,
                 'Content-Type' => "audio/mpeg",
                 'Connection' => "Keep-Alive",
-                'Content-Range' => 'bytes 0-'.$size - 1 .'/'.$size,
+                'Content-Range' => $range.'/'.$size,
                 'X-Pad' => 'avoid browser bug',
                 'Etag' => $episode->track_url,
             ]);
@@ -67,7 +71,7 @@ class EpisodeController extends Controller
     {
         $episode = Episode::where('guid', $guid)->firstorfail();
         $cover = Storage::disk(config('filesystems.default'))->url($episode->cover ?? $episode->podcast->cover);
-        $track = route('episode.play', ['url' => $episode->podcast->url, 'episode' => $guid, 'player' => $player]);
+        $track = route('public.episode.play', ['url' => $episode->podcast->url, 'episode' => $guid, 'player' => $player]);
         return view('web.partials.embed', [
             'track' => $track,
             'cover' => $cover,
@@ -76,9 +80,9 @@ class EpisodeController extends Controller
             'show_name' => $episode->podcast->name,
             'show_description' => $episode->podcast->description,
             'show_author' => $episode->podcast->author,
-            'show_url' => route('podcast.website', ['url' => $episode->podcast->url]),
-            'episode_url' => route('podcast.episode', ['url' => $episode->podcast->url, 'episode' => $guid]),
-            'embed_url' => route('episode.embed', ['guid' => $guid, 'player' => $player]),
+            'show_url' => route('public.podcast.website', ['url' => $episode->podcast->url]),
+            'episode_url' => route('public.podcast.episode', ['url' => $episode->podcast->url, 'episode' => $guid]),
+            'embed_url' => route('public.episode.embed', ['guid' => $guid, 'player' => $player]),
         ]);
     }
 }

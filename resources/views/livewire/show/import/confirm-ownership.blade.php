@@ -1,5 +1,5 @@
 <div>
-    <div class="py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <div class="py-12 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <div class="text-2xl font-bold">You are all set!</div>
         <div class="mt-2 text-base font-normal max-w-xl mx-auto">We will start importing your podcast now and will let you know once is ready. It may take about 24 hours before you can see all your episodes listed.</div>
         <div class="mt-4">

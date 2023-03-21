@@ -16,4 +16,13 @@ class Index extends Component
             'podcasts' => auth()->user()->podcasts
         ]);
     }
+
+    public function goto($podcastId)
+    {
+        if (!auth()->user()->podcasts()->findorfail($podcastId)->exists()) {
+            return redirect()->route('podcast.catalog');
+        }
+        session()->put('podcast', $podcastId);
+        return redirect()->route('podcast.dashboard');
+    }
 }

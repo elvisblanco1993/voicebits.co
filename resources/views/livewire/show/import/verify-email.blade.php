@@ -1,5 +1,5 @@
 <div>
-    <div class="py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <div class="py-12 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <div class="text-2xl font-bold">Is this your podcast?</div>
         <div class="mt-2 text-base font-normal max-w-xl mx-auto">We will send you a magic link to the email listed below to confirm your ownership or this podcast.</div>
         <div class="mt-4">

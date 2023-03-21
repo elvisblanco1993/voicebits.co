@@ -38,7 +38,7 @@
         @include('web.partials.player', ['podacst' => $podcast])
 
         <header class="py-12">
-            <div class="px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+            <div class="px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
                 <div class="py-4 sm:py-8 lg:py-24 grid grid-cols-2 gap-8">
                     <div class="col-span-2 sm:col-span-1 flex flex-col items-center justify-center">
                         <h1 class="text-6xl font-extrabold">{{ $podcast->name }}</h1>
@@ -64,7 +64,7 @@
         </header>
 
         {{-- Content area --}}
-        <main class="py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <main class="py-12 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-4 gap-8">
                 <div class="col-span-4 sm:col-span-3 md:py-8">
                     {{-- Content area --}}

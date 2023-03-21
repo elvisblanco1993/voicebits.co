@@ -7,7 +7,8 @@ use Livewire\Component;
 
 class TotalPlays extends Component
 {
-    public $podcast;
+    public $podcast, $totalPlays, $from_website, $from_third_parties;
+
     public function mount()
     {
         $this->totalPlays = PlaysCounter::where('podcast_id', $this->podcast)->sum('plays');

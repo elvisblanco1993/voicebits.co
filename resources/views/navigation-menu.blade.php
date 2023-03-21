@@ -1,9 +1,14 @@
 <div>
     <div class="w-full bg-slate-50 text-slate-900 text-sm border-b border-b-slate-100">
-        <div class="max-w-7xl mx-auto h-12 flex items-center justify-between px-4 sm:px-6 lg:px-8">
+        <div class="max-w-5xl mx-auto h-12 flex items-center justify-between px-4 sm:px-6 lg:px-8">
 
-            {{-- Podcast switcher --}}
-            @livewire('switcher')
+            <div class="flex items-center space-x-4">
+                <a href="{{ route('podcast.catalog') }}">
+                    <img src="{{ asset('logo-mark-dark.svg') }}" alt="Voicebits" class="h-6">
+                </a>
+                <x-nav-link href="{{ route('podcast.catalog') }}" :active="request()->routeIs('podcast.catalog')">My podcasts</x-nav-link>
+            </div>
+
 
             {{-- Desktop right --}}
             <div class="block">

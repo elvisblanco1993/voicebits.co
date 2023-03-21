@@ -1,6 +1,7 @@
 <div>
     <div class="py-12 max-w-3xl mx-auto">
         <h1 class="text-3xl font-bold">Create podcast 🚀</h1>
+        <p class="mt-4">Welcome to your new Voicebits account. To get started, please create your first podcast. It's okay if you don't know exactly what to put. You can always change the details later.</p>
         <form wire:submit.prevent="save">
             @csrf
             <div class="mt-6">

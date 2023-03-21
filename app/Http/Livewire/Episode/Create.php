@@ -14,17 +14,12 @@ class Create extends Component
 {
     use WithFileUploads;
 
-    public $show, $title, $description, $published_at, $season, $number, $type = "full", $explicit = "false", $cover, $track, $track_url, $track_size, $track_length;
+    public $title, $description, $published_at, $season, $number, $type = "full", $explicit = "false", $cover, $track, $track_url, $track_size, $track_length;
 
     protected $listeners = ['getAudioDuration'];
     public function getAudioDuration($duration)
     {
         $this->track_length = $duration;
-    }
-
-    public function mount()
-    {
-        $this->show;
     }
 
     public function save()
@@ -33,16 +28,16 @@ class Create extends Component
 
         try {
             // Upload track
-            $this->track_url = $this->track->store('podcasts/' . $this->show . '/episodes', config('filesystems.default'));
+            $this->track_url = $this->track->store('podcasts/' . session('podcast') . '/episodes', config('filesystems.default'));
             // Upload artwork
             $artwork = ($this->cover) ?
-                $this->cover->storePublicly('podcasts/' . $this->show . '/covers', config('filesystems.default'))
+                $this->cover->storePublicly('podcasts/' . session('podcast') . '/covers', config('filesystems.default'))
                 :
                 null;
             // Create episode
             Episode::create([
                 'guid' => uniqid(),
-                'podcast_id' => $this->show,
+                'podcast_id' => session('podcast'),
                 'title' => $this->title,
                 'description' => $this->description,
                 'published_at' => ($this->published_at) ? Carbon::parse($this->published_at)->format('Y-m-d H:i:s') : null,
@@ -65,13 +60,13 @@ class Create extends Component
             session()->flash('flash.bannerStyle', 'danger');
         }
 
-        return redirect()->route('episodes', ['show' => $this->show]);
+        return redirect()->route('podcast.episodes');
     }
 
     public function render()
     {
         return view('livewire.episode.create', [
-            'podcast' => Podcast::find($this->show)
+            'podcast' => Podcast::findorfail(session('podcast'))
         ]);
     }
 

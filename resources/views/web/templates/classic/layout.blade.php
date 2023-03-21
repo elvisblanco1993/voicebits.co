@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
-        <link type="application/rss+xml" rel="alternate" title="{{$podcast->name}}" href="{{ route('show.feed', ['player' => 'web', 'url' => $podcast->url]) }}"/>
+        <link type="application/rss+xml" rel="alternate" title="{{$podcast->name}}" href="{{ route('public.podcast.feed', ['player' => 'web', 'url' => $podcast->url]) }}"/>
         <title>{{ $podcast->name . ' | ' . config('app.name', 'Voicebits - The Podcast Hosting and Distribution Platform') }}</title>
         @vite('resources/css/app.css')
         @livewireStyles
@@ -40,7 +40,7 @@
                             </div>
                             <div class="h-full col-span-10 lg:col-span-11 flex items-center justify-between">
                                 <div>
-                                    <a href="{{ route('podcast.episode', ['url' => $podcast->url, 'episode' => $episode->guid]) }}" class="hover:underline transition-all">
+                                    <a href="{{ route('public.podcast.episode', ['url' => $podcast->url, 'episode' => $episode->guid]) }}" class="hover:underline transition-all">
                                         <h2 class="text-xl font-bold text-slate-800">{{ $episode->title }}</h2>
                                     </a>
                                     <span class="mt-1 text-sm text-slate-600">{!! strip_tags(Str::limit($episode->description, 80, ' [...]')) !!}</span>

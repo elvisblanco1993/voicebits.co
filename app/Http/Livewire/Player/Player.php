@@ -19,7 +19,7 @@ class Player extends Component
     public function getEpisodeData($guid)
     {
         $this->episode = Episode::where('guid', $guid)->first();
-        $url = route('episode.play', ['url' => $this->episode->podcast->url, 'episode' => $guid, 'player' => 'web']);
+        $url = route('public.episode.play', ['url' => $this->episode->podcast->url, 'episode' => $guid, 'player' => 'web']);
         $this->emit('gotEpisodeData', $url, $this->episode->title, $guid);
     }
 

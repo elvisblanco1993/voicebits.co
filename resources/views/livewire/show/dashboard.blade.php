@@ -4,7 +4,7 @@
 
     {{-- Distribution Checklist --}}
     @if (!$podcast->cover || !$podcast->url || $podcast->episodes->count() === 0)
-        @include('layouts.podcast-dist-checklist')
+        @include('layouts.partials.podcast-dist-checklist')
     @endif
 
     {{-- Statistics --}}

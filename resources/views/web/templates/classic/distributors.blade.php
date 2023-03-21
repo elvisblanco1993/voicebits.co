@@ -40,4 +40,4 @@
 @if ($podcast->castro)
 <a href="{{ $podcast->castro }}" target="_blank" class="podcatcher-link">Listen on Castro</a>
 @endif
-<a href="{{ route('show.feed', ['url' => $podcast->url, 'player' => 'rss']) }}" target="_blank" class="podcatcher-link">RSS Feed</a>
+<a href="{{ route('public.podcast.feed', ['url' => $podcast->url, 'player' => 'rss']) }}" target="_blank" class="podcatcher-link">RSS Feed</a>

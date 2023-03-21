@@ -10,14 +10,14 @@
         <link rel="canonical" href="{{ url()->current() }}">
 
         <link rel="preconnect" href="https://fonts.bunny.net">
-        <link href="https://fonts.bunny.net/css?family=fira-sans:100,200,300,400,500,600,700,800,900|inter:100,200,300,400,500,600,700,800,900" rel="stylesheet" />
+        <link href="https://fonts.bunny.net/css?family=inter:100,200,300,400,500,600,700,800,900" rel="stylesheet" />
 
         @vite('resources/css/app.css')
         @livewireStyles
         <script defer src="https://unpkg.com/@alpinejs/collapse@3.x.x/dist/cdn.min.js"></script>
         @vite('resources/js/app.js')
     </head>
-    <body class="font-serif antialiased min-h-screen bg-gray-100 dark:bg-gray-900">
+    <body class="font-sans antialiased min-h-screen bg-gray-100 dark:bg-gray-900">
         @include('web.website.partials.navbar')
         @yield('content')
         @include('web.website.partials.footer')

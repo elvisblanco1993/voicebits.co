@@ -16,7 +16,7 @@
             <div class="mt-6">
                 <div class="text-sm text-slate-700 font-medium">RSS Feed</div>
                 <div class="mt-2 flex items-center justify-between">
-                    <span id="rss" class="px-4 py-2 border border-r-0 border-gray-200 rounded-r-none rounded-lg w-full truncate">{{ route('show.feed', ['url' => $podcast->url, 'player' => 'rss']) }}</span>
+                    <span id="rss" class="px-4 py-2 border border-r-0 border-gray-200 rounded-r-none rounded-lg w-full truncate">{{ route('public.podcast.feed', ['url' => $podcast->url, 'player' => 'rss']) }}</span>
                     <button class="w-auto text-center text-slate-600 px-4 py-2 rounded-l-none rounded-lg border border-slate-200 hover:text-blue-600 hover:bg-blue-50 hover:border-blue-200 transition-all"
                     id="rssBtn"
                     onclick="copyRssToClipboard()"
