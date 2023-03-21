@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\PlaysCounter;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Hash;
 use Stevebauman\Location\Facades\Location;
@@ -12,24 +13,18 @@ class PlaysCounterController extends Controller
     {
         if ($position = Location::get()) {
             // Check if episode played by same person already
-            $token = $player . $position->ip . $position->postalCode;
-            $counter = \App\Models\PlaysCounter::where('token', $token)->first();
+            $token = hash('sha512', $player . $position->ip);
 
-            if ( $counter ) {
-                $counter->update([
-                    'plays' => $counter->plays + 1,
-                ]);
-            } else {
-                \App\Models\PlaysCounter::create([
+            PlaysCounter::updateOrCreate(
+                [
                     'podcast_id' => $podcast_id,
-                    'episode_id' => $episode_id,
                     'token' => $token,
                     'region' => $position->regionName,
                     'country' => $position->countryName,
-                    'plays' => 1,
                     'webplayer' => $player,
-                ]);
-            }
+                ], [
+                    'episode_id' => $episode_id,
+            ])->increment('plays');
         }
     }
 }
