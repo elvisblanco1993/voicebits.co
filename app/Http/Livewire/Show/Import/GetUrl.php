@@ -43,7 +43,7 @@ class GetUrl extends Component
                 'cover' => $this->cover,
                 'feed_url' => $this->url,
             ]);
-        return redirect()->route('show.import.verify', ['temporary_podcast' => $temporary_podcast]);
+        return redirect()->route('podcast.import.verify', ['temporary_podcast' => $temporary_podcast]);
     }
 
     public function render()

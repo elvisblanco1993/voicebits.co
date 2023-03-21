@@ -39,6 +39,6 @@ class Delete extends Component
             session()->flash('flash.banner', 'Oops. We ran into an issue and coult not delete your episode. Please contact us for assistance.');
             session()->flash('flash.bannerStyle', 'danger');
         }
-        return redirect()->route('episodes', ['show' => $this->episode->podcast_id]);
+        return redirect()->route('podcast.episodes');
     }
 }

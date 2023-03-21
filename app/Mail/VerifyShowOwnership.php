@@ -32,6 +32,6 @@ class VerifyShowOwnership extends Mailable
     public function build()
     {
         return $this->markdown('emails.verify-show-ownership')
-            ->subject("Verify ownership of your show Voicebits.");
+            ->subject("Verify ownership of your podcast.");
     }
 }

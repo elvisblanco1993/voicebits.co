@@ -35,7 +35,7 @@
                 @endforelse
             @endif
             {{-- End - Invitation --}}
-            <div class="w-full grid grid-cols-4 gap-8">
+            <div class="w-full grid grid-cols-4 items-start gap-8">
                 @forelse ($podcasts as $podcast)
                     <button wire:click="goto({{$podcast->id}})" class="col-span-4 sm:col-span-2 md:col-span-1 w-full text-left">
                         @if ($podcast->cover)

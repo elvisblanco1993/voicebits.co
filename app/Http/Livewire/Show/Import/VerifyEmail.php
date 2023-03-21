@@ -30,7 +30,7 @@ class VerifyEmail extends Component
         Mail::to($podcast->owner_email)->send(new VerifyShowOwnership($podcast->id, $uniqid));
 
         return redirect()
-            ->route('show.import.verify', ['temporary_podcast' => $podcast->id])
+            ->route('podcast.import.verify', ['temporary_podcast' => $podcast->id])
             ->with('message', 'Please check your email to continue.');
     }
 

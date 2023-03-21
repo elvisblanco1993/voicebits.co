@@ -6,12 +6,12 @@
             @csrf
             <div class="mt-6">
                 <x-label for="name" value="Podcast name" />
-                <x-input type="text" id="name" wire:model="name" class="mt-1 w-full" autofocus/>
+                <x-input type="text" id="name" wire:model.defer="name" class="mt-1 w-full" autofocus/>
                 <x-input-error for="name" class="text-sm text-red-600 mt-2"/>
             </div>
             <div class="mt-6">
                 <x-label for="description" value="Podcast description" />
-                <textarea wire:model="description" id="description" rows="6" class="input"></textarea>
+                <textarea wire:model.defer="description" id="description" rows="6" class="input"></textarea>
                 <x-input-error for="description" class="text-sm text-red-600 mt-2"/>
             </div>
             <div class="mt-6 grid grid-cols-2 gap-8">
@@ -53,7 +53,7 @@
             </div>
             <div class="mt-6">
                 <x-label for="author" value="Podcast author" />
-                <x-input type="text" id="author" wire:model="author" class="mt-1 w-full"/>
+                <x-input type="text" id="author" wire:model.defer="author" class="mt-1 w-full"/>
                 <x-input-error for="author" class="text-sm text-red-600 mt-2"/>
             </div>
 

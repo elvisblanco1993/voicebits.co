@@ -17,21 +17,21 @@
     </head>
     <body class="font-sans antialiased">
         <x-banner />
-        <div class="min-h-screen bg-white relative">
+        <div class="min-h-screen bg-slate-50 relative">
 
+            @if ( (Auth::user()->onTrial() && !Auth::user()->subscribed('voicebits')) && !request()->routeIs('signup') )
+                <div class="w-full bg-indigo-50">
+                    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-sm text-center text-black py-2">
+                        Your trial expires in <strong>{{ abs(round((strtotime(Auth::user()->trial_ends_at) - strtotime(now()))/86400)) }} days</strong>. <a href="{{ route('signup') }}" class="underline">Upgrade</a> to continue using Voicebits after your trial.
+                    </div>
+                </div>
+            @endif
             @include('navigation-menu')
 
             <main class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
                 {{ $slot }}
             </main>
 
-            @if ( (Auth::user()->onTrial() && !Auth::user()->subscribed('voicebits')) && !request()->routeIs('signup') )
-                <div class="w-full bg-indigo-50 fixed bottom-0">
-                    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-sm text-center text-black py-2">
-                        Your trial expires in <strong>{{ abs(round((strtotime(Auth::user()->trial_ends_at) - strtotime(now()))/86400)) }} days</strong>. <a href="{{ route('signup') }}" class="underline">Upgrade</a> to continue using Voicebits after your trial.
-                    </div>
-                </div>
-            @endif
         </div>
 
         @stack('modals')
