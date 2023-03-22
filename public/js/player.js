@@ -29,11 +29,6 @@ function play(guid) {
             }
         }
 
-        // Records unique play
-        if (player.currentTime >= 5 && player.currentTime < 6) {
-            Livewire.emit('countPlay');
-        }
-
         if (player.paused) {
             setTimeout(function () {
                 player.play();

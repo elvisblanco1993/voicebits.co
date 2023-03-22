@@ -13,10 +13,11 @@ class PlaysCounter extends Model
         'podcast_id',
         'episode_id',
         'token',
+        'city',
         'region',
         'country',
         'downloads',
-        'webplayer'
+        'player',
     ];
 
     public function episodes()

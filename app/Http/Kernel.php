@@ -66,5 +66,6 @@ class Kernel extends HttpKernel
         'subscribed' => \App\Http\Middleware\CheckSubscriptionStatus::class,
         'xframe.options' => \App\Http\Middleware\XFrameOptions::class,
         'podcast.exists' => \App\Http\Middleware\SetActivePodcast::class,
+        'downloads.counter' => \App\Http\Middleware\DownloadsCounter::class,
     ];
 }

@@ -81,4 +81,9 @@ class Podcast extends Model
             ->wherePivot('role', 'owner')
             ->first();
     }
+
+    public function downloads()
+    {
+        return $this->hasMany(PlaysCounter::class);
+    }
 }

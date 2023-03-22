@@ -16,18 +16,11 @@
 
     {{-- Statistics --}}
     @if ($podcast->cover && $podcast->url && $podcast->episodes->count() > 0)
-        <div class="my-12 grid grid-cols-2 gap-8">
-            <div class="col-span-2 sm:col-span-1">
-                @livewire('show.statistics.total-plays', ['podcast' => $podcast->id])
-            </div>
-            <div class="col-span-2 sm:col-span-1">
-                @livewire('show.statistics.estimated-audience-size', ['podcast' => $podcast->id])
-            </div>
-            <div class="col-span-2 sm:col-span-1">
-                @livewire('show.statistics.plays-at-show-launch', ['podcast' => $podcast->id])
-            </div>
-            <div class="col-span-2 sm:col-span-1">
-                @livewire('show.statistics.total-plays-by-region', ['podcast' => $podcast->id])
+        <div class="py-6 grid grid-cols-2 gap-8">
+            <div class="text-2xl font-bold">Analytics</div>
+
+            <div class="mt-4">
+                @livewire('analytics.show')
             </div>
         </div>
     @else

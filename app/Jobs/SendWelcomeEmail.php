@@ -38,7 +38,6 @@ class SendWelcomeEmail implements ShouldQueue
     {
         try {
             Mail::to($this->email)->send(new AccountCreated());
-            Mail::to(config('mail.from.address'), new NewTrialAccountAlert());
         } catch (\Throwable $th) {
             Log::error($th);
         }
