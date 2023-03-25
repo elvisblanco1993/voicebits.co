@@ -82,13 +82,23 @@ class User extends Authenticatable
         }));
     }
 
+    public function isSuperAdmin() : bool
+    {
+        return $this->role == 'super_admin';
+    }
+
     public function podcasts()
     {
         return $this->belongsToMany(Podcast::class)->withTimestamps()->withPivot(['permissions', 'role']);
     }
 
-    public function hasPendingInvitations()
+    public function hasPendingInvitations() : bool
     {
         return DB::table('podcast_invitations')->where('email', $this->email)->exists();
+    }
+
+    public function isPodcastTeamMember() : bool
+    {
+        return $this->is_team_member;
     }
 }

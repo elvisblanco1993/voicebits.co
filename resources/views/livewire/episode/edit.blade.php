@@ -1,17 +1,17 @@
 <div>
-    <div class="max-w-5xl mx-auto h-44 bg-center bg-cover" style="background-image: url('{{ asset($episode->podcast->cover) }}') ">
+    <div class="max-w-7xl mx-auto h-44 bg-center bg-cover" style="background-image: url('{{ asset($episode->podcast->cover) }}') ">
         <div class="h-full flex items-center bg-slate-900/60 backdrop-blur-xl px-4 sm:px-6 lg:px-8">
             @if ($episode->podcast->cover)
                 <img src="{{ Storage::url($episode->podcast->cover) }}" alt="{{ $episode->podcast->name }}" class="w-24 aspect-square rounded-xl object-center object-cover">
             @else
-                <div class="h-24 w-24 rounded-xl bg-indigo-50 flex items-center justify-center">
+                <div class="h-24 w-24 rounded-xl bg-purple-50 flex items-center justify-center">
                     <img src="{{ asset('logo-mark.svg') }}" alt="{{ $episode->podcast->name }}" class="w-10 h-auto">
                 </div>
             @endif
             <h1 class="ml-6 text-3xl font-bold text-white">{{ $episode->podcast->name }}</h1>
         </div>
     </div>
-    <div class="mt-4 max-w-5xl mx-auto px-4 sm:px-6 lg:px-0">
+    <div class="mt-4 max-w-7xl mx-auto px-4 sm:px-6 lg:px-0">
         <div class="flex items-center justify-between">
             <div class="flex items-center gap-3">
                 <a href="{{ route('podcast.episodes') }}" class="hover:text-[#0099ff] transition-all">
@@ -42,7 +42,7 @@
                         </div>
                     </div>
 
-                    <label for="track" class="text-sm text-slate-600 px-3 py-2 rounded-lg border border-slate-200 hover:text-blue-600 hover:bg-blue-50 hover:border-blue-200 transition-all cursor-pointer">
+                    <label for="track" class="text-sm text-slate-600 px-3 py-2 rounded-lg border border-slate-200 hover:text-purple-600 hover:bg-purple-50 hover:border-purple-200 transition-all cursor-pointer">
                         <input id="track" wire:model.defer="track" type="file" accept="audio/mpeg" class="sr-only">
                         @if ($track)
                         {{__("New track uploaded")}}
@@ -182,7 +182,7 @@
                     @endif
 
                     <div class="mt-4">
-                        <label for="cover" class="text-sm text-slate-600 px-3 py-2 rounded-lg border border-slate-200 hover:text-blue-600 hover:bg-blue-50 hover:border-blue-200 transition-all cursor-pointer">
+                        <label for="cover" class="text-sm text-slate-600 px-3 py-2 rounded-lg border border-slate-200 hover:text-purple-600 hover:bg-purple-50 hover:border-purple-200 transition-all cursor-pointer">
                             <input id="cover" type="file" accept=".png,.jpeg" wire:model.defer="cover" class="sr-only">
                             Upload episode art
                         </label>
@@ -197,7 +197,7 @@
             <div class="">
                 <div class="flex items-center justify-between">
                     <label for="embed" class="block font-medium text-sm text-gray-700">Embed</label>
-                    <button class="flex items-center space-x-2 text-sm text-slate-600 hover:text-blue-600 transition-all" onclick="copyEmbed()">
+                    <button class="flex items-center space-x-2 text-sm text-slate-600 hover:text-purple-600 transition-all" onclick="copyEmbed()">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                             <path d="M8 2a1 1 0 000 2h2a1 1 0 100-2H8z" />
                             <path d="M3 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v6h-4.586l1.293-1.293a1 1 0 00-1.414-1.414l-3 3a1 1 0 000 1.414l3 3a1 1 0 001.414-1.414L10.414 13H15v3a2 2 0 01-2 2H5a2 2 0 01-2-2V5zM15 11h2a1 1 0 110 2h-2v-2z" />

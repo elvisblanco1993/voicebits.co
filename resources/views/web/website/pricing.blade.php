@@ -1,6 +1,6 @@
 @extends('web.website.layout')
 @section('content')
-    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-0 text-slate-800 dark:text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-0 text-slate-800 dark:text-white">
         <div class="py-20">
             <div class="grid grid-cols-12 gap-4 items-center">
                 <div class="col-span-12 md:col-span-8">
@@ -38,7 +38,7 @@
                         <div class="uppercase text-4xl font-black text-slate-400 dark:text-slate-700">Agency</div>
                     </div>
                 </div>
-                <div class="col-span-12 md:col-span-4 bg-slate-200 dark:bg-slate-800 px-6 py-8 rounded-lg">
+                <div class="col-span-12 md:col-span-4 bg-purple-100 dark:bg-slate-800 px-6 py-8 rounded-lg">
                     <h3 class="text-2xl font-bold">All plans include</h3>
                     <div class="mt-4">
                         <p class="flex items-center space-x-2 text-sm">
@@ -73,7 +73,7 @@
                         </p>
                     </div>
                     <p class="mt-6">
-                        <a href="{{ route('register') }}" class="inline-block w-full px-4 py-2 text-white bg-[#0099ff] hover:bg-[#0099ff]/80 text-center font-medium rounded-full">Get started with a free trial</a>
+                        <a href="{{ route('register') }}" class="inline-block w-full px-4 py-2 text-white bg-purple-800 hover:bg-purple-700 text-center font-medium rounded-full">Get started with a free trial</a>
                     </p>
                 </div>
             </div>

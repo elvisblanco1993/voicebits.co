@@ -9,7 +9,7 @@
         @livewireStyles
     </head>
     <body class="antialiased min-h-screen">
-        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-0">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-0">
             <header class="py-12 grid grid-cols-12 items-center gap-8">
                 <div class="col-span-12 md:col-span-4">
                     <img src="{{ Storage::url($podcast->cover) }}" alt="{{ $podcast->name }}" class="rounded-2xl shadow w-3/4 mx-auto md:w-full aspect-square object-center object-cover">

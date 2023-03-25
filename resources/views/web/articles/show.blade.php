@@ -16,7 +16,7 @@
     </head>
     <body class="antialiased min-h-screen bg-gray-100 dark:bg-gray-900">
         @include('web.website.partials.navbar')
-        <article class="md:py-12 max-w-5xl mx-auto px-4 sm:px-6 lg:px-0 text-slate-800 dark:text-white" itemtype="http://schema.org/Article">
+        <article class="md:py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-0 text-slate-800 dark:text-white" itemtype="http://schema.org/Article">
             <div>
                 <a href="{{ route('blog.index') }}" class="text-sm text-slate-400 underline hover:text-slate-600 transition-all">Voicebits blog</a>
             </div>
@@ -35,7 +35,7 @@
                 <ul class="mt-4 prose">
                     @forelse (App\Models\Article::whereNotNull('published_at')->where('slug', '!=', $article->slug)->orderBy('published_at', 'desc')->take(3)->get() as $related_article)
                         <li class="list-disc">
-                            <a href="{{ route('blog.article', ['article' => $related_article->slug]) }}" class="text-blue-600 underline hover:text-blue-700">{{ $related_article->title }}</a>
+                            <a href="{{ route('blog.article', ['article' => $related_article->slug]) }}" class="text-purple-600 underline hover:text-purple-700">{{ $related_article->title }}</a>
                         </li>
                     @empty
                     @endforelse

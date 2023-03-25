@@ -24,11 +24,11 @@
                 </div>
                 <div class="col-span-2 md:col-span-1">
                     <x-label value="Podcast type" />
-                    <label for="serial" class="mt-1 inline-flex items-center space-x-3 text-sm px-4 py-2 border rounded-lg cursor-pointer hover:border-blue-300">
+                    <label for="serial" class="mt-1 inline-flex items-center space-x-3 text-sm px-4 py-2 border rounded-lg cursor-pointer hover:border-purple-300">
                         <input type="radio" name="type" wire:model="type" id="serial" value="serial" class="cursor-pointer">
                         <span>{{ __("Serial") }}</span>
                     </label>
-                    <label for="episodic" class="mt-1 mx-2 inline-flex items-center space-x-3 text-sm px-4 py-2 border rounded-lg cursor-pointer hover:border-blue-300">
+                    <label for="episodic" class="mt-1 mx-2 inline-flex items-center space-x-3 text-sm px-4 py-2 border rounded-lg cursor-pointer hover:border-purple-300">
                         <input type="radio" name="type" wire:model="type" id="episodic" value="episodic" class="cursor-pointer">
                         <span>{{ __("Episodic") }}</span>
                     </label>
@@ -59,7 +59,7 @@
 
             <div class="mt-6 flex justify-end">
                 <a href="{{ route('podcast.catalog') }}"
-                    class="inline-flex items-center px-4 py-2 bg-white border border-gray-300 rounded-lg font-semibold text-xs text-gray-700 uppercase tracking-widest shadow-sm hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:ring focus:ring-blue-200 active:text-gray-800 active:bg-gray-50 disabled:opacity-25 transition"
+                    class="inline-flex items-center px-4 py-2 bg-white border border-gray-300 rounded-lg font-semibold text-xs text-gray-700 uppercase tracking-widest shadow-sm hover:text-gray-500 focus:outline-none focus:border-purple-300 focus:ring focus:ring-purple-200 active:text-gray-800 active:bg-gray-50 disabled:opacity-25 transition"
                 >{{ __("Cancel") }}</a>
                 <x-button type="submit" class="ml-4">{{ __("Create show") }}</x-button>
             </div>

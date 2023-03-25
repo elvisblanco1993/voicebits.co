@@ -8,10 +8,10 @@
 
     <div class="py-6 px-4 sm:px-6 lg:px-0">
         <input type="text" id="title" wire:model.defer="title" placeholder="Title" autofocus
-            class="w-full border-none rounded-lg focus:ring focus:ring-blue-200 text-2xl font-bold"/>
+            class="w-full border-none rounded-lg focus:ring focus:ring-purple-200 text-2xl font-bold"/>
         <x-input-error for="title" class="mt-1" />
         <textarea id="content" wire:model.defer="content" cols="30" rows="25" placeholder="Write something amazing..."
-            class="mt-6 w-full border-none rounded-lg focus:ring focus:ring-blue-200"
+            class="mt-6 w-full border-none rounded-lg focus:ring focus:ring-purple-200"
         ></textarea>
         <small class="text-slate-500">Markdown is supported here.</small>
         <x-input-error for="content" class="mt-1" />
@@ -34,7 +34,7 @@
                             <p class="mt-2 text-sm text-slate-500">PNG, JPG, WEBP up to 2MB</p>
                         </div>
                         <div class="mt-6 flex items-center justify-center gap-4">
-                            <label for="image" class="text-sm text-slate-600 px-3 py-2 rounded-lg border border-slate-200 hover:text-blue-600 hover:bg-blue-50 hover:border-blue-200 transition-all cursor-pointer">
+                            <label for="image" class="text-sm text-slate-600 px-3 py-2 rounded-lg border border-slate-200 hover:text-purple-600 hover:bg-purple-50 hover:border-purple-200 transition-all cursor-pointer">
                                 <span>Upload image</span>
                                 <input id="image" type="file" wire:model="image" class="sr-only">
                             </label>
@@ -47,7 +47,7 @@
         <div class="mt-6 flex items-end justify-between">
             <div class="w-1/2">
                 <x-label for="author">Author</x-label>
-                <input type="text" id="author" wire:model.defer="author" placeholder="{{ Auth::user()->name }}" class="flex-none w-full border-none rounded-lg focus:ring focus:ring-blue-200 text-sm"/>
+                <input type="text" id="author" wire:model.defer="author" placeholder="{{ Auth::user()->name }}" class="flex-none w-full border-none rounded-lg focus:ring focus:ring-purple-200 text-sm"/>
                 <x-input-error for="author" class="mt-1" />
             </div>
             <div class="">

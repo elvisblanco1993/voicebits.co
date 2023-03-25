@@ -1,13 +1,12 @@
 <div class="sticky top-0 z-50 bg-gray-50/90 dark:bg-gray-900/90 text-slate-600 dark:text-white backdrop-opacity-90 backdrop-blur">
     <div class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="h-20">
+        <div class="h-16">
             <div class="h-full flex items-center justify-between">
                 {{-- Logo --}}
                 <div class="flex items-center gap-8">
                     <a href="{{ route('home') }}" class="flex items-center gap-3">
-                        <img src="{{ asset('logo-mark.svg') }}" alt="" class="block h-8 w-auto">
+                        <img src="{{ asset('logo-mark-dark.svg') }}" alt="" class="block h-6 w-auto">
                         <span class="text-2xl font-semibold text-slate-800 dark:text-white">voicebits</span>
-                        <sup class="text-xs font-light tracking-wider text-slate-400">beta</sup>
                     </a>
                 </div>
 

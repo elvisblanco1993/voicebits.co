@@ -9,48 +9,48 @@
 
     <div class="py-12">
         <a href="{{ route('show', ['show' => $podcast->id]) }}" @class([
-            'block w-full my-1 px-3 py-2 rounded-lg text-sm font-medium hover:bg-indigo-100 hover:text-indigo-700',
-            'text-indigo-700 bg-indigo-100' => request()->routeIs('show')
+            'block w-full my-1 px-3 py-2 rounded-lg text-sm font-medium hover:bg-purple-100 hover:text-purple-700',
+            'text-purple-700 bg-purple-100' => request()->routeIs('show')
         ])>Dashboard</a>
         @can('view_episodes', $podcast)
             <a href="{{ route('episodes', ['show' => $podcast->id]) }}" @class([
-                'block w-full my-1 px-3 py-2 rounded-lg text-sm font-medium hover:bg-indigo-100 hover:text-indigo-700',
-                'text-indigo-700 bg-indigo-100' => request()->routeIs('episodes')
+                'block w-full my-1 px-3 py-2 rounded-lg text-sm font-medium hover:bg-purple-100 hover:text-purple-700',
+                'text-purple-700 bg-purple-100' => request()->routeIs('episodes')
             ])>Episodes</a>
         @endcan
         @if ($podcast->isReadyToDistribute())
             @can('manage_social', $podcast)
                 <a href="{{ route('show.social', ['show' => $podcast->id]) }}" @class([
-                    'block w-full my-1 px-3 py-2 rounded-lg text-sm font-medium hover:bg-indigo-100 hover:text-indigo-700',
-                    'text-indigo-700 bg-indigo-100' => request()->routeIs('show.social')
+                    'block w-full my-1 px-3 py-2 rounded-lg text-sm font-medium hover:bg-purple-100 hover:text-purple-700',
+                    'text-purple-700 bg-purple-100' => request()->routeIs('show.social')
                 ])>Social</a>
             @endcan
             @can('manage_distribution', $podcast)
                 <a href="{{ route('show.distribution', ['show' => $podcast->id]) }}" @class([
-                    'block w-full my-1 px-3 py-2 rounded-lg text-sm font-medium hover:bg-indigo-100 hover:text-indigo-700',
-                    'text-indigo-700 bg-indigo-100' => request()->routeIs('show.distribution')
+                    'block w-full my-1 px-3 py-2 rounded-lg text-sm font-medium hover:bg-purple-100 hover:text-purple-700',
+                    'text-purple-700 bg-purple-100' => request()->routeIs('show.distribution')
                 ])>Distribution</a>
             @endcan
 
             @if (config('app.env') === 'local')
                 @can('manage_website', $podcast)
                     <a href="{{ route('show.website', ['show' => $podcast->id]) }}" @class([
-                        'block w-full my-1 px-3 py-2 rounded-lg text-sm font-medium hover:bg-indigo-100 hover:text-indigo-700',
-                        'text-indigo-700 bg-indigo-100' => request()->routeIs('show.website')
+                        'block w-full my-1 px-3 py-2 rounded-lg text-sm font-medium hover:bg-purple-100 hover:text-purple-700',
+                        'text-purple-700 bg-purple-100' => request()->routeIs('show.website')
                     ])>Website</a>
                 @endcan
             @endif
         @endif
         @can('view_users', $podcast)
             <a href="{{ route('show.users', ['show' => $podcast->id]) }}"@class([
-                'block w-full my-1 px-3 py-2 rounded-lg text-sm font-medium hover:bg-indigo-100 hover:text-indigo-700',
-                'text-indigo-700 bg-indigo-100' => request()->routeIs('show.users')
+                'block w-full my-1 px-3 py-2 rounded-lg text-sm font-medium hover:bg-purple-100 hover:text-purple-700',
+                'text-purple-700 bg-purple-100' => request()->routeIs('show.users')
             ])>Team</a>
         @endcan
         @can('edit_podcast', $podcast)
             <a href="{{ route('show.settings', ['show' => $podcast->id]) }}"@class([
-                'block w-full my-1 px-3 py-2 rounded-lg text-sm font-medium hover:bg-indigo-100 hover:text-indigo-700',
-                'text-indigo-700 bg-indigo-100' => request()->routeIs('show.settings')
+                'block w-full my-1 px-3 py-2 rounded-lg text-sm font-medium hover:bg-purple-100 hover:text-purple-700',
+                'text-purple-700 bg-purple-100' => request()->routeIs('show.settings')
             ])>Settings</a>
         @endcan
     </div>

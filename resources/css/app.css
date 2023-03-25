@@ -7,11 +7,11 @@
     [x-cloak] { display: none !important; }
 
     .input {
-        @apply border-slate-200 focus:border-indigo-500 ring-0 rounded-md block mt-1 w-full;
+        @apply border-slate-200 focus:border-purple-500 ring-0 rounded-md block mt-1 w-full;
     }
 
     .primary-btn {
-        @apply inline-flex items-center justify-center rounded-full py-3 px-5 text-sm font-semibold focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 bg-[#0099ff] text-white hover:text-slate-100 hover:bg-[#0099ff]/90 active:bg-[#0099ff] active:text-blue-100 focus-visible:outline-[#0099ff];
+        @apply inline-flex items-center justify-center rounded-full py-3 px-5 text-sm font-semibold focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 bg-purple-800 text-white hover:text-slate-100 hover:bg-purple-700 active:bg-purple-900 active:text-white focus-visible:outline-purple-600;
     }
 
     .podcatcher-link {

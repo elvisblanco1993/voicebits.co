@@ -2,9 +2,7 @@
     <x-authentication-card>
         <x-slot name="logo">
             <a href="{{ route('home') }}" class="flex items-center justify-center gap-3">
-                <img src="{{ asset('logo-mark.svg') }}" alt="" class="block h-8 w-auto">
-                <span class="text-2xl font-semibold text-slate-800">voicebits</span>
-                <sup class="text-xs font-light tracking-wider text-slate-400">beta</sup>
+                <img src="{{ asset('logo-mark-dark.svg') }}" alt="" class="block h-12 w-auto">
             </a>
         </x-slot>
 

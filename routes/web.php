@@ -62,6 +62,8 @@ Route::middleware([
             Route::get('/articles', App\Http\Livewire\Article\Index::class)->name('article.index');
             Route::get('/articles/create', App\Http\Livewire\Article\Create::class)->name('article.create');
             Route::get('/articles/{article}/edit', App\Http\Livewire\Article\Edit::class)->name('article.edit');
+
+            // Customers routes
         });
     });
 });
