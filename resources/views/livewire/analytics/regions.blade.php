@@ -1,17 +1,25 @@
-<div>
-    <div class="flex items-center justify-between gap-8 text-sm font-normal text-slate-600">
-        <p class="text-slate-600 flex items-center space-x-2">{{ __("Most popular at") }}</p>
-        <p>{{ __("Downloads") }}</p>
-    </div>
+<div class="w-full  max-w-full prose">
 
-    @forelse ($downloads as $device => $data)
-        <div @class([
-            'flex items-center justify-between cap-8 -mx-4 px-4 py-2 hover:bg-emerald-100 hover:text-emerald-700 text-sm text-slate-800',
-            'mt-4' => $loop->first
-        ])>
-            <p>{{ $device }}</p>
-            <p>{{ $data->count('count') }}</p>
-        </div>
-    @empty
-    @endforelse
+    <table class="w-full table-fixed text-left">
+        <thead>
+            <tr class="text-sm font-normal text-slate-600">
+                <th>{{ __("Country") }}</th>
+                <th>{{ __("Region") }}</th>
+                <th>{{ __("City") }}</th>
+                <th class="text-right">{{ __("Downloads") }}</th>
+            </tr>
+        </thead>
+
+        <tbody class="mt-4">
+            @forelse ($dbdata as $data)
+                <tr class="hover:bg-emerald-100 hover:text-emerald-700 py-4">
+                    <td>{{ $data['country'] }}</td>
+                    <td>{{ $data['region'] }}</td>
+                    <td>{{ $data['city'] }}</td>
+                    <td class="text-right">{{ $data['total'] }}</td>
+                </tr>
+            @empty
+            @endforelse
+        </tbody>
+    </table>
 </div>

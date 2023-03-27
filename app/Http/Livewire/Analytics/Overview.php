@@ -20,11 +20,11 @@ class Overview extends Component
     public function render()
     {
         return view('livewire.analytics.overview', [
-            'dbdata' => $this->fetch(),
+            'dbdata' => $this->fetchData(),
         ]);
     }
 
-    public function fetch()
+    public function fetchData()
     {
         $data = PlaysCounter::where('podcast_id', $this->podcast->id)
             ->select(DB::raw('DATE_FORMAT(created_at, "%b %D") as dateformatted, count(token) as downloads'))

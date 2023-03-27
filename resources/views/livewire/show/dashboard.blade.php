@@ -25,6 +25,10 @@
                 @livewire('analytics.overview')
             </div>
             <div class="mt-4">
+                @livewire('analytics.regions')
+            </div>
+            <div class="mt-4">
+                {{-- @livewire('analytics.episodes-breakdown') --}}
             </div>
         </div>
     @else
