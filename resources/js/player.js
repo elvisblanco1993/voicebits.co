@@ -4,9 +4,10 @@ let ff_btn = document.getElementById('ff');
 let rw_btn = document.getElementById('rw');
 let mute_btn = document.getElementById('mute');
 let current_time = document.getElementById('currentTime');
-let progress_bar = document.getElementById('time-seeker');
-progress_bar.value = 0;
 
+const progressBar = document.getElementById('progress-bar');
+const progress = document.getElementById('progress');
+let isDragging = false;
 
 let tmp = localStorage.getItem('guid') ?? null;
 
@@ -66,7 +67,6 @@ function setPlayerUrl(guid) {
  */
 player.onwaiting = () => {
     document.getElementById("playing_title").innerText = "Loading audio..."
-    progress_bar.value = 0;
     play_btn.innerHTML = "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='currentColor' class='w-16 h-16 animate-spin'><path fill-rule='evenodd' d='M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm3 10.5a.75.75 0 000-1.5H9a.75.75 0 000 1.5h6z' clip-rule='evenodd' /></svg>";
 };
 
@@ -126,10 +126,36 @@ player.ontimeupdate = () => {
     updateProgress();
 }
 
-progress_bar.onchange = () => {
-    player.pause;
-    player.currentTime = progress_bar.value;
-}
+// Update the progress bar as the audio plays
+player.addEventListener('timeupdate', () => {
+    if (!isDragging) {
+      const percent = (player.currentTime / player.duration) * 100;
+      progress.style.width = `${percent}%`;
+    }
+    updateProgress();
+});
+
+// Make the progress bar draggable
+progressBar.addEventListener('mousedown', () => {
+    isDragging = true;
+});
+
+  document.addEventListener('mousemove', (event) => {
+    if (isDragging) {
+        const rect = progressBar.getBoundingClientRect();
+        const percent = (event.clientX - rect.left) / rect.width;
+        progress.style.width = `${percent * 100}%`;
+    }
+});
+
+  document.addEventListener('mouseup', (event) => {
+    if (isDragging) {
+        const rect = progressBar.getBoundingClientRect();
+        const seekTime = (event.clientX - rect.left) / rect.width * player.duration;
+        player.currentTime = seekTime;
+        isDragging = false;
+    }
+});
 
 function formatTime(seconds) {
     hours  = Math.floor(seconds / 3600);
@@ -142,7 +168,6 @@ function formatTime(seconds) {
 }
 
 function updateProgress(){
-    progress_bar.value = player.currentTime;
     var curmins = Math.floor(player.currentTime / 60);
     var cursecs = Math.floor(player.currentTime - curmins * 60);
     var durmins = Math.floor(player.duration / 60);
@@ -151,7 +176,4 @@ function updateProgress(){
     if(dursecs < 10){ dursecs = "0"+dursecs; }
     if(curmins < 10){ curmins = "0"+curmins; }
     if(durmins < 10){ durmins = "0"+durmins; }
-    if (player.currentTime > 0 && player.currentTime < 2) {
-        progress_bar.max = player.duration;
-    }
 }

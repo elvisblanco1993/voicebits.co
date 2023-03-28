@@ -65,7 +65,9 @@
                         </div>
 
                         <div class="mx-4 w-full flex items-center">
-                            <input type="range" id="time-seeker" step="0.01" class="w-full">
+                            <div id="progress-bar" class="w-full bg-slate-100 h-3 rounded-full cursor-pointer">
+                                <div id="progress" class="h-full bg-indigo-400 rounded-full"></div>
+                            </div>
                             <div class="flex items-center text-xs text-slate-400">
                                 <span class="ml-4 bg-slate-100 rounded-md px-1 py-0.25 font-mono text-sm leading-6 md:block text-slate-500" id="currentTime">00:00</span>
                                 <span class="px-1 py-0.5 font-mono text-sm leading-6 md:block text-slate-500">/</span>
@@ -138,8 +140,9 @@
             let rw_btn = document.getElementById('rw');
             let mute_btn = document.getElementById('mute');
             let current_time = document.getElementById('currentTime');
-            let progress_bar = document.getElementById('time-seeker');
-            progress_bar.value = 0;
+            const progressBar = document.getElementById('progress-bar');
+            const progress = document.getElementById('progress');
+            let isDragging = false;
 
             play_btn.addEventListener("click", () => {
                 if (player.paused) {
@@ -173,19 +176,41 @@
                 }
             });
 
-            player.onwaiting = () => {
-                progress_bar.value = 0;
-            };
-
             player.ontimeupdate = () => {
                 current_time.innerText = formatTime(player.currentTime);
                 updateProgress();
             };
 
-            progress_bar.onchange = () => {
-                player.pause;
-                player.currentTime = progress_bar.value;
-            };
+            // Update the progress bar as the audio plays
+            player.addEventListener('timeupdate', () => {
+                if (!isDragging) {
+                const percent = (player.currentTime / player.duration) * 100;
+                progress.style.width = `${percent}%`;
+                }
+                updateProgress();
+            });
+
+            // Make the progress bar draggable
+            progressBar.addEventListener('mousedown', () => {
+                isDragging = true;
+            });
+
+            document.addEventListener('mousemove', (event) => {
+                if (isDragging) {
+                    const rect = progressBar.getBoundingClientRect();
+                    const percent = (event.clientX - rect.left) / rect.width;
+                    progress.style.width = `${percent * 100}%`;
+                }
+            });
+
+            document.addEventListener('mouseup', (event) => {
+                if (isDragging) {
+                    const rect = progressBar.getBoundingClientRect();
+                    const seekTime = (event.clientX - rect.left) / rect.width * player.duration;
+                    player.currentTime = seekTime;
+                    isDragging = false;
+                }
+            });
 
             function formatTime(seconds) {
                 hours  = Math.floor(seconds / 3600);
@@ -198,7 +223,6 @@
             };
 
             function updateProgress(){
-                progress_bar.value = player.currentTime;
                 var curmins = Math.floor(player.currentTime / 60);
                 var cursecs = Math.floor(player.currentTime - curmins * 60);
                 var durmins = Math.floor(player.duration / 60);
@@ -207,9 +231,6 @@
                 if(dursecs < 10){ dursecs = "0"+dursecs; }
                 if(curmins < 10){ curmins = "0"+curmins; }
                 if(durmins < 10){ durmins = "0"+durmins; }
-                if (player.currentTime > 0 && player.currentTime < 2) {
-                    progress_bar.max = player.duration;
-                }
             }
         </script>
 
