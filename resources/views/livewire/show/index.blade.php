@@ -39,7 +39,7 @@
                 @forelse ($podcasts as $podcast)
                     <button wire:click="goto({{$podcast->id}})" class="col-span-4 sm:col-span-2 md:col-span-1 w-full text-left">
                         @if ($podcast->cover)
-                            <img src="{{ Storage::url($podcast->cover) }}" alt="{{ $podcast->name }}" class="w-full aspect-video rounded-lg object-center object-cover">
+                            <img src="{{ Storage::url($podcast->cover) }}" alt="{{ $podcast->name }}" class="w-full aspect-square rounded-lg object-center object-cover">
                         @else
                             <div class="w-full aspect-video rounded-lg bg-indigo-50 flex items-center justify-center">
                                 <img src="{{ asset('logo-mark.svg') }}" alt="{{ $podcast->name }}" class="w-12 h-auto">
