@@ -11,10 +11,10 @@
             <h1 class="ml-6 text-3xl font-bold text-white">{{ $episode->podcast->name }}</h1>
         </div>
     </div>
-    <div class="mt-4 max-w-7xl mx-auto px-4 sm:px-6 lg:px-0">
+    <div class="py-6 max-w-7xl mx-auto px-4 sm:px-6 lg:px-0">
         <div class="flex items-center justify-between">
             <div class="flex items-center gap-3">
-                <a href="{{ route('podcast.episodes') }}" class="hover:text-[#0099ff] transition-all">
+                <a href="{{ route('podcast.episodes') }}" class="hover:text-indigo-600 transition-all">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M11 15l-3-3m0 0l3-3m-3 3h8M3 12a9 9 0 1118 0 9 9 0 01-18 0z" />
                     </svg>
@@ -30,7 +30,7 @@
                 <div class="h-16 px-4 rounded-lg border-dashed border border-gray-400 bg-white flex items-center justify-between">
                     <div class="flex items-center">
                         <audio id="audio" src="{{ route('episode.preview', ['episode' => $episode->guid]) }}"></audio>
-                        <button id="audioPlayBtn" onclick="togglePlay()" class="text-[#0099ff]">
+                        <button id="audioPlayBtn" onclick="togglePlay()" class="text-slate-900">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />

@@ -7,7 +7,11 @@
     [x-cloak] { display: none !important; }
 
     .input {
-        @apply border-slate-200 focus:ring focus:ring-indigo-100 focus:outline-none rounded-md block mt-1 w-full outline-none focus:border-indigo-400;
+        @apply border-slate-200 focus:ring focus:ring-indigo-100 focus:outline-none rounded-md block outline-none focus:border-indigo-200 mt-1 w-full;
+    }
+
+    .btn-link {
+        @apply inline-flex items-center px-4 py-2 bg-indigo-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-indigo-700 active:bg-indigo-900 focus:outline-none focus:border-indigo-900 focus:ring focus:ring-indigo-300 disabled:opacity-25 transition;
     }
 
     .primary-btn {

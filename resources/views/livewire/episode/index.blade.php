@@ -20,8 +20,8 @@
             {{-- <x-input type="search" wire:model="search" placeholder="Search episode" class="w-1/2"/> --}}
             @can('upload_episodes', $podcast)
                 <a href="{{ route('podcast.episode.create') }}"
-                    class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-lg font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring focus:ring-gray-300 disabled:opacity-25 transition"
-                >Upload</a>
+                    class="btn-link"
+                >New episode</a>
             @endcan
         </div>
         <div class="mt-4 overflow-x-auto shadow rounded-lg">
