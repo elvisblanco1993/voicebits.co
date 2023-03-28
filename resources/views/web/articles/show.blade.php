@@ -35,7 +35,7 @@
                 <ul class="mt-4 prose">
                     @forelse (App\Models\Article::whereNotNull('published_at')->where('slug', '!=', $article->slug)->orderBy('published_at', 'desc')->take(3)->get() as $related_article)
                         <li class="list-disc">
-                            <a href="{{ route('blog.article', ['article' => $related_article->slug]) }}" class="text-purple-600 underline hover:text-purple-700">{{ $related_article->title }}</a>
+                            <a href="{{ route('blog.article', ['article' => $related_article->slug]) }}" class="text-teal-600 underline hover:text-teal-700">{{ $related_article->title }}</a>
                         </li>
                     @empty
                     @endforelse

@@ -28,7 +28,7 @@
             </div>
 
             <a href="https://laravel.com/docs">
-                <div class="mt-3 flex items-center text-sm font-semibold text-purple-700">
+                <div class="mt-3 flex items-center text-sm font-semibold text-teal-700">
                         <div>Explore the documentation</div>
 
                         <div class="ml-1 text-[#0099ff]">
@@ -51,7 +51,7 @@
             </div>
 
             <a href="https://laracasts.com">
-                <div class="mt-3 flex items-center text-sm font-semibold text-purple-700">
+                <div class="mt-3 flex items-center text-sm font-semibold text-teal-700">
                         <div>Start watching Laracasts</div>
 
                         <div class="ml-1 text-[#0099ff]">

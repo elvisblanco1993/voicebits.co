@@ -16,13 +16,9 @@ class EpisodesBreakdown extends Component
 
     public function render()
     {
+        $episodes = $this->podcast->episodes()->withCount('plays')->get();
         return view('livewire.analytics.episodes-breakdown', [
-            'data' => $this->fetchData(),
+            'episodes' => $episodes,
         ]);
-    }
-
-    public function fetchData()
-    {
-        //
     }
 }

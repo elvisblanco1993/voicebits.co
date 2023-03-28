@@ -4,7 +4,7 @@
             @if ($podcast->cover)
                 <img src="{{ Storage::url($podcast->cover) }}" alt="{{ $podcast->name }}" class="w-24 aspect-square rounded-xl object-center object-cover">
             @else
-                <div class="h-24 w-24 rounded-xl bg-purple-50 flex items-center justify-center">
+                <div class="h-24 w-24 rounded-xl bg-teal-50 flex items-center justify-center">
                     <img src="{{ asset('logo-mark.svg') }}" alt="{{ $podcast->name }}" class="w-10 h-auto">
                 </div>
             @endif
@@ -154,7 +154,7 @@
                     @endif
 
                     <div class="mt-4">
-                        <label for="cover" class="text-sm text-slate-600 px-3 py-2 rounded-lg border border-slate-200 hover:text-purple-600 hover:bg-purple-50 hover:border-purple-200 transition-all cursor-pointer">
+                        <label for="cover" class="text-sm text-slate-600 px-3 py-2 rounded-lg border border-slate-200 hover:text-teal-600 hover:bg-teal-50 hover:border-teal-200 transition-all cursor-pointer">
                             <input id="cover" type="file" accept=".png,.jpeg" wire:model="cover" class="sr-only">
                             Upload episode art
                         </label>

@@ -8,10 +8,10 @@
 
     <div class="py-6 px-4 sm:px-6 lg:px-0">
         <input type="text" id="title" wire:model="title" placeholder="Title" autofocus
-            class="w-full border-none rounded-lg focus:ring focus:ring-purple-200 text-2xl font-bold"/>
+            class="w-full border-none rounded-lg focus:ring focus:ring-teal-200 text-2xl font-bold"/>
         <x-input-error for="title" class="mt-1" />
         <textarea id="content" wire:model="content" cols="30" rows="25" placeholder="Write something amazing..."
-            class="mt-6 w-full border-none rounded-lg focus:ring focus:ring-purple-200"
+            class="mt-6 w-full border-none rounded-lg focus:ring focus:ring-teal-200"
         ></textarea>
         <small class="text-slate-500">Markdown is supported here.</small>
         <x-input-error for="content" class="mt-1" />
@@ -23,7 +23,7 @@
                     @if ($image)
                         <img src="{{ $image->temporaryUrl() }}" class="w-36 h-36 rounded-lg aspect-square object-cover object-center">
                     @else
-                        <div class="w-36 h-36 text-sm text-center rounded-lg flex items-center justify-center bg-purple-100 text-purple-400 p-4">
+                        <div class="w-36 h-36 text-sm text-center rounded-lg flex items-center justify-center bg-teal-100 text-teal-400 p-4">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 mx-auto">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 001.5-1.5V6a1.5 1.5 0 00-1.5-1.5H3.75A1.5 1.5 0 002.25 6v12a1.5 1.5 0 001.5 1.5zm10.5-11.25h.008v.008h-.008V8.25zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
                             </svg>
@@ -38,7 +38,7 @@
                             <p class="mt-2 text-sm text-slate-500">PNG, JPG, up to 2MB</p>
                         </div>
                         <div class="mt-6 flex items-center justify-center gap-4">
-                            <label for="image" class="text-sm text-slate-600 px-3 py-2 rounded-lg border border-slate-200 hover:text-purple-600 hover:bg-purple-50 hover:border-purple-200 transition-all cursor-pointer">
+                            <label for="image" class="text-sm text-slate-600 px-3 py-2 rounded-lg border border-slate-200 hover:text-teal-600 hover:bg-teal-50 hover:border-teal-200 transition-all cursor-pointer">
                                 <span>Upload image</span>
                                 <input id="image" type="file" wire:model="image" class="sr-only">
                             </label>
@@ -51,7 +51,7 @@
         <div class="mt-6 flex items-end justify-between">
             <div class="w-1/2">
                 <x-label for="author">Author</x-label>
-                <input type="text" id="author" wire:model.defer="author" placeholder="{{ Auth::user()->name }}" class="flex-none w-full border-none rounded-lg focus:ring focus:ring-purple-200 text-sm"/>
+                <input type="text" id="author" wire:model.defer="author" placeholder="{{ Auth::user()->name }}" class="flex-none w-full border-none rounded-lg focus:ring focus:ring-teal-200 text-sm"/>
                 <x-input-error for="author" class="mt-1" />
             </div>
             <div class="">

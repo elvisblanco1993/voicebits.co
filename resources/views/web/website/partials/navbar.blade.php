@@ -34,12 +34,12 @@
                     </button>
 
                     <div class="mt-2 absolute right-0 w-56 z-50 bg-white dark:bg-slate-800 border dark:border-slate-600 text-slate-600 dark:text-white text-sm rounded-md" x-show="burger" x-transition @click.outside="burger = false">
-                        <a href="{{ route('login') }}" class="block px-4 my-2.5 hover:text-sky-500">Sign In</a>
-                        <a href="{{ route('register') }}" class="block px-4 my-2.5 hover:text-sky-500">Free Trial</a>
+                        <a href="{{ route('login') }}" class="block px-4 my-2.5 hover:text-teal-500">Sign In</a>
+                        <a href="{{ route('register') }}" class="block px-4 my-2.5 hover:text-teal-500">Free Trial</a>
                         <div class="my-6"></div>
-                        <a href="{{ route('home') }}#features" class="block px-4 my-2.5 hover:text-sky-500">Features</a>
-                        <a href="{{ route('pricing') }}" class="block px-4 my-2.5 hover:text-sky-500">Pricing</a>
-                        <a href="{{ route('blog.index') }}" class="block px-4 my-2.5 hover:text-sky-500">The Blog</a>
+                        <a href="{{ route('home') }}#features" class="block px-4 my-2.5 hover:text-teal-500">Features</a>
+                        <a href="{{ route('pricing') }}" class="block px-4 my-2.5 hover:text-teal-500">Pricing</a>
+                        <a href="{{ route('blog.index') }}" class="block px-4 my-2.5 hover:text-teal-500">The Blog</a>
                     </div>
                 </div>
             </div>

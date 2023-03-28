@@ -1,25 +1,43 @@
-<div class="w-full  max-w-full prose">
+<div>
+    <p class="text-xl font-semibold text-slate-900">Downloads per region</p>
 
-    <table class="w-full table-fixed text-left">
-        <thead>
-            <tr class="text-sm font-normal text-slate-600">
-                <th>{{ __("Country") }}</th>
-                <th>{{ __("Region") }}</th>
-                <th>{{ __("City") }}</th>
-                <th class="text-right">{{ __("Downloads") }}</th>
-            </tr>
-        </thead>
-
-        <tbody class="mt-4">
-            @forelse ($dbdata as $data)
-                <tr class="hover:bg-emerald-100 hover:text-emerald-700 py-4">
-                    <td>{{ $data['country'] }}</td>
-                    <td>{{ $data['region'] }}</td>
-                    <td>{{ $data['city'] }}</td>
-                    <td class="text-right">{{ $data['total'] }}</td>
+    <div class="mt-2 relative overflow-x-auto shadow     sm:rounded-lg">
+        <table class="w-full text-sm text-left text-gray-500">
+            <thead class="text-xs text-gray-700 uppercase bg-gray-50">
+                <tr>
+                    <th scope="col" class="px-6 py-3">
+                        Country
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Region
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        City
+                    </th>
+                    <th scope="col" class="px-6 py-3 text-right">
+                        Downloads
+                    </th>
                 </tr>
-            @empty
-            @endforelse
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+                @forelse ($dbdata as $data)
+                    <tr @class(['bg-white hover:bg-gray-50', 'border-b' => !$loop->last])>
+                        <td class="px-6 py-4">
+                            {{ $data['country'] }}
+                        </td>
+                        <td class="px-6 py-4">
+                            {{ $data['region'] }}
+                        </td>
+                        <td class="px-6 py-4">
+                            {{ $data['city'] }}
+                        </td>
+                        <td class="px-6 py-4 text-right">
+                            {{ $data['total'] }}
+                        </td>
+                    </tr>
+                @empty
+                @endforelse
+            </tbody>
+        </table>
+    </div>
 </div>

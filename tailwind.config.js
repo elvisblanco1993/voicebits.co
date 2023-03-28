@@ -14,6 +14,13 @@ module.exports = {
             fontFamily: {
                 sans: ['Inter', ...defaultTheme.fontFamily.sans],
             },
+            colors: {
+                'vborange': '#fe705d',
+                'vbpurple': '#6b59cd',
+                'vbdeepgreen': '#008081',
+                'vbpastel': '#ffb7c5',
+                'vbemerald': '#00cc99',
+            },
         },
     },
 

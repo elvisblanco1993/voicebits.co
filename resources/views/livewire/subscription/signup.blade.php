@@ -5,27 +5,27 @@
             <p class="">{{__("Thank you for choosing Voicebits as your podcast hosting platform. We hope you are enjoying the free trial and finding it useful for your podcast needs.")}}</p>
             <p class="">{{__("If you think that Voicebits is the right option for you, please sign up today to continue using our services.")}}</p>
         </div>
-        <div class="my-6 w-12 border-t border-purple-300"></div>
+        <div class="my-6 w-12 border-t border-teal-300"></div>
         <div class="my-6">
             <div class="text-2xl font-bold">Select a plan</div>
 
             <div class="mt-4 grid grid-cols-12 gap-8">
                 <div class="col-span-12 md:col-span-8 space-y-2">
-                    <button wire:click="save(1)" class="md:flex w-full items-center justify-between border border-slate-300 hover:border-purple-500 p-6 rounded-lg group">
+                    <button wire:click="save(1)" class="md:flex w-full items-center justify-between border border-slate-300 hover:border-teal-500 p-6 rounded-lg group">
                         <div class="md:flex items-center space-y-2 md:space-y-0 md:space-x-8">
                             <p class="text-3xl font-extrabold">$15<span class="font-light">/</span>m</p>
                             <p>12,000 downloads per month</p>
                         </div>
                         <div class="uppercase text-4xl font-black text-slate-400 group-hover:text-[#0099ff]">Starter</div>
                     </button>
-                    <button wire:click="save(2)" class="md:flex w-full items-center justify-between border border-slate-300 hover:border-purple-500 p-6 rounded-lg group">
+                    <button wire:click="save(2)" class="md:flex w-full items-center justify-between border border-slate-300 hover:border-teal-500 p-6 rounded-lg group">
                         <div class="md:flex items-center space-y-2 md:space-y-0 md:space-x-8">
                             <p class="text-3xl font-extrabold">$35<span class="font-light">/</span>m</p>
                             <p>65,000 downloads per month</p>
                         </div>
                         <div class="uppercase text-4xl font-black text-slate-400 group-hover:text-[#0099ff]">Business</div>
                     </button>
-                    <button wire:click="save(3)" class="md:flex w-full items-center justify-between border border-slate-300 hover:border-purple-500 p-6 rounded-lg group">
+                    <button wire:click="save(3)" class="md:flex w-full items-center justify-between border border-slate-300 hover:border-teal-500 p-6 rounded-lg group">
                         <div class="md:flex items-center space-y-2 md:space-y-0 md:space-x-8">
                             <p class="text-3xl font-extrabold">$65<span class="font-light">/</span>m</p>
                             <p>180,000 downloads per month</p>
@@ -70,7 +70,7 @@
                 </div>
             </div>
         </div>
-        <div class="my-6 w-12 border-t border-purple-300"></div>
+        <div class="my-6 w-12 border-t border-teal-300"></div>
         <div class="mt-6 prose max-w-full">
             <p>If you feel like Voicebits didn't fill your void, we understand. You can <a href="{{ route('profile.show') }}">delete your account here</a> and we will immediately remove everything related to you from Voicebits.</p>
         </div>
@@ -80,7 +80,7 @@
 
             {{-- <div class="col-span-2 sm:col-span-1">
                 <button wire:click="save(1)" class="w-full text-left">
-                    <div class="w-full rounded-lg border border-slate-300 border-l-4 p-4 hover:border-purple-400 transition-all">
+                    <div class="w-full rounded-lg border border-slate-300 border-l-4 p-4 hover:border-teal-400 transition-all">
                         <div class="grid grid-cols-2 gap-4">
                             <div class="col-span-2 sm:col-span-1">
                                 <div class="text-xl font-bold">Starter</div>
@@ -100,7 +100,7 @@
                 </button>
                 <div class="my-4"></div>
                 <button wire:click="save(2)" class="w-full text-left">
-                    <div class="w-full rounded-lg border border-slate-300 border-l-4 p-4 hover:border-purple-400 transition-all">
+                    <div class="w-full rounded-lg border border-slate-300 border-l-4 p-4 hover:border-teal-400 transition-all">
                         <div class="grid grid-cols-2 gap-4">
                             <div class="col-span-2 sm:col-span-1">
                                 <div class="text-xl font-bold">Business</div>
@@ -120,7 +120,7 @@
                 </button>
                 <div class="my-4"></div>
                 <button wire:click="save(3)" class="w-full text-left">
-                    <div class="w-full rounded-lg border border-slate-300 border-l-4 p-4 hover:border-purple-400 transition-all">
+                    <div class="w-full rounded-lg border border-slate-300 border-l-4 p-4 hover:border-teal-400 transition-all">
                         <div class="grid grid-cols-2 gap-4">
                             <div class="col-span-2 sm:col-span-1">
                                 <div class="text-xl font-bold">Agency</div>

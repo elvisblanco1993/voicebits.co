@@ -4,7 +4,7 @@
             @if ($podcast->cover)
                 <img src="{{ Storage::url($podcast->cover) }}" alt="{{ $podcast->name }}" class="w-24 aspect-square rounded-xl object-center object-cover">
             @else
-                <div class="h-24 w-24 rounded-xl bg-purple-50 flex items-center justify-center">
+                <div class="h-24 w-24 rounded-xl bg-teal-50 flex items-center justify-center">
                     <img src="{{ asset('logo-mark.svg') }}" alt="{{ $podcast->name }}" class="w-10 h-auto">
                 </div>
             @endif
@@ -19,7 +19,7 @@
                 <div class="text-sm text-slate-700 font-medium">Website</div>
                 <div class="mt-2 flex items-center justify-between">
                     <span id="web" class="px-4 py-2 border border-r-0 border-gray-200 rounded-r-none rounded-lg w-full truncate">{{ route('public.podcast.website', ['url' => $podcast->url]) }}</span>
-                    <button class="w-auto text-center text-slate-600 px-4 py-2 rounded-l-none rounded-lg border border-slate-200 hover:text-purple-600 hover:bg-purple-50 hover:border-purple-200 transition-all"
+                    <button class="w-auto text-center text-slate-600 px-4 py-2 rounded-l-none rounded-lg border border-slate-200 hover:text-teal-600 hover:bg-teal-50 hover:border-teal-200 transition-all"
                     id="webBtn"
                     onclick="copyWebsiteToClipboard()"
                     >Copy</button>
@@ -29,7 +29,7 @@
                 <div class="text-sm text-slate-700 font-medium">RSS Feed</div>
                 <div class="mt-2 flex items-center justify-between">
                     <span id="rss" class="px-4 py-2 border border-r-0 border-gray-200 rounded-r-none rounded-lg w-full truncate">{{ route('public.podcast.feed', ['url' => $podcast->url, 'player' => 'rss']) }}</span>
-                    <button class="w-auto text-center text-slate-600 px-4 py-2 rounded-l-none rounded-lg border border-slate-200 hover:text-purple-600 hover:bg-purple-50 hover:border-purple-200 transition-all"
+                    <button class="w-auto text-center text-slate-600 px-4 py-2 rounded-l-none rounded-lg border border-slate-200 hover:text-teal-600 hover:bg-teal-50 hover:border-teal-200 transition-all"
                     id="rssBtn"
                     onclick="copyRssToClipboard()"
                     >Copy</button>

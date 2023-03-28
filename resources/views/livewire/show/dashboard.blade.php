@@ -4,7 +4,7 @@
             @if ($podcast->cover)
                 <img src="{{ Storage::url($podcast->cover) }}" alt="{{ $podcast->name }}" class="w-24 aspect-square rounded-xl object-center object-cover">
             @else
-                <div class="h-24 w-24 rounded-xl bg-purple-50 flex items-center justify-center">
+                <div class="h-24 w-24 rounded-xl bg-teal-50 flex items-center justify-center">
                     <img src="{{ asset('logo-mark.svg') }}" alt="{{ $podcast->name }}" class="w-10 h-auto">
                 </div>
             @endif
@@ -18,17 +18,17 @@
     @if ($podcast->cover && $podcast->url && $podcast->episodes->count() > 0)
         <div class="py-6">
             @livewire('analytics.total-plays')
-            <div class="mt-4">
-                @livewire('analytics.date-picker')
-            </div>
-            <div class="mt-4">
+            <div class="py-6">
+                <div class="pb-2">
+                    @livewire('analytics.date-picker')
+                </div>
                 @livewire('analytics.overview')
             </div>
-            <div class="mt-4">
+            <div class="py-6">
                 @livewire('analytics.regions')
             </div>
             <div class="mt-4">
-                {{-- @livewire('analytics.episodes-breakdown') --}}
+                @livewire('analytics.episodes-breakdown')
             </div>
         </div>
     @else

@@ -17,11 +17,11 @@
     </head>
     <body class="font-sans antialiased">
         <x-banner />
-        <div class="min-h-screen bg-slate-100 relative">
+        <div class="min-h-screen bg-gray-50 relative">
 
             @if ( (Auth::user()->onTrial() && !Auth::user()->subscribed('voicebits')) && !request()->routeIs('signup') )
-                <div class="w-full bg-purple-100">
-                    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-sm text-center text-black py-2">
+                <div class="w-full bg-yellow-100">
+                    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-sm text-center text-teal-700 py-2">
                         Your trial expires in <strong>{{ abs(round((strtotime(Auth::user()->trial_ends_at) - strtotime(now()))/86400)) }} days</strong>. <a href="{{ route('signup') }}" class="underline">Upgrade</a> to continue using Voicebits after your trial.
                     </div>
                 </div>
