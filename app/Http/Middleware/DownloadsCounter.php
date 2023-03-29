@@ -30,19 +30,19 @@ class DownloadsCounter
             $token = hash('sha512', $request['player'] . $location->ip . $episode->id . $podcast->id);
 
             if ( ( PlaysCounter::where('token', $token)->count() == 0 ) || ( PlaysCounter::where('token', $token)->where('updated_at', '<', Carbon::now()->subMinutes(30))->count() > 0) ) {
-                PlaysCounter::create([
-                    'podcast_id' => $podcast->id,
-                    'episode_id' => $episode->id,
-                    'token' => $token,
-                    'country' => $location->countryName,
-                    'region' => $location->regionName,
-                    'city' => $location->cityName,
-                    'player' => $request['player'],
-                ]);
+                if ($request['player'] !== 'apple.mp3') {
+                    PlaysCounter::create([
+                        'podcast_id' => $podcast->id,
+                        'episode_id' => $episode->id,
+                        'token' => $token,
+                        'country' => $location->countryName,
+                        'region' => $location->regionName,
+                        'city' => $location->cityName,
+                        'player' => $request['player'],
+                    ]);
+                }
             }
-
         }
-
         return $next($request);
     }
 }
