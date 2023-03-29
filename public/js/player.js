@@ -4,14 +4,10 @@ let ff_btn = document.getElementById('ff');
 let rw_btn = document.getElementById('rw');
 let mute_btn = document.getElementById('mute');
 let current_time = document.getElementById('currentTime');
-// let progress_bar = document.getElementById('time-seeker');
-// progress_bar.value = 0;
 
-// Experiment
 const progressBar = document.getElementById('progress-bar');
 const progress = document.getElementById('progress');
 let isDragging = false;
-// End of Experiment
 
 let tmp = localStorage.getItem('guid') ?? null;
 

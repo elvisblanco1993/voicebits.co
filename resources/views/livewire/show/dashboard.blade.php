@@ -27,6 +27,9 @@
             <div class="py-6">
                 @livewire('analytics.regions')
             </div>
+            <div class="py-6">
+                @livewire('analytics.player-breakdown')
+            </div>
             <div class="mt-4">
                 @livewire('analytics.episodes-breakdown')
             </div>
