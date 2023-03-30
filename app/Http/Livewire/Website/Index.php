@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Livewire\Show;
+namespace App\Http\Livewire\Website;
 
 use App\Models\Podcast;
-use Illuminate\Support\Facades\Log;
 use Livewire\Component;
+use Illuminate\Support\Facades\Log;
 
-class Website extends Component
+class Index extends Component
 {
     public $podcast, $template, $language;
     public $header_background, $header_text_color, $header_link_color;
@@ -17,6 +17,7 @@ class Website extends Component
         if (config('app.env') === 'production') {
             return redirect()->route('podcast.catalog');
         }
+
         $this->podcast = Podcast::findorfail(session('podcast'));
         $this->template = $this->podcast->website->template;
         $this->language = $this->podcast->website->language;
@@ -26,6 +27,11 @@ class Website extends Component
         $this->body_background = $this->podcast->website->body_background;
         $this->body_text_color = $this->podcast->website->body_text_color;
         $this->body_link_color = $this->podcast->website->body_link_color;
+    }
+
+    public function render()
+    {
+        return view('livewire.website.index');
     }
 
     public function save()
@@ -56,10 +62,5 @@ class Website extends Component
             Log::error($th);
         }
         return redirect()->route('podcast.website');
-    }
-
-    public function render()
-    {
-        return view('livewire.show.website');
     }
 }

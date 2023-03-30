@@ -48,7 +48,7 @@ Route::middleware([
             Route::get('/dashboard', App\Http\Livewire\Show\Dashboard::class)->name('podcast.dashboard');
             Route::get('/social', App\Http\Livewire\Show\Social::class)->name('podcast.social');
             Route::get('/distribution', App\Http\Livewire\Show\Distribute::class)->name('podcast.distribution');
-            Route::get('/website', App\Http\Livewire\Show\Website::class)->name('podcast.website');
+            Route::get('/website', App\Http\Livewire\Website\Index::class)->name('podcast.website');
             Route::get('/team', App\Http\Livewire\Show\User\Index::class)->name('podcast.team');
             Route::get('/settings', App\Http\Livewire\Show\Settings::class)->name('podcast.settings');
 
