@@ -14,9 +14,9 @@
         <script defer src="https://unpkg.com/@alpinejs/collapse@3.x.x/dist/cdn.min.js"></script>
         @vite('resources/js/app.js')
     </head>
-    <body class="antialiased min-h-screen bg-gray-100 dark:bg-gray-900">
+    <body class="antialiased min-h-screen bg-gray-100">
         @include('web.website.partials.navbar')
-        <article class="md:py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-0 text-slate-800 dark:text-white" itemtype="http://schema.org/Article">
+        <article class="md:py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-0 text-slate-800" itemtype="http://schema.org/Article">
             <div>
                 <a href="{{ route('blog.index') }}" class="text-sm text-slate-400 underline hover:text-slate-600 transition-all">Voicebits blog</a>
             </div>
@@ -25,7 +25,7 @@
             <div class="my-12 text-sm font-light">
                 <span>Written by {{ $article->author}} &middot; {{ Carbon\Carbon::parse($article->published_at)->format('M d, Y') }}</span>
             </div>
-            <div class="prose dark:prose-invert prose-blue max-w-full">
+            <div class="prose prose-blue max-w-full">
                 {!! Str::of($article->content)->markdown() !!}
             </div>
 

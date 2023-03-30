@@ -1,13 +1,13 @@
 @extends('web.website.layout')
 @section('content')
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-0 text-slate-800 dark:text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-0 text-slate-800">
         <div class="py-20 grid grid-cols-12 gap-4 items-center">
             <div class="col-span-12 md:col-span-8">
-                <h1 class="text-5xl lg:text-6xl font-extrabold">News and Updates from Voicebits</h1>
-                <p class="mt-6 text-lg sm:text-xl dark:text-gray-300 font-medium">We often publish articles about Voicebits news and features, as well as topics of interest in the podcasting industry.</p>
+                <h1 class="text-4xl font-extrabold">News and Updates from Voicebits</h1>
+                <p class="mt-6 text-lg sm:text-xl font-medium">We often publish articles about Voicebits news and features, as well as topics of interest in the podcasting industry.</p>
             </div>
             <div class="hidden md:block md:col-span-4">
-                <img src="{{ asset('blog-hero.svg') }}" alt="" class="w-full mx-auto">
+                <img src="{{ asset('blog-hero.svg') }}" alt="" class="w-2/3 mx-auto">
             </div>
         </div>
 
@@ -16,7 +16,7 @@
             <p class="text-2xl font-bold">Latest articles</p>
             <form action="?search=" method="get">
                 <input type="search" placeholder="Search..." name="search" value="{{$search}}"
-                class="border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-lg shadow-sm dark:bg-slate-800 dark:border-gray-700 dark:focus:border-indigo-600 dark:focus:ring-indigo-600 dark:focus:ring-opacity-50">
+                class="border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-lg shadow-sm">
             </form>
         </div>
 

@@ -50,6 +50,6 @@ class Social extends Component
             session()->flash('flash.banner', 'Oops. We ran into an issue and could not save your changes. Please contact support.');
             session()->flash('flash.bannerStyle', 'danger');
         }
-        return redirect()->route('show.social', ['show' => $this->show]);
+        return redirect()->route('podcast.social');
     }
 }

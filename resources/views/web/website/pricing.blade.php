@@ -1,11 +1,11 @@
 @extends('web.website.layout')
 @section('content')
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-0 text-slate-800 dark:text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-0 text-slate-800">
         <div class="py-20">
             <div class="grid grid-cols-12 gap-4 items-center">
                 <div class="col-span-12 md:col-span-8">
                     <h1 class="text-5xl lg:text-6xl font-extrabold">Don't break your piggy...</h1>
-                    <p class="mt-6 text-lg dark:text-gray-300">Host and distribute your podcasts simple and easy. Start with a free 14-day trial of Voicebits, and then pay a fair monthly price based on your average monthly downloads.</p>
+                    <p class="mt-6 text-lg">Host and distribute your podcasts simple and easy. Start with a free 14-day trial of Voicebits, and then pay a fair monthly price based on your average monthly downloads.</p>
                 </div>
                 <div class="hidden md:block md:col-span-4">
                     <img src="{{ asset('savings-pig.svg') }}" alt="" class="w-full">
@@ -16,29 +16,29 @@
 
             <div class="grid grid-cols-12 gap-4">
                 <div class="col-span-12 md:col-span-8 space-y-8">
-                    <div class="md:flex items-center justify-between border border-slate-300 dark:border-slate-700 p-6 rounded-lg">
+                    <div class="md:flex items-center justify-between border border-slate-300 p-6 rounded-lg">
                         <div class="md:flex items-center space-y-2 md:space-y-0 md:space-x-8">
                             <p class="text-3xl font-extrabold">$15<span class="font-light">/</span>m</p>
                             <p>12,000 downloads per month</p>
                         </div>
-                        <div class="uppercase text-4xl font-black text-slate-400 dark:text-slate-700">Starter</div>
+                        <div class="uppercase text-4xl font-black text-slate-400">Starter</div>
                     </div>
-                    <div class="md:flex items-center justify-between border border-slate-300 dark:border-slate-700 p-6 rounded-lg">
+                    <div class="md:flex items-center justify-between border border-slate-300 p-6 rounded-lg">
                         <div class="md:flex items-center space-y-2 md:space-y-0 md:space-x-8">
                             <p class="text-3xl font-extrabold">$35<span class="font-light">/</span>m</p>
                             <p>65,000 downloads per month</p>
                         </div>
-                        <div class="uppercase text-4xl font-black text-slate-400 dark:text-slate-700">Business</div>
+                        <div class="uppercase text-4xl font-black text-slate-400">Business</div>
                     </div>
-                    <div class="md:flex items-center justify-between border border-slate-300 dark:border-slate-700 p-6 rounded-lg">
+                    <div class="md:flex items-center justify-between border border-slate-300 p-6 rounded-lg">
                         <div class="md:flex items-center space-y-2 md:space-y-0 md:space-x-8">
                             <p class="text-3xl font-extrabold">$65<span class="font-light">/</span>m</p>
                             <p>180,000 downloads per month</p>
                         </div>
-                        <div class="uppercase text-4xl font-black text-slate-400 dark:text-slate-700">Agency</div>
+                        <div class="uppercase text-4xl font-black text-slate-400">Agency</div>
                     </div>
                 </div>
-                <div class="col-span-12 md:col-span-4 bg-indigo-100 dark:bg-slate-800 px-6 py-8 rounded-lg">
+                <div class="col-span-12 md:col-span-4 bg-indigo-100 px-6 py-8 rounded-lg">
                     <h3 class="text-2xl font-bold">All plans include</h3>
                     <div class="mt-4">
                         <p class="flex items-center space-x-2 text-sm">
