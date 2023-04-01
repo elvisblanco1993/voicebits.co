@@ -20,7 +20,7 @@
                     <p class="mt-6 text-sm">By {{ $podcast->author }}</p>
                     <p class="mt-6 text-sm font-medium">{{ $podcast->description }}</p>
                     <div class="mt-6">
-                        @include('web.templates.classic.distributors')
+                        @include('podcast.templates.classic.distributors')
                     </div>
                 </div>
             </header>

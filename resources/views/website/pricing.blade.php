@@ -1,4 +1,4 @@
-@extends('web.website.layout')
+@extends('website.layout')
 @section('content')
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-0 text-slate-800">
         <div class="py-20">

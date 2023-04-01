@@ -8,21 +8,21 @@ class WebController extends Controller
 {
     public function home()
     {
-        return view('web.website.home');
+        return view('website.home');
     }
 
     public function multipleShows()
     {
-        return view('web.website.multiple-shows');
+        return view('website.multiple-shows');
     }
 
     public function about()
     {
-        return view('web.website.about');
+        return view('website.about');
     }
 
     public function pricing()
     {
-        return view('web.website.pricing');
+        return view('website.pricing');
     }
 }

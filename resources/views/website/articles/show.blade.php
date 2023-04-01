@@ -15,7 +15,7 @@
         @vite('resources/js/app.js')
     </head>
     <body class="antialiased min-h-screen bg-gray-100">
-        @include('web.website.partials.navbar')
+        @include('website.partials.navbar')
         <article class="md:py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-0 text-slate-800" itemtype="http://schema.org/Article">
             <div>
                 <a href="{{ route('blog.index') }}" class="text-sm text-slate-400 underline hover:text-slate-600 transition-all">Voicebits blog</a>
@@ -42,7 +42,7 @@
                 </ul>
             </div>
         </article>
-        @include('web.website.partials.footer')
+        @include('website.partials.footer')
         @livewireScripts
     </body>
 </html>

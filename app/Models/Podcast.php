@@ -38,7 +38,7 @@ class Podcast extends Model
 
     public function episodes()
     {
-        return $this->hasMany(Episode::class)->orderBy('published_at', 'DESC');
+        return $this->hasMany(Episode::class);
     }
 
     public function plays()

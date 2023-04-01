@@ -16,7 +16,7 @@ class ArticleController extends Controller
 
     public function index()
     {
-        return view('web.articles.index', [
+        return view('website.articles.index', [
             'search' => $this->search,
             'articles' => Article::where('title', 'like', '%' . $this->search . '%')->whereNotNull('published_at')->orderBy('published_at', 'DESC')->get()
         ]);
@@ -24,7 +24,7 @@ class ArticleController extends Controller
 
     public function show($article)
     {
-        return view('web.articles.show', [
+        return view('website.articles.show', [
             'article' => Article::where('slug', $article)->firstOrFail()
         ]);
     }

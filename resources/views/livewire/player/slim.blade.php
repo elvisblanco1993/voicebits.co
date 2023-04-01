@@ -75,9 +75,8 @@
                             stroke-linecap="round" stroke-linejoin="round" />
                     </svg>
                 </button>
-                <div class="ml-4 border-l border-l-gray-600 h-6"></div>
-                <p class="ml-4 flex-none text-sm text-slate-100 font-medium truncate" id="playing_title">
-                    {{ $episode->title ?? '' }}</p>
+                <div class="hidden md:block ml-4 border-l border-l-gray-600 h-6"></div>
+                <p class="hidden md:block ml-4 flex-none text-sm text-slate-100 font-medium truncate" id="playing_title">{{ $episode->title ?? '' }}</p>
             </div>
         </div>
     </div>

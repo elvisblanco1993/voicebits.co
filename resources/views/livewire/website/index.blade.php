@@ -33,14 +33,14 @@
             </label>
 
             <label wire:click="setTemplate" for="modern" class="col-span-4 md:col-span-2 lg:col-span-1 bg-white rounded-xl border">
-                <img src="https://images.unsplash.com/photo-1530564386-40be0e9dea6f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=764&q=80" alt="Modern theme image" class="w-full aspect-video object-cover object-center rounded-t-xl">
+                <img src="{{ asset('modern-podcast.webp') }}" alt="Modern theme image" class="w-full aspect-video object-cover object-center rounded-t-xl">
                 <div class="p-4">
                     <div class="flex items-center justify-between">
                         <p class="text-xl font-bold text-slate-600 dark:text-slate-700">Modern</p>
                         <input type="radio" name="template" id="modern" value="modern" wire:model="template" class="">
                     </div>
                     <div class="mt-2 text-sm text-slate-600">
-                        The original Voicebits theme. Includes a full width player.
+                        Refreshed template with top slim player.
                     </div>
                 </div>
             </label>

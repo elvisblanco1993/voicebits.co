@@ -17,9 +17,9 @@
     </head>
     <body class="font-sans antialiased min-h-screen bg-gray-100">
 
-        @include('web.website.partials.navbar')
+        @include('website.partials.navbar')
         @yield('content')
-        @include('web.website.partials.footer')
+        @include('website.partials.footer')
 
         <script defer src="https://unpkg.com/@alpinejs/collapse@3.x.x/dist/cdn.min.js"></script>
         @vite('resources/js/app.js')

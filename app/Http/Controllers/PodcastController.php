@@ -16,7 +16,7 @@ class PodcastController extends Controller
      */
     public function feed($url, $player) {
         return response()
-            ->view('web.feed', [
+            ->view('podcast.feed', [
                 'podcast' => Podcast::where('url', $url)->first(),
                 'player' => $player,
             ])
@@ -25,16 +25,18 @@ class PodcastController extends Controller
 
     public function show($url)
     {
-        $podcast = Podcast::where('url', $url)->with('episodes')->first();
-        return view('web.templates.' . $podcast->website->template . '/layout', [
+        $podcast = Podcast::where('url', $url)->first();
+
+        return view('podcast.templates.' . $podcast->website->template . '/index', [
             'podcast' => $podcast,
+            'episodes' => $podcast->episodes()->where('published_at', '<', now())->orderBy('published_at', 'desc')->paginate(12)
         ]);
     }
 
     public function episode($url, $episode)
     {
         $episode = Episode::where('guid', $episode)->whereNotNull('published_at')->first();
-        return view('web.templates.' . $episode->podcast->website->template . '/episode', [
+        return view('podcast.templates.' . $episode->podcast->website->template . '/episode', [
             'episode' => $episode,
             'podcast' => $episode->podcast,
         ]);
