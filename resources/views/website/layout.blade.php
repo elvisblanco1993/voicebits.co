@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <meta name="description" content="Voicebits is the hosting and distribution platform for all your podcasts." />
-        <link rel="shortcut icon" href="{{ asset('logo-mark.svg') }}" type="image/svg">
+        <link rel="shortcut icon" href="{{ asset('logo-mark-dark.svg') }}" type="image/svg">
         <title>{{ config('app.name', 'Laravel') }}</title>
         <link rel="canonical" href="{{ url()->current() }}">
 

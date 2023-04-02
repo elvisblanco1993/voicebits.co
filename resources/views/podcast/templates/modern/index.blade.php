@@ -82,14 +82,10 @@
     {{-- Episodes --}}
     <div x-show="activePage == 'episodes'" x-cloak class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 md:py-12">
 
-        <div class="mb-12">
-            <h1 class="text-4xl font-semibold">{{ __("Episodes") }}</h1>
-            <div class="mt-6 flex items-center">
-                <input type="search" placeholder="Search episodes" class="py-1.5 border border-slate-300 rounded ring-0">
-            </div>
+        <h1 class="text-4xl font-semibold">{{ __("Episodes") }}</h1>
+        <div class="mt-12">
+            @include('podcast.templates.modern.partials.episodes')
         </div>
-
-        @include('podcast.templates.modern.partials.episodes')
 
         <div class="mt-6">
             {{ $episodes->links() }}
