@@ -14,10 +14,6 @@ class Index extends Component
 
     public function mount()
     {
-        if (config('app.env') === 'production') {
-            return redirect()->route('podcast.catalog');
-        }
-
         $this->podcast = Podcast::findorfail(session('podcast'));
         $this->template = $this->podcast->website->template;
         $this->language = $this->podcast->website->language;
