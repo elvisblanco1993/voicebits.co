@@ -1,72 +1,31 @@
-<div class="bg-white py-12 md:py-36">
-    <div class="block max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-black">
-        <div class="grid md:grid-cols-2 gap-12 items-center">
-            <div>
-                <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
-                    alt=""
-                    class="w-full aspect-square object-cover object-center rounded-xl"
-                >
+<div class="bg-slate-50">
+    <div class="block max-w-5xl mx-auto py-12 lg:py-24 px-4 sm:px-6 lg:px-8 text-black">
+        <h2 class="text-3xl md:text-4xl font-semibold text-center">Effortlessly <span class="text-violet-600">handle and share</span> your podcasts.</h2>
+
+        <div class="mt-12 grid grid-cols-2 gap-8">
+            <div class="col-span-2 md:col-span-1">
+                <p class="text-lg font-semibold">Unlimited podcasts</p>
+                <p class="mt-2 text-slate-700">With Voicebits, you can create as many podcasts and episodes as you want.</p>
             </div>
-            <div>
-                <h2 class="text-3xl font-extrabold">Unlimited podcasts and episodes</h2>
-                <p class="mt-6 text-xl">With Voicebits, you can create as many podcasts and episodes as you want.</p>
-                <a href="" class="inline-block mt-6 px-3 py-2 text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 rounded-md transition-all">Learn more</a>
+            <div class="col-span-2 md:col-span-1">
+                <p class="text-lg font-semibold">Easy podcast publishing</p>
+                <p class="mt-2 text-slate-700">We help you publish your podcasts to every single podcast player there is.</p>
             </div>
-        </div>
-        <div class="py-12"></div>
-        <div class="grid md:grid-cols-2 gap-12 items-center">
-            <div>
-                <h2 class="text-3xl font-extrabold">Easy podcast publishing</h2>
-                <p class="mt-6 text-xl">We help you publish your podcasts to every single podcast player there is.</p>
-                <a href="" class="inline-block mt-6 px-3 py-2 text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 rounded-md transition-all">Learn more</a>
+            <div class="col-span-2 md:col-span-1">
+                <p class="text-lg font-semibold">Detailed analytics</p>
+                <p class="mt-2 text-slate-700">Know how your podcasts are performing at a glance, with our simple-yet-powerful analytics dashboard.</p>
             </div>
-            <div>
-                <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
-                    alt=""
-                    class="w-full aspect-square object-cover object-center rounded-xl"
-                >
+            <div class="col-span-2 md:col-span-1">
+                <p class="text-lg font-semibold">Embeddable player</p>
+                <p class="mt-2 text-slate-700">You can embed our episode player into your own websites.</p>
             </div>
-        </div>
-        <div class="py-12"></div>
-        <div class="grid md:grid-cols-2 gap-12 items-center">
-            <div>
-                <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
-                alt=""
-                class="w-full aspect-square object-cover object-center rounded-xl"
-                >
+            <div class="col-span-2 md:col-span-1">
+                <p class="text-lg font-semibold">Crafted for teamwork</p>
+                <p class="mt-2 text-slate-700">Invite colleagues, customize permissions, and collaborate effectively.</p>
             </div>
-            <div>
-                <h2 class="text-3xl font-extrabold">Detailed analytics</h2>
-                <p class="mt-6 text-xl">Know how your podcasts are performing at a glance, with our simple-yet-powerful analytics dashboard.</p>
-                <a href="" class="inline-block mt-6 px-3 py-2 text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 rounded-md transition-all">Learn more</a>
-            </div>
-        </div>
-        <div class="py-12"></div>
-        <div class="grid md:grid-cols-2 gap-12 items-center">
-            <div>
-                <h2 class="text-3xl font-extrabold">Embeddable player</h2>
-                <p class="mt-6 text-xl">You can embed our episode player into your own websites.</p>
-                <a href="" class="inline-block mt-6 px-3 py-2 text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 rounded-md transition-all">Learn more</a>
-            </div>
-            <div>
-                <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
-                    alt=""
-                    class="w-full aspect-square object-cover object-center rounded-xl"
-                >
-            </div>
-        </div>
-        <div class="py-12"></div>
-        <div class="grid md:grid-cols-2 gap-12 items-center">
-            <div>
-                <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
-                alt=""
-                class="w-full aspect-square object-cover object-center rounded-xl"
-                >
-            </div>
-            <div>
-                <h2 class="text-3xl font-extrabold">A website for all your podcasts</h2>
-                <p class="mt-6 text-xl">Pick a design and make it your own.</p>
-                <a href="" class="inline-block mt-6 px-3 py-2 text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 rounded-md transition-all">Learn more</a>
+            <div class="col-span-2 md:col-span-1">
+                <p class="text-lg font-semibold">Premium support</p>
+                <p class="mt-2 text-slate-700">Get expert, personalized support from real people whenever you need it.</p>
             </div>
         </div>
     </div>

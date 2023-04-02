@@ -1,6 +1,6 @@
-<div class="sticky top-0 z-50 bg-gray-50/90 text-slate-600 backdrop-opacity-90 backdrop-blur">
+<div class="sticky top-0 z-50 bg-white text-slate-600 bg-opacity-80 backdrop-blur">
     <div class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="h-16">
+        <div class="h-24">
             <div class="h-full flex items-center justify-between">
                 {{-- Logo --}}
                 <div class="flex items-center gap-8">
@@ -9,15 +9,15 @@
                     </a>
                 </div>
 
-                <div class="hidden md:flex items-center gap-x-6 text-sm">
-                    <a href="{{ route('home') }}?#features" class="inline-block rounded-lg py-1 px-2 text-sm text-slate-700 hover:bg-slate-100 hover:text-slate-900">Features</a>
-                    <a href="{{ route('pricing') }}" class="inline-block rounded-lg py-1 px-2 text-sm text-slate-700 hover:bg-slate-100 hover:text-slate-900">Pricing</a>
-                    <a href="{{ route('blog.index') }}" class="inline-block rounded-lg py-1 px-2 text-sm text-slate-700 hover:bg-slate-100">The Blog</a>
+                <div class="hidden md:flex items-center gap-x-6">
+                    <a href="{{ route('home') }}?#features" class="inline-block text-slate-700 hover:text-violet-600">Features</a>
+                    <a href="{{ route('pricing') }}" class="inline-block text-slate-700 hover:text-violet-600">Pricing</a>
+                    <a href="{{ route('blog.index') }}" class="inline-block text-slate-700 hover:text-violet-600">The Blog</a>
                 </div>
 
                 {{-- Login links --}}
                 <div class="hidden md:flex items-center justify-center gap-6">
-                    <a href="{{ route('login') }}" class="inline-block rounded-lg py-1 px-2 text-sm text-slate-700 hover:bg-slate-100">Login</a>
+                    <a href="{{ route('login') }}" class="inline-block text-slate-700 hover:text-violet-600">Login</a>
                     <a href="{{ route('register') }}" class="primary-btn">Start free trial</a>
                 </div>
 
@@ -33,12 +33,12 @@
                     </button>
 
                     <div class="mt-2 absolute right-0 w-56 z-50 bg-white text-slate-600 text-sm rounded-md" x-show="burger" x-transition @click.outside="burger = false">
-                        <a href="{{ route('login') }}" class="block px-4 my-2.5 hover:text-indigo-500">Sign In</a>
-                        <a href="{{ route('register') }}" class="block px-4 my-2.5 hover:text-indigo-500">Free Trial</a>
+                        <a href="{{ route('login') }}" class="block px-4 my-2.5 hover:text-violet-500">Sign In</a>
+                        <a href="{{ route('register') }}" class="block px-4 my-2.5 hover:text-violet-500">Free Trial</a>
                         <div class="my-6"></div>
-                        <a href="{{ route('home') }}#features" class="block px-4 my-2.5 hover:text-indigo-500">Features</a>
-                        <a href="{{ route('pricing') }}" class="block px-4 my-2.5 hover:text-indigo-500">Pricing</a>
-                        <a href="{{ route('blog.index') }}" class="block px-4 my-2.5 hover:text-indigo-500">The Blog</a>
+                        <a href="{{ route('home') }}#features" class="block px-4 my-2.5 hover:text-violet-500">Features</a>
+                        <a href="{{ route('pricing') }}" class="block px-4 my-2.5 hover:text-violet-500">Pricing</a>
+                        <a href="{{ route('blog.index') }}" class="block px-4 my-2.5 hover:text-violet-500">The Blog</a>
                     </div>
                 </div>
             </div>
