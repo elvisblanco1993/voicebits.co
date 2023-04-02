@@ -46,6 +46,7 @@
             </label>
         </div>
 
+        @if (config('app.env') == 'local')
         <div class="my-6 border-t"></div>
 
         <div class="py-6">
@@ -124,6 +125,7 @@
             <div class="text-2xl font-bold">Custom styles</div>
             <textarea name="" id="" cols="30" rows="10" class="mt-4 input" placeholder="You can include custom CSS here to replace any stiles in your page."></textarea>
         </div>
+        @endif
 
     </div>
 </div>
