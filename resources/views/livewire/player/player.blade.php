@@ -30,7 +30,7 @@
 
                 <div class="mx-4 w-full flex items-center">
                     <div id="progress-bar" class="w-full bg-slate-100 h-3 rounded-full cursor-pointer">
-                        <div id="progress" class="h-full bg-indigo-400 rounded-full"></div>
+                        <div id="progress" class="h-full bg-violet-400 rounded-full"></div>
                     </div>
                     <span class="ml-4 bg-slate-100 rounded-md px-1 py-0.25 font-mono text-sm leading-6 md:block text-slate-500" id="currentTime">00:00</span>
                     <span class="px-1 py-0.5 font-mono text-sm leading-6 md:block text-slate-500">/</span>

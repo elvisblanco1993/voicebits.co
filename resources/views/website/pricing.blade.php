@@ -1,6 +1,6 @@
 @extends('website.layout')
 @section('content')
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-0 text-slate-800">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-0 text-slate-800">
         <div class="py-20">
             <div class="grid grid-cols-12 gap-4 items-center">
                 <div class="col-span-12 md:col-span-8">

@@ -1,10 +1,10 @@
 <div>
-    <div class="max-w-7xl mx-auto h-44 bg-center bg-cover" style="background-image: url('{{ asset($podcast->cover) }}') ">
+    <div class="max-w-5xl mx-auto h-44 bg-center bg-cover" style="background-image: url('{{ asset($podcast->cover) }}') ">
         <div class="h-full flex items-center bg-slate-900/60 backdrop-blur-xl px-4 sm:px-6 lg:px-8">
             @if ($podcast->cover)
                 <img src="{{ Storage::url($podcast->cover) }}" alt="{{ $podcast->name }}" class="w-24 aspect-square rounded-xl object-center object-cover">
             @else
-                <div class="h-24 w-24 rounded-xl bg-indigo-50 flex items-center justify-center">
+                <div class="h-24 w-24 rounded-xl bg-violet-50 flex items-center justify-center">
                     <img src="{{ asset('logo-mark.svg') }}" alt="{{ $podcast->name }}" class="w-10 h-auto">
                 </div>
             @endif

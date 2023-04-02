@@ -1,20 +1,20 @@
 <div>
-    <div class="max-w-7xl mx-auto h-44 bg-center bg-cover" style="background-image: url('{{ asset($podcast->cover) }}') ">
+    <div class="max-w-5xl mx-auto h-44 bg-center bg-cover" style="background-image: url('{{ asset($podcast->cover) }}') ">
         <div class="h-full flex items-center bg-slate-900/60 backdrop-blur-xl px-4 sm:px-6 lg:px-8">
             @if ($podcast->cover)
                 <img src="{{ Storage::url($podcast->cover) }}" alt="{{ $podcast->name }}" class="w-24 aspect-square rounded-xl object-center object-cover">
             @else
-                <div class="h-24 w-24 rounded-xl bg-indigo-50 flex items-center justify-center">
+                <div class="h-24 w-24 rounded-xl bg-violet-50 flex items-center justify-center">
                     <img src="{{ asset('logo-mark.svg') }}" alt="{{ $podcast->name }}" class="w-10 h-auto">
                 </div>
             @endif
             <h1 class="ml-6 text-3xl font-bold text-white">{{ $podcast->name }}</h1>
         </div>
     </div>
-    <div class="py-6 max-w-7xl mx-auto px-4 sm:px-6 lg:px-0">
+    <div class="py-6 max-w-5xl mx-auto px-4 sm:px-6 lg:px-0">
         <div class="flex items-center justify-between">
             <div class="flex items-center gap-3">
-                <a href="{{ route('podcast.episodes') }}" class="hover:text-indigo-600 transition-all">
+                <a href="{{ route('podcast.episodes') }}" class="hover:text-violet-600 transition-all">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M11 15l-3-3m0 0l3-3m-3 3h8M3 12a9 9 0 1118 0 9 9 0 01-18 0z" />
                     </svg>
@@ -154,7 +154,7 @@
                     @endif
 
                     <div class="mt-4">
-                        <label for="cover" class="text-sm text-slate-600 px-3 py-2 rounded-lg border border-slate-200 hover:text-indigo-600 hover:bg-indigo-50 hover:border-indigo-200 transition-all cursor-pointer">
+                        <label for="cover" class="text-sm text-slate-600 px-3 py-2 rounded-lg border border-slate-200 hover:text-violet-600 hover:bg-violet-50 hover:border-violet-200 transition-all cursor-pointer">
                             <input id="cover" type="file" accept=".png,.jpeg" wire:model="cover" class="sr-only">
                             Upload episode art
                         </label>

@@ -1,10 +1,10 @@
 <div>
-    <div class="max-w-7xl mx-auto h-44 bg-center bg-cover" style="background-image: url('{{ asset($podcast->cover) }}') ">
+    <div class="max-w-5xl mx-auto h-44 bg-center bg-cover" style="background-image: url('{{ asset($podcast->cover) }}') ">
         <div class="h-full flex items-center bg-slate-900/60 backdrop-blur-xl px-4 sm:px-6 lg:px-8">
             @if ($podcast->cover)
                 <img src="{{ Storage::url($podcast->cover) }}" alt="{{ $podcast->name }}" class="w-24 aspect-square rounded-xl object-center object-cover">
             @else
-                <div class="h-24 w-24 rounded-xl bg-indigo-50 flex items-center justify-center">
+                <div class="h-24 w-24 rounded-xl bg-violet-50 flex items-center justify-center">
                     <img src="{{ asset('logo-mark.svg') }}" alt="{{ $podcast->name }}" class="w-10 h-auto">
                 </div>
             @endif
@@ -93,7 +93,7 @@
                 <x-label for="url" value="Podcast url" />
                 <div class="col-span-3 md:col-span-2">
                     <x-input type="text" wire:model="url" id="url" class="mt-1 w-full" placeholder="{{str($podcast->name)->slug()}}" autocomplete="off"/>
-                    <a href="{{ config('app.url') }}/s/{{$podcast->url}}" target="_blank" class="mt-1 text-xs font-medium tracking-wider text-indigo-600">{{ config('app.url') }}/s/{{$podcast->url}}</a>
+                    <a href="{{ config('app.url') }}/s/{{$podcast->url}}" target="_blank" class="mt-1 text-xs font-medium tracking-wider text-violet-600">{{ config('app.url') }}/s/{{$podcast->url}}</a>
                 </div>
             </div>
             <div class="mt-6 bg-slate-100 px-8 py-4 flex items-center justify-end">
@@ -116,7 +116,7 @@
                         @elseif($cover)
                             <img src="{{ $cover->temporaryUrl() }}" class="w-40 h-40 rounded-lg shadow aspect-square object-center object-cover">
                         @else
-                            <div class="flex-none h-40 w-40 rounded-lg bg-indigo-50 flex items-center justify-center">
+                            <div class="flex-none h-40 w-40 rounded-lg bg-violet-50 flex items-center justify-center">
                                 <img src="{{ asset('logo-mark.svg') }}" class="w-12 h-auto">
                             </div>
                         @endif
@@ -132,7 +132,7 @@
                         </button>
                     </div>
                     <div>
-                        <label for="artwork-file" class="text-sm text-slate-600 px-3 py-2 rounded-lg border border-slate-200 hover:text-indigo-600 hover:bg-indigo-50 hover:border-indigo-200 transition-all cursor-pointer">
+                        <label for="artwork-file" class="text-sm text-slate-600 px-3 py-2 rounded-lg border border-slate-200 hover:text-violet-600 hover:bg-violet-50 hover:border-violet-200 transition-all cursor-pointer">
                             <input type="file" wire:model="cover" id="artwork-file" accept="image/jpeg,image/png" class="sr-only">
                             Upload artwork
                         </label>

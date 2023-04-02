@@ -1,6 +1,6 @@
 @extends('website.layout')
 @section('content')
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-0 text-slate-800">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-0 text-slate-800">
         <div class="py-20 grid grid-cols-12 gap-4 items-center">
             <div class="col-span-12 md:col-span-8">
                 <h1 class="text-4xl font-extrabold">News and Updates from Voicebits</h1>
@@ -16,7 +16,7 @@
             <p class="text-2xl font-bold">Latest articles</p>
             <form action="?search=" method="get">
                 <input type="search" placeholder="Search..." name="search" value="{{$search}}"
-                class="border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-lg shadow-sm">
+                class="border-gray-300 focus:border-violet-300 focus:ring focus:ring-violet-200 focus:ring-opacity-50 rounded-lg shadow-sm">
             </form>
         </div>
 
@@ -32,7 +32,7 @@
                         <p class="mt-2 text-base">{{ Str::of($article->content)->words(35, '[...]') }}</p>
                         <div class="mt-4 text-sm font-mono">
                             <span>Written by {{ $article->author }}</span>
-                            <span class="block mt-2">{{ Carbon\Carbon::parse($article->published_at)->format('M d, Y') }} &middot; <a href="{{ route('blog.article', ['article' => $article->slug]) }}" class="underline text-indigo-600">Read article</a></span>
+                            <span class="block mt-2">{{ Carbon\Carbon::parse($article->published_at)->format('M d, Y') }} &middot; <a href="{{ route('blog.article', ['article' => $article->slug]) }}" class="underline text-violet-600">Read article</a></span>
                         </div>
                     </article>
                 @else
@@ -49,7 +49,7 @@
                             <p class="mt-2 text-base">{{ Str::of($article->content)->words(35, ' [...]') }}</p>
                             <div class="mt-4 text-sm font-light">
                                 <span>Written by {{ $article->author }}</span>
-                                <span class="block mt-2">{{ Carbon\Carbon::parse($article->published_at)->format('M d, Y') }} &middot; <a href="{{ route('blog.article', ['article' => $article->slug]) }}" class="underline text-indigo-600">Read article</a></span>
+                                <span class="block mt-2">{{ Carbon\Carbon::parse($article->published_at)->format('M d, Y') }} &middot; <a href="{{ route('blog.article', ['article' => $article->slug]) }}" class="underline text-violet-600">Read article</a></span>
                             </div>
                         </div>
                     </article>

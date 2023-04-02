@@ -22,7 +22,7 @@
     {{-- End of Slim player --}}
     {{-- Navbar --}}
     <div class="w-full">
-        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between border-b md:border-b-0">
+        <nav class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between border-b md:border-b-0">
             {{-- About --}}
             <div class="hidden md:flex items-center space-x-12">
                 <button x-on:click="activePage = 'home'" :class="activePage == 'home' ? 'border-b-4 border-b-slate-900' : '' ">{{ __("Home") }}</button>
@@ -58,7 +58,7 @@
     {{-- End of Navbar --}}
 
     {{-- Home page --}}
-    <div x-show="activePage == 'home'" x-cloak class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 md:py-12">
+    <div x-show="activePage == 'home'" x-cloak class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-4 md:py-12">
         <div class="flex items-center justify-between md:space-x-8">
             <div class="hidden md:block w-full">
                 <h1 class="text-5xl font-semibold">{{ $podcast->name }}</h1>
@@ -80,7 +80,7 @@
     {{-- End of Home page --}}
 
     {{-- Episodes --}}
-    <div x-show="activePage == 'episodes'" x-cloak class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 md:py-12">
+    <div x-show="activePage == 'episodes'" x-cloak class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-4 md:py-12">
 
         <h1 class="text-4xl font-semibold">{{ __("Episodes") }}</h1>
         <div class="mt-12">

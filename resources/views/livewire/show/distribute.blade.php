@@ -1,10 +1,10 @@
 <div>
-    <div class="max-w-7xl mx-auto h-44 bg-center bg-cover" style="background-image: url('{{ asset($podcast->cover) }}') ">
+    <div class="max-w-5xl mx-auto h-44 bg-center bg-cover" style="background-image: url('{{ asset($podcast->cover) }}') ">
         <div class="h-full flex items-center bg-slate-900/60 backdrop-blur-xl px-4 sm:px-6 lg:px-8">
             @if ($podcast->cover)
                 <img src="{{ Storage::url($podcast->cover) }}" alt="{{ $podcast->name }}" class="w-24 aspect-square rounded-xl object-center object-cover">
             @else
-                <div class="h-24 w-24 rounded-xl bg-indigo-50 flex items-center justify-center">
+                <div class="h-24 w-24 rounded-xl bg-violet-50 flex items-center justify-center">
                     <img src="{{ asset('logo-mark.svg') }}" alt="{{ $podcast->name }}" class="w-10 h-auto">
                 </div>
             @endif
@@ -19,7 +19,7 @@
                 <div class="text-sm text-slate-700 font-medium">Website</div>
                 <div class="mt-2 flex items-center justify-between">
                     <span id="web" class="px-4 py-2 border border-r-0 border-gray-200 rounded-r-none rounded-lg w-full truncate">{{ route('public.podcast.website', ['url' => $podcast->url]) }}</span>
-                    <button class="w-auto text-center text-slate-600 px-4 py-2 rounded-l-none rounded-lg border border-slate-200 hover:text-indigo-600 hover:bg-indigo-50 hover:border-indigo-200 transition-all"
+                    <button class="w-auto text-center text-slate-600 px-4 py-2 rounded-l-none rounded-lg border border-slate-200 hover:text-violet-600 hover:bg-violet-50 hover:border-violet-200 transition-all"
                     id="webBtn"
                     onclick="copyWebsiteToClipboard()"
                     >Copy</button>
@@ -29,7 +29,7 @@
                 <div class="text-sm text-slate-700 font-medium">RSS Feed</div>
                 <div class="mt-2 flex items-center justify-between">
                     <span id="rss" class="px-4 py-2 border border-r-0 border-gray-200 rounded-r-none rounded-lg w-full truncate">{{ route('public.podcast.feed', ['url' => $podcast->url, 'player' => 'rss']) }}</span>
-                    <button class="w-auto text-center text-slate-600 px-4 py-2 rounded-l-none rounded-lg border border-slate-200 hover:text-indigo-600 hover:bg-indigo-50 hover:border-indigo-200 transition-all"
+                    <button class="w-auto text-center text-slate-600 px-4 py-2 rounded-l-none rounded-lg border border-slate-200 hover:text-violet-600 hover:bg-violet-50 hover:border-violet-200 transition-all"
                     id="rssBtn"
                     onclick="copyRssToClipboard()"
                     >Copy</button>
