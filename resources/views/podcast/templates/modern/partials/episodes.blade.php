@@ -25,3 +25,7 @@
     </article>
 @empty
 @endforelse
+
+<div class="mt-6">
+    {{ $episodes->links() }}
+</div>

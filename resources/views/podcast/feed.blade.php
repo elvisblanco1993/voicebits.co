@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd">
+<rss
+    xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd"
+    xmlns:googleplay="http://www.google.com/schemas/play-podcasts/1.0"
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+    xmlns:content="http://purl.org/rss/1.0/modules/content/"
+    xmlns:podcast="https://podcastindex.org/namespace/1.0"
+    xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"
+>
     <channel>
         <atom:link xmlns:atom="http://www.w3.org/2005/Atom" rel="self" type="application/rss+xml" href="{{ url()->current() }}"/>
         <generator>{{ config('app.url') }}</generator>
@@ -37,19 +44,28 @@
             <item>
                 <guid isPermaLink="false">{{ $episode->guid }}</guid>
                 <title>{{ $episode->title }}</title>
-                <description><![CDATA[{{ $episode->description }}]]></description>
+                <description>
+                    <![CDATA[{{ $episode->description }}]]>
+                </description>
                 <pubDate>{{ date(DateTime::RFC2822, strtotime($episode->created_at)) }}</pubDate>
                 <author>{{ $podcast->owner()->email }} ({{ $podcast->author }})</author>
                 <link>{{ config('app.url') . "/s/" . $podcast->url }}</link>
+                @if ($podcast->funding)
+                    <podcast:funding url="{{ $podcast->funding_url }}">{{ $podcast->funding_text }}</podcast:funding>
+                @endif
                 <content:encoded>
-                    {{ $episode->description }}
+                    <![CDATA[{{ $episode->description }}]]>
                 </content:encoded>
                 <enclosure url="{{ config('app.url') . '/s/' . $podcast->url . '/play/' . $episode->guid . '/' . $player . '.mp3' }}" length="{{ $episode->track_size }}" type="audio/mpeg"/>
                 <itunes:title>{{ $episode->title }}</itunes:title>
                 <itunes:author>{{ $podcast->author }}</itunes:author>
                 <itunes:duration>{{  ( is_numeric($episode->track_length) ) ? gmdate("H:i:s", (int) $episode->track_length) : $episode->track_length }}</itunes:duration>
-                <itunes:summary><![CDATA[{{ str($episode->description)->limit(180) }}...]]></itunes:summary>
-                <itunes:subtitle><![CDATA[{{ str($episode->description)->limit(180) }}...]]></itunes:subtitle>
+                <itunes:summary>
+                    <![CDATA[{{ str($episode->description)->limit(180) }}...]]>
+                </itunes:summary>
+                <itunes:subtitle>
+                    <![CDATA[{{ str($episode->description)->limit(180) }}...]]>
+                </itunes:subtitle>
                 <itunes:explicit>{{ ($episode->explicit) ? "yes" : "no" }}</itunes:explicit>
                 <itunes:episodeType>{{ $episode->type }}</itunes:episodeType>
                 @if ($episode->podcast->type == "serial")

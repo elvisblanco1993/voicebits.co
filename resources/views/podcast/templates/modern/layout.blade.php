@@ -25,7 +25,6 @@
     </head>
     <body class="antialiased min-h-screen">
         @yield('content')
-        {{-- End of Episodes --}}
         @livewireScripts
     </body>
 </html>

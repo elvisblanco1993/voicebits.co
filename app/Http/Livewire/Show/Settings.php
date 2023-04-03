@@ -14,7 +14,7 @@ class Settings extends Component
     use WithFileUploads;
 
     public $podcast;
-    public $name, $description, $url, $category, $language, $type, $author, $cover, $explicit, $is_locked, $funding, $funding_text, $funding_url, $timezone;
+    public $name, $description, $url, $category, $language, $type, $author, $cover, $explicit, $is_locked, $funding, $funding_text, $funding_description, $funding_url, $timezone;
 
     public function mount()
     {
@@ -31,6 +31,7 @@ class Settings extends Component
         $this->is_locked = $this->podcast->is_locked;
         $this->funding = $this->podcast->funding;
         $this->funding_text = $this->podcast->funding_text;
+        $this->funding_description = $this->podcast->funding_description;
         $this->funding_url = $this->podcast->funding_url;
     }
 
@@ -89,6 +90,7 @@ class Settings extends Component
                 'is_locked' => $this->is_locked,
                 'funding' => $this->funding,
                 'funding_text' => $this->funding_text,
+                'funding_description' => $this->funding_description,
                 'funding_url' => $this->funding_url,
             ]);
 

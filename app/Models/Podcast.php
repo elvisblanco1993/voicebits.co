@@ -26,7 +26,21 @@ class Podcast extends Model
         'is_locked',
         'funding',
         'funding_text',
+        'funding_description',
         'funding_url',
+        'podcastindex',
+        'google',
+        'spotify',
+        'apple',
+        'stitcher',
+        'pocketcasts',
+        'amazon',
+        'pandora',
+        'iheartradio',
+        'castbox',
+        'podcastaddict',
+        'deezer',
+        'castro',
     ];
 
     protected $with = 'episodes';
@@ -85,5 +99,15 @@ class Podcast extends Model
     public function downloads()
     {
         return $this->hasMany(PlaysCounter::class);
+    }
+
+    public function isConnectedToExternalPlayers()
+    {
+        return ( $this->podcastindex || $this->google || $this->spotify || $this->apple || $this->stitcher || $this->pocketcasts || $this->amazon || $this->pandora || $this->iheartradio || $this->castbox || $this->podcastaddict || $this->deezer || $this->castro) ? true : false;
+    }
+
+    public function hasFunding()
+    {
+        return ($this->funding && $this->funding_text && $this->funding_url) ? true : false;
     }
 }
