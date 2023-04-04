@@ -1,8 +1,8 @@
 @forelse ($episodes as $episode)
-    <article class="mb-4 w-full p-4 border rounded-xl">
+    <article class="mb-4 w-full p-4 border rounded">
         <div class="grid grid-cols-12 items-center gap-4">
             <div class="col-span-10 lg:col-span-11 w-full flex items-center">
-                <button id="{{ $episode->guid }}" onclick="play('{{ $episode->guid }}')" class="episode-btn text-slate-800 hover:text-slate-600 transition-all p-0">
+                <button @if ($loop->first) id="{{ $episode->guid }}" @endif onclick="play('{{ $episode->guid }}')" class="episode-btn text-slate-800 hover:text-slate-600 transition-all p-0 {{ 'play-' . $episode->guid }}">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-12 h-12">
                         <path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm14.024-.983a1.125 1.125 0 010 1.966l-5.603 3.113A1.125 1.125 0 019 15.113V8.887c0-.857.921-1.4 1.671-.983l5.603 3.113z" clip-rule="evenodd" />
                     </svg>
