@@ -55,6 +55,11 @@ class Podcast extends Model
         return $this->hasMany(Episode::class);
     }
 
+    public function contributors()
+    {
+        return $this->belongsToMany(Contributor::class)->withPivot('is_default');
+    }
+
     public function plays()
     {
         return $this->hasMany(PlaysCounter::class);

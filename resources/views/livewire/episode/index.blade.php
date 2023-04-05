@@ -1,29 +1,20 @@
 <div>
-    <div class="max-w-5xl mx-auto h-44 bg-center bg-cover" style="background-image: url('{{ asset($podcast->cover) }}') ">
-        <div class="h-full flex items-center bg-slate-900/60 backdrop-blur-xl px-4 sm:px-6 lg:px-8">
-            @if ($podcast->cover)
-                <img src="{{ Storage::url($podcast->cover) }}" alt="{{ $podcast->name }}" class="w-24 aspect-square rounded-xl object-center object-cover">
-            @else
-                <div class="h-24 w-24 rounded-xl bg-violet-50 flex items-center justify-center">
-                    <img src="{{ asset('logo-mark.svg') }}" alt="{{ $podcast->name }}" class="w-10 h-auto">
-                </div>
-            @endif
-            <h1 class="ml-6 text-3xl font-bold text-white">{{ $podcast->name }}</h1>
-        </div>
-    </div>
     {{-- Podcast Menu --}}
     @livewire('submenu')
 
     <div class="py-6">
         <div class="flex items-center justify-between">
             <div class="text-2xl font-bold">Episodes</div>
-            {{-- <x-input type="search" wire:model="search" placeholder="Search episode" class="w-1/2"/> --}}
             @can('upload_episodes', $podcast)
-                <a href="{{ route('podcast.episode.create') }}"
-                    class="btn-link"
-                >New episode</a>
+                <a href="{{ route('podcast.episode.create') }}" class="btn-link">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5">
+                        <path d="M10.75 4.75a.75.75 0 00-1.5 0v4.5h-4.5a.75.75 0 000 1.5h4.5v4.5a.75.75 0 001.5 0v-4.5h4.5a.75.75 0 000-1.5h-4.5v-4.5z" />
+                    </svg>
+                    <span class="ml-2">New episode</span>
+                </a>
             @endcan
         </div>
+        <x-input type="search" wire:model="search" placeholder="Search episodes by title" class="mt-2 w-full sm:w-1/3"/>
         <div class="mt-4 overflow-x-auto shadow rounded-lg">
             <table class="w-full text-sm text-left text-gray-500">
                 <thead class="text-xs text-gray-700 uppercase bg-gray-50">

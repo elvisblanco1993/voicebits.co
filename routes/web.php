@@ -63,7 +63,9 @@ Route::middleware([
             Route::get('/articles/create', App\Http\Livewire\Article\Create::class)->name('article.create');
             Route::get('/articles/{article}/edit', App\Http\Livewire\Article\Edit::class)->name('article.edit');
 
-            // Customers routes
+            // Podcast guests (people) routes
+            Route::get('/contributors', App\Http\Livewire\Contributor\Index::class)->name('podcast.contributors');
+            Route::get('/contributor/{contributor}/edit/', App\Http\Livewire\Contributor\Edit::class)->name('podcast.contributor.edit');
         });
     });
 });

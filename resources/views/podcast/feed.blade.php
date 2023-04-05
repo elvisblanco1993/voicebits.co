@@ -41,38 +41,40 @@
         @endif
 
         @forelse ($podcast->episodes as $episode)
-            <item>
-                <guid isPermaLink="false">{{ $episode->guid }}</guid>
-                <title>{{ $episode->title }}</title>
-                <description>
-                    <![CDATA[{{ $episode->description }}]]>
-                </description>
-                <pubDate>{{ date(DateTime::RFC2822, strtotime($episode->created_at)) }}</pubDate>
-                <author>{{ $podcast->owner()->email }} ({{ $podcast->author }})</author>
-                <link>{{ config('app.url') . "/s/" . $podcast->url }}</link>
-                @if ($podcast->funding)
-                    <podcast:funding url="{{ $podcast->funding_url }}">{{ $podcast->funding_text }}</podcast:funding>
-                @endif
-                <content:encoded>
-                    <![CDATA[{{ $episode->description }}]]>
-                </content:encoded>
-                <enclosure url="{{ config('app.url') . '/s/' . $podcast->url . '/play/' . $episode->guid . '/' . $player . '.mp3' }}" length="{{ $episode->track_size }}" type="audio/mpeg"/>
-                <itunes:title>{{ $episode->title }}</itunes:title>
-                <itunes:author>{{ $podcast->author }}</itunes:author>
-                <itunes:duration>{{  ( is_numeric($episode->track_length) ) ? gmdate("H:i:s", (int) $episode->track_length) : $episode->track_length }}</itunes:duration>
-                <itunes:summary>
-                    <![CDATA[{{ str($episode->description)->limit(180) }}...]]>
-                </itunes:summary>
-                <itunes:subtitle>
-                    <![CDATA[{{ str($episode->description)->limit(180) }}...]]>
-                </itunes:subtitle>
-                <itunes:explicit>{{ ($episode->explicit) ? "yes" : "no" }}</itunes:explicit>
-                <itunes:episodeType>{{ $episode->type }}</itunes:episodeType>
-                @if ($episode->podcast->type == "serial")
-                    <itunes:episode>{{ $episode->number }}</itunes:episode>
-                    <itunes:season>{{ $episode->season }}</itunes:season>
-                @endif
-            </item>
+            @if (!$episode->blocked)
+                <item>
+                    <guid isPermaLink="false">{{ $episode->guid }}</guid>
+                    <title>{{ $episode->title }}</title>
+                    <description>
+                        <![CDATA[{{ $episode->description }}]]>
+                    </description>
+                    <pubDate>{{ date(DateTime::RFC2822, strtotime($episode->created_at)) }}</pubDate>
+                    <author>{{ $podcast->owner()->email }} ({{ $podcast->author }})</author>
+                    <link>{{ config('app.url') . "/s/" . $podcast->url }}</link>
+                    @if ($podcast->funding)
+                        <podcast:funding url="{{ $podcast->funding_url }}">{{ $podcast->funding_text }}</podcast:funding>
+                    @endif
+                    <content:encoded>
+                        <![CDATA[{{ $episode->description }}]]>
+                    </content:encoded>
+                    <enclosure url="{{ config('app.url') . '/s/' . $podcast->url . '/play/' . $episode->guid . '/' . $player . '.mp3' }}" length="{{ $episode->track_size }}" type="audio/mpeg"/>
+                    <itunes:title>{{ $episode->title }}</itunes:title>
+                    <itunes:author>{{ $podcast->author }}</itunes:author>
+                    <itunes:duration>{{  ( is_numeric($episode->track_length) ) ? gmdate("H:i:s", (int) $episode->track_length) : $episode->track_length }}</itunes:duration>
+                    <itunes:summary>
+                        <![CDATA[{{ str($episode->description)->limit(180) }}...]]>
+                    </itunes:summary>
+                    <itunes:subtitle>
+                        <![CDATA[{{ str($episode->description)->limit(180) }}...]]>
+                    </itunes:subtitle>
+                    <itunes:explicit>{{ ($episode->explicit) ? "yes" : "no" }}</itunes:explicit>
+                    <itunes:episodeType>{{ $episode->type }}</itunes:episodeType>
+                    @if ($episode->podcast->type == "serial")
+                        <itunes:episode>{{ $episode->number }}</itunes:episode>
+                        <itunes:season>{{ $episode->season }}</itunes:season>
+                    @endif
+                </item>
+            @endif
         @empty
 
         @endforelse

@@ -92,18 +92,19 @@
         const progressBar = document.getElementById('progress-bar');
         const progress = document.getElementById('progress');
         let isDragging = false;
-
+        let isPlaying = false;
+        let currentPlayTime = 0;
+        let episode = '';
+        const savedState = JSON.parse(localStorage.getItem('podcast-player-state'))
         let tmp = localStorage.getItem('guid') ?? null;
 
-        // Initialize player
-        // window.onload = () => {
-        //     if (document.querySelectorAll('.episode-btn')[0]) {
-        //         let first_episode = document.querySelectorAll('.episode-btn')[0].getAttribute('id');
-        //         setPlayerUrl(first_episode);
-        //         // Initialize temp button.
-        //         tmp = first_episode;
-        //     }
-        // }
+        if (savedState.isPlaying) {
+            isPlaying = savedState.isPlaying;
+            episode = savedState.episode;
+            player.src = savedState.episode;
+            player.currentTime = savedState.currentPlayTime;
+        }
+
 
         function play(guid) {
             if (tmp == guid) {
@@ -118,6 +119,7 @@
                     setTimeout(function() {
                         player.play();
                     }, 150);
+                    isPlaying = false;
                 } else if (player.ended) {
                     setPlayerUrl(guid);
                     setTimeout(function() {
@@ -142,6 +144,7 @@
             Livewire.emit('getEpisodeData', guid);
             Livewire.on('gotEpisodeData', (url, title) => {
                 player.src = url;
+                episode = url;
                 localStorage.setItem('title', title);
             });
         }
@@ -155,6 +158,7 @@
         };
 
         player.onplaying = () => {
+            isPlaying = true;
             play_btn.innerHTML = '';
             play_btn.innerHTML =
                 "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='currentColor' class='w-6 h-6'><path fill-rule='evenodd' d='M6.75 5.25a.75.75 0 01.75-.75H9a.75.75 0 01.75.75v13.5a.75.75 0 01-.75.75H7.5a.75.75 0 01-.75-.75V5.25zm7.5 0A.75.75 0 0115 4.5h1.5a.75.75 0 01.75.75v13.5a.75.75 0 01-.75.75H15a.75.75 0 01-.75-.75V5.25z' clip-rule='evenodd' /></svg>";
@@ -167,6 +171,7 @@
         }
 
         player.onpause = () => {
+            isPlaying = false;
             document.getElementsByClassName(tmp).innerHTML = "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='currentColor' class='w-12 h-12'><path fill-rule='evenodd' d='M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm14.024-.983a1.125 1.125 0 010 1.966l-5.603 3.113A1.125 1.125 0 019 15.113V8.887c0-.857.921-1.4 1.671-.983l5.603 3.113z' clip-rule='evenodd' /></svg>";
             play_btn.innerHTML = "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='currentColor' class='w-6 h-6'><path fill-rule='evenodd' d='M4.5 5.653c0-1.426 1.529-2.33 2.779-1.643l11.54 6.348c1.295.712 1.295 2.573 0 3.285L7.28 19.991c-1.25.687-2.779-.217-2.779-1.643V5.653z' clip-rule='evenodd' /></svg>";
         }
@@ -288,5 +293,15 @@
                 durmins = "0" + durmins;
             }
         }
+
+        // Save the player state before going to next page
+        window.addEventListener('beforeunload', () => {
+            const state = {
+                isPlaying: isPlaying,
+                episode: player.src,
+                currentPlayTime: player.currentTime,
+            }
+            localStorage.setItem('podcast-player-state', JSON.stringify(state))
+        });
     </script>
 </div>

@@ -1,5 +1,5 @@
 <div>
-    <div class="max-w-5xl mx-auto h-44 bg-center bg-cover" style="background-image: url('{{ asset($podcast->cover) }}') ">
+    <div class="max-w-7xl mx-auto h-44 bg-center bg-cover" style="background-image: url('{{ asset($podcast->cover) }}') ">
         <div class="h-full flex items-center bg-slate-900/60 backdrop-blur-xl px-4 sm:px-6 lg:px-8">
             @if ($podcast->cover)
                 <img src="{{ Storage::url($podcast->cover) }}" alt="{{ $podcast->name }}" class="w-24 aspect-square rounded-xl object-center object-cover">
@@ -11,7 +11,7 @@
             <h1 class="ml-6 text-3xl font-bold text-white">{{ $podcast->name }}</h1>
         </div>
     </div>
-    <div class="py-6 max-w-5xl mx-auto px-4 sm:px-6 lg:px-0">
+    <div class="py-6 max-w-7xl mx-auto px-4 sm:px-6 lg:px-0">
         <div class="flex items-center justify-between">
             <div class="flex items-center gap-3">
                 <a href="{{ route('podcast.episodes') }}" class="hover:text-violet-600 transition-all">

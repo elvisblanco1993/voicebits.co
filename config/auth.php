@@ -123,6 +123,7 @@ return [
         'delete_podcast',
         'delete_episodes',
         'delete_users',
+        'manage_contributors',
         'manage_platform',
         'manage_billing',
         'manage_social',

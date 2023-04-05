@@ -112,5 +112,10 @@ class AuthServiceProvider extends ServiceProvider
                 ? true
                 : false;
         });
+        Gate::define('manage_contributors', function (User $user) {
+            return ( ($user->subscribed('voicebits') || $user->onTrial()) || in_array('manage_contributors', json_decode($user->podcasts->find(session('podcast'))->pivot->permissions)) )
+                ? true
+                : false;
+        });
     }
 }

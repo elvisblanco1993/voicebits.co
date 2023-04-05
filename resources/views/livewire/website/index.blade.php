@@ -1,17 +1,4 @@
 <div>
-    <div class="max-w-5xl mx-auto h-44 bg-center bg-cover" style="background-image: url('{{ asset($podcast->cover) }}') ">
-        <div class="h-full flex items-center bg-slate-900/60 backdrop-blur-xl px-4 sm:px-6 lg:px-8">
-            @if ($podcast->cover)
-                <img src="{{ Storage::url($podcast->cover) }}" alt="{{ $podcast->name }}" class="w-24 aspect-square rounded-xl object-center object-cover">
-            @else
-                <div class="h-24 w-24 rounded-xl bg-violet-50 flex items-center justify-center">
-                    <img src="{{ asset('logo-mark.svg') }}" alt="{{ $podcast->name }}" class="w-10 h-auto">
-                </div>
-            @endif
-            <h1 class="ml-6 text-3xl font-bold text-white">{{ $podcast->name }}</h1>
-        </div>
-    </div>
-
     @livewire('submenu')
 
     <div class="py-6">
@@ -50,7 +37,7 @@
         <div class="my-6 border-t"></div>
 
         <div class="py-6">
-            <div class="text-2xl font-bold">Colors</div>
+            <div class="text-xl font-bold">Colors</div>
             <div class="mt-4 grid grid-cols-3 gap-8">
                 <div class="col-span-3 md:col-span-1 flex items-center space-x-4">
                     <label for="header_bg" class="shadow color-label inline-flex items-center h-12 aspect-square rounded-full cursor-pointer">
@@ -122,7 +109,7 @@
         <div class="my-6 border-t"></div>
 
         <div class="py-6">
-            <div class="text-2xl font-bold">Custom styles</div>
+            <div class="text-xl font-bold">Custom styles</div>
             <textarea name="" id="" cols="30" rows="10" class="mt-4 input" placeholder="You can include custom CSS here to replace any stiles in your page."></textarea>
         </div>
         @endif
