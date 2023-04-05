@@ -95,10 +95,10 @@
         let isPlaying = false;
         let currentPlayTime = 0;
         let episode = '';
-        const savedState = JSON.parse(localStorage.getItem('podcast-player-state'))
+        const savedState = (localStorage.getItem('podcast-player-state') != null) ? JSON.parse(localStorage.getItem('podcast-player-state')) : null;
         let tmp = localStorage.getItem('guid') ?? null;
 
-        if (savedState.isPlaying) {
+        if (savedState != null && savedState.isPlaying) {
             isPlaying = savedState.isPlaying;
             episode = savedState.episode;
             player.src = savedState.episode;
