@@ -57,8 +57,7 @@ class Edit extends Component
                 'twitter' => $this->twitter,
                 'avatar' => ($this->avatar) ? $this->avatar->store('images') : $this->contributor->avatar,
             ]);
-
-            $this->contributor->podcasts()->sync($this->podcast->id, [
+            $this->contributor->podcasts()->updateExistingPivot($this->podcast->id, [
                 'is_default' => ($this->is_default == true) ? true : false,
             ]);
             session()->flash('flash.banner', 'A contributor has been successfully added to the podcast!');

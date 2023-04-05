@@ -39,6 +39,12 @@
         @if ($podcast->funding)
             <podcast:funding url="{{ $podcast->funding_url }}">{{ $podcast->funding_text }}</podcast:funding>
         @endif
+        @forelse ($podcast->contributors as $contributor)
+            @if ($contributor->pivot->is_default)
+                <podcast:person role="{{ $contributor->role }}" href="{{ $contributor->website }}" img="{{ asset($contributor->avatar) }}">{{ $contributor->name }}</podcast:person>
+            @endif
+        @empty
+        @endforelse
 
         @forelse ($podcast->episodes as $episode)
             @if (!$episode->blocked)
@@ -54,6 +60,10 @@
                     @if ($podcast->funding)
                         <podcast:funding url="{{ $podcast->funding_url }}">{{ $podcast->funding_text }}</podcast:funding>
                     @endif
+                    @forelse ($episode->contributors as $contributor)
+                        <podcast:person role="{{ $contributor->role }}" href="{{ $contributor->website }}" img="{{ asset($contributor->avatar) }}">{{ $contributor->name }}</podcast:person>
+                    @empty
+                    @endforelse
                     <content:encoded>
                         <![CDATA[{{ $episode->description }}]]>
                     </content:encoded>

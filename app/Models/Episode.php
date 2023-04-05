@@ -35,7 +35,7 @@ class Episode extends Model
 
     public function contributors()
     {
-        return $this->belongsToMany(Contributor::class)->withPivot('is_default');
+        return $this->belongsToMany(Contributor::class);
     }
 
     public function plays()
