@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id();
             $table->foreignId('contributor_id')->constrained();
             $table->foreignId('episode_id')->constrained();
-            $table->cascadeOnDelete();
         });
     }
 

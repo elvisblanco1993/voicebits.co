@@ -16,7 +16,6 @@ return new class extends Migration
             $table->foreignId('contributor_id')->constrained();
             $table->foreignId('podcast_id')->constrained();
             $table->boolean('is_default')->default(false);
-            $table->cascadeOnDelete();
         });
     }
 
