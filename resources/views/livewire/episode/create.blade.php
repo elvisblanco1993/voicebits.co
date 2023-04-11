@@ -1,14 +1,17 @@
 <div>
-    <div class="max-w-7xl mx-auto h-44 bg-center bg-cover" style="background-image: url('{{ asset($podcast->cover) }}') ">
-        <div class="h-full flex items-center bg-slate-900/60 backdrop-blur-xl px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto py-4">
+        <div class="flex items-center">
             @if ($podcast->cover)
-                <img src="{{ Storage::url($podcast->cover) }}" alt="{{ $podcast->name }}" class="w-24 aspect-square rounded-xl object-center object-cover">
+                <img src="{{ Storage::url($podcast->cover) }}" alt="{{ $podcast->name }}" class="w-24 aspect-square rounded-md object-center object-cover">
             @else
-                <div class="h-24 w-24 rounded-xl bg-violet-50 flex items-center justify-center">
-                    <img src="{{ asset('logo-mark.svg') }}" alt="{{ $podcast->name }}" class="w-10 h-auto">
+                <div class="h-24 w-24 rounded-md bg-violet-50 flex items-center justify-center">
+                    <img src="{{ asset('logo-mark.svg') }}" alt="{{ $episode->podcast->name }}" class="w-10 h-auto">
                 </div>
             @endif
-            <h1 class="ml-6 text-3xl font-bold text-white">{{ $podcast->name }}</h1>
+            <div class="ml-6">
+                <h1 class="text-3xl font-bold">{{ $podcast->name }}</h1>
+                <a href="{{ route('public.podcast.website', ['url' => $podcast->url]) }}" target="_blank" class="text-sm bg-slate-200 text-slate-700 px-1 py-0.5 rounded">Visit website</a>
+            </div>
         </div>
     </div>
     <div class="py-6 max-w-7xl mx-auto px-4 sm:px-6 lg:px-0">
