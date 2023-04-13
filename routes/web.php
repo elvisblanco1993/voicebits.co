@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\WebController;
 
 /**
- * Subdomain routes
+ * Podcast routes
  */
 Route::middleware('xframe.options')->group(function() {
     Route::get("/s/{url}", [App\Http\Controllers\PodcastController::class, 'show'])->name('public.podcast.website');
@@ -15,8 +15,18 @@ Route::middleware('xframe.options')->group(function() {
     Route::get("/podcasts/{url}/covers/{cover}", [App\Http\Controllers\PodcastController::class, 'cover'])->name('public.podcast.cover');
     Route::middleware('downloads.counter')->get("/s/{url}/play/{episode}/{player?}", [App\Http\Controllers\EpisodeController::class, 'play'])->name('public.episode.play');
 });
-
 Route::get('/embed/{guid}/{player?}', [App\Http\Controllers\EpisodeController::class, 'embed'])->name('public.episode.embed');
+
+/**
+ * Website routes
+ */
+Route::middleware('xframe.options')->group(function () {
+    Route::get('/', [WebController::class, 'home'])->name('home');
+    Route::get('/about-us', [WebController::class, 'about'])->name('about');
+    Route::get('/pricing', [WebController::class, 'pricing'])->name('pricing');
+    Route::get('/blog', [ArticleController::class, 'index'])->name('blog.index');
+    Route::get('/blog/{article}', [ArticleController::class, 'show'])->name('blog.article');
+});
 
 /**
  * Protected routes
@@ -59,23 +69,15 @@ Route::middleware([
             Route::get('/episode/preview/{episode}/', [App\Http\Controllers\EpisodeController::class, 'preview'])->name('episode.preview');
 
             // Article routes
-            Route::get('/articles', App\Http\Livewire\Article\Index::class)->name('article.index');
-            Route::get('/articles/create', App\Http\Livewire\Article\Create::class)->name('article.create');
-            Route::get('/articles/{article}/edit', App\Http\Livewire\Article\Edit::class)->name('article.edit');
+            Route::middleware('can:manage_platform')->group(function () {
+                Route::get('/articles', App\Http\Livewire\Article\Index::class)->name('article.index');
+                Route::get('/articles/create', App\Http\Livewire\Article\Create::class)->name('article.create');
+                Route::get('/articles/{article}/edit', App\Http\Livewire\Article\Edit::class)->name('article.edit');
+            });
 
             // Podcast guests (people) routes
             Route::get('/contributors', App\Http\Livewire\Contributor\Index::class)->name('podcast.contributors');
             Route::get('/contributor/{contributor}/edit/', App\Http\Livewire\Contributor\Edit::class)->name('podcast.contributor.edit');
         });
     });
-});
-
-/**
- * Public routes
- */
-Route::middleware('xframe.options')->group(function () {
-    Route::get('/', [WebController::class, 'home'])->name('home');
-    Route::get('/pricing', [WebController::class, 'pricing'])->name('pricing');
-    Route::get('/blog', [ArticleController::class, 'index'])->name('blog.index');
-    Route::get('/blog/{article}', [ArticleController::class, 'show'])->name('blog.article');
 });

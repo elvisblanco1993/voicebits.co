@@ -1,4 +1,4 @@
-<div class="my-20 block max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-black dark:text-white">
+<div class="my-20 block max-w-5xl mx-auto px-4 sm:px-6 lg:px-0 text-black dark:text-white">
     <div class="rounded-xl bg-cover bg-center overflow-hidden" style="background-image: url({{asset('voicebits2022.webp')}})">
         <div class="text-center bg-white/80 dark:bg-black/80 backdrop-blur-sm rounded-xl px-4 sm:px-6 lg:px-8 py-12">
             <h2 class="text-3xl lg:text-4xl font-extrabold">{{__("Ready to take your podcast to the next level?")}}</h2>

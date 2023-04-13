@@ -1,15 +1,10 @@
 @extends('website.layout')
 @section('content')
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-0 text-slate-800">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-0 text-slate-800">
         <div class="py-20">
-            <div class="grid grid-cols-12 gap-4 items-center">
-                <div class="col-span-12 md:col-span-8">
-                    <h1 class="text-5xl lg:text-6xl font-extrabold">Don't break your piggy...</h1>
-                    <p class="mt-6 text-lg">Host and distribute your podcasts simple and easy. Start with a free 14-day trial of Voicebits, and then pay a fair monthly price based on your average monthly downloads.</p>
-                </div>
-                <div class="hidden md:block md:col-span-4">
-                    <img src="{{ asset('savings-pig.svg') }}" alt="" class="w-full">
-                </div>
+            <div class="text-center max-w-5xl mx-auto">
+                <h1 class="text-4xl md:text-5xl font-bold leading-10">Unlock the full potential of your podcast without breaking the bank!</h1>
+                <p class="mt-6 text-lg">With Voicebits, hosting and distributing your podcasts has never been simpler or easier. Get started with a risk-free 14-day trial, and then enjoy a transparent monthly pricing plan that's based on your average monthly downloads. Say goodbye to hidden fees and hello to hassle-free podcasting with Voicebits!</p>
             </div>
 
             <div class="my-12 md:my-24"></div>
@@ -77,6 +72,10 @@
                     </p>
                 </div>
             </div>
+
+            <div class="my-12 md:my-24"></div>
+
+            @include('website.partials.faq')
         </div>
     </div>
 @endsection

@@ -30,7 +30,7 @@ class AuthServiceProvider extends ServiceProvider
         $this->registerPolicies();
 
         Gate::define('manage_platform', function (User $user) {
-            return ( $user->id == 1 ) ? true : false;
+            return ( $user->id == 1 || $user->role === 'superadmin') ? true : false;
         });
 
         Gate::define('manage_billing', function (User $user) {

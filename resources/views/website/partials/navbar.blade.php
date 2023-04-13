@@ -1,5 +1,5 @@
 <div class="sticky top-0 z-50 bg-white text-slate-600 bg-opacity-80 backdrop-blur">
-    <div class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="h-24">
             <div class="h-full flex items-center justify-between">
                 {{-- Logo --}}
@@ -10,7 +10,7 @@
                 </div>
 
                 <div class="hidden md:flex items-center gap-x-6">
-                    <a href="{{ route('home') }}?#features" class="inline-block text-slate-700 hover:text-violet-600">Features</a>
+                    <a href="{{ route('about') }}" class="inline-block text-slate-700 hover:text-violet-600">About Us</a>
                     <a href="{{ route('pricing') }}" class="inline-block text-slate-700 hover:text-violet-600">Pricing</a>
                     <a href="{{ route('blog.index') }}" class="inline-block text-slate-700 hover:text-violet-600">The Blog</a>
                 </div>
@@ -32,13 +32,13 @@
                         </svg>
                     </button>
 
-                    <div class="mt-2 absolute right-0 w-56 z-50 bg-white text-slate-600 text-sm rounded-md" x-show="burger" x-transition @click.outside="burger = false">
-                        <a href="{{ route('login') }}" class="block px-4 my-2.5 hover:text-violet-500">Sign In</a>
-                        <a href="{{ route('register') }}" class="block px-4 my-2.5 hover:text-violet-500">Free Trial</a>
+                    <div class="mt-2 absolute right-0 w-56 z-50 bg-white border shadow text-slate-600 text-sm rounded-md" x-show="burger" x-transition @click.outside="burger = false">
+                        <a href="{{ route('login') }}" class="block px-4 my-2.5 hover:text-violet-500 hover:underline">Sign In</a>
+                        <a href="{{ route('register') }}" class="block px-4 my-2.5 hover:text-violet-500 hover:underline">Free Trial</a>
                         <div class="my-6"></div>
-                        <a href="{{ route('home') }}#features" class="block px-4 my-2.5 hover:text-violet-500">Features</a>
-                        <a href="{{ route('pricing') }}" class="block px-4 my-2.5 hover:text-violet-500">Pricing</a>
-                        <a href="{{ route('blog.index') }}" class="block px-4 my-2.5 hover:text-violet-500">The Blog</a>
+                        <a href="{{ route('about') }}" class="block px-4 my-2.5 hover:text-violet-500 hover:underline">About Us</a>
+                        <a href="{{ route('pricing') }}" class="block px-4 my-2.5 hover:text-violet-500 hover:underline">Pricing</a>
+                        <a href="{{ route('blog.index') }}" class="block px-4 my-2.5 hover:text-violet-500 hover:underline">Blog</a>
                     </div>
                 </div>
             </div>

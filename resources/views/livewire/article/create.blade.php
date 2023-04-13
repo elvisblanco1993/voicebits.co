@@ -1,4 +1,4 @@
-<div>
+<div class="py-12">
     <div class="px-4 sm:px-6 lg:px-0 flex items-center justify-between">
         <h1 @class([
             'text-4xl font-bold',
