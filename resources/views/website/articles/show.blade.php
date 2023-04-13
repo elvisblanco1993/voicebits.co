@@ -14,7 +14,7 @@
         <script defer src="https://unpkg.com/@alpinejs/collapse@3.x.x/dist/cdn.min.js"></script>
         @vite('resources/js/app.js')
     </head>
-    <body class="antialiased min-h-screen bg-gray-100">
+    <body class="antialiased min-h-screen bg-white">
         @include('website.partials.navbar')
         <article class="md:py-12 max-w-5xl mx-auto px-4 sm:px-6 lg:px-0 text-slate-800" itemtype="http://schema.org/Article">
             <div>

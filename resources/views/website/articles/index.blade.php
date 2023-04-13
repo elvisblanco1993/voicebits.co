@@ -25,7 +25,7 @@
                             <img src="{{ asset($article->image) }}" alt="" class="w-full aspect-video rounded-xl object-cover object-center">
                             <h2 class="mt-4 text-2xl font-bold underline">{{ $article->title }}</h2>
                         </a>
-                        <p class="mt-2 text-base">{{ Str::of($article->content)->words(35, '[...]') }}</p>
+                        <p class="mt-2 text-base">{{ strip_tags(str($article->content)->markdown()->words(35, '[...]')) }}</p>
                         <div class="mt-4 text-sm font-mono">
                             <span>Written by {{ $article->author }}</span>
                             <span class="block mt-2">{{ Carbon\Carbon::parse($article->published_at)->format('M d, Y') }} &middot; <a href="{{ route('blog.article', ['article' => $article->slug]) }}" class="underline text-violet-600">Read article</a></span>
@@ -42,8 +42,8 @@
                             <a href="{{ route('blog.article', ['article' => $article->slug]) }}">
                                 <h2 class="text-2xl font-bold underline">{{ $article->title }}</h2>
                             </a>
-                            <p class="mt-2 text-base">{{ Str::of($article->content)->words(35, ' [...]') }}</p>
-                            <div class="mt-4 text-sm font-light">
+                            <p class="mt-2 text-base">{{ strip_tags(str($article->content)->markdown()->words(35, '[...]')) }}</p>
+                            <div class="mt-6 text-sm font-light font-mono">
                                 <span>Written by {{ $article->author }}</span>
                                 <span class="block mt-2">{{ Carbon\Carbon::parse($article->published_at)->format('M d, Y') }} &middot; <a href="{{ route('blog.article', ['article' => $article->slug]) }}" class="underline text-violet-600">Read article</a></span>
                             </div>
