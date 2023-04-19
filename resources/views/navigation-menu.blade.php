@@ -7,6 +7,10 @@
                     <img src="{{ asset('logo-mark-dark.svg') }}" alt="Voicebits" class="h-6">
                 </a>
                 <x-nav-link href="{{ route('podcast.catalog') }}" :active="request()->routeIs('podcast.catalog')">My podcasts</x-nav-link>
+                @can('manage_platform')
+                    <div class="mx-4 py-2 border-l border-l-slate-200"></div>
+                    <x-nav-link href="{{ route('article.index') }}" :active="request()->routeIs('article.index')">Articles</x-nav-link>
+                @endcan
             </div>
 
 

@@ -74,6 +74,7 @@ class Edit extends Component
     {
         try {
             Storage::disk('local')->delete($this->article->image);
+            $this->article->update(['image' => null]);
         } catch (\Throwable $th) {
             Log::error($th->getMessage());
         }
