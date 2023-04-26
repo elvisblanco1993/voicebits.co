@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Show;
 
 use App\Models\Podcast;
+use Illuminate\Support\Facades\Http;
 use Livewire\Component;
 use Illuminate\Support\Facades\Log;
 
@@ -59,5 +60,34 @@ class Distribute extends Component
             session()->flash('flash.bannerStyle', 'danger');
         }
         return redirect()->route('podcast.distribution');
+    }
+
+    public function publishToPodcastIndex()
+    {
+        $base_url = "https://api.podcastindex.org/api/1.0/add/byfeedurl";
+
+        $api_key = config('third-party-providers.podcastindex.key');
+        $api_secret = config('third-party-providers.podcastindex.secret');
+        $api_header_time = time();
+        $hash = sha1($api_key.$api_secret.$api_header_time);
+
+        $headers = [
+            "User-Agent" => "Voicebits/1.0",
+            "X-Auth-Key" => $api_key,
+            "X-Auth-Date" => $api_header_time,
+            "Authorization" => $hash
+        ];
+
+        $feed = route('public.podcast.feed', ['url' => $this->podcast->url, 'player' => 'podcastindex']);
+
+        // $request = Http::withHeaders($headers)
+        //     ->get($base_url, [
+        //         'url' => 'https://voicebits.co/s/voicebits-unplugged/feed/podcastindex',
+        //     ]);
+
+        // Get podcast
+        $request = Http::withHeaders($headers)->get("https://api.podcastindex.org/api/1.0/search/byterm?q=voicebits+unplugged&pretty");
+
+        dd($request->json());
     }
 }

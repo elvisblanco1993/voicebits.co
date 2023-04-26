@@ -34,7 +34,7 @@
                 <x-input type="url" wire:model="podcastindex" class="mt-2 w-full" placeholder="https://podcastindex.org/podcast/123456789"/>
             </div>
             <div class="px-8 py-4 bg-slate-100 flex justify-end rounded-b-lg">
-                <x-button wire:click="save">{{ __("Save changes") }}</x-button>
+                <x-button wire:click="publishToPodcastIndex">{{ __("Publish on Podcast Index") }}</x-button>
             </div>
         </div>
 
