@@ -3,9 +3,10 @@
 namespace App\Http\Livewire\Show;
 
 use App\Models\Podcast;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Log;
 use Livewire\Component;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 
 class Create extends Component
 {
@@ -24,6 +25,9 @@ class Create extends Component
 
     public function mount()
     {
+        if (!Gate::allows('create_podcasts')) {
+            abort(401);
+        }
         $this->author = auth()->user()->name;
         $this->language = 'en';
         $this->timezone = "-05:00";

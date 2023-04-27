@@ -5,6 +5,7 @@ namespace App\Http\Livewire\Show;
 use App\Models\Podcast;
 use Livewire\Component;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Gate;
 
 class Social extends Component
 {
@@ -13,6 +14,10 @@ class Social extends Component
 
     public function mount()
     {
+        if (!Gate::allows('manage_social')) {
+            abort(401);
+        }
+
         $this->podcast = Podcast::findorfail(session('podcast'));
         $this->show_social = $this->podcast->show_social;
         $this->twitter = $this->podcast->twitter;

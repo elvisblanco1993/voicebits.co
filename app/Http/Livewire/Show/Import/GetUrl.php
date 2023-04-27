@@ -2,8 +2,9 @@
 
 namespace App\Http\Livewire\Show\Import;
 
-use Illuminate\Support\Facades\DB;
 use Livewire\Component;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Gate;
 
 class GetUrl extends Component
 {
@@ -13,6 +14,13 @@ class GetUrl extends Component
     protected $rules = [
         'url' => ['required', 'url']
     ];
+
+    public function mount()
+    {
+        if (!Gate::allows('create_podcasts')) {
+            abort(401);
+        }
+    }
 
     public function save()
     {

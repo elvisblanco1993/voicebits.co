@@ -3,10 +3,11 @@
 namespace App\Http\Livewire\Show;
 
 use App\Models\Episode;
-use App\Models\PlaysCounter;
 use App\Models\Podcast;
 use Livewire\Component;
+use App\Models\PlaysCounter;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Storage;
 
 class Delete extends Component
@@ -15,6 +16,10 @@ class Delete extends Component
 
     public function mount($show)
     {
+        if (!Gate::allows('delete_podcast')) {
+            abort(401);
+        }
+
         $this->podcast = Podcast::findorfail($show);
     }
 

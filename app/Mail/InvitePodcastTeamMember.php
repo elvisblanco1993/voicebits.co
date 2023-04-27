@@ -28,6 +28,7 @@ class InvitePodcastTeamMember extends Mailable
      */
     public function build()
     {
-        return $this->markdown('emails.invite-podcast-team-member')->subject($this->podcast_name);
+        return $this->markdown('emails.invite-podcast-team-member')
+            ->subject("Join the " . $this->podcast_name . " team 🎙️");
     }
 }

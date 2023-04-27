@@ -2,9 +2,10 @@
 
 namespace App\Http\Livewire\Show\Import;
 
-use App\Mail\VerifyShowOwnership;
 use Livewire\Component;
+use App\Mail\VerifyShowOwnership;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Mail;
 
 class VerifyEmail extends Component
@@ -13,6 +14,10 @@ class VerifyEmail extends Component
 
     public function mount()
     {
+        if (!Gate::allows('create_podcasts')) {
+            abort(401);
+        }
+
         if (!$this->temporary_podcast || DB::table('temporary_podcasts')->doesntExist()) {
             return redirect()->route('show.import.start');
         }

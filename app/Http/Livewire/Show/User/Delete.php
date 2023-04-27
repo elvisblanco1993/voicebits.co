@@ -25,6 +25,6 @@ class Delete extends Component
             session()->flash('flash.banner', $th->getMessage());
             session()->flash('flash.bannerStyle', 'danger');
         }
-        return redirect()->route('show.users', ['show' => $this->podcast]);
+        return redirect()->route('podcast.team');
     }
 }

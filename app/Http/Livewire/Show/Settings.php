@@ -7,6 +7,7 @@ use App\Models\Website;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Storage;
 
 class Settings extends Component
@@ -18,6 +19,10 @@ class Settings extends Component
 
     public function mount()
     {
+        if (!Gate::allows('edit_podcast')) {
+            abort(401);
+        }
+
         $this->podcast = Podcast::findorfail(session('podcast'));
         $this->name = $this->podcast->name;
         $this->description = $this->podcast->description;

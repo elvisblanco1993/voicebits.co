@@ -42,6 +42,6 @@ class Edit extends Component
             session()->flash('flash.banner', 'Oops! Something happened on our end, and we could not update the user\'s permissions. Please try again later.');
             session()->flash('flash.bannerStyle', 'danger');
         }
-        return redirect()->route('show.users', ['show' => $this->podcast->id]);
+        return redirect()->route('podcast.team');
     }
 }

@@ -3,9 +3,10 @@
 namespace App\Http\Livewire\Show;
 
 use App\Models\Podcast;
-use Illuminate\Support\Facades\Http;
 use Livewire\Component;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Http;
 
 class Distribute extends Component
 {
@@ -14,6 +15,10 @@ class Distribute extends Component
 
     public function mount()
     {
+        if (!Gate::allows('manage_distribution')) {
+            abort(401);
+        }
+
         $this->podcast = Podcast::findorfail(session('podcast'));
         $this->podcastindex = $this->podcast->podcastindex;
         $this->apple = $this->podcast->apple;

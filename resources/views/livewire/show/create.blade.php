@@ -1,5 +1,18 @@
 <div>
     <div class="py-12 max-w-3xl mx-auto">
+        @if (Auth::user()->hasPendingInvitations())
+            @forelse (DB::table('podcast_invitations')->where('email', Auth::user()->email)->get() as $invitation)
+                <div class="mb-4 w-full px-4 py-1.5 text-sm bg-slate-200 text-center rounded-full border border-slate-300">
+                    <span class="inline-flex space-x-1">
+                        <span>You have been invited to join <strong>{{ App\Models\Podcast::findOrFail($invitation->podcast_id)->first()->name }}</strong> as a team member.</span>
+                        @livewire('show.user.accept-invitation', ['podcast' => $invitation->podcast_id, 'user' => $invitation->email])
+                    </span>
+                </div>
+            @empty
+            @endforelse
+            <h3 class="text-center font-bold">OR</h3>
+        @endif
+
         <h1 class="text-3xl font-bold">Create podcast 🚀</h1>
         <p class="mt-4">Welcome to your new Voicebits account. To get started, please create your first podcast. It's okay if you don't know exactly what to put. You can always change the details later.</p>
         <form wire:submit.prevent="save">
@@ -58,9 +71,14 @@
             </div>
 
             <div class="mt-6 flex justify-end">
-                <a href="{{ route('podcast.catalog') }}"
+                @if (Auth::user()->podcasts->count() > 0)
+                    <a href="{{ route('podcast.catalog') }}"
                     class="inline-flex items-center px-4 py-2 bg-white border border-gray-300 rounded-lg font-semibold text-xs text-gray-700 uppercase tracking-widest shadow-sm hover:text-gray-500 focus:outline-none focus:border-violet-300 focus:ring focus:ring-violet-200 active:text-gray-800 active:bg-gray-50 disabled:opacity-25 transition"
-                >{{ __("Cancel") }}</a>
+                    >{{ __("Cancel") }}</a>
+                @endif
+                @if (Auth::user()->podcasts->count() == 0)
+                    <a href="{{ route('podcast.import.start') }}" class="inline-flex items-center px-4 py-2 bg-violet-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-violet-700 active:bg-violet-900 focus:outline-none focus:border-violet-900 focus:ring focus:ring-violet-300 disabled:opacity-25 transition ml-4">{{__("Import from feed")}}</a>
+                @endif
                 <x-button type="submit" class="ml-4">{{ __("Create show") }}</x-button>
             </div>
         </form>
