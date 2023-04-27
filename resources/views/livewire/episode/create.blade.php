@@ -1,19 +1,5 @@
 <div>
-    <div class="max-w-7xl mx-auto py-4">
-        <div class="flex items-center">
-            @if ($podcast->cover)
-                <img src="{{ Storage::url($podcast->cover) }}" alt="{{ $podcast->name }}" class="w-24 aspect-square rounded-md object-center object-cover">
-            @else
-                <div class="h-24 w-24 rounded-md bg-violet-50 flex items-center justify-center">
-                    <img src="{{ asset('logo-mark.svg') }}" alt="{{ $podcast->name }}" class="w-10 h-auto">
-                </div>
-            @endif
-            <div class="ml-6">
-                <h1 class="text-3xl font-bold">{{ $podcast->name }}</h1>
-                <a href="{{ route('public.podcast.website', ['url' => $podcast->url]) }}" target="_blank" class="text-sm bg-slate-200 text-slate-700 px-1 py-0.5 rounded">Visit website</a>
-            </div>
-        </div>
-    </div>
+    @livewire('submenu')
     <div class="py-6 max-w-7xl mx-auto px-4 sm:px-6 lg:px-0">
         <div class="flex items-center justify-between">
             <div class="flex items-center gap-3">
@@ -147,12 +133,10 @@
 
                 <div class="col-span-2 sm:col-span-1 text-center">
                     @if($cover)
-                        <img src="{{ $cover->temporaryUrl() }}" class="w-1/2 mx-auto aspect-square object-center object-cover rounded-lg">
+                        <img src="{{ $cover->temporaryUrl() }}" class="w-1/3 mx-auto aspect-square object-center object-cover rounded-lg">
                     @else
-                        <div class="w-1/2 mx-auto aspect-square bg-slate-100 rounded-lg shadow flex items-center justify-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="w-20 h-20 text-slate-500" fill="currentColor" class="bi bi-soundwave" viewBox="0 0 16 16">
-                                <path fill-rule="evenodd" d="M8.5 2a.5.5 0 0 1 .5.5v11a.5.5 0 0 1-1 0v-11a.5.5 0 0 1 .5-.5zm-2 2a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zm4 0a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zm-6 1.5A.5.5 0 0 1 5 6v4a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm8 0a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm-10 1A.5.5 0 0 1 3 7v2a.5.5 0 0 1-1 0V7a.5.5 0 0 1 .5-.5zm12 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0V7a.5.5 0 0 1 .5-.5z"/>
-                            </svg>
+                        <div class="w-1/3 mx-auto aspect-square bg-violet-50 rounded-md flex items-center justify-center">
+                            <img src="{{ asset('logo-mark-dark.svg') }}" alt="{{ $podcast->name }}" class="w-12 h-auto">
                         </div>
                     @endif
 

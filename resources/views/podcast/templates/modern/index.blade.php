@@ -76,7 +76,7 @@
                 @endif
                 {{-- End of Podcatchers --}}
             </div>
-            <img src="{{ Storage::url($podcast->cover) }}" alt="{{ $podcast->name }}" class="w-full md:w-2/3 object-center object-cover rounded">
+            <img src="{{ Storage::url($podcast->cover) }}" alt="{{ $podcast->name }}" class="w-full md:w-2/3 object-center object-cover aspect-square rounded">
         </div>
 
         <div class="mt-12">
@@ -109,7 +109,7 @@
                         <span class="ml-2">{{ $podcast->funding_text }}</span>
                     </a>
                 </div>
-                <img src="{{ Storage::url($podcast->cover) }}" alt="{{ $podcast->name }}" class="hidden md:block md:w-2/3 object-center object-cover rounded">
+                <img src="{{ Storage::url($podcast->cover) }}" alt="{{ $podcast->name }}" class="hidden md:block md:w-2/3 object-center object-cover aspect-square rounded">
             </div>
         </div>
     @endif

@@ -54,6 +54,8 @@
                             </div>
                             <input type="file" wire:model="cover" id="artwork-file" accept="image/jpeg,image/png" class="hidden absolute inset-0">
                         </label>
+
+                        <x-input-error for="cover" />
                     </div>
                 </div>
 

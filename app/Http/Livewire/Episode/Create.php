@@ -9,6 +9,7 @@ use Livewire\Component;
 use Illuminate\Support\Str;
 use Livewire\WithFileUploads;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Gate;
 
 class Create extends Component
 {
@@ -17,9 +18,18 @@ class Create extends Component
     public $title, $description, $published_at, $season, $number, $type = "full", $explicit = "false", $cover, $track, $track_url, $track_size, $track_length;
 
     protected $listeners = ['getAudioDuration'];
+
+
     public function getAudioDuration($duration)
     {
         $this->track_length = $duration;
+    }
+
+    public function mount()
+    {
+        if (!Gate::allows('edit_episodes')) {
+            abort(401);
+        }
     }
 
     public function save()

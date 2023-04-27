@@ -55,6 +55,7 @@ class Settings extends Component
             'type' => ['required'],
             'author' => 'required',
             'timezone' => 'required',
+            'cover' => 'nullable|image|mimes:png,jpg|dimensions:min_width=1500,max_width=3000,aspect=0/0',
         ];
     }
 
@@ -72,10 +73,6 @@ class Settings extends Component
         if ($this->cover) {
             if ($this->podcast->cover) {
                 Storage::disk(config('filesystems.default'))->delete($this->podcast->cover);
-            } else {
-                $this->validate([
-                    'cover' => 'required|image|mimes:png,jpg|dimensions:min_width=1500,max_width=3000,aspect=1/1'
-                ]);
             }
             $new_cover_file = $this->cover->storePublicly('podcasts/'.$this->podcast->id.'/covers', config('filesystems.default'));
         }
