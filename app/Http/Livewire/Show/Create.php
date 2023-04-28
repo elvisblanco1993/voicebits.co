@@ -58,6 +58,8 @@ class Create extends Component
             session()->flash('flash.bannerStyle', 'danger');
             return redirect()->route('podcast.catalog');
         }
+
+        session()->put('podcast', $podcast->id);
         return redirect()->route('podcast.dashboard');
     }
 
