@@ -46,6 +46,8 @@ Route::middleware([
 
     Route::middleware(['subscribed'])->prefix('admin')->group(function () {
 
+        Route::get('/catalog', App\Http\Livewire\Show\Index::class)->name('podcast.catalog');
+
         // Podcast creation routes
         Route::get('/new', App\Http\Livewire\Show\Create::class)->name('podcast.create');
         Route::get('/import', App\Http\Livewire\Show\Import\GetUrl::class)->name('podcast.import.start');
@@ -54,7 +56,6 @@ Route::middleware([
 
         Route::middleware('podcast.exists')->group(function () {
             // Podcast management routes
-            Route::get('/catalog', App\Http\Livewire\Show\Index::class)->name('podcast.catalog');
             Route::get('/dashboard', App\Http\Livewire\Show\Dashboard::class)->name('podcast.dashboard');
             Route::get('/social', App\Http\Livewire\Show\Social::class)->name('podcast.social');
             Route::get('/distribution', App\Http\Livewire\Show\Distribute::class)->name('podcast.distribution');

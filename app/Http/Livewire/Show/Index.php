@@ -2,8 +2,6 @@
 
 namespace App\Http\Livewire\Show;
 
-use App\Models\Podcast;
-use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
 class Index extends Component
