@@ -4,7 +4,7 @@
             @forelse (DB::table('podcast_invitations')->where('email', Auth::user()->email)->get() as $invitation)
                 <div class="mb-4 w-full px-4 py-1.5 text-sm bg-slate-200 text-center rounded-full border border-slate-300">
                     <span class="inline-flex space-x-1">
-                        <span>You have been invited to join <strong>{{ App\Models\Podcast::findOrFail($invitation->podcast_id)->first()->name }}</strong> as a team member.</span>
+                        <span>You have been invited to join <strong>{{ App\Models\Podcast::findOrFail($invitation->podcast_id)->name }}</strong> as a team member.</span>
                         @livewire('show.user.accept-invitation', ['podcast' => $invitation->podcast_id, 'user' => $invitation->email])
                     </span>
                 </div>
