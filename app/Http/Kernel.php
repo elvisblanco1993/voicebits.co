@@ -63,9 +63,11 @@ class Kernel extends HttpKernel
         'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
+        'billingaccount.exists' => \App\Http\Middleware\CheckIfUserHasBillingAccount::class,
         'subscribed' => \App\Http\Middleware\CheckSubscriptionStatus::class,
         'xframe.options' => \App\Http\Middleware\XFrameOptions::class,
         'podcast.exists' => \App\Http\Middleware\SetActivePodcast::class,
+        'podcast.related' => \App\Http\Middleware\CheckUserAccessToPodcast::class,
         'downloads.counter' => \App\Http\Middleware\DownloadsCounter::class,
     ];
 }

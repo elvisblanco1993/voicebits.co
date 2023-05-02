@@ -15,13 +15,6 @@ class GetUrl extends Component
         'url' => ['required', 'url']
     ];
 
-    public function mount()
-    {
-        if (!Gate::allows('create_podcasts')) {
-            abort(401);
-        }
-    }
-
     public function save()
     {
         $this->validate();

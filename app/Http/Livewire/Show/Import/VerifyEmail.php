@@ -14,10 +14,6 @@ class VerifyEmail extends Component
 
     public function mount()
     {
-        if (!Gate::allows('create_podcasts')) {
-            abort(401);
-        }
-
         if (!$this->temporary_podcast || DB::table('temporary_podcasts')->doesntExist()) {
             return redirect()->route('show.import.start');
         }

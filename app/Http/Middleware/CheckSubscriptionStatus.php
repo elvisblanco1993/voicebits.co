@@ -2,7 +2,6 @@
 
 namespace App\Http\Middleware;
 
-use App\Models\PlaysCounter;
 use Closure;
 use Illuminate\Http\Request;
 
@@ -17,17 +16,18 @@ class CheckSubscriptionStatus
      */
     public function handle(Request $request, Closure $next)
     {
-        // Check if on Trial or Subscribed (also check if there's an incomplete payment)
         $user = $request->user();
-        if (!$user->stripe_id) {
-            return $next($request);
-        }
 
-        if(!$user->onTrial() && !$user->subscribed('voicebits'))
+        // Check if the currently logged in user owns the podcast.
+        $is_owner = $user->podcasts->find(session('podcast'))->pivot->role == "owner";
+
+        // Check if on Trial or Subscribed
+        if($user->stripe_id && !$user->onTrial() && !$user->subscribed('voicebits') && $is_owner)
         {
             return redirect()->route('signup');
         }
 
+        // Check for incomplete subscription payment
         if ($user->subscribed('voicebits')) {
             if ($user->subscription('voicebits')->hasIncompletePayment()) {
                 return redirect()->route('cashier.payment', $user->subscription('voicebits')->latestPayment()->id);

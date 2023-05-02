@@ -27,7 +27,7 @@ class Invite extends Component
     public function invite()
     {
         $this->validate([
-            'email' => 'required|email|unique:podcast_invitations,email',
+            'email' => 'required|email',
             'permissions' => 'required'
         ]);
 

@@ -66,7 +66,7 @@ class Create extends Component
 
         } catch (\Throwable $th) {
             Log::error($th);
-            session()->flash('flash.banner', 'Oops. We ran into an issue and coult not create your episode. Please contact us for assistance.');
+            session()->flash('flash.banner', 'Oops. We ran into an issue and could not create your episode. Please contact us for assistance.');
             session()->flash('flash.bannerStyle', 'danger');
         }
 

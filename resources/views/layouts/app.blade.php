@@ -25,7 +25,14 @@
                         Your trial expires in <strong>{{ abs(round((strtotime(Auth::user()->trial_ends_at) - strtotime(now()))/86400)) }} days</strong>. <a href="{{ route('signup') }}" class="underline">Upgrade</a> to continue using Voicebits after your trial.
                     </div>
                 </div>
+            @elseif (Auth::user()->hasExpiredTrial() && !request()->routeIs('signup'))
+                <div class="w-full bg-yellow-100">
+                    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-sm text-center text-violet-700 py-2">
+                        Your trial has ended. <a href="{{ route('signup') }}" class="underline">Please upgrade</a> to continue managing your podcasts.
+                    </div>
+                </div>
             @endif
+
             @include('navigation-menu')
 
             <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

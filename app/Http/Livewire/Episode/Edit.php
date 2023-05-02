@@ -77,7 +77,7 @@ class Edit extends Component
             session()->flash('flash.bannerStyle', 'success');
         } catch (\Throwable $th) {
             Log::error($th);
-            session()->flash('flash.banner', 'Oops. We ran into an issue and coult not update your episode. Please contact us for assistance.');
+            session()->flash('flash.banner', 'Oops. We ran into an issue and could not update your episode. Please contact us for assistance.');
             session()->flash('flash.bannerStyle', 'danger');
         }
         return redirect()->route('podcast.episodes');

@@ -113,22 +113,30 @@ return [
      */
     'podcast_permissions' => [
         'view_episodes',
-        'view_users',
-        'create_podcasts',
-        'upload_episodes',
-        'invite_users',
-        'edit_podcast',
         'edit_episodes',
-        'edit_users',
-        'delete_podcast',
+        'upload_episodes',
         'delete_episodes',
+
+        'view_users',
+        'invite_users',
+        'edit_users',
         'delete_users',
-        'manage_contributors',
-        'manage_platform',
+
+        'edit_podcast',
+        'delete_podcast',
+        'manage_team',
         'manage_billing',
         'manage_social',
-        'manage_distribution',
         'manage_website',
+        'manage_distribution',
     ],
+
+    /**
+     * Platform permissions
+     */
+    'platform_permissions' => [
+        'create_podcasts',
+        'manage_platform',
+    ]
 
 ];

@@ -3,11 +3,9 @@
 namespace App\Actions\Fortify;
 
 use App\Jobs\SendWelcomeEmail;
-use App\Models\Team;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
 use Laravel\Fortify\Contracts\CreatesNewUsers;
 use Laravel\Jetstream\Jetstream;

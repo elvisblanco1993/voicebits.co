@@ -14,10 +14,6 @@ class ConfirmOwnership extends Component
 
     public function mount()
     {
-        if (!Gate::allows('create_podcasts')) {
-            abort(401);
-        }
-
         // Check that the $uniqid matches the $podcast_id
         $this->podcast = DB::table('temporary_podcasts')->find($this->podcast_id);
         if ($this->podcast->magic_code && $this->podcast->magic_code !== $this->uniqid) {

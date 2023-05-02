@@ -9,16 +9,15 @@
         <x-slot name="title">{{ __("Edit User Permissions") }}</x-slot>
         <x-slot name="content">
             <div class="mt-4">
-                <div class="grid grid-cols-3 gap-2 mt-2">
+                <div class="grid grid-cols-4 gap-2 mt-2">
                     @forelse ($podcast_permissions as $permission => $val)
                         <div class="col-span-1">
                             <label for="{{$val}}" class="mt-2 flex items-center">
-                                <input type="checkbox" name="permissions" wire:model.defer="permissions" id="{{$val}}" value="{{$val}}">
-                                <span class="text-sm ml-2">{{ str_replace('_', ' ', $val) }}</span>
+                                <x-input type="checkbox" name="permissions" wire:model.defer="permissions" id="{{$val}}" value="{{$val}}" />
+                                <span class="text-sm ml-2">{{ Str::ucfirst(str_replace('_', ' ', $val)) }}</span>
                             </label>
                         </div>
                     @empty
-
                     @endforelse
                 </div>
                 <x-input-error for="permissions" />

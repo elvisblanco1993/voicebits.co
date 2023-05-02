@@ -25,9 +25,6 @@ class Create extends Component
 
     public function mount()
     {
-        if (!Gate::allows('create_podcasts')) {
-            abort(401);
-        }
         $this->author = auth()->user()->name;
         $this->language = 'en';
         $this->timezone = "-05:00";
