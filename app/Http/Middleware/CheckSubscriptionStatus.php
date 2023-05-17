@@ -34,10 +34,6 @@ class CheckSubscriptionStatus
             }
         }
 
-        // Check monthly downloads
-
-        // Check private podcast subscribers
-
         return $next($request);
     }
 }
