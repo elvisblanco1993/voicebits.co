@@ -1,23 +1,23 @@
 <div>
     <x-button wire:click="$toggle('modal')">New contributor</x-button>
 
-    <x-dialog-modal wire:model="modal">
+    <x-dialog-modal wire:model.live="modal">
         <x-slot name="title"></x-slot>
         <x-slot name="content">
             <div class="">
                 <div class="">
                     <x-label>Full Name <span class="text-red-500">*</span></x-label>
-                    <x-input type="text" id="name" wire:model="name" class="mt-1 w-full" />
+                    <x-input type="text" id="name" wire:model.live="name" class="mt-1 w-full" />
                     <x-input-error for="name" />
                 </div>
                 <div class="mt-4">
                     <x-label>A Short Bio <span class="text-red-500">*</span></x-label>
-                    <x-input type="text" id="bio" wire:model="bio" class="mt-1 w-full" />
+                    <x-input type="text" id="bio" wire:model.live="bio" class="mt-1 w-full" />
                     <x-input-error for="bio" />
                 </div>
                 <div class="mt-4">
                     <x-label for="role">Role <span class="text-red-500">*</span></x-label>
-                    <select id="role" class="input" wire:model="role">
+                    <select id="role" class="input" wire:model.live="role">
                         <option value="Host">Host</option>
                         <option value="Producer">Producer</option>
                         <option value="Editor">Editor</option>
@@ -29,22 +29,22 @@
                 </div>
                 <div class="mt-4">
                     <x-label>Website</x-label>
-                    <x-input type="text" id="website" wire:model="website" class="mt-1 w-full" />
+                    <x-input type="text" id="website" wire:model.live="website" class="mt-1 w-full" />
                 </div>
                 <div class="mt-4">
                     <x-label>Instagram URL</x-label>
-                    <x-input type="text" id="instagram" wire:model="instagram" class="mt-1 w-full" />
+                    <x-input type="text" id="instagram" wire:model.live="instagram" class="mt-1 w-full" />
                 </div>
                 <div class="mt-4">
                     <x-label>Twitter URL</x-label>
-                    <x-input type="text" id="twitter" wire:model="twitter" class="mt-1 w-full" />
+                    <x-input type="text" id="twitter" wire:model.live="twitter" class="mt-1 w-full" />
                 </div>
                 <div class="mt-6 grid grid-cols-3 gap-8 items-center">
                     <div class="col-span-3 md:col-span-1">
                         @if ($avatar)
-                            <img src="{{ ($avatar->temporaryUrl()) ? $avatar->temporaryUrl() : Storage::url($avatar) }}" class="w-full rounded-full shadow aspect-square object-center object-cover border-8 border-violet-300">
+                            <img src="{{ ($avatar->temporaryUrl()) ? $avatar->temporaryUrl() : Storage::url($avatar) }}" class="w-full rounded-full shadow aspect-square object-center object-cover border-8 border-indigo-300">
                         @else
-                            <div class="flex-none w-full h-full aspect-square rounded-full bg-violet-100 flex items-center justify-center border-8 border-violet-300">
+                            <div class="flex-none w-full h-full aspect-square rounded-full bg-indigo-100 flex items-center justify-center border-8 border-indigo-300">
                                 <img src="{{ asset('logo-mark-dark.svg') }}" class="w-16 h-auto">
                             </div>
                         @endif
@@ -66,14 +66,14 @@
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M12 16.5V9.75m0 0l3 3m-3-3l-3 3M6.75 19.5a4.5 4.5 0 01-1.41-8.775 5.25 5.25 0 0110.233-2.33 3 3 0 013.758 3.848A3.752 3.752 0 0118 19.5H6.75z" />
                             </svg>
                             <p class="text-slate-600">Upload a square picture of this person. Ideal resolution is 450x450 px.</p>
-                            <input type="file" wire:model="avatar" id="artwork-file" accept="image/jpeg,image/png" class="hidden absolute inset-0">
+                            <input type="file" wire:model.live="avatar" id="artwork-file" accept="image/jpeg,image/png" class="hidden absolute inset-0">
                         </label>
                         <x-input-error for="avatar"/>
                     </div>
                 </div>
                 <div class="mt-4">
                     <x-label class="flex items-center space-x-3">
-                        <x-input type="checkbox" wire:model="is_default" />
+                        <x-input type="checkbox" wire:model.live="is_default" />
                         <span>{{__("Make this a default person on the show, and every new episodes.")}}</span>
                     </x-label>
                 </div>

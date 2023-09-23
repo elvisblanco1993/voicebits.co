@@ -6,13 +6,13 @@
             </svg>
         </button>
         <div x-show="searchDialog" x-trap="searchDialog" tabindex="-1" class="bg-white/30 backdrop-blur overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 p-4 w-full inset-0 h-modal h-full">
-            <div class="relative max-w-md mx-auto h-full md:h-auto my-40" @click.outside="searchDialog = false">
+            <div class="relative max-w-md mx-auto h-full md:h-auto my-40" @click.outside="searchDialog = false" @keyup.escape="searchDialog = false">
                 <div class="w-full mx-auto">
                     <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only">{{ __("Search podcasts") }}</label>
                     <div class="relative w-full max-w-lg transform px-4 transition-all opacity-100 scale-100">
                         <div class="overflow-hidden rounded-md bg-white shadow-md">
                             <div class="relative border-b">
-                                <input wire:keyup="search" wire:model="term"
+                                <input wire:keyup="search" wire:model.live="term"
                                     class="block w-full appearance-none bg-transparent border-0 py-4 pl-4 pr-12 text-base text-slate-900 placeholder:text-slate-600 focus:outline-none sm:text-sm sm:leading-6"
                                     style="caret-color: rgb(107, 114, 128);" placeholder="Search podcasts" aria-label="Search articles" role="combobox" type="search" aria-expanded="false" tabindex="0"
                                 >

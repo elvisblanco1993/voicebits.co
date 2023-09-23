@@ -2,7 +2,7 @@
     <p class="text-red-700">Delete this episode from Voicebits. This action cannot be undone.</p>
     <x-danger-button wire:click="$toggle('modal')" class="mt-4">Delete Episode</x-danger-button>
 
-    <x-confirmation-modal wire:model="modal">
+    <x-confirmation-modal wire:model.live="modal">
         <x-slot name="title">Are you absolutely sure?</x-slot>
         <x-slot name="content">
             <p>You are trying to delete your episode <strong>{{$episode->title}}</strong>. This action cannot be undone, so please make sure you download all your data before proceeding.</p>

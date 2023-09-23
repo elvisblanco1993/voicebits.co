@@ -7,7 +7,7 @@
                 <div class="text-sm text-slate-700 font-medium">Website</div>
                 <div class="mt-2 flex items-center justify-between">
                     <span id="web" class="px-4 py-2 border border-r-0 border-gray-200 rounded-r-none rounded-lg w-full truncate">{{ route('public.podcast.website', ['url' => $podcast->url]) }}</span>
-                    <button class="w-auto text-center text-slate-600 px-4 py-2 rounded-l-none rounded-lg border border-slate-200 hover:text-violet-600 hover:bg-violet-50 hover:border-violet-200 transition-all"
+                    <button class="w-auto text-center text-slate-600 px-4 py-2 rounded-l-none rounded-lg border border-slate-200 hover:text-indigo-600 hover:bg-indigo-50 hover:border-indigo-200 transition-all"
                     id="webBtn"
                     onclick="copyWebsiteToClipboard()"
                     >Copy</button>
@@ -17,7 +17,7 @@
                 <div class="text-sm text-slate-700 font-medium">RSS Feed</div>
                 <div class="mt-2 flex items-center justify-between">
                     <span id="rss" class="px-4 py-2 border border-r-0 border-gray-200 rounded-r-none rounded-lg w-full truncate">{{ route('public.podcast.feed', ['url' => $podcast->url, 'player' => 'rss']) }}</span>
-                    <button class="w-auto text-center text-slate-600 px-4 py-2 rounded-l-none rounded-lg border border-slate-200 hover:text-violet-600 hover:bg-violet-50 hover:border-violet-200 transition-all"
+                    <button class="w-auto text-center text-slate-600 px-4 py-2 rounded-l-none rounded-lg border border-slate-200 hover:text-indigo-600 hover:bg-indigo-50 hover:border-indigo-200 transition-all"
                     id="rssBtn"
                     onclick="copyRssToClipboard()"
                     >Copy</button>
@@ -31,7 +31,7 @@
             <div class="p-8">
                 <p class="text-xl font-bold">Podcast Index</p>
                 <p class="text-slate-600">This is one of the biggest independent podcast aggregators out there. Follow this guide to make your show available in Podcast Index. Once you publish your feed, paste the url provided by Podcast Index in the field below.</p>
-                <x-input type="url" wire:model="podcastindex" class="mt-2 w-full" placeholder="https://podcastindex.org/podcast/123456789"/>
+                <x-input type="url" wire:model.live="podcastindex" class="mt-2 w-full" placeholder="https://podcastindex.org/podcast/123456789"/>
             </div>
             <div class="px-8 py-4 bg-slate-100 flex justify-end rounded-b-lg">
                 <x-button wire:click="publishToPodcastIndex">{{ __("Publish on Podcast Index") }}</x-button>
@@ -49,7 +49,7 @@
                     <p class="text-xl font-bold">Google Podcasts</p>
                 </div>
                 <p class="mt-2 text-slate-600">Follow this guide to make your show available in Google Podcasts. Once you publish your feed, paste the url provided in the field below.</p>
-                <x-input type="url" wire:model="google" class="mt-2 w-full" placeholder="https://podcasts.google.com/feed/adasdkaslkmasdasd8dausdas0asd"/>
+                <x-input type="url" wire:model.live="google" class="mt-2 w-full" placeholder="https://podcasts.google.com/feed/adasdkaslkmasdasd8dausdas0asd"/>
             </div>
             <div class="px-8 py-4 bg-slate-100 flex justify-end rounded-b-lg">
                 <x-button wire:click="save">{{ __("Save changes") }}</x-button>
@@ -67,7 +67,7 @@
                     <p class="text-xl font-bold">Spotify</p>
                 </div>
                 <p class="mt-2 text-slate-600">Follow this guide to make your show available in Spotify. Once you publish your feed, paste the url provided in the field below.</p>
-                <x-input type="url" wire:model="spotify" class="mt-2 w-full" placeholder="https://open.spotify.com/show/123qweqweasdasd"/>
+                <x-input type="url" wire:model.live="spotify" class="mt-2 w-full" placeholder="https://open.spotify.com/show/123qweqweasdasd"/>
             </div>
             <div class="px-8 py-4 bg-slate-100 flex justify-end rounded-b-lg">
                 <x-button wire:click="save">{{ __("Save changes") }}</x-button>
@@ -85,7 +85,7 @@
                     <p class="text-xl font-bold">Apple Podcasts</p>
                 </div>
                 <p class="mt-2 text-slate-600">Follow this guide to make your show available in iTunes and Apple Podcasts. Once you publish your feed, paste the url provided in the field below.</p>
-                <x-input type="url" wire:model="apple" class="mt-2 w-full" placeholder="https://podcasts.apple.com/us/podcast/your-awesome-podcast"/>
+                <x-input type="url" wire:model.live="apple" class="mt-2 w-full" placeholder="https://podcasts.apple.com/us/podcast/your-awesome-podcast"/>
             </div>
             <div class="px-8 py-4 bg-slate-100 flex justify-end rounded-b-lg">
                 <x-button wire:click="save">{{ __("Save changes") }}</x-button>
@@ -103,7 +103,7 @@
                     <p class="text-xl font-bold">Stitcher</p>
                 </div>
                 <p class="mt-2 text-slate-600">Follow this guide to make your show available in Stitcher. Once you publish your feed, paste the url provided in the field below.</p>
-                <x-input type="url" wire:model="stitcher" class="mt-2 w-full" placeholder="https://podcasts.apple.com/us/podcast/your-awesome-podcast"/>
+                <x-input type="url" wire:model.live="stitcher" class="mt-2 w-full" placeholder="https://podcasts.apple.com/us/podcast/your-awesome-podcast"/>
             </div>
             <div class="px-8 py-4 bg-slate-100 flex justify-end rounded-b-lg">
                 <x-button wire:click="save">{{ __("Save changes") }}</x-button>
@@ -121,7 +121,7 @@
                     <p class="text-xl font-bold">Pocket Casts</p>
                 </div>
                 <p class="mt-2 text-slate-600">Follow this guide to make your show available in Pocket Casts. Once you publish your feed, paste the url provided in the field below.</p>
-                <x-input type="url" wire:model="pocketcasts" class="mt-2 w-full" placeholder="https://podcasts.apple.com/us/podcast/your-awesome-podcast"/>
+                <x-input type="url" wire:model.live="pocketcasts" class="mt-2 w-full" placeholder="https://podcasts.apple.com/us/podcast/your-awesome-podcast"/>
             </div>
             <div class="px-8 py-4 bg-slate-100 flex justify-end rounded-b-lg">
                 <x-button wire:click="save">{{ __("Save changes") }}</x-button>
@@ -139,7 +139,7 @@
                     <p class="text-xl font-bold">Amazon Music</p>
                 </div>
                 <p class="mt-2 text-slate-600">Follow this guide to make your show available in Amazon Music. Once you publish your feed, paste the url provided in the field below.</p>
-                <x-input type="url" wire:model="amazon" class="mt-2 w-full" placeholder="https://podcasts.apple.com/us/podcast/your-awesome-podcast"/>
+                <x-input type="url" wire:model.live="amazon" class="mt-2 w-full" placeholder="https://podcasts.apple.com/us/podcast/your-awesome-podcast"/>
             </div>
             <div class="px-8 py-4 bg-slate-100 flex justify-end rounded-b-lg">
                 <x-button wire:click="save">{{ __("Save changes") }}</x-button>
@@ -157,7 +157,7 @@
                     <p class="text-xl font-bold">Pandora</p>
                 </div>
                 <p class="mt-2 text-slate-600">Follow this guide to make your show available in Pandora. Once you publish your feed, paste the url provided in the field below.</p>
-                <x-input type="url" wire:model="pandora" class="mt-2 w-full" placeholder="https://podcasts.apple.com/us/podcast/your-awesome-podcast"/>
+                <x-input type="url" wire:model.live="pandora" class="mt-2 w-full" placeholder="https://podcasts.apple.com/us/podcast/your-awesome-podcast"/>
             </div>
             <div class="px-8 py-4 bg-slate-100 flex justify-end rounded-b-lg">
                 <x-button wire:click="save">{{ __("Save changes") }}</x-button>
@@ -175,7 +175,7 @@
                     <p class="text-xl font-bold">iHeartRadio</p>
                 </div>
                 <p class="mt-2 text-slate-600">Follow this guide to make your show available in iHeartRadio. Once you publish your feed, paste the url provided in the field below.</p>
-                <x-input type="url" wire:model="iheartradio" class="mt-2 w-full" placeholder="https://podcasts.apple.com/us/podcast/your-awesome-podcast"/>
+                <x-input type="url" wire:model.live="iheartradio" class="mt-2 w-full" placeholder="https://podcasts.apple.com/us/podcast/your-awesome-podcast"/>
             </div>
             <div class="px-8 py-4 bg-slate-100 flex justify-end rounded-b-lg">
                 <x-button wire:click="save">{{ __("Save changes") }}</x-button>
@@ -193,7 +193,7 @@
                     <p class="text-xl font-bold">Castbox</p>
                 </div>
                 <p class="mt-2 text-slate-600">Follow this guide to make your show available in Castbox. Once you publish your feed, paste the url provided in the field below.</p>
-                <x-input type="url" wire:model="castbox" class="mt-2 w-full" placeholder="https://podcasts.apple.com/us/podcast/your-awesome-podcast"/>
+                <x-input type="url" wire:model.live="castbox" class="mt-2 w-full" placeholder="https://podcasts.apple.com/us/podcast/your-awesome-podcast"/>
             </div>
             <div class="px-8 py-4 bg-slate-100 flex justify-end rounded-b-lg">
                 <x-button wire:click="save">{{ __("Save changes") }}</x-button>
@@ -211,7 +211,7 @@
                     <p class="text-xl font-bold">Podcast Addict</p>
                 </div>
                 <p class="mt-2 text-slate-600">Follow this guide to make your show available in Podcast Addict. Once you publish your feed, paste the url provided in the field below.</p>
-                <x-input type="url" wire:model="podcastaddict" class="mt-2 w-full" placeholder="https://podcasts.apple.com/us/podcast/your-awesome-podcast"/>
+                <x-input type="url" wire:model.live="podcastaddict" class="mt-2 w-full" placeholder="https://podcasts.apple.com/us/podcast/your-awesome-podcast"/>
             </div>
             <div class="px-8 py-4 bg-slate-100 flex justify-end rounded-b-lg">
                 <x-button wire:click="save">{{ __("Save changes") }}</x-button>
@@ -229,7 +229,7 @@
                     <p class="text-xl font-bold">Deezer</p>
                 </div>
                 <p class="mt-2 text-slate-600">Follow this guide to make your show available in Deezer. Once you publish your feed, paste the url provided in the field below.</p>
-                <x-input type="url" wire:model="deezer" class="mt-2 w-full" placeholder="https://podcasts.apple.com/us/podcast/your-awesome-podcast"/>
+                <x-input type="url" wire:model.live="deezer" class="mt-2 w-full" placeholder="https://podcasts.apple.com/us/podcast/your-awesome-podcast"/>
             </div>
             <div class="px-8 py-4 bg-slate-100 flex justify-end rounded-b-lg">
                 <x-button wire:click="save">{{ __("Save changes") }}</x-button>
@@ -247,7 +247,7 @@
                     <p class="text-xl font-bold">Castro</p>
                 </div>
                 <p class="mt-2 text-slate-600">Follow this guide to make your show available in Castro. Once you publish your feed, paste the url provided in the field below.</p>
-                <x-input type="url" wire:model="castro" class="mt-2 w-full" placeholder="https://podcasts.apple.com/us/podcast/your-awesome-podcast"/>
+                <x-input type="url" wire:model.live="castro" class="mt-2 w-full" placeholder="https://podcasts.apple.com/us/podcast/your-awesome-podcast"/>
             </div>
             <div class="px-8 py-4 bg-slate-100 flex justify-end rounded-b-lg">
                 <x-button wire:click="save">{{ __("Save changes") }}</x-button>

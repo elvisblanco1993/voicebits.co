@@ -1,12 +1,12 @@
 <div>
     <x-danger-button wire:click="$toggle('modal')">Delete Podcast</x-danger-button>
 
-    <x-confirmation-modal wire:model="modal">
+    <x-confirmation-modal wire:model.live="modal">
         <x-slot name="title">Delete podcast</x-slot>
         <x-slot name="content">
             <p>Are you sure you want to delete your podcast <strong>{{$podcast->name}}</strong>?. This action cannot be undone, so please make sure you download all your data before proceeding.</p>
             <p class="mt-2">Please type <strong>{{$podcast->url}}</strong> to confirm.</p>
-            <x-input type="text" wire:model="verify" class="mt-1 w-full"/>
+            <x-input type="text" wire:model.live="verify" class="mt-1 w-full"/>
         </x-slot>
         <x-slot name="footer">
             <x-secondary-button wire:click="$toggle('modal')">Cancel</x-secondary-button>

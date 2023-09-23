@@ -3,7 +3,7 @@
     <div class="py-6">
         <div class="text-2xl font-bold">Podcast Team</div>
         <div class="mt-4 flex items-center justify-between">
-            <x-input type="search" wire:model="search" placeholder="Search by name" class="w-1/2"/>
+            <x-input type="search" wire:model.live="search" placeholder="Search by name" class="w-1/2"/>
             @can('invite_users',$podcast)
                 @livewire('show.user.invite', ['podcast' => $podcast->id])
             @endcan

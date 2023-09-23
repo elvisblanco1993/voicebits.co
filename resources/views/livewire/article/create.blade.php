@@ -7,11 +7,11 @@
     </div>
 
     <div class="py-6 px-4 sm:px-6 lg:px-0">
-        <input type="text" id="title" wire:model="title" placeholder="Title" autofocus
-            class="w-full border-none rounded-lg focus:ring focus:ring-violet-200 text-2xl font-bold"/>
+        <input type="text" id="title" wire:model.live="title" placeholder="Title" autofocus
+            class="w-full border-none rounded-lg focus:ring focus:ring-indigo-200 text-2xl font-bold"/>
         <x-input-error for="title" class="mt-1" />
-        <textarea id="content" wire:model="content" cols="30" rows="25" placeholder="Write something amazing..."
-            class="mt-6 w-full border-none rounded-lg focus:ring focus:ring-violet-200"
+        <textarea id="content" wire:model.live="content" cols="30" rows="25" placeholder="Write something amazing..."
+            class="mt-6 w-full border-none rounded-lg focus:ring focus:ring-indigo-200"
         ></textarea>
         <small class="text-slate-500">Markdown is supported here.</small>
         <x-input-error for="content" class="mt-1" />
@@ -21,7 +21,7 @@
                 @if ($image)
                         <img src="{{ $image->temporaryUrl() }}" class="w-full rounded-lg shadow aspect-square object-center object-cover">
                 @else
-                    <div class="flex-none w-full h-full aspect-square rounded-lg bg-violet-100 flex items-center justify-center">
+                    <div class="flex-none w-full h-full aspect-square rounded-lg bg-indigo-100 flex items-center justify-center">
                         <img src="{{ asset('logo-mark-dark.svg') }}" class="w-12 h-auto">
                     </div>
                 @endif
@@ -41,7 +41,7 @@
                         <p class="font-semibold text-slate-900">Click here to upload your artwork.</p>
                         <p class="text-slate-600">webp up to 2MB in size.</p>
                     </div>
-                    <input type="file" wire:model="image" id="artwork-file" accept="image/webp" class="hidden absolute inset-0">
+                    <input type="file" wire:model.live="image" id="artwork-file" accept="image/webp" class="hidden absolute inset-0">
                 </label>
                 <x-input-error for="image" class="mt-1" />
             </div>
@@ -49,7 +49,7 @@
         <div class="mt-6 flex items-end justify-between">
             <div class="w-1/2">
                 <x-label for="author">Author</x-label>
-                <input type="text" id="author" wire:model.defer="author" placeholder="{{ Auth::user()->name }}" class="flex-none w-full border-none rounded-lg focus:ring focus:ring-violet-200 text-sm"/>
+                <input type="text" id="author" wire:model.live="author" placeholder="{{ Auth::user()->name }}" class="flex-none w-full border-none rounded-lg focus:ring focus:ring-indigo-200 text-sm"/>
                 <x-input-error for="author" class="mt-1" />
             </div>
             <div class="">

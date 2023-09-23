@@ -10,14 +10,14 @@
                 </div>
 
                 <div class="hidden md:flex items-center gap-x-6">
-                    <a href="{{ route('about') }}" class="inline-block text-slate-700 hover:text-violet-600">About Us</a>
-                    <a href="{{ route('pricing') }}" class="inline-block text-slate-700 hover:text-violet-600">Pricing</a>
-                    <a href="{{ route('blog.index') }}" class="inline-block text-slate-700 hover:text-violet-600">The Blog</a>
+                    <a href="{{ route('about') }}" class="inline-block text-slate-700 hover:text-indigo-600">About Us</a>
+                    <a href="{{ route('pricing') }}" class="inline-block text-slate-700 hover:text-indigo-600">Pricing</a>
+                    <a href="{{ route('blog.index') }}" class="inline-block text-slate-700 hover:text-indigo-600">The Blog</a>
                 </div>
 
                 {{-- Login links --}}
                 <div class="hidden md:flex items-center justify-center gap-6">
-                    <a href="{{ route('login') }}" class="inline-block text-slate-700 hover:text-violet-600">Login</a>
+                    <a href="{{ route('login') }}" class="inline-block text-slate-700 hover:text-indigo-600">Login</a>
                     <a href="{{ route('register') }}" class="primary-btn">Start free trial</a>
                 </div>
 
@@ -33,12 +33,12 @@
                     </button>
 
                     <div class="mt-2 absolute right-0 w-56 z-50 bg-white border shadow text-slate-600 text-sm rounded-md" x-show="burger" x-transition @click.outside="burger = false">
-                        <a href="{{ route('login') }}" class="block px-4 my-2.5 hover:text-violet-500 hover:underline">Sign In</a>
-                        <a href="{{ route('register') }}" class="block px-4 my-2.5 hover:text-violet-500 hover:underline">Free Trial</a>
+                        <a href="{{ route('login') }}" class="block px-4 my-2.5 hover:text-indigo-500 hover:underline">Sign In</a>
+                        <a href="{{ route('register') }}" class="block px-4 my-2.5 hover:text-indigo-500 hover:underline">Free Trial</a>
                         <div class="my-6"></div>
-                        <a href="{{ route('about') }}" class="block px-4 my-2.5 hover:text-violet-500 hover:underline">About Us</a>
-                        <a href="{{ route('pricing') }}" class="block px-4 my-2.5 hover:text-violet-500 hover:underline">Pricing</a>
-                        <a href="{{ route('blog.index') }}" class="block px-4 my-2.5 hover:text-violet-500 hover:underline">Blog</a>
+                        <a href="{{ route('about') }}" class="block px-4 my-2.5 hover:text-indigo-500 hover:underline">About Us</a>
+                        <a href="{{ route('pricing') }}" class="block px-4 my-2.5 hover:text-indigo-500 hover:underline">Pricing</a>
+                        <a href="{{ route('blog.index') }}" class="block px-4 my-2.5 hover:text-indigo-500 hover:underline">Blog</a>
                     </div>
                 </div>
             </div>

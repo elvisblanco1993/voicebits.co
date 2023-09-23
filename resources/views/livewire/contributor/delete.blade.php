@@ -5,7 +5,7 @@
         </svg>
     </button>
 
-    <x-confirmation-modal wire:model="modal">
+    <x-confirmation-modal wire:model.live="modal">
         <x-slot name="title">Deleting contributor</x-slot>
         <x-slot name="content">
             <p>Are you sure you want to delete this contrinutor? We will remove all associations to any episodes that may exist, and this action cannot be undone.</p>

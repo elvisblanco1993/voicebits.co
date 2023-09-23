@@ -4,7 +4,7 @@
             @if ($episode->podcast->cover)
                 <img src="{{ Storage::url($episode->podcast->cover) }}" alt="{{ $episode->podcast->name }}" class="w-24 aspect-square rounded-md object-center object-cover">
             @else
-                <div class="h-24 w-24 rounded-md bg-violet-50 flex items-center justify-center">
+                <div class="h-24 w-24 rounded-md bg-indigo-50 flex items-center justify-center">
                     <img src="{{ asset('logo-mark.svg') }}" alt="{{ $episode->podcast->name }}" class="w-10 h-auto">
                 </div>
             @endif
@@ -17,7 +17,7 @@
     <div class="pb-6 max-w-7xl mx-auto px-4 sm:px-6 lg:px-0">
         <div class="flex items-center justify-between">
             <div class="flex items-center gap-3">
-                <a href="{{ route('podcast.episodes') }}" class="hover:text-violet-600 transition-all">
+                <a href="{{ route('podcast.episodes') }}" class="hover:text-indigo-600 transition-all">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M11 15l-3-3m0 0l3-3m-3 3h8M3 12a9 9 0 1118 0 9 9 0 01-18 0z" />
                     </svg>
@@ -45,8 +45,8 @@
                         </div>
                     </div>
 
-                    <label for="track" class="text-sm text-slate-600 px-3 py-2 rounded-lg border border-slate-200 hover:text-violet-600 hover:bg-violet-50 hover:border-violet-200 transition-all cursor-pointer">
-                        <input id="track" wire:model.defer="track" type="file" accept="audio/mpeg" class="sr-only">
+                    <label for="track" class="text-sm text-slate-600 px-3 py-2 rounded-lg border border-slate-200 hover:text-indigo-600 hover:bg-indigo-50 hover:border-indigo-200 transition-all cursor-pointer">
+                        <input id="track" wire:model.live="track" type="file" accept="audio/mpeg" class="sr-only">
                         @if ($track)
                         {{__("New track uploaded")}}
                         @else
@@ -69,17 +69,17 @@
             </div>
             <div class="mt-6">
                 <label for="title" class="block font-medium text-sm text-gray-700">Episode title <span class="text-red-500">*</span></label>
-                <x-input type="text" wire:model.defer="title" id="title" placeholder="What do you want to call this episode?" class="mt-1 w-full"/>
+                <x-input type="text" wire:model.live="title" id="title" placeholder="What do you want to call this episode?" class="mt-1 w-full"/>
                 <x-input-error for="title" class="mt-2 text-sm text-red-600"/>
             </div>
             <div class="mt-6">
                 <label for="description" class="block font-medium text-sm text-gray-700">Episode description <span class="text-red-500">*</span></label>
-                <textarea wire:model.defer="description" id="description" rows="10" class="input"></textarea>
+                <textarea wire:model.live="description" id="description" rows="10" class="input"></textarea>
                 <x-input-error for="description" class="mt-2 text-sm text-red-600"/>
             </div>
             <div class="mt-6">
                 <label for="published_at" class="block font-medium text-sm text-gray-700">Publish date</label>
-                <x-input type="datetime-local" wire:model.defer="published_at" id="published_at" placeholder="What do you want to call this episode?" class="mt-1"/>
+                <x-input type="datetime-local" wire:model.live="published_at" id="published_at" placeholder="What do you want to call this episode?" class="mt-1"/>
             </div>
         </div>
 
@@ -94,7 +94,7 @@
                             <x-label for="season" value="Season number"/>
                         </div>
                         <div class="col-span-3 sm:col-span-2 mt-1 sm:mt-0">
-                            <x-input type="text" id="season" wire:model.defer="season" class="w-full"/>
+                            <x-input type="text" id="season" wire:model.live="season" class="w-full"/>
                         </div>
                     </div>
 
@@ -105,7 +105,7 @@
                             <x-label for="number" value="Episode number"/>
                         </div>
                         <div class="col-span-3 sm:col-span-2 mt-1 sm:mt-0">
-                            <x-input type="text" id="number" wire:model.defer="number" class="w-full"/>
+                            <x-input type="text" id="number" wire:model.live="number" class="w-full"/>
                         </div>
                     </div>
 
@@ -118,15 +118,15 @@
                         </div>
                         <div class="col-span-3 sm:col-span-2 mt-1 sm:mt-0">
                             <label for="full" class="flex items-center gap-2 text-sm">
-                                <input id="full" type="radio" wire:model.defer="type" name="type" value="full">
+                                <input id="full" type="radio" wire:model.live="type" name="type" value="full">
                                 <span>Full</span>
                             </label>
                             <label for="trailer" class="mt-1 flex items-center gap-2 text-sm">
-                                <input id="trailer" type="radio" wire:model.defer="type" name="type" value="trailer">
+                                <input id="trailer" type="radio" wire:model.live="type" name="type" value="trailer">
                                 <span>Trailer</span>
                             </label>
                             <label for="bonus" class="mt-1 flex items-center gap-2 text-sm">
-                                <input id="bonus" type="radio" wire:model.defer="type" name="type" value="bonus">
+                                <input id="bonus" type="radio" wire:model.live="type" name="type" value="bonus">
                                 <span>Bonus</span>
                             </label>
                         </div>
@@ -140,11 +140,11 @@
                         </div>
                         <div class="col-span-3 sm:col-span-2 mt-1 sm:mt-0">
                             <label for="clean" class="flex items-center gap-2 text-sm">
-                                <input id="clean" type="radio" wire:model.defer="explicit" name="explicit" value="false">
+                                <input id="clean" type="radio" wire:model.live="explicit" name="explicit" value="false">
                                 <span>Clean</span>
                             </label>
                             <label for="explicit" class="mt-1 flex items-center gap-2 text-sm">
-                                <input id="explicit" type="radio" wire:model.defer="explicit" name="explicit" value="true">
+                                <input id="explicit" type="radio" wire:model.live="explicit" name="explicit" value="true">
                                 <span>Explicit</span>
                             </label>
                         </div>
@@ -160,11 +160,11 @@
                         </div>
                         <div class="col-span-3 sm:col-span-2 mt-1 sm:mt-0">
                             <label for="public" class="flex items-center gap-2 text-sm">
-                                <input id="public" type="radio" wire:model.defer="blocked" name="blocked" value="false">
+                                <input id="public" type="radio" wire:model.live="blocked" name="blocked" value="false">
                                 <span>Public on podcatchers</span>
                             </label>
                             <label for="hidden" class="mt-1 flex items-center gap-2 text-sm">
-                                <input id="hidden" type="radio" wire:model.defer="blocked" name="blocked" value="true">
+                                <input id="hidden" type="radio" wire:model.live="blocked" name="blocked" value="true">
                                 <span>Hidden on podcatchers</span>
                             </label>
                         </div>
@@ -185,8 +185,8 @@
                     @endif
 
                     <div class="mt-4">
-                        <label for="cover" class="text-sm text-slate-600 px-3 py-2 rounded-lg border border-slate-200 hover:text-violet-600 hover:bg-violet-50 hover:border-violet-200 transition-all cursor-pointer">
-                            <input id="cover" type="file" accept=".png,.jpeg" wire:model.defer="cover" class="sr-only">
+                        <label for="cover" class="text-sm text-slate-600 px-3 py-2 rounded-lg border border-slate-200 hover:text-indigo-600 hover:bg-indigo-50 hover:border-indigo-200 transition-all cursor-pointer">
+                            <input id="cover" type="file" accept=".png,.jpeg" wire:model.live="cover" class="sr-only">
                             Upload episode art
                         </label>
                     </div>
@@ -200,7 +200,7 @@
             <div class="">
                 <div class="flex items-center justify-between">
                     <label for="embed" class="block font-medium text-sm text-gray-700">Embed</label>
-                    <button class="flex items-center space-x-2 text-sm text-slate-600 hover:text-violet-600 transition-all" onclick="copyEmbed()">
+                    <button class="flex items-center space-x-2 text-sm text-slate-600 hover:text-indigo-600 transition-all" onclick="copyEmbed()">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                             <path d="M8 2a1 1 0 000 2h2a1 1 0 100-2H8z" />
                             <path d="M3 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v6h-4.586l1.293-1.293a1 1 0 00-1.414-1.414l-3 3a1 1 0 000 1.414l3 3a1 1 0 001.414-1.414L10.414 13H15v3a2 2 0 01-2 2H5a2 2 0 01-2-2V5zM15 11h2a1 1 0 110 2h-2v-2z" />

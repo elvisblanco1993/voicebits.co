@@ -14,7 +14,7 @@
                 </a>
             @endcan
         </div>
-        <x-input type="search" wire:model="search" placeholder="Search episodes by title" class="mt-2 w-full sm:w-1/3"/>
+        <x-input type="search" wire:model.live="search" placeholder="Search episodes by title" class="mt-2 w-full sm:w-1/3"/>
         <div class="mt-4 overflow-x-auto shadow rounded-lg">
             <table class="w-full text-sm text-left text-gray-500">
                 <thead class="text-xs text-gray-700 uppercase bg-gray-50">

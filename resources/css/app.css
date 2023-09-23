@@ -7,14 +7,14 @@
     [x-cloak] { display: none !important; }
 
     .input {
-        @apply border-slate-200 focus:ring focus:ring-violet-100 focus:outline-none rounded-md block outline-none focus:border-violet-200 mt-1 w-full;
+        @apply border-slate-200 focus:ring focus:ring-indigo-100 focus:outline-none rounded-md block outline-none focus:border-indigo-200 mt-1 w-full;
     }
 
     .btn-link {
-        @apply inline-flex items-center px-4 py-2 bg-violet-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-violet-700 active:bg-violet-900 focus:outline-none focus:border-violet-900 focus:ring focus:ring-violet-300 disabled:opacity-25 transition;
+        @apply inline-flex items-center px-4 py-2 bg-indigo-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-indigo-700 active:bg-indigo-900 focus:outline-none focus:border-indigo-900 focus:ring focus:ring-indigo-300 disabled:opacity-25 transition;
     }
 
     .primary-btn {
-        @apply inline-flex items-center justify-center rounded-full py-2 px-5 focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 bg-violet-600 text-white hover:text-slate-100 hover:bg-violet-700 active:bg-violet-700 active:text-white focus-visible:outline-violet-800;
+        @apply inline-flex items-center justify-center rounded-full py-2 px-5 focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 bg-indigo-600 text-white hover:text-slate-100 hover:bg-indigo-700 active:bg-indigo-700 active:text-white focus-visible:outline-indigo-800;
     }
 }

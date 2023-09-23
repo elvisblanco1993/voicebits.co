@@ -3,12 +3,12 @@
         Invite User
     </x-button>
 
-    <x-dialog-modal wire:model="modal">
+    <x-dialog-modal wire:model.live="modal">
         <x-slot name="title">{{ __("Invite User") }}</x-slot>
         <x-slot name="content">
             <div>
                 <x-label for="email" value="{{ __('Email') }}" />
-                <x-input id="email" class="block mt-1 w-full" type="email" name="email" wire:model="email" :value="old('email')" required placeholder="jdoe@acme.com" />
+                <x-input id="email" class="block mt-1 w-full" type="email" name="email" wire:model.live="email" :value="old('email')" required placeholder="jdoe@acme.com" />
                 <x-input-error for="email" />
             </div>
             <div class="mt-4">
@@ -17,7 +17,7 @@
                     @forelse ($podcast_permissions as $permission => $val)
                         <div class="col-span-1">
                             <label for="{{$val}}" class="mt-2 flex items-center">
-                                <x-input type="checkbox" name="permissions" wire:model="permissions" id="{{$val}}" value="{{$val}}" />
+                                <x-input type="checkbox" name="permissions" wire:model.live="permissions" id="{{$val}}" value="{{$val}}" />
                                 <span class="text-sm ml-2">{{ Str::ucfirst(str_replace('_', ' ', $val)) }}</span>
                             </label>
                         </div>

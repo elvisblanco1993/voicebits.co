@@ -16,10 +16,12 @@
 
         <!-- Scripts -->
         @vite('resources/js/app.js')
+        @livewireStyles
     </head>
     <body>
         <div class="font-sans text-black antialiased">
             {{ $slot }}
         </div>
+        @livewireScripts
     </body>
 </html>

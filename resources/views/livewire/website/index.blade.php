@@ -11,7 +11,7 @@
                 <div class="p-4">
                     <div class="flex items-center justify-between">
                         <p class="text-xl font-bold text-slate-600 dark:text-slate-700">Classic</p>
-                        <input type="radio" name="template" id="classic" value="classic" wire:model="template" class="">
+                        <input type="radio" name="template" id="classic" value="classic" wire:model.live="template" class="">
                     </div>
                     <div class="mt-2 text-sm text-slate-600">
                         The original Voicebits theme. Includes a full width player.
@@ -24,7 +24,7 @@
                 <div class="p-4">
                     <div class="flex items-center justify-between">
                         <p class="text-xl font-bold text-slate-600 dark:text-slate-700">Modern</p>
-                        <input type="radio" name="template" id="modern" value="modern" wire:model="template" class="">
+                        <input type="radio" name="template" id="modern" value="modern" wire:model.live="template" class="">
                     </div>
                     <div class="mt-2 text-sm text-slate-600">
                         Refreshed template with top slim player.

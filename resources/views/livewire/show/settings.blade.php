@@ -8,13 +8,13 @@
             <div class="p-6">
                 <div>
                     <x-label for="name" value="Podcast name" />
-                    <x-input type="text" id="name" wire:model.defer="name" class="mt-1 w-full"/>
+                    <x-input type="text" id="name" wire:model.live="name" class="mt-1 w-full"/>
                     <x-input-error for="name" class="text-sm text-red-600 mt-2"/>
                 </div>
 
                 <div class="mt-6">
                     <x-label for="description" value="Description" />
-                    <textarea wire:model="description" id="description" rows="6" class="input"></textarea>
+                    <textarea wire:model.live="description" id="description" rows="6" class="input"></textarea>
                     <x-input-error for="description" class="text-sm text-red-600 mt-2"/>
                 </div>
 
@@ -25,7 +25,7 @@
                         @elseif($cover)
                             <img src="{{ $cover->temporaryUrl() }}" class="w-full rounded-lg shadow aspect-square object-center object-cover">
                         @else
-                            <div class="flex-none w-full h-full aspect-square rounded-lg bg-violet-100 flex items-center justify-center">
+                            <div class="flex-none w-full h-full aspect-square rounded-lg bg-indigo-100 flex items-center justify-center">
                                 <img src="{{ asset('logo-mark-dark.svg') }}" class="w-12 h-auto">
                             </div>
                         @endif
@@ -52,7 +52,7 @@
                                 <p class="font-semibold text-slate-900">Click here to upload your artwork.</p>
                                 <p class="text-slate-600">.png or .jpeg up to 3MB in size. 3000x3000px resolution recommended.</p>
                             </div>
-                            <input type="file" wire:model="cover" id="artwork-file" accept="image/jpeg,image/png" class="hidden absolute inset-0">
+                            <input type="file" wire:model.live="cover" id="artwork-file" accept="image/jpeg,image/png" class="hidden absolute inset-0">
                         </label>
 
                         <x-input-error for="cover" />
@@ -62,14 +62,14 @@
                 <div class="mt-6 grid grid-cols-2 gap-6 md:gap-8">
                     <div class="col-span-2 md:col-span-1">
                         <x-label for="category" value="Category" />
-                        <select wire:model.defer="category" id="category" class="input">
+                        <select wire:model.live="category" id="category" class="input">
                             @include('layouts.partials.podcast-categories')
                         </select>
                         <x-input-error for="category" class="text-sm text-red-600 mt-2"/>
                     </div>
                     <div class="col-span-2 md:col-span-1">
                         <x-label for="language" value="Language" />
-                        <select wire:model.defer="language" id="language" class="input">
+                        <select wire:model.live="language" id="language" class="input">
                             @include('layouts.partials.podcast-languages')
                         </select>
                         <x-input-error for="language" class="text-sm text-red-600 mt-2"/>
@@ -80,14 +80,14 @@
                 <div class="mt-6 grid grid-cols-2 gap-6 md:gap-8">
                     <div class="col-span-2 md:col-span-1">
                         <x-label for="timezone" value="Publishing timezone" />
-                        <select wire:model.defer="timezone" id="timezone" class="input">
+                        <select wire:model.live="timezone" id="timezone" class="input">
                             @include('layouts.partials.timezones-list')
                         </select>
                         <x-input-error for="timezone" class="text-sm text-red-600 mt-2"/>
                     </div>
                     <div class="col-span-2 md:col-span-1">
                         <x-label for="explicit" value="Podcast content" />
-                        <select wire:model.defer="explicit" id="explicit" class="input">
+                        <select wire:model.live="explicit" id="explicit" class="input">
                             <option value="" disabled="">Choose one option...</option>
                             <option value="false">Clean</option>
                             <option value="true">Explicit</option>
@@ -99,11 +99,11 @@
                 <div class="mt-6">
                     <x-label for="type" value="Podcast type" />
                     <label for="serial" class="mt-1 flex items-center space-x-2 text-sm">
-                        <input id="serial" name="type" type="radio" wire:model.defer="type" value="serial" class="rounded-full border border-slate-300"/>
+                        <input id="serial" name="type" type="radio" wire:model.live="type" value="serial" class="rounded-full border border-slate-300"/>
                         <span>Serial - episodes are shown oldest to newest</span>
                     </label>
                     <label for="episodic" class="mt-1 flex items-center space-x-2 text-sm">
-                        <input id="episodic" name="type" type="radio" wire:model.defer="type" value="episodic" class="rounded-full border border-slate-300"/>
+                        <input id="episodic" name="type" type="radio" wire:model.live="type" value="episodic" class="rounded-full border border-slate-300"/>
                         <span>Episodic (most popular) - episodes are shown newest to oldest</span>
                     </label>
                     <x-input-error for="type" class="text-sm text-red-600 mt-2"/>
@@ -111,14 +111,14 @@
 
                 <div class="mt-6">
                     <x-label for="author" value="Podcast author" />
-                    <x-input type="text" id="author" wire:model.defer="author" placeholder="Name of the podcast's creator(s)" class="mt-1 w-full"/>
+                    <x-input type="text" id="author" wire:model.live="author" placeholder="Name of the podcast's creator(s)" class="mt-1 w-full"/>
                     <x-input-error for="author" class="text-sm text-red-600 mt-2"/>
                 </div>
 
                 <div class="mt-6">
                     <x-label for="url" value="Podcast url" />
-                    <x-input type="text" wire:model="url" id="url" class="mt-1 w-full" placeholder="{{str($podcast->name)->slug()}}" autocomplete="off"/>
-                    <a href="{{ config('app.url') }}/s/{{$podcast->url}}" target="_blank" class="mt-1 text-xs font-medium tracking-wider text-violet-600">{{ config('app.url') }}/s/{{$podcast->url}}</a>
+                    <x-input type="text" wire:model.live="url" id="url" class="mt-1 w-full" placeholder="{{str($podcast->name)->slug()}}" autocomplete="off"/>
+                    <a href="{{ config('app.url') }}/s/{{$podcast->url}}" target="_blank" class="mt-1 text-xs font-medium tracking-wider text-indigo-600">{{ config('app.url') }}/s/{{$podcast->url}}</a>
                 </div>
             </div>
 
@@ -135,7 +135,7 @@
                 <p class="mt-2 text-slate-600">Enable funding for your show, and allow your listeners to make donations directly to you.</p>
                 <div class="mt-2">
                     <label for="funding-btn" class="flex items-center">
-                        <input type="checkbox" name="funding" wire:model="funding" id="funding-btn" class="rounded">
+                        <input type="checkbox" name="funding" wire:model.live="funding" id="funding-btn" class="rounded">
                         @if ($funding)
                             <span class="ml-3 text-sm font-semibold text-slate-600">Funding enabled. Click to disable.</span>
                         @else
@@ -146,19 +146,19 @@
                     @if ($funding)
                         <div class="mt-6">
                             <x-label for="funding_description" value="Funding page text" />
-                            <textarea id="funding_description" cols="30" rows="10" class="input" wire:model.defer="funding_description"
+                            <textarea id="funding_description" cols="30" rows="10" class="input" wire:model.live="funding_description"
                                 placeholder="Tell your listeners why should they support your podcast..."
                              ></textarea>
                             <x-input-error for="funding_description" class="text-sm text-red-600 mt-2"/>
                         </div>
                         <div class="mt-6">
                             <x-label for="funding_text" value="Button label" />
-                            <x-input type="text" id="funding_text" wire:model.defer="funding_text" placeholder="Support the show!" class="mt-1 w-full"/>
+                            <x-input type="text" id="funding_text" wire:model.live="funding_text" placeholder="Support the show!" class="mt-1 w-full"/>
                             <x-input-error for="funding_text" class="text-sm text-red-600 mt-2"/>
                         </div>
                         <div class="mt-6">
                             <x-label for="funding_url" value="Button url" />
-                            <x-input type="url" id="funding_url" wire:model.defer="funding_url" placeholder="https://link_to_funding_site.com" class="mt-1 w-full"/>
+                            <x-input type="url" id="funding_url" wire:model.live="funding_url" placeholder="https://link_to_funding_site.com" class="mt-1 w-full"/>
                             <x-input-error for="funding_url" class="text-sm text-red-600 mt-2"/>
                         </div>
                     @endif
@@ -179,7 +179,7 @@
                 <p class="mt-2 text-slate-600">When this value is present and set to “yes”, the podcast feed cannot be imported or migrated to other platforms  that respect the tag.</p>
                 <div class="mt-2">
                     <label for="is_locked-btn" class="flex items-center">
-                        <input type="checkbox" name="is_locked" wire:model="is_locked" id="is_locked-btn" class="rounded">
+                        <input type="checkbox" name="is_locked" wire:model.live="is_locked" id="is_locked-btn" class="rounded">
                         @if ($is_locked)
                             <span class="ml-3 text-sm font-semibold text-slate-600">Feed locked. Click to unlock.</span>
                         @else
