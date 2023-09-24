@@ -1,5 +1,5 @@
 <div class="sticky top-0 z-50 bg-white text-slate-600 bg-opacity-80 backdrop-blur">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="h-16">
             <div class="h-full flex items-center justify-between">
                 {{-- Logo --}}

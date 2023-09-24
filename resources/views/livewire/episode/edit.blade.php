@@ -1,20 +1,6 @@
 <div>
-    <div class="max-w-7xl mx-auto py-4">
-        <div class="flex items-center">
-            @if ($episode->podcast->cover)
-                <img src="{{ Storage::url($episode->podcast->cover) }}" alt="{{ $episode->podcast->name }}" class="w-24 aspect-square rounded-md object-center object-cover">
-            @else
-                <div class="h-24 w-24 rounded-md bg-indigo-50 flex items-center justify-center">
-                    <img src="{{ asset('logo-mark.svg') }}" alt="{{ $episode->podcast->name }}" class="w-10 h-auto">
-                </div>
-            @endif
-            <div class="ml-6">
-                <h1 class="text-3xl font-bold">{{ $episode->podcast->name }}</h1>
-                <a href="{{ route('public.podcast.website', ['url' => $episode->podcast->url]) }}" target="_blank" class="text-sm bg-slate-200 text-slate-700 px-1 py-0.5 rounded">Visit website</a>
-            </div>
-        </div>
-    </div>
-    <div class="pb-6 max-w-7xl mx-auto px-4 sm:px-6 lg:px-0">
+    @livewire('submenu')
+    <div class="py-6 max-w-5xl mx-auto px-4 sm:px-6 lg:px-0">
         <div class="flex items-center justify-between">
             <div class="flex items-center gap-3">
                 <a href="{{ route('podcast.episodes') }}" class="hover:text-indigo-600 transition-all">
@@ -48,20 +34,14 @@
                     <label for="track" class="text-sm text-slate-600 px-3 py-2 rounded-lg border border-slate-200 hover:text-indigo-600 hover:bg-indigo-50 hover:border-indigo-200 transition-all cursor-pointer">
                         <input id="track" wire:model.live="track" type="file" accept="audio/mpeg" class="sr-only">
                         @if ($track)
-                        {{__("New track uploaded")}}
+                            {{__("New track uploaded")}}
                         @else
-                        {{__("Replace track")}}
+                            {{__("Replace track")}}
                         @endif
                     </label>
                     {{-- Get the audio duration --}}
                     @if ($track)
-                            <audio id="audio_temp" src="{{ $track->temporaryUrl() }}" preload="metadata"></audio>
-                            <script>
-                                var audioFile = document.getElementById("audio_temp");
-                                audioFile.onloadedmetadata = function() {
-                                    window.livewire.emit('getAudioDuration', audioFile.duration)
-                                }
-                            </script>
+                        <div class="sr-only" x-init="getTrackDuration('{{ $track->temporaryURL() }}')"></div>
                     @endif
                     {{-- End of Get the audio duration --}}
                 </div>
@@ -236,16 +216,23 @@
         };
     </script>
 
-    {{-- Copy to clipboard --}}
-    <script>
+<script>
+        // Copy to clipboard
         function copyEmbed() {
             let source = '{!! $embed_url !!}';
             navigator.clipboard.writeText(source);
-            console.log(source);
             document.getElementById("embed_alert").innerText = "Copied!";
             setInterval(() => {
                 document.getElementById("embed_alert").innerText = "Copy";
             }, 5000);
+        }
+
+        // Get track duration
+        function getTrackDuration(track) {
+            var tempTrack = new Audio(track);
+            tempTrack.onloadedmetadata = function() {
+                Livewire.dispatch('getAudioDuration', {duration: tempTrack.duration})
+            }
         }
     </script>
 </div>

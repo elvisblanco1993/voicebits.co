@@ -1,6 +1,6 @@
 <div>
     @livewire('submenu')
-    <div class="py-6 max-w-7xl mx-auto px-4 sm:px-6 lg:px-0">
+    <div class="py-6 max-w-5xl mx-auto px-4 sm:px-6 lg:px-0">
         <div class="flex items-center justify-between">
             <div class="flex items-center gap-3">
                 <a href="{{ route('podcast.episodes') }}" class="hover:text-indigo-600 transition-all">
@@ -28,17 +28,10 @@
                                 <path fill-rule="evenodd" d="M3.5 6.5A.5.5 0 0 1 4 7v1a4 4 0 0 0 8 0V7a.5.5 0 0 1 1 0v1a5 5 0 0 1-4.5 4.975V15h3a.5.5 0 0 1 0 1h-7a.5.5 0 0 1 0-1h3v-2.025A5 5 0 0 1 3 8V7a.5.5 0 0 1 .5-.5z"></path>
                                 <path fill-rule="evenodd" d="M10 8V3a2 2 0 1 0-4 0v5a2 2 0 1 0 4 0zM8 0a3 3 0 0 0-3 3v5a3 3 0 0 0 6 0V3a3 3 0 0 0-3-3z"></path>
                             </svg>
+
                             @if ($track)
                                 <span class="block font-semibold text-sm text-green-500">Your track is now ready.</span>
-                                {{-- Get the audio duration --}}
-                                    <audio id="audio_temp" src="{{ $track->temporaryUrl() }}" preload="metadata"></audio>
-                                    <script>
-                                        var audioFile = document.getElementById("audio_temp");
-                                        audioFile.onloadedmetadata = function() {
-                                            window.livewire.emit('getAudioDuration', audioFile.duration)
-                                        }
-                                    </script>
-                                {{-- End of Get the audio duration --}}
+                                <div x-init="getTrackDuration('{{ $track->temporaryURL() }}')"></div>
                             @else
                                 <span class="block font-normal text-sm">Upload an audio file<p class="text-xs text-gray-500">MP3 only supported</p></span>
                             @endif
@@ -150,4 +143,12 @@
             </div>
         </div>
     </div>
+    <script type="text/javascript">
+        function getTrackDuration(track) {
+            var tempTrack = new Audio(track);
+            tempTrack.onloadedmetadata = function() {
+                Livewire.dispatch('getAudioDuration', {duration: tempTrack.duration})
+            }
+        }
+    </script>
 </div>

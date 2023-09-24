@@ -7,7 +7,7 @@
 
     {{-- Navbar --}}
     <div class="w-full">
-        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between border-b md:border-b-0">
+        <nav class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between border-b md:border-b-0">
             <div class="hidden md:flex items-center space-x-12">
                 <a href="{{ route('public.podcast.website', ['url' => $podcast->url]) }}">&leftarrow; Go back</a>
             </div>
@@ -29,7 +29,7 @@
     {{-- End of Navbar --}}
 
     {{-- Home page --}}
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 md:py-12">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-4 md:py-12">
         <img src="{{ Storage::url($episode->cover ?? $podcast->cover) }}" alt="{{ $podcast->name }}" class="block md:hidden w-full object-center object-cover rounded">
         <div class="mt-4 md:mt-0 md:flex items-start justify-between md:space-x-8">
             <div class="w-full">

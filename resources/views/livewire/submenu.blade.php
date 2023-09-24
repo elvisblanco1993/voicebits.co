@@ -1,5 +1,5 @@
 <div>
-    <div class="max-w-7xl mx-auto py-4">
+    <div class="max-w-5xl mx-auto py-4">
         <div class="flex items-center">
             @if ($podcast->cover)
                 <img src="{{ Storage::url($podcast->cover) }}" alt="{{ $podcast->name }}" class="w-24 aspect-square rounded-md object-center object-cover">

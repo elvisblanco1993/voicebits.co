@@ -19,7 +19,6 @@ class Create extends Component
 
     protected $listeners = ['getAudioDuration'];
 
-
     public function getAudioDuration($duration)
     {
         $this->track_length = $duration;
