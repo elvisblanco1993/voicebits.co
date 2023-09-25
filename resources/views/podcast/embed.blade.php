@@ -10,7 +10,12 @@
             [] Add SEO tags
             [] Add favicon based on show cover
             --}}
+        <!-- Styles -->
         @vite('resources/css/app.css')
+
+        <!-- Scripts -->
+        @vite('resources/js/app.js')
+        @livewireStyles
     </head>
     <body>
         <div class="w-full h-40 bg-white text-slate-600 p-4 rounded-lg border border-slate-200 shadow">
@@ -234,6 +239,6 @@
             }
         </script>
 
-        @vite('resources/js/app.js')
+        @livewireScripts
     </body>
 </html>
