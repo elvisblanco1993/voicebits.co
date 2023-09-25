@@ -19,7 +19,7 @@
 
     {{-- Episodes --}}
     <main class="mb-12">
-        @forelse ($podcast->episodes as $episode)
+        @forelse ($episodes as $episode)
             <article class="mb-4 w-full p-4">
                 <div class="grid grid-cols-12 items-center gap-8">
                     <div class="col-span-2 lg:col-span-1 w-full flex items-center justify-center">

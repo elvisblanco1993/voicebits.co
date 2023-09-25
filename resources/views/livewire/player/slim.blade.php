@@ -142,10 +142,10 @@
         // Get the episode url
         function setPlayerUrl(guid) {
             Livewire.dispatch('getEpisodeData', {guid: guid});
-            Livewire.on('gotEpisodeData', (url, title) => {
-                player.src = url;
-                episode = url;
-                localStorage.setItem('title', title);
+            Livewire.on('gotEpisodeData', (event) => {
+                player.src = event.url;
+                episode = event.url;
+                localStorage.setItem('title', event.title);
             });
         }
 

@@ -18,123 +18,86 @@
             </x-button>
         </div>
 
-        {{-- Content section --}}
-        <div class="mt-4 w-full bg-white rounded-lg shadow p-8">
-            <div class="">
-                <div class="relative h-16 rounded-lg border-dashed border border-gray-400 bg-white flex justify-center items-center hover:cursor-pointer">
-                    <div class="absolute">
-                        <div class="flex items-center gap-2">
-                            <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="currentColor" viewBox="0 0 16 16">
-                                <path fill-rule="evenodd" d="M3.5 6.5A.5.5 0 0 1 4 7v1a4 4 0 0 0 8 0V7a.5.5 0 0 1 1 0v1a5 5 0 0 1-4.5 4.975V15h3a.5.5 0 0 1 0 1h-7a.5.5 0 0 1 0-1h3v-2.025A5 5 0 0 1 3 8V7a.5.5 0 0 1 .5-.5z"></path>
-                                <path fill-rule="evenodd" d="M10 8V3a2 2 0 1 0-4 0v5a2 2 0 1 0 4 0zM8 0a3 3 0 0 0-3 3v5a3 3 0 0 0 6 0V3a3 3 0 0 0-3-3z"></path>
-                            </svg>
+        <div class="mt-4 grid grid-cols-6 gap-4">
+            {{-- Main content --}}
+            <div class="col-span-6 md:col-span-4 p-4 border border-slate-200 rounded-lg">
+                <div>
+                    <div class="relative h-16 rounded-lg border-dashed border border-gray-400 bg-white flex justify-center items-center hover:cursor-pointer">
+                        <div class="absolute">
+                            <div class="flex items-center gap-2">
+                                <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="currentColor" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd" d="M3.5 6.5A.5.5 0 0 1 4 7v1a4 4 0 0 0 8 0V7a.5.5 0 0 1 1 0v1a5 5 0 0 1-4.5 4.975V15h3a.5.5 0 0 1 0 1h-7a.5.5 0 0 1 0-1h3v-2.025A5 5 0 0 1 3 8V7a.5.5 0 0 1 .5-.5z"></path>
+                                    <path fill-rule="evenodd" d="M10 8V3a2 2 0 1 0-4 0v5a2 2 0 1 0 4 0zM8 0a3 3 0 0 0-3 3v5a3 3 0 0 0 6 0V3a3 3 0 0 0-3-3z"></path>
+                                </svg>
 
-                            @if ($track)
-                                <span class="block font-semibold text-sm text-green-500">Your track is now ready.</span>
-                                <div x-init="getTrackDuration('{{ $track->temporaryURL() }}')"></div>
-                            @else
-                                <span class="block font-normal text-sm">Upload an audio file<p class="text-xs text-gray-500">MP3 only supported</p></span>
-                            @endif
+                                @if ($track)
+                                    <span class="block font-semibold text-sm text-green-500">Your track is now ready.</span>
+                                    <div x-init="getTrackDuration('{{ $track->temporaryURL() }}')"></div>
+                                @else
+                                    <span class="block font-normal text-sm">Upload an audio file<p class="text-xs text-gray-500">MP3 only supported</p></span>
+                                @endif
+                            </div>
                         </div>
+                        <input id="file-upload" wire:model.live="track" type="file" accept="audio/mpeg" class="h-full w-full opacity-0 cursor-pointer">
                     </div>
-                    <input id="file-upload" wire:model.live="track" type="file" accept="audio/mpeg" class="h-full w-full opacity-0 cursor-pointer">
+                    <x-input-error for="track" class="mt-2 text-sm text-red-600"/>
                 </div>
-                <x-input-error for="track" class="mt-2 text-sm text-red-600"/>
+                <div class="mt-6">
+                    <label for="title" class="block font-medium text-sm text-gray-700">Episode title <span class="text-red-500">*</span></label>
+                    <x-input type="text" wire:model.live="title" id="title" placeholder="What do you want to call this episode?" class="mt-1 w-full"/>
+                    <x-input-error for="title" class="mt-2 text-sm text-red-600"/>
+                </div>
+                <div class="mt-6">
+                    <label for="description" class="block font-medium text-sm text-gray-700">Episode description <span class="text-red-500">*</span></label>
+                    <textarea wire:model.live="description" id="description" rows="10" class="input"></textarea>
+                    <x-input-error for="description" class="mt-2 text-sm text-red-600"/>
+                </div>
+                <div class="mt-6">
+                    <label for="published_at" class="block font-medium text-sm text-gray-700">Publish date</label>
+                    <x-input type="datetime-local" wire:model.live="published_at" id="published_at" class="mt-1"/>
+                    <input type="hidden" id="timezone" name="timezone" value="{{ $podcast->timezone }}">
+                </div>
             </div>
-            <div class="mt-6">
-                <label for="title" class="block font-medium text-sm text-gray-700">Episode title <span class="text-red-500">*</span></label>
-                <x-input type="text" wire:model.live="title" id="title" placeholder="What do you want to call this episode?" class="mt-1 w-full"/>
-                <x-input-error for="title" class="mt-2 text-sm text-red-600"/>
-            </div>
-            <div class="mt-6">
-                <label for="description" class="block font-medium text-sm text-gray-700">Episode description <span class="text-red-500">*</span></label>
-                <textarea wire:model.live="description" id="description" rows="10" class="input"></textarea>
-                <x-input-error for="description" class="mt-2 text-sm text-red-600"/>
-            </div>
-            <div class="mt-6">
-                <label for="published_at" class="block font-medium text-sm text-gray-700">Publish date</label>
-                <x-input type="datetime-local" wire:model.live="published_at" id="published_at" placeholder="What do you want to call this episode?" class="mt-1"/>
-                <input type="hidden" id="timezone" name="timezone" value="{{ $podcast->timezone }}">
-            </div>
-        </div>
 
-        {{-- Episode Options --}}
-        <div class="mt-6 text-xl font-bold">Optional</div>
-        <div class="mt-4 w-full bg-white rounded-lg shadow p-8">
-            <div class="grid grid-cols-2 gap-8">
-                <div class="col-span-2 sm:col-span-1 grid">
-                    <div class="grid grid-cols-3 sm:gap-8">
-                        <div class="col-span-3 sm:col-span-1">
-                            <x-label for="season" value="Season number"/>
-                        </div>
-                        <div class="col-span-3 sm:col-span-2 mt-1 sm:mt-0">
-                            <x-input type="text" id="season" wire:model.live="season" class="w-full"/>
-                        </div>
-                    </div>
-
-                    <div class="w-full border-t mt-4"></div>
-
-                    <div class="mt-4 grid grid-cols-3 sm:gap-8">
-                        <div class="col-span-3 sm:col-span-1">
-                            <x-label for="number" value="Episode number"/>
-                        </div>
-                        <div class="col-span-3 sm:col-span-2 mt-1 sm:mt-0">
-                            <x-input type="text" id="number" wire:model.live="number" class="w-full"/>
-                        </div>
-                    </div>
-
-                    <div class="w-full border-t mt-4"></div>
-
-                    <div class="mt-4 grid grid-cols-3 sm:gap-8">
-                        <div class="col-span-3 sm:col-span-1">
-                            <x-label for="" value="Episode type"/>
-                        </div>
-                        <div class="col-span-3 sm:col-span-2 mt-1 sm:mt-0">
-                            <label for="full" class="flex items-center gap-2 text-sm">
-                                <input id="full" type="radio" wire:model.live="type" name="type" value="full">
-                                <span>Full</span>
-                            </label>
-                            <label for="trailer" class="mt-1 flex items-center gap-2 text-sm">
-                                <input id="trailer" type="radio" wire:model.live="type" name="type" value="trailer">
-                                <span>Trailer</span>
-                            </label>
-                            <label for="bonus" class="mt-1 flex items-center gap-2 text-sm">
-                                <input id="bonus" type="radio" wire:model.live="type" name="type" value="bonus">
-                                <span>Bonus</span>
-                            </label>
-                        </div>
-                    </div>
-
-                    <div class="w-full border-t mt-4"></div>
-
-                    <div class="mt-4 grid grid-cols-3 sm:gap-8">
-                        <div class="col-span-3 sm:col-span-1">
-                            <x-label for="" value="Content"/>
-                        </div>
-                        <div class="col-span-3 sm:col-span-2 mt-1 sm:mt-0">
-                            <label for="clean" class="flex items-center gap-2 text-sm">
-                                <input id="clean" type="radio" wire:model.live="explicit" name="explicit" value="false">
-                                <span>Clean</span>
-                            </label>
-                            <label for="explicit" class="mt-1 flex items-center gap-2 text-sm">
-                                <input id="explicit" type="radio" wire:model.live="explicit" name="explicit" value="true">
-                                <span>Explicit</span>
-                            </label>
-                        </div>
-                    </div>
+            {{-- Sidenav --}}
+            <div class="col-span-6 md:col-span-2 p-4 border border-slate-200 rounded-lg">
+                <div class="">
+                    <x-label for="season" value="Season number"/>
+                    <x-input type="number" id="season" wire:model.live="season" class="mt-1 w-full"/>
+                </div>
+                <div class="mt-4">
+                    <x-label for="number" value="Episode number"/>
+                    <x-input type="number" id="number" wire:model.live="number" class="mt-1 w-full"/>
                 </div>
 
-                <div class="col-span-2 sm:col-span-1 text-center">
+                <div class="mt-4">
+                    <x-label for="type" value="Episode type"/>
+                    <select wire:model.live="type" id="type" required
+                        class="border-slate-200 focus:ring focus:ring-indigo-100 focus:outline-none rounded-md block outline-none focus:border-indigo-200 mt-1 w-full">
+                        <option disabled>Select an option</option>
+                        <option value="full">Full episode</option>
+                        <option value="trailer">Trailer</option>
+                        <option value="bonus">Bonus</option>
+                    </select>
+                </div>
+
+                <div class="mt-4">
+                    <x-label for="type" value="Content type"/>
+                    <select wire:model.live="explicit" id="type" required
+                        class="border-slate-200 focus:ring focus:ring-indigo-100 focus:outline-none rounded-md block outline-none focus:border-indigo-200 mt-1 w-full">
+                        <option disabled>Select an option</option>
+                        <option value="false">Clean</option>
+                        <option value="true">Explicit</option>
+                    </select>
+                </div>
+
+                <div class="mt-4">
                     @if($cover)
-                        <img src="{{ $cover->temporaryUrl() }}" class="w-1/3 mx-auto aspect-square object-center object-cover rounded-lg">
-                    @else
-                        <div class="w-1/3 mx-auto aspect-square bg-indigo-50 rounded-md flex items-center justify-center">
-                            <img src="{{ asset('logo-mark-dark.svg') }}" alt="{{ $podcast->name }}" class="w-12 h-auto">
-                        </div>
+                        <img src="{{ $cover->temporaryUrl() }}" class="w-full mx-auto aspect-square object-center object-cover rounded-lg">
                     @endif
 
                     <div class="mt-4">
-                        <label for="cover" class="text-sm text-slate-600 px-3 py-2 rounded-lg border border-slate-200 hover:text-indigo-600 hover:bg-indigo-50 hover:border-indigo-200 transition-all cursor-pointer">
+                        <label for="cover" class="block w-full text-center text-sm text-slate-600 px-3 py-2 rounded-lg border border-slate-200 hover:text-indigo-600 hover:bg-indigo-50 hover:border-indigo-200 transition-all cursor-pointer">
                             <input id="cover" type="file" accept=".png,.jpeg" wire:model.live="cover" class="sr-only">
                             Upload episode art
                         </label>

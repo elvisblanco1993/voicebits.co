@@ -76,7 +76,7 @@
                 @endif
                 {{-- End of Podcatchers --}}
             </div>
-            <img src="{{ Storage::url($podcast->cover) }}" alt="{{ $podcast->name }}" class="w-full md:w-2/3 object-center object-cover aspect-square rounded">
+            <img src="{{ $podcast->cover ? Storage::url($podcast->cover) : '' }}" alt="{{ $podcast->name }}" class="w-full md:w-2/3 object-center object-cover aspect-square rounded">
         </div>
 
         <div class="mt-12">

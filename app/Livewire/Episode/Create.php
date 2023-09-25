@@ -15,7 +15,19 @@ class Create extends Component
 {
     use WithFileUploads;
 
-    public $title, $description, $published_at, $season, $number, $type = "full", $explicit = "false", $cover, $track, $track_url, $track_size, $track_length;
+    public $title,
+        $description,
+        $published_at,
+        $publish_now,
+        $season,
+        $number,
+        $type = "full",
+        $explicit = "false",
+        $cover,
+        $track,
+        $track_url,
+        $track_size,
+        $track_length;
 
     protected $listeners = ['getAudioDuration'];
 
@@ -29,6 +41,13 @@ class Create extends Component
         if (!Gate::allows('edit_episodes')) {
             abort(401);
         }
+    }
+
+    public function render()
+    {
+        return view('livewire.episode.create', [
+            'podcast' => Podcast::findorfail(session('podcast'))
+        ]);
     }
 
     public function save()
@@ -70,13 +89,6 @@ class Create extends Component
         }
 
         return redirect()->route('podcast.episodes');
-    }
-
-    public function render()
-    {
-        return view('livewire.episode.create', [
-            'podcast' => Podcast::findorfail(session('podcast'))
-        ]);
     }
 
     public function rules()
