@@ -37,7 +37,7 @@
                     this.value[0] = start.format('MM/DD/YYYY')
                     this.value[1] = end.format('MM/DD/YYYY')
 
-                    $wire.emit('updateDates', this.value[0], this.value[1]);
+                    $wire.dispatch('updateDates', {range_start: this.value[0], range_end: this.value[1]});
                 })
 
                 this.$watch('value', () => {
