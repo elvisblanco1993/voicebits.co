@@ -41,7 +41,8 @@
         @endif
         @forelse ($podcast->contributors as $contributor)
             @if ($contributor->pivot->is_default)
-                <podcast:person role="{{ $contributor->role }}" href="{{ $contributor->website }}" img="{{ asset($contributor->avatar) }}">{{ $contributor->name }}</podcast:person>
+                <podcast:person role="" href="" img=""></podcast:person>
+                <podcast:person name="{{ $contributor->name }}" role="{{ strtolower($contributor->role) }}" img="{{ asset($contributor->avatar) }}" href="{{ $contributor->website }}">{{ $contributor->bio }}</podcast:person>
             @endif
         @empty
         @endforelse
