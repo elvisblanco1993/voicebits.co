@@ -40,66 +40,66 @@
             <div class="text-xl font-bold">Colors</div>
             <div class="mt-4 grid grid-cols-3 gap-8">
                 <div class="col-span-3 md:col-span-1 flex items-center space-x-4">
-                    <label for="header_bg" class="shadow color-label inline-flex items-center h-12 aspect-square rounded-full cursor-pointer">
-                        <input type="color" name="header_bg" id="header_bg" class="sr-only">
+                    <label for="header_background" style="background-color: {{$header_background}}" class="shadow color-label inline-flex items-center h-12 aspect-square rounded-full cursor-pointer">
+                        <input type="color" name="header_background" id="header_background" wire:model.live="header_background" wire:change="save" class="sr-only">
                     </label>
                     <div>
-                        <p class="text-lg font-bold">Header background</p>
-                        <p class="text-sm">Main background color of the header</p>
+                        <p class="text-lg font-bold">{{__("Header background")}}</p>
+                        <p class="text-sm">{{__("Main background color of the header")}}</p>
                     </div>
                 </div>
                 <div class="col-span-3 md:col-span-1">
                     <div class="col-span-3 md:col-span-1 flex items-center space-x-4">
-                        <label for="header_bg" class="shadow color-label inline-flex items-center h-12 aspect-square rounded-full cursor-pointer">
-                            <input type="color" name="header_bg" id="header_bg" class="sr-only">
+                        <label for="header_text_color" style="background-color: {{$header_text_color}}" class="shadow color-label inline-flex items-center h-12 aspect-square rounded-full cursor-pointer">
+                            <input type="color" name="header_text_color" id="header_text_color" wire:model.live="header_text_color" wire:change="save" class="sr-only">
                         </label>
                         <div>
-                            <p class="text-lg font-bold">Header background</p>
-                            <p class="text-sm">Main background color of the header</p>
+                            <p class="text-lg font-bold">{{__("Header text color")}}</p>
+                            <p class="text-sm">{{__("Custom colors for the text in the header.")}}</p>
                         </div>
                     </div>
                 </div>
                 <div class="col-span-3 md:col-span-1">
                     <div class="col-span-3 md:col-span-1 flex items-center space-x-4">
-                        <label for="header_bg" class="shadow color-label inline-flex items-center h-12 aspect-square rounded-full cursor-pointer">
-                            <input type="color" name="header_bg" id="header_bg" class="sr-only">
+                        <label for="header_link_color" style="background-color: {{$header_link_color}}" class="shadow color-label inline-flex items-center h-12 aspect-square rounded-full cursor-pointer">
+                            <input type="color" name="header_link_color" id="header_link_color" wire:model.live="header_link_color" wire:change="save" class="sr-only">
                         </label>
                         <div>
-                            <p class="text-lg font-bold">Header background</p>
-                            <p class="text-sm">Main background color of the header</p>
+                            <p class="text-lg font-bold">{{__("Header link color")}}</p>
+                            <p class="text-sm">{{__("Custom colors for the links in the header.")}}</p>
                         </div>
                     </div>
                 </div>
                 <div class="col-span-3 md:col-span-1">
                     <div class="col-span-3 md:col-span-1 flex items-center space-x-4">
-                        <label for="header_bg" class="shadow color-label inline-flex items-center h-12 aspect-square rounded-full cursor-pointer">
-                            <input type="color" name="header_bg" id="header_bg" class="sr-only">
+                        <label for="body_background" style="background-color: {{$body_background}}" class="shadow color-label inline-flex items-center h-12 aspect-square rounded-full cursor-pointer">
+                            <input type="color" name="body_background" id="body_background" wire:model.live="body_background" wire:change="save" class="sr-only">
                         </label>
                         <div>
-                            <p class="text-lg font-bold">Header background</p>
-                            <p class="text-sm">Main background color of the header</p>
+                            <p class="text-lg font-bold">{{__("Body background")}}</p>
+                            <p class="text-sm">{{__("Main background color of the page body")}}</p>
                         </div>
                     </div>
                 </div>
                 <div class="col-span-3 md:col-span-1">
                     <div class="col-span-3 md:col-span-1 flex items-center space-x-4">
-                        <label for="header_bg" class="shadow color-label inline-flex items-center h-12 aspect-square rounded-full cursor-pointer">
-                            <input type="color" name="header_bg" id="header_bg" class="sr-only">
+                        <label for="body_text_color" style="background-color: {{$body_text_color}}" class="shadow color-label inline-flex items-center h-12 aspect-square rounded-full cursor-pointer">
+                            <input type="color" name="body_text_color" id="body_text_color" wire:model.live="body_text_color" wire:change="save" class="sr-only">
                         </label>
                         <div>
-                            <p class="text-lg font-bold">Header background</p>
-                            <p class="text-sm">Main background color of the header</p>
+                            <p class="text-lg font-bold">{{__("Body text color")}}</p>
+                            <p class="text-sm">{{__("Custom colors for the text in the body.")}}</p>
                         </div>
                     </div>
                 </div>
                 <div class="col-span-3 md:col-span-1">
                     <div class="col-span-3 md:col-span-1 flex items-center space-x-4">
-                        <label for="header_bg" class="shadow color-label inline-flex items-center h-12 aspect-square rounded-full cursor-pointer">
-                            <input type="color" name="header_bg" id="header_bg" class="sr-only">
+                        <label for="body_link_color" style="background-color: {{$body_link_color}}" class="shadow color-label inline-flex items-center h-12 aspect-square rounded-full cursor-pointer">
+                            <input type="color" name="body_link_color" id="body_link_color" wire:model="body_link_color" wire:change="save" class="sr-only">
                         </label>
                         <div>
-                            <p class="text-lg font-bold">Header background</p>
-                            <p class="text-sm">Main background color of the header</p>
+                            <p class="text-lg font-bold">{{__("Body link color")}}</p>
+                            <p class="text-sm">{{__("Custom colors for the link in the body.")}}</p>
                         </div>
                     </div>
                 </div>
