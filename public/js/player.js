@@ -15,7 +15,7 @@ let tmp = localStorage.getItem('guid') ?? null;
 window.onload = () => {
     if (document.querySelectorAll('.episode-btn')[0]) {
         let first_episode = document.querySelectorAll('.episode-btn')[0].getAttribute('id');
-        setPlayerUrl(first_episode);
+        // setPlayerUrl(first_episode);
         // Initialize temp button.
         tmp = first_episode;
     }
@@ -56,11 +56,6 @@ function play(guid) {
 // Get the episode url
 function setPlayerUrl(guid) {
     Livewire.dispatch('getEpisodeData', {guid: guid});
-    // Livewire.on('gotEpisodeData', (url, title) => {
-    //     player.src = url;
-    //     localStorage.setItem('title', title);
-    // });
-
     Livewire.on('gotEpisodeData', (event) => {
         player.src = event.url;
         localStorage.setItem('title', event.title);
