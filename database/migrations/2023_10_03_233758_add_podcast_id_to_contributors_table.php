@@ -11,12 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('contributor_podcast', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('contributor_id')->constrained();
-            $table->foreignId('podcast_id')->constrained();
+        Schema::table('contributors', function (Blueprint $table) {
+            $table->foreignId('podcast_id');
             $table->boolean('is_default')->default(false);
         });
+
+        // Let's drop the contributor_podcast table as is no needed
+        Schema::dropIfExists('contributor_podcast');
     }
 
     /**
@@ -24,6 +25,11 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('contributors_podcasts');
+        Schema::table('contributors', function (Blueprint $table) {
+            $table->dropColumn([
+                'podcast_id',
+                'is_default',
+            ]);
+        });
     }
 };

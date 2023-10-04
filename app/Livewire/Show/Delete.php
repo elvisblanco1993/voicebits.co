@@ -5,6 +5,7 @@ namespace App\Livewire\Show;
 use App\Models\Episode;
 use App\Models\Podcast;
 use Livewire\Component;
+use App\Models\Contributor;
 use App\Models\PlaysCounter;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Gate;
@@ -42,6 +43,7 @@ class Delete extends Component
         if ($this->verify === $this->podcast->url) {
             $this->deleteEpisodes();
             $this->deletePlays();
+            $this->unlinkPeople();
             $this->deletePodcast();
         }
         return redirect()->route('podcast.catalog');
@@ -66,6 +68,15 @@ class Delete extends Component
     {
         try {
             PlaysCounter::where('podcast_id', $this->podcast->id)->delete();
+        } catch (\Throwable $th) {
+            Log::error($th);
+        }
+    }
+
+    private function unlinkPeople()
+    {
+        try {
+            Contributor::where('podcast_id', $this->podcast->id)->delete();
         } catch (\Throwable $th) {
             Log::error($th);
         }

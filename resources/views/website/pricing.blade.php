@@ -1,6 +1,6 @@
 @extends('website.layout')
 @section('content')
-    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-0 text-slate-800">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-slate-800">
         <div class="py-20">
             <div class="text-center max-w-5xl mx-auto">
                 <h1 class="text-4xl md:text-5xl font-bold leading-10">Unlock the full potential of your podcast without breaking the bank!</h1>

@@ -26,7 +26,7 @@ class Edit extends Component
         $this->website = $this->contributor->website;
         $this->instagram = $this->contributor->instagram;
         $this->twitter = $this->contributor->twitter;
-        $this->is_default = $this->contributor->pivot->is_default;
+        $this->is_default = $this->contributor->is_default;
     }
 
     public function render()
@@ -56,11 +56,10 @@ class Edit extends Component
                 'instagram' => $this->instagram,
                 'twitter' => $this->twitter,
                 'avatar' => ($this->avatar) ? $this->avatar->store('images') : $this->contributor->avatar,
-            ]);
-            $this->contributor->podcasts()->updateExistingPivot($this->podcast->id, [
                 'is_default' => ($this->is_default == true) ? true : false,
             ]);
-            session()->flash('flash.banner', 'A contributor has been successfully added to the podcast!');
+
+            session()->flash('flash.banner', 'Changes saved!');
             session()->flash('flash.bannerStyle', 'success');
         } catch (\Throwable $th) {
             Log::error($th->getTrace());

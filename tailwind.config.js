@@ -12,7 +12,7 @@ module.exports = {
     theme: {
         extend: {
             fontFamily: {
-                sans: ['Inter', ...defaultTheme.fontFamily.sans],
+                sans: ['Fira Sans Condensed', ...defaultTheme.fontFamily.sans],
             },
             colors: {
                 'vborange': '#fe705d',

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Contributor extends Model
 {
@@ -16,8 +17,8 @@ class Contributor extends Model
         return $this->belongsToMany(Episode::class);
     }
 
-    public function podcasts()
+    public function podcast(): BelongsTo
     {
-        return $this->belongsToMany(Podcast::class)->withPivot('is_default');
+        return $this->belongsTo(Podcast::class);
     }
 }

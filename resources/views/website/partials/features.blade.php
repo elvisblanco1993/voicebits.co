@@ -1,5 +1,5 @@
 <div class="bg-slate-50">
-    <div class="block max-w-5xl mx-auto py-12 lg:py-24 px-4 sm:px-6 lg:px-0 text-black">
+    <div class="block max-w-5xl mx-auto py-12 lg:py-24 px-4 sm:px-6 lg:px-8 text-black">
         <h2 class="text-3xl md:text-4xl font-semibold text-center">Effortlessly <span class="text-indigo-600">handle and share</span> your podcasts.</h2>
 
         <div class="mt-12 grid grid-cols-2 gap-8">

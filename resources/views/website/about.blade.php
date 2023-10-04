@@ -1,6 +1,6 @@
 @extends('website.layout')
 @section('content')
-    <main class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-0 text-slate-800">
+    <main class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-slate-800">
         <section class="container mx-auto px-4 py-20">
             <h1 class="text-4xl md:text-5xl font-bold leading-10">Unleash Your Podcasting Potential</h1>
             <p class="mt-6 text-lg text-gray-700">Voicebits.co is a user-friendly platform designed for podcasters of all levels. With unlimited hosting, simple analytics, easy distribution, customizable design options, automatic social media publishing, and embedded web player, we provide you with all the tools you need to grow your podcast audience.</p>

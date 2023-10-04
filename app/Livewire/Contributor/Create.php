@@ -43,11 +43,10 @@ class Create extends Component
                 'instagram' => $this->instagram,
                 'twitter' => $this->twitter,
                 'avatar' => $this->avatar->store('images'),
-            ]);
-
-            $contributor->podcasts()->attach($this->podcast->id, [
+                'podcast_id' => $this->podcast->id,
                 'is_default' => ($this->is_default == true) ? true : false,
             ]);
+
             session()->flash('flash.banner', 'A contributor has been successfully added to the podcast!');
             session()->flash('flash.bannerStyle', 'success');
         } catch (\Throwable $th) {

@@ -30,7 +30,7 @@ class Create extends Component
         $this->validate([
             'title' => 'required',
             'content' => 'required|min:10',
-            'image' => 'required|image|mimes:png,jpg|max:2048',
+            'image' => 'required|image|mimes:webp|max:2048',
             'author' => 'required',
         ]);
 

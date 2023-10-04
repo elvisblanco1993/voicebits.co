@@ -5,6 +5,7 @@ namespace App\Models;
 use Laravel\Scout\Searchable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Podcast extends Model
 {
@@ -55,9 +56,9 @@ class Podcast extends Model
         return $this->hasMany(Episode::class);
     }
 
-    public function contributors()
+    public function contributors(): HasMany
     {
-        return $this->belongsToMany(Contributor::class)->withPivot('is_default');
+        return $this->hasMany(Contributor::class);
     }
 
     public function plays()
