@@ -8,6 +8,7 @@
         <link rel="shortcut icon" href="{{ asset('logo-mark.svg') }}" type="image/svg">
         <title>{{ $article->title . " - " . config('app.name', 'Laravel') }}</title>
         <link rel="canonical" href="{{ url()->current() }}">
+        <meta property="og:image" content="{{ asset($article->image) }}">
 
         @vite('resources/css/app.css')
         @livewireStyles
