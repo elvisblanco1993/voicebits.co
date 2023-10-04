@@ -39,7 +39,7 @@
                 <h3 class="text-2xl font-bold">You might also enjoy reading:</h3>
                 <ul class="mt-4 prose">
                     @forelse (App\Models\Article::whereNotNull('published_at')->where('slug', '!=', $article->slug)->orderBy('published_at', 'desc')->take(3)->get() as $related_article)
-                    <li class="list-disc">
+                    <li class="list-none">
                         <a href="{{ route('blog.article', ['article' => $related_article->slug]) }}" class="text-indigo-600 underline hover:text-indigo-700">{{ $related_article->title }}</a>
                     </li>
                     @empty
