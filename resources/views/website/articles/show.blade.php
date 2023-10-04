@@ -28,7 +28,7 @@
             <div class="my-12 text-sm font-light">
                 <span>Written by {{ $article->author}} &middot; {{ Carbon\Carbon::parse($article->published_at)->format('M d, Y') }}</span>
             </div>
-            <div class="prose prose-blue max-w-full">
+            <div class="prose prose-indigo max-w-full">
                 {!! Str::of($article->content)->markdown() !!}
             </div>
         </article>
