@@ -2,13 +2,17 @@
 
 namespace App\Actions\Fortify;
 
-use App\Jobs\SendWelcomeEmail;
 use App\Models\User;
+use App\Jobs\SendWelcomeEmail;
+use Laravel\Jetstream\Jetstream;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use App\Notifications\NewAccountAlert;
+use Illuminate\Notifications\Notification as NotificationsNotification;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Notification;
+use Illuminate\Notifications\Slack\SlackRoute;
 use Laravel\Fortify\Contracts\CreatesNewUsers;
-use Laravel\Jetstream\Jetstream;
 
 class CreateNewUser implements CreatesNewUsers
 {
@@ -48,6 +52,12 @@ class CreateNewUser implements CreatesNewUsers
                     ]);
                 }
                 SendWelcomeEmail::dispatch($user->email);
+                Notification::route(
+                    config('services.slack.notifications.channel'),
+                    config('services.slack.notifications.bot_user_oauth_token')
+                )->notify(
+                    new NewAccountAlert($user->name, $user->email)
+                );
             });
         });
     }
