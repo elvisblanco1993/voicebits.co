@@ -29,21 +29,22 @@
             <div class="prose prose-blue max-w-full">
                 {!! Str::of($article->content)->markdown() !!}
             </div>
+        </article>
 
-            {{-- Maybe this can be separated into its own component --}}
+        {{-- Maybe this can be separated into its own component --}}
+        @if (App\Models\Article::whereNotNull('published_at')->where('slug', '!=', $article->slug)->count() > 0)
             <div class="mt-12">
                 <h3 class="text-2xl font-bold">You might also enjoy reading:</h3>
                 <ul class="mt-4 prose">
                     @forelse (App\Models\Article::whereNotNull('published_at')->where('slug', '!=', $article->slug)->orderBy('published_at', 'desc')->take(3)->get() as $related_article)
-                        <li class="list-disc">
-                            <a href="{{ route('blog.article', ['article' => $related_article->slug]) }}" class="text-indigo-600 underline hover:text-indigo-700">{{ $related_article->title }}</a>
-                        </li>
+                    <li class="list-disc">
+                        <a href="{{ route('blog.article', ['article' => $related_article->slug]) }}" class="text-indigo-600 underline hover:text-indigo-700">{{ $related_article->title }}</a>
+                    </li>
                     @empty
                     @endforelse
                 </ul>
             </div>
-        </article>
-
+        @endif
         @include('website.partials.cta')
         @include('website.partials.footer')
         @livewireScripts
