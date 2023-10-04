@@ -10,12 +10,14 @@
         <link rel="canonical" href="{{ url()->current() }}">
         <meta property="og:image" content="{{ asset($article->image) }}">
 
+        <link rel="preconnect" href="https://fonts.bunny.net">
+        <link href="https://fonts.bunny.net/css?family=inter:100,200,300,400,500,600,700,800,900" rel="stylesheet" />
         @vite('resources/css/app.css')
         @livewireStyles
         <script defer src="https://unpkg.com/@alpinejs/collapse@3.x.x/dist/cdn.min.js"></script>
         @vite('resources/js/app.js')
     </head>
-    <body class="antialiased min-h-screen bg-white">
+    <body class="font-sans antialiased min-h-screen bg-white">
         @include('website.partials.navbar')
         <article class="md:mt-24 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-slate-800" itemtype="http://schema.org/Article">
             <div>
