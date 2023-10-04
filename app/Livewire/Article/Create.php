@@ -11,7 +11,7 @@ class Create extends Component
 {
     use WithFileUploads;
 
-    public $title, $content, $image, $author;
+    public $title, $content, $image, $author, $keywords;
 
     public function mount()
     {
@@ -49,6 +49,7 @@ class Create extends Component
                 'content' => $this->content,
                 'image' => $stored_image,
                 'author' => $this->author,
+                'keywords' => $this->keywords,
             ]);
             session()->flash('flash.banner', 'Article created!');
             session()->flash('flash.bannerStyle', 'success');

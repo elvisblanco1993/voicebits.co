@@ -12,7 +12,7 @@ class Edit extends Component
 {
     use WithFileUploads;
 
-    public $article, $title, $content, $image, $author;
+    public $article, $title, $content, $image, $author, $keywords;
 
     public function mount(Article $article)
     {
@@ -20,6 +20,7 @@ class Edit extends Component
         $this->title = $this->article->title;
         $this->content = $this->article->content;
         $this->author = $this->article->author;
+        $this->keywords = $this->article->keywords;
     }
 
     public function render()
@@ -59,6 +60,7 @@ class Edit extends Component
                 'content' => $this->content,
                 'image' => $stored_image,
                 'author' => $this->author,
+                'keywords' => $this->keywords,
             ]);
             session()->flash('flash.banner', 'Article created!');
             session()->flash('flash.bannerStyle', 'success');

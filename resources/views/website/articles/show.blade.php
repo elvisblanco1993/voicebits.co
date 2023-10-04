@@ -10,6 +10,12 @@
         <link rel="canonical" href="{{ url()->current() }}">
         <meta property="og:image" content="{{ asset($article->image) }}">
 
+        {{-- Keywords --}}
+        @forelse (explode(',', $article->keywords) as $item)
+            <meta property="article:tag" content="{{ trim($item) }}" />
+        @empty
+        @endforelse
+
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=inter:100,200,300,400,500,600,700,800,900" rel="stylesheet" />
         @vite('resources/css/app.css')
