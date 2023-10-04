@@ -24,9 +24,7 @@
         <meta name="twitter:image" content="https://voicebits.co/voicebits-modern-template.png">
 
         <link rel="preconnect" href="https://fonts.bunny.net">
-        {{-- <link href="https://fonts.bunny.net/css?family=inter:100,200,300,400,500,600,700,800,900" rel="stylesheet" /> --}}
-        <link href="https://fonts.bunny.net/css?family=fira-sans-condensed:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet" />
-
+        <link href="https://fonts.bunny.net/css?family=inter:100,200,300,400,500,600,700,800,900" rel="stylesheet" />
         @vite('resources/css/app.css')
         @livewireStyles
     </head>
