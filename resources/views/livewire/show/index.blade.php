@@ -1,18 +1,13 @@
 <div class="py-12">
-    <div class="px-4 sm:px-6 lg:px-0 flex items-center justify-between">
+    <div class="px-4 sm:px-6 lg:px-0 flex flex-col sm:flex-row justify-between">
         <div class="flex items-center space-x-4">
             <h1 class="text-4xl font-bold">Podcasts</h1>
             @livewire('show.search')
         </div>
         @can('create_podcasts')
-            <div class="flex items-center gap-4">
+            <div class="mt-6 sm:mt-0 flex items-center gap-4">
                 <a href="{{ route('podcast.import.start') }}">
-                    <span class="hidden md:inline-block">Import <sup>BETA</sup></span>
-                    <span class="inline-block md:hidden">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 8.25H7.5a2.25 2.25 0 00-2.25 2.25v9a2.25 2.25 0 002.25 2.25h9a2.25 2.25 0 002.25-2.25v-9a2.25 2.25 0 00-2.25-2.25H15M9 12l3 3m0 0l3-3m-3 3V2.25" />
-                        </svg>
-                    </span>
+                    <span class="inline-block">Import <sup class="text-xs font-medium px-1 bg-yellow-400 text-amber-900 rounded">BETA</sup></span>
                 </a>
                 <a href="{{ route('podcast.create') }}"
                     class="btn-link"
