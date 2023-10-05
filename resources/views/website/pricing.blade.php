@@ -13,21 +13,21 @@
                 <div class="col-span-12 md:col-span-8 space-y-8">
                     <div class="md:flex items-center justify-between border border-slate-300 p-6 rounded-lg">
                         <div class="md:flex items-center space-y-2 md:space-y-0 md:space-x-8">
-                            <p class="text-3xl font-extrabold">$15<span class="font-light">/</span>Mo</p>
+                            <p class="text-3xl font-extrabold">$15<span class="font-light">/</span>mo</p>
                             <p>12,000 downloads per month</p>
                         </div>
                         <div class="uppercase text-4xl font-black text-slate-400">Starter</div>
                     </div>
                     <div class="md:flex items-center justify-between border border-slate-300 p-6 rounded-lg">
                         <div class="md:flex items-center space-y-2 md:space-y-0 md:space-x-8">
-                            <p class="text-3xl font-extrabold">$35<span class="font-light">/</span>Mo</p>
+                            <p class="text-3xl font-extrabold">$35<span class="font-light">/</span>mo</p>
                             <p>65,000 downloads per month</p>
                         </div>
                         <div class="uppercase text-4xl font-black text-slate-400">Business</div>
                     </div>
                     <div class="md:flex items-center justify-between border border-slate-300 p-6 rounded-lg">
                         <div class="md:flex items-center space-y-2 md:space-y-0 md:space-x-8">
-                            <p class="text-3xl font-extrabold">$65<span class="font-light">/</span>Mo</p>
+                            <p class="text-3xl font-extrabold">$65<span class="font-light">/</span>mo</p>
                             <p>180,000 downloads per month</p>
                         </div>
                         <div class="uppercase text-4xl font-black text-slate-400">Agency</div>
