@@ -1,7 +1,7 @@
 @extends('website.layout')
 @section('content')
     <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-slate-800">
-        <div class="py-20 text-center">
+        <div class="py-20 md:text-center">
             <div class="col-span-12 md:col-span-8">
                 <h1 class="text-4xl md:text-5xl font-bold leading-10">News and Updates from Voicebits</h1>
                 <p class="mt-6 text-lg sm:text-xl font-medium">We often publish articles about Voicebits news and features, as well as topics of interest in the podcasting industry.</p>

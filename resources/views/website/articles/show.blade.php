@@ -29,7 +29,7 @@
             <div>
                 <a href="{{ route('blog.index') }}" class="text-sm text-slate-400 underline hover:text-slate-600 transition-all">Voicebits blog</a>
             </div>
-            <h1 class="mt-6 text-5xl lg:text-6xl font-bold">{{ $article->title }}</h1>
+            <h1 class="mt-6 text-4xl md:text-5xl lg:text-6xl font-bold">{{ $article->title }}</h1>
             <img src="{{ asset($article->image) }}" alt="Image for {{ $article->title }}" class="mt-12 w-full rounded-xl aspect-video object-cover object-center">
             <div class="my-12 text-sm font-light">
                 <span>Written by {{ $article->author}} &middot; {{ Carbon\Carbon::parse($article->published_at)->format('M d, Y') }}</span>
