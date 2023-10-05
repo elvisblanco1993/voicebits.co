@@ -33,7 +33,7 @@
                         <div class="uppercase text-4xl font-black text-slate-400">Agency</div>
                     </div>
                 </div>
-                <div class="col-span-12 md:col-span-4 bg-indigo-100 px-6 py-8 rounded-lg">
+                <div class="col-span-12 md:col-span-4 bg-gradient-to-tr from-indigo-100 to-indigo-300 px-6 py-8 rounded-lg">
                     <h3 class="text-2xl font-bold">All plans include</h3>
                     <div class="mt-4">
                         <p class="flex items-center space-x-2 text-sm">
@@ -68,7 +68,7 @@
                         </p>
                     </div>
                     <p class="mt-6">
-                        <a href="{{ route('register') }}" class="inline-block w-full px-4 py-2 text-white bg-indigo-600 hover:bg-indigo-700 text-center font-medium rounded-full">Get started with a free trial</a>
+                        <a href="{{ route('register') }}" class="primary-btn font-medium block">Get started with a free trial</a>
                     </p>
                 </div>
             </div>

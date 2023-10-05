@@ -6,7 +6,7 @@
             <div class="mt-6">
                 <a href="{{ route('register') }}"
                     role="button"
-                    class="primary-btn"
+                    class="text-center font-medium text-sm w-full px-5 py-3 rounded-full bg-indigo-500 hover:bg-indigo-600 text-white transition-all"
                 >{{ __("Try Voicebits Free for 14 Days") }}</a>
             </div>
         </div>

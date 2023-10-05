@@ -14,7 +14,7 @@
             </div>
 
             <div class="hidden md:flex items-center justify-center gap-6">
-                <a href="{{ route('login') }}" class="inline-block text-slate-700 hover:text-indigo-600">Login</a>
+                <a href="{{ route('login') }}" class="inline-block text-sm text-slate-700 hover:text-indigo-600">Login</a>
                 <a href="{{ route('register') }}" class="primary-btn">Start free trial</a>
             </div>
 
