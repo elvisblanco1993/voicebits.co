@@ -2,7 +2,7 @@
 @section('content')
     <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-slate-800">
         <div class="py-20">
-            <div class="text-center max-w-5xl mx-auto">
+            <div class="md:text-center max-w-5xl mx-auto">
                 <h1 class="text-4xl md:text-5xl font-bold leading-10">Unlock the full potential of your podcast without breaking the bank!</h1>
                 <p class="mt-6 text-lg">With Voicebits, hosting and distributing your podcasts has never been simpler or easier. Get started with a risk-free 14-day trial, and then enjoy a transparent monthly pricing plan that's based on your average monthly downloads. Say goodbye to hidden fees and hello to hassle-free podcasting with Voicebits!</p>
             </div>
