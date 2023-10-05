@@ -33,7 +33,7 @@
                         <div class="uppercase text-4xl font-black text-slate-400">Agency</div>
                     </div>
                 </div>
-                <div class="col-span-12 md:col-span-4 bg-gradient-to-tr from-indigo-100 to-indigo-300 px-6 py-8 rounded-lg">
+                <div class="col-span-12 md:col-span-4 bg-gradient-to-tr from-indigo-50 to-indigo-200 px-6 py-8 rounded-lg">
                     <h3 class="text-2xl font-bold">All plans include</h3>
                     <div class="mt-4">
                         <p class="flex items-center space-x-2 text-sm">
