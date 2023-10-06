@@ -25,8 +25,10 @@
                         @elseif($cover)
                             <img src="{{ $cover->temporaryUrl() }}" class="w-full rounded-lg shadow aspect-square object-center object-cover">
                         @else
-                            <div class="flex-none w-full h-full aspect-square rounded-lg bg-indigo-100 flex items-center justify-center">
-                                <img src="{{ asset('logo-mark-dark.svg') }}" class="w-12 h-auto">
+                            <div class="flex-none w-full h-full aspect-square rounded-lg bg-gradient-to-tr from-indigo-50 to-indigo-200 flex items-center justify-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 18.75a6 6 0 006-6v-1.5m-6 7.5a6 6 0 01-6-6v-1.5m6 7.5v3.75m-3.75 0h7.5M12 15.75a3 3 0 01-3-3V4.5a3 3 0 116 0v8.25a3 3 0 01-3 3z" />
+                                </svg>
                             </div>
                         @endif
                     </div>
@@ -170,28 +172,30 @@
         </div>
 
         {{-- Lock podcast --}}
-        <div class="mt-12"></div>
-        <div class="w-full bg-white rounded-lg shadow">
-            <div class="p-6">
-                <div class="flex items-center space-x-3 fill-slate-600">
-                    <p class="text-xl font-bold">Lock feed</p>
+        @if (!$podcast->isPrivate())
+            <div class="mt-12"></div>
+            <div class="w-full bg-white rounded-lg shadow">
+                <div class="p-6">
+                    <div class="flex items-center space-x-3 fill-slate-600">
+                        <p class="text-xl font-bold">Lock feed</p>
+                    </div>
+                    <p class="mt-2 text-slate-600">When this value is present and set to “yes”, the podcast feed cannot be imported or migrated to other platforms  that respect the tag.</p>
+                    <div class="mt-2">
+                        <label for="is_locked-btn" class="flex items-center">
+                            <input type="checkbox" name="is_locked" wire:model.live="is_locked" id="is_locked-btn" class="rounded">
+                            @if ($is_locked)
+                                <span class="ml-3 text-sm font-semibold text-slate-600">Feed locked. Click to unlock.</span>
+                            @else
+                                <span class="ml-3 text-sm font-semibold text-slate-600">Lock podcast feed</span>
+                            @endif
+                        </label>
+                    </div>
                 </div>
-                <p class="mt-2 text-slate-600">When this value is present and set to “yes”, the podcast feed cannot be imported or migrated to other platforms  that respect the tag.</p>
-                <div class="mt-2">
-                    <label for="is_locked-btn" class="flex items-center">
-                        <input type="checkbox" name="is_locked" wire:model.live="is_locked" id="is_locked-btn" class="rounded">
-                        @if ($is_locked)
-                            <span class="ml-3 text-sm font-semibold text-slate-600">Feed locked. Click to unlock.</span>
-                        @else
-                            <span class="ml-3 text-sm font-semibold text-slate-600">Lock podcast feed</span>
-                        @endif
-                    </label>
+                <div class="px-6 py-4 bg-slate-100 flex justify-end rounded-b-lg">
+                    <x-button wire:click="save">{{ __("Save changes") }}</x-button>
                 </div>
             </div>
-            <div class="px-6 py-4 bg-slate-100 flex justify-end rounded-b-lg">
-                <x-button wire:click="save">{{ __("Save changes") }}</x-button>
-            </div>
-        </div>
+        @endif
 
         @can('delete_podcast', $podcast)
             <div class="mt-12"></div>

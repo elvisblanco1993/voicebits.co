@@ -7,11 +7,14 @@ use Livewire\Component;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
+use Livewire\WithFileUploads;
 
 class Create extends Component
 {
+    use WithFileUploads;
+
     public $modal;
-    public $name, $description, $category, $language, $type, $author, $timezone;
+    public $name, $description, $cover, $category, $language, $type, $author, $timezone, $visibility;
 
     public $rules = [
         'name' => ['required'],
@@ -25,9 +28,13 @@ class Create extends Component
 
     public function mount()
     {
+        if (!Gate::allows('create_podcasts')) {
+            abort(401);
+        }
         $this->author = auth()->user()->name;
         $this->language = 'en';
         $this->timezone = "-05:00";
+        $this->type = "episodic";
     }
 
     public function save()
@@ -42,6 +49,8 @@ class Create extends Component
                 'type' => $this->type,
                 'author' => $this->author,
                 'timezone' => $this->timezone,
+                'visibility' => $this->visibility ? 'PRIVATE' : 'PUBLIC',
+                'is_locked' => $this->visibility ? true : false,
             ]);
             auth()->user()->podcasts()->attach($podcast->id, [
                 'role' => 'owner',

@@ -35,17 +35,19 @@
             {{-- End - Invitation --}}
             <div class="w-full grid grid-cols-4 items-start gap-8">
                 @forelse ($podcasts as $podcast)
-                    <button wire:click="goto({{$podcast->id}})" class="col-span-4 sm:col-span-2 md:col-span-1 w-full text-left">
+                    <button wire:click="goto({{$podcast->id}})" class="col-span-4 sm:col-span-2 md:col-span-1 w-full text-left group transition-all">
                         @if ($podcast->cover)
                             <img src="{{ Storage::url($podcast->cover) }}" alt="{{ $podcast->name }}" class="w-full aspect-square rounded-lg object-center object-cover">
                         @else
-                            <div class="w-full aspect-square rounded-lg bg-indigo-100 flex items-center justify-center">
-                                <img src="{{ asset('logo-mark-dark.svg') }}" alt="{{ $podcast->name }}" class="w-16 h-auto">
+                            <div class="w-full aspect-square rounded-lg bg-gradient-to-tr from-slate-50 group-hover:from-indigo-50 to-slate-200 group-hover:to-indigo-200 flex items-center justify-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-12 h-12">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 18.75a6 6 0 006-6v-1.5m-6 7.5a6 6 0 01-6-6v-1.5m6 7.5v3.75m-3.75 0h7.5M12 15.75a3 3 0 01-3-3V4.5a3 3 0 116 0v8.25a3 3 0 01-3 3z" />
+                                </svg>
                             </div>
                         @endif
                         <div class="mt-4">
                             <h2 class="sm:mt-0 text-xl lg:text-xl font-bold">{{ $podcast->name }}</h2>
-                            <p class="mt-3 text-sm font-medium text-slate-600">By {{ $podcast->author }} &middot; {{ $podcast->episodes->count() }} episodes</p>
+                            <p class="mt-3 text-sm font-medium text-slate-600">By {{ $podcast->author }} &middot; {{ $podcast->episodes->count() }} ep. @if($podcast->isPrivate()) 🔒 @endif</p>
                         </div>
                     </button>
                 @empty

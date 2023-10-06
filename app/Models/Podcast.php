@@ -21,6 +21,7 @@ class Podcast extends Model
         'category',
         'language',
         'type',
+        'visibility',
         'cover',
         'timezone',
         'explicit',
@@ -115,5 +116,10 @@ class Podcast extends Model
     public function hasFunding()
     {
         return ($this->funding && $this->funding_text && $this->funding_url) ? true : false;
+    }
+
+    public function isPrivate()
+    {
+        return $this->visibility === 'PRIVATE';
     }
 }

@@ -4,13 +4,15 @@
             @if ($podcast->cover)
                 <img src="{{ Storage::url($podcast->cover) }}" alt="{{ $podcast->name }}" class="w-24 aspect-square rounded-md object-center object-cover">
             @else
-                <div class="h-24 w-24 rounded-md bg-indigo-50 flex items-center justify-center">
-                    <img src="{{ asset('logo-mark-dark.svg') }}" alt="{{ $podcast->name }}" class="w-6 h-auto">
+                <div class="h-24 w-24 rounded-md bg-gradient-to-tr from-indigo-50 to-indigo-200 flex items-center justify-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 18.75a6 6 0 006-6v-1.5m-6 7.5a6 6 0 01-6-6v-1.5m6 7.5v3.75m-3.75 0h7.5M12 15.75a3 3 0 01-3-3V4.5a3 3 0 116 0v8.25a3 3 0 01-3 3z" />
+                    </svg>
                 </div>
             @endif
             <div class="ml-6">
                 <h1 class="text-3xl font-bold">{{ $podcast->name }}</h1>
-                @if ($podcast->url)
+                @if ($podcast->url && !$podcast->isPrivate())
                     <a href="{{ route('public.podcast.website', ['url' => $podcast->url]) }}" target="_blank" class="text-sm bg-slate-200 text-slate-700 px-1 py-0.5 rounded">Visit website</a>
                 @endif
             </div>
@@ -25,9 +27,11 @@
             <x-nav-link href="{{ route('podcast.contributors') }}" :active="request()->routeIs('podcast.contributors')">People</x-nav-link>
         @endcan
         @can('manage_social')
-            <x-nav-link href="{{ route('podcast.social') }}" :active="request()->routeIs('podcast.social')">Social media</x-nav-link>
+            @if (!$podcast->isPrivate())
+                <x-nav-link href="{{ route('podcast.social') }}" :active="request()->routeIs('podcast.social')">Social media</x-nav-link>
+            @endif
         @endcan
-        @if ($podcast->url)
+        @if ($podcast->url && !$podcast->isPrivate())
             @can('manage_distribution')
                 <x-nav-link href="{{ route('podcast.distribution') }}" :active="request()->routeIs('podcast.distribution')">Distribution</x-nav-link>
             @endcan
@@ -39,7 +43,7 @@
             <x-nav-link href="{{ route('podcast.team') }}" :active="request()->routeIs('podcast.team')">Team</x-nav-link>
         @endcan
         @can('edit_podcast')
-            <x-nav-link href="{{ route('podcast.settings') }}" :active="request()->routeIs('podcast.settings')">Podcast Settings</x-nav-link>
+            <x-nav-link href="{{ route('podcast.settings') }}" :active="request()->routeIs('podcast.settings')">Settings</x-nav-link>
         @endcan
     </ul>
 </div>
