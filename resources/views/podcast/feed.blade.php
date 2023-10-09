@@ -33,9 +33,7 @@
             <itunes:email>{{ $podcast->owner()->email }}</itunes:email>
         </itunes:owner>
         <itunes:category text="{{ $podcast->category }}" />
-        @if ($podcast->is_locked)
-            <itunes:block>yes</itunes:block>
-        @endif
+        <itunes:block>@if($podcast->is_locked) yes @else no @endif</itunes:block>
         @if ($podcast->funding)
             <podcast:funding url="{{ $podcast->funding_url }}">{{ $podcast->funding_text }}</podcast:funding>
         @endif
