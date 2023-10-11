@@ -4,10 +4,11 @@ namespace App\Livewire\Show;
 
 use App\Models\Podcast;
 use Livewire\Component;
+use Livewire\WithFileUploads;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
-use Livewire\WithFileUploads;
+use Illuminate\Support\Facades\Storage;
 
 class Create extends Component
 {
@@ -23,7 +24,8 @@ class Create extends Component
         'language' => ['required'],
         'type' => ['required'],
         'author' => ['required'],
-        'timezone' => ['required']
+        'timezone' => ['required'],
+        'cover' => ['nullable', 'image', 'mimes:png,jpg', 'dimensions:min_width=1500,max_width=3000,aspect=0/0'],
     ];
 
     public function mount()
@@ -37,9 +39,16 @@ class Create extends Component
         $this->type = "episodic";
     }
 
+    public function render()
+    {
+        return view('livewire.show.create');
+    }
+
     public function save()
     {
         $this->validate();
+        $artwork = null;
+
         try {
             $podcast = Podcast::create([
                 'name' => $this->name,
@@ -51,11 +60,22 @@ class Create extends Component
                 'timezone' => $this->timezone,
                 'visibility' => $this->visibility ? 'PRIVATE' : 'PUBLIC',
                 'is_locked' => $this->visibility ? true : false,
+                'url' => $this->visibility ? str()->uuid() : null, // If the show is private, create an unique URL automatically
             ]);
+
+            // Upload artwork
+            if ($this->cover) {
+                $artwork = $this->cover->storePublicly('podcasts/'.$podcast->id.'/covers', config('filesystems.default'));
+                $podcast->cover = $artwork;
+                $podcast->save();
+            }
+
+            // Asssign show to current user
             auth()->user()->podcasts()->attach($podcast->id, [
                 'role' => 'owner',
                 'permissions' => json_encode(config('auth.podcast_permissions')),
             ]);
+
             session()->flash('flash.banner', 'Your show is now ready. See more details below.');
             session()->flash('flash.bannerStyle', 'success');
         } catch (\Throwable $th) {
@@ -67,10 +87,5 @@ class Create extends Component
 
         session()->put('podcast', $podcast->id);
         return redirect()->route('podcast.dashboard');
-    }
-
-    public function render()
-    {
-        return view('livewire.show.create');
     }
 }

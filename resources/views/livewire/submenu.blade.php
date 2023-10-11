@@ -23,15 +23,18 @@
         @can('view_episodes')
             <x-nav-link href="{{ route('podcast.episodes') }}" :active="request()->routeIs('podcast.episodes')">Episodes</x-nav-link>
         @endcan
-        @can('manage_contributors')
-            <x-nav-link href="{{ route('podcast.contributors') }}" :active="request()->routeIs('podcast.contributors')">People</x-nav-link>
-        @endcan
+        @if ($podcast->isPrivate())
+            <x-nav-link href="{{ route('podcast.subscribers') }}" :active="request()->routeIs('podcast.subscribers')">Subscribers</x-nav-link>
+        @endif
         @can('manage_social')
             @if (!$podcast->isPrivate())
                 <x-nav-link href="{{ route('podcast.social') }}" :active="request()->routeIs('podcast.social')">Social media</x-nav-link>
             @endif
         @endcan
         @if ($podcast->url && !$podcast->isPrivate())
+            @can('manage_contributors')
+                <x-nav-link href="{{ route('podcast.contributors') }}" :active="request()->routeIs('podcast.contributors')">People</x-nav-link>
+            @endcan
             @can('manage_distribution')
                 <x-nav-link href="{{ route('podcast.distribution') }}" :active="request()->routeIs('podcast.distribution')">Distribution</x-nav-link>
             @endcan

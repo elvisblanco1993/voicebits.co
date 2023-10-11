@@ -1,19 +1,29 @@
 <?php
 
-use App\Http\Controllers\ArticleController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\WebController;
+use App\Livewire\Subscription\StartTrial;
+use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\EpisodeController;
+use App\Http\Controllers\PodcastController;
+use App\Http\Controllers\SubscriberController;
+use App\Livewire\Subscriber\Invite\Url;
 
 /**
  * Podcast routes
  */
 Route::middleware('xframe.options')->group(function() {
-    Route::get("/s/{url}", [App\Http\Controllers\PodcastController::class, 'show'])->name('public.podcast.website');
-    Route::get("/s/{url}/feed/{player?}", [App\Http\Controllers\PodcastController::class, 'feed'])->name('public.podcast.feed');
-    Route::get("/s/{url}/episode/{episode}", [App\Http\Controllers\PodcastController::class, 'episode'])->name('public.podcast.episode');
-    Route::get("/podcasts/{url}/covers/{cover}", [App\Http\Controllers\PodcastController::class, 'cover'])->name('public.podcast.cover');
-    Route::middleware('downloads.counter')->get("/s/{url}/play/{episode}/{player?}", [App\Http\Controllers\EpisodeController::class, 'play'])->name('public.episode.play');
+    Route::get("/s/{url}", [PodcastController::class, 'show'])->name('public.podcast.website');
+    Route::get("/s/{url}/feed/{player?}", [PodcastController::class, 'feed'])->name('public.podcast.feed');
+    Route::get("/s/{url}/episode/{episode}", [PodcastController::class, 'episode'])->name('public.podcast.episode');
+    Route::get("/podcasts/{url}/covers/{cover}", [PodcastController::class, 'cover'])->name('public.podcast.cover');
+    Route::middleware('downloads.counter')->get("/s/{url}/play/{episode}/{player?}", [EpisodeController::class, 'play'])->name('public.episode.play');
+
+    // Private podcast routes
+    Route::get('/show_invite/{url}', Url::class)->name('private.podcast.subscribe');
+    Route::get('/private-podcast/{url}', [SubscriberController::class, 'show'])->name('private.podcast.website');
+    Route::get('/private-feed/{url}', [SubscriberController::class, 'feed'])->name('private.podcast.feed');
 });
 Route::get('/embed/{guid}/{player?}', [App\Http\Controllers\EpisodeController::class, 'embed'])->name('public.episode.embed');
 
@@ -48,7 +58,7 @@ Route::middleware([
     });
 
     // Billing routes
-    Route::get('/start-trial', App\Livewire\Subscription\StartTrial::class)->name('trial.start');
+    Route::get('/start-trial', StartTrial::class)->name('trial.start');
     Route::get('/signup', App\Livewire\Subscription\Signup::class)->name('signup');
     Route::get('/billing-portal', function(Request $request) {
         return $request->user()->redirectToBillingPortal(
@@ -75,6 +85,9 @@ Route::middleware([
         Route::get('/website', App\Livewire\Website\Index::class)->name('podcast.website');
         Route::get('/team', App\Livewire\Show\User\Index::class)->name('podcast.team');
         Route::get('/settings', App\Livewire\Show\Settings::class)->name('podcast.settings');
+
+        // Subscribers management routes
+        Route::get('/subscribers', App\Livewire\Subscriber\Index::class)->name('podcast.subscribers');
 
         // Episodes management routes
         Route::get('/episodes', App\Livewire\Episode\Index::class)->name('podcast.episodes');

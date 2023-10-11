@@ -15,7 +15,26 @@ class Settings extends Component
     use WithFileUploads;
 
     public $podcast;
-    public $name, $description, $url, $category, $language, $type, $author, $cover, $explicit, $is_locked, $funding, $funding_text, $funding_description, $funding_url, $timezone;
+    public $name,
+        $description,
+        $url,
+        $category,
+        $language,
+        $type,
+        $author,
+        $cover,
+        $explicit,
+        $is_locked,
+        $funding,
+        $funding_text,
+        $funding_description,
+        $funding_url,
+        $timezone,
+        $allowed_domains,
+        $reply_to,
+        $copyright,
+        $welcome_email,
+        $passkey;
 
     public function mount()
     {
@@ -38,6 +57,11 @@ class Settings extends Component
         $this->funding_text = $this->podcast->funding_text;
         $this->funding_description = $this->podcast->funding_description;
         $this->funding_url = $this->podcast->funding_url;
+        $this->allowed_domains = $this->podcast->allowed_domains;
+        $this->reply_to = $this->podcast->reply_to;
+        $this->copyright = $this->podcast->copyright;
+        $this->welcome_email = $this->podcast->welcome_email;
+        $this->passkey = $this->podcast->passkey;
     }
 
     public function render()
@@ -94,6 +118,11 @@ class Settings extends Component
                 'funding_text' => $this->funding_text,
                 'funding_description' => $this->funding_description,
                 'funding_url' => $this->funding_url,
+                'allowed_domains' => $this->allowed_domains,
+                'reply_to' => $this->reply_to,
+                'copyright' => $this->copyright,
+                'welcome_email' => $this->welcome_email,
+                'passkey' => base64_encode($this->passkey),
             ]);
 
             if ($this->url) {

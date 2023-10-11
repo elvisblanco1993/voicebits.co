@@ -1,13 +1,13 @@
 <div>
     @livewire('submenu')
     <div class="py-6">
-        <div class="text-2xl font-bold">Podcast Team</div>
-        <div class="mt-4 flex items-center justify-between">
-            <x-input type="search" wire:model.live="search" placeholder="Search by name" class="w-1/2"/>
+        <div class="flex items-center justify-between">
+            <div class="text-2xl font-bold">Podcast Team</div>
             @can('invite_users',$podcast)
                 @livewire('show.user.invite', ['podcast' => $podcast->id])
             @endcan
         </div>
+        <x-input type="search" wire:model.live="search" placeholder="Search by name" class="mt-4 w-1/2"/>
 
         <div class="mt-4 overflow-x-auto shadow rounded-lg">
             <table class="w-full text-sm text-left text-gray-500">

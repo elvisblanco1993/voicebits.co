@@ -45,6 +45,7 @@ class Create extends Component
 
     public function render()
     {
+        $this->published_at = ($this->publish_now) ? now() : null;
         return view('livewire.episode.create', [
             'podcast' => Podcast::findorfail(session('podcast'))
         ]);

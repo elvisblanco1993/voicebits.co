@@ -44,24 +44,6 @@
                 <div class="flex items-center space-x-3 fill-slate-600">
                     <svg role="img" viewBox="0 0 24 24" @class([
                         'w-8 h-8',
-                        'fill-[#4285F4]' => $google
-                     ]) xmlns="http://www.w3.org/2000/svg"><title>Google Podcasts</title><path d="M1.503 9.678c-.83 0-1.5.67-1.5 1.5v1.63a1.5 1.5 0 103 0v-1.63c0-.83-.67-1.5-1.5-1.5zm20.994 0c-.83 0-1.5.67-1.5 1.5v1.63a1.5 1.5 0 103 0v-1.63c0-.83-.67-1.5-1.5-1.5zM6.68 14.587c-.83 0-1.5.67-1.5 1.5v1.63a1.5 1.5 0 103 0v-1.62c0-.83-.67-1.5-1.5-1.5zm0-9.817c-.83 0-1.5.67-1.5 1.5v5.357a1.5 1.5 0 003 0V6.258c0-.83-.67-1.5-1.5-1.5zm10.638 0c-.83 0-1.5.67-1.5 1.5v1.64a1.5 1.5 0 003 0V6.27c0-.83-.67-1.5-1.5-1.5zM12 0c-.83 0-1.5.67-1.5 1.5v1.63a1.5 1.5 0 103 0V1.5c0-.83-.67-1.499-1.5-1.499zm0 19.355c-.83 0-1.5.67-1.5 1.5v1.64a1.5 1.5 0 103 .01v-1.64c0-.82-.67-1.5-1.5-1.5zm5.319-8.457c-.83 0-1.5.68-1.5 1.5v5.328a1.5 1.5 0 003 0v-5.329c0-.83-.67-1.5-1.5-1.5zM12 6.128c-.83 0-1.5.68-1.5 1.5v8.728a1.5 1.5 0 003 0V7.638c0-.83-.67-1.5-1.5-1.5z"/></svg>
-                    <p class="text-xl font-bold">Google Podcasts</p>
-                </div>
-                <p class="mt-2 text-slate-600">Follow this guide to make your show available in Google Podcasts. Once you publish your feed, paste the url provided in the field below.</p>
-                <x-input type="url" wire:model.live="google" class="mt-2 w-full" placeholder="https://podcasts.google.com/feed/adasdkaslkmasdasd8dausdas0asd"/>
-            </div>
-            <div class="px-8 py-4 bg-slate-100 flex justify-end rounded-b-lg">
-                <x-button wire:click="save">{{ __("Save changes") }}</x-button>
-            </div>
-        </div>
-
-        <div class="mt-12"></div>
-        <div class="w-full bg-white rounded-lg shadow">
-            <div class="p-8">
-                <div class="flex items-center space-x-3 fill-slate-600">
-                    <svg role="img" viewBox="0 0 24 24" @class([
-                        'w-8 h-8',
                         'fill-[#1DB954]' => $spotify
                     ]) xmlns="http://www.w3.org/2000/svg"><title>Spotify</title><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
                     <p class="text-xl font-bold">Spotify</p>

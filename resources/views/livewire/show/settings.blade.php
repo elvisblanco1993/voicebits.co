@@ -6,7 +6,8 @@
 
         <div class="mt-4 w-full bg-white rounded-lg shadow">
             <div class="p-6">
-                <div>
+                <p class="text-xl font-bold">🔧 General</p>
+                <div class="mt-6">
                     <x-label for="name" value="Podcast name" />
                     <x-input type="text" id="name" wire:model.live="name" class="mt-1 w-full"/>
                     <x-input-error for="name" class="text-sm text-red-600 mt-2"/>
@@ -33,7 +34,7 @@
                         @endif
                     </div>
 
-                    <div class="col-span-6 md:col-span-5">
+                    <div class="col-span-6 md:col-span-5" id="artwork">
                         <div class="flex items-center">
                             <p class="text-sm font-boldblock font-medium text-gray-700">Podcast artwork</p>
                             @if ($podcast->cover)
@@ -117,10 +118,17 @@
                     <x-input-error for="author" class="text-sm text-red-600 mt-2"/>
                 </div>
 
+                @if (!$podcast->isPrivate())
+                    <div class="mt-6" id="show-url">
+                        <x-label for="url" value="Podcast url" />
+                        <x-input type="text" wire:model.live="url" id="url" class="mt-1 w-full" placeholder="{{str($podcast->name)->slug()}}" autocomplete="off"/>
+                        <a href="{{ config('app.url') }}/s/{{$podcast->url}}" target="_blank" class="mt-1 text-xs font-medium tracking-wider text-indigo-600">{{ config('app.url') }}/s/{{$podcast->url}}</a>
+                    </div>
+                @endif
+
                 <div class="mt-6">
-                    <x-label for="url" value="Podcast url" />
-                    <x-input type="text" wire:model.live="url" id="url" class="mt-1 w-full" placeholder="{{str($podcast->name)->slug()}}" autocomplete="off"/>
-                    <a href="{{ config('app.url') }}/s/{{$podcast->url}}" target="_blank" class="mt-1 text-xs font-medium tracking-wider text-indigo-600">{{ config('app.url') }}/s/{{$podcast->url}}</a>
+                    <x-label for="copyright">Copyright</x-label>
+                    <x-input type="text" id="copyright" wire:model.live="copyright" class="mt-1 w-full" placeholder="i.e. &copy; {{ date('Y') . ' ' . $author }}"/>
                 </div>
             </div>
 
@@ -129,11 +137,49 @@
             </div>
         </div>
 
+        @if ($podcast->isPrivate())
+        <div class="mt-12"></div>
+            <div class="w-full bg-white rounded-lg shadow">
+                <div class="p-6">
+                    <p class="text-xl font-bold">🔒 Private Podcast Settings</p>
+                    <div class="mt-4">
+                        <div>
+                            <x-label for="allowed-domains">Allowed domains</x-label>
+                            <x-input type="text" id="allowed-domains" wire:model.live="allowed_domains" class="mt-1 w-full"
+                                placeholder="example.com, example.net, example.org"
+                            />
+                            <p class="mt-1 text-xs text-slate-600">{{__("Input the email domains from which you want to accept subscribers, separated by commas. Leave blank to accept all domains.")}}</p>
+                        </div>
+                        <div class="mt-6">
+                            <x-label for="replyto">Reply to</x-label>
+                            <x-input type="text" id="replyto" wire:model.live="reply_to" class="mt-1 w-full" />
+                            <p class="mt-1 text-xs text-slate-600">{{__("This is the reply-to address on emails sent to your subscribers.")}}</p>
+                        </div>
+                        <div class="mt-6">
+                            <x-label for="welcome-email">Welcome email</x-label>
+                            <x-textarea id="welcome-email" wire:model.live="welcome_email" rows="6" class="mt-1 w-full"
+                                placeholder="Write a welcome email for your susbcribers..."
+                            ></x-textarea>
+                        </div>
+                        <div class="mt-6">
+                            <x-label for="passkey">Passkey</x-label>
+                            <x-input type="password" id="passkey" wire:model.live="passkey" class="mt-1 w-full" />
+                            <p class="inline-block rounded-md mt-2 px-1.5 py-0.5 text-xs bg-emerald-200 text-emerald-700">{{ base64_decode($podcast->passkey) }}</p>
+                            <p class="mt-1 text-xs text-slate-600">{{__("Secure your podcast with a passkey. Ensure you share this with your subscribers.")}}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="px-6 py-4 bg-slate-100 flex justify-end rounded-b-lg">
+                    <x-button wire:click="save">{{ __("Save changes") }}</x-button>
+                </div>
+            </div>
+        @endif
+
         {{-- Funding --}}
         <div class="mt-12"></div>
         <div class="w-full bg-white rounded-lg shadow">
             <div class="p-6">
-                <p class="text-xl font-bold">Funding</p>
+                <p class="text-xl font-bold">💲 Funding</p>
                 <p class="mt-2 text-slate-600">Enable funding for your show, and allow your listeners to make donations directly to you.</p>
                 <div class="mt-2">
                     <label for="funding-btn" class="flex items-center">
@@ -154,12 +200,12 @@
                             <x-input-error for="funding_description" class="text-sm text-red-600 mt-2"/>
                         </div>
                         <div class="mt-6">
-                            <x-label for="funding_text" value="Button label" />
+                            <x-label for="funding_text" value="Funding button label" />
                             <x-input type="text" id="funding_text" wire:model.live="funding_text" placeholder="Support the show!" class="mt-1 w-full"/>
                             <x-input-error for="funding_text" class="text-sm text-red-600 mt-2"/>
                         </div>
                         <div class="mt-6">
-                            <x-label for="funding_url" value="Button url" />
+                            <x-label for="funding_url" value="Funding url" />
                             <x-input type="url" id="funding_url" wire:model.live="funding_url" placeholder="https://link_to_funding_site.com" class="mt-1 w-full"/>
                             <x-input-error for="funding_url" class="text-sm text-red-600 mt-2"/>
                         </div>
@@ -202,7 +248,7 @@
             <div class="w-full bg-red-50 rounded-lg shadow">
                 <div class="p-6">
                     <div class="flex items-center space-x-3">
-                        <p class="text-xl font-bold text-red-600">Delete podcast</p>
+                        <p class="text-xl font-bold text-red-600">‼️ Delete podcast</p>
                     </div>
                     <p class="mt-2 text-red-600">In this section, you can delete your podcast from Voicebits. This action cannot be undone, so please make sure you download all your episodes before you delete your show.</p>
                 </div>

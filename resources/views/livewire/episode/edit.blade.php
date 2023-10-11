@@ -59,7 +59,7 @@
             </div>
             <div class="mt-6">
                 <label for="published_at" class="block font-medium text-sm text-gray-700">Publish date</label>
-                <x-input type="datetime-local" wire:model.live="published_at" id="published_at" placeholder="What do you want to call this episode?" class="mt-1"/>
+                <x-input type="datetime-local" wire:model.live="published_at" id="published_at" class="mt-1"/>
             </div>
         </div>
 

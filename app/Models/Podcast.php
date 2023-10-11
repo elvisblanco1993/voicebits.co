@@ -43,6 +43,11 @@ class Podcast extends Model
         'podcastaddict',
         'deezer',
         'castro',
+        'reply_to',
+        'allowed_domains',
+        'copyright',
+        'welcome_email',
+        'passkey',
     ];
 
     protected $with = 'episodes';
@@ -121,5 +126,10 @@ class Podcast extends Model
     public function isPrivate()
     {
         return $this->visibility === 'PRIVATE';
+    }
+
+    public function subscribers(): HasMany
+    {
+        return $this->hasMany(Subscriber::class);
     }
 }

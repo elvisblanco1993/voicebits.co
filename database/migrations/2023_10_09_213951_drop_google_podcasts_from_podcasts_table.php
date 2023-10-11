@@ -12,11 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('podcasts', function (Blueprint $table) {
-            $table->string('allowed_domains')->nullable();
-            $table->string('copyright')->nullable();
-            $table->text('welcome_email')->nullable();
-            $table->string('reply_to')->nullable();
-            $table->string('passkey')->nullable();
+            $table->dropColumn('google');
         });
     }
 
@@ -26,13 +22,7 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('podcasts', function (Blueprint $table) {
-            $table->dropColumn([
-                'allowed_domains',
-                'copyright',
-                'welcome_email',
-                'reply_to',
-                'password',
-            ]);
+            $table->string('google')->nullable();
         });
     }
 };
