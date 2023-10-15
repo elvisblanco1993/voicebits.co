@@ -2,12 +2,12 @@
 
 namespace App\Livewire\Subscriber\Invite;
 
-use App\Jobs\SubscriberInvitationJob;
 use App\Models\Podcast;
 use Livewire\Component;
 use App\Models\Subscriber;
 use Livewire\Attributes\Rule;
 use Illuminate\Support\Facades\Log;
+use App\Jobs\SubscriberConfirmationJob;
 
 class Url extends Component
 {
@@ -41,7 +41,7 @@ class Url extends Component
             ]);
 
             // Send email notification to subscriber
-            SubscriberInvitationJob::dispatch($subscriber);
+            SubscriberConfirmationJob::dispatch($subscriber);
 
             $this->status = 'success';
         } catch (\Throwable $th) {

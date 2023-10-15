@@ -18,7 +18,7 @@
             </div>
         </div>
     </div>
-    <ul class="h-10 border-y border-y-indigo-50 flex items-center space-x-1 overflow-x-scroll">
+    <ul class="h-12 border-y border-y-indigo-50 flex items-center space-x-1 overflow-x-scroll sm:overflow-x-hidden">
         <x-nav-link href="{{ route('podcast.dashboard') }}" :active="request()->routeIs('podcast.dashboard')">Dashboard</x-nav-link>
         @can('view_episodes')
             <x-nav-link href="{{ route('podcast.episodes') }}" :active="request()->routeIs('podcast.episodes')">Episodes</x-nav-link>

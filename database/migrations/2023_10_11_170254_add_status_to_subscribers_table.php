@@ -11,12 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('subscribers', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('podcast_id');
-            $table->string('token')->unique();
-            $table->string('email');
-            $table->timestamps();
+        Schema::table('subscribers', function (Blueprint $table) {
+            $table->enum('status', ['PENDING', 'ACTIVE', 'OPT-OUT'])->default('ACTIVE');
         });
     }
 
@@ -25,6 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('subscribers');
+        Schema::table('subscribers', function (Blueprint $table) {
+            $table->dropColumn('status');
+        });
     }
 };

@@ -21,9 +21,10 @@ Route::middleware('xframe.options')->group(function() {
     Route::middleware('downloads.counter')->get("/s/{url}/play/{episode}/{player?}", [EpisodeController::class, 'play'])->name('public.episode.play');
 
     // Private podcast routes
-    Route::get('/show_invite/{url}', Url::class)->name('private.podcast.subscribe');
-    Route::get('/private-podcast/{url}', [SubscriberController::class, 'show'])->name('private.podcast.website');
-    Route::get('/private-feed/{url}', [SubscriberController::class, 'feed'])->name('private.podcast.feed');
+    Route::get('/privatepodcast/{url}/invite', Url::class)->name('private.podcast.subscribe');
+    Route::get('/privatepodcast/{url}/confirm', App\Livewire\Subscriber\Invite\Confirmation::class)->name('private.podcast.confirm');
+    Route::get('/privatepodcast/{url}', [SubscriberController::class, 'show'])->name('private.podcast.website');
+    Route::get('/privatefeed/{url}', [SubscriberController::class, 'feed'])->name('private.podcast.feed');
 });
 Route::get('/embed/{guid}/{player?}', [App\Http\Controllers\EpisodeController::class, 'embed'])->name('public.episode.embed');
 

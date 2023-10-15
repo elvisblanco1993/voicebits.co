@@ -4,38 +4,48 @@ namespace App\Http\Controllers;
 
 use App\Models\Podcast;
 use App\Models\Subscriber;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 
 class SubscriberController extends Controller
 {
-    public $subscriber, $passkey;
+    public $subscriber;
     public $podcast;
 
-    public function show($subscriber, Request $request)
+    /**
+     * Returns the private podcast website. Checks podcast password if exists
+     * and provides deep links for adding the feed to several players.
+     */
+    public function show($token)
     {
         // Get the subscriber or fail
-        $this->subscriber = Subscriber::where('token', $subscriber)->firstOrFail();
-        if (!$this->subscriber) {
-            abort(404, 'Subscription not found.');
-        }
+        $this->subscriber = Subscriber::where('token', $token)->where('status', 'ACTIVE')->orWhere('status', 'OPT-OUT')->firstOrFail();
 
         // Get the podcast or fail
         $this->podcast = $this->subscriber->podcast;
 
-        // Get the password from the URL
-        if ($request->passkey && (base64_decode($request->passkey) !== $this->passkey)) {
-            abort(404, 'Subscription not found.');
-        }
-
         // Displays the subscriber's private web page
         return view('podcast.private.show', [
-            'subscriber' => $this->subscriber
+            'subscriber' => $this->subscriber,
+            'deepFeedUrl' => Str::replace(['http://', 'https://'], '', route('private.podcast.feed', ['url' => $this->subscriber->token]))
         ]);
     }
 
-    public function feed(Subscriber $subscriber, Request $request)
+    public function feed($token)
     {
-        $this->verifySubscription($subscriber, $request);
-        // This is the subscriber's private feed
+        // This is the subscriber's private feedS
+        // 1. Check the subscriber exists
+        $this->subscriber = Subscriber::where('token', $token)
+                                ->whereIn('status', ['ACTIVE', 'OPT-OUT'])
+                                ->firstOrFail();
+
+        // 2. Serve the feed
+        // The feed will be automatically private,
+        // because of the database records.
+        return response()
+            ->view('podcast.feed', [
+                'podcast' => $this->subscriber->podcast,
+                'player' => 'prvt', // Private Player. Not really needed
+            ])->header('Content-Type', 'application/xml');
     }
 }

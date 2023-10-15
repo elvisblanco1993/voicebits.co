@@ -33,7 +33,7 @@
             <itunes:email>{{ $podcast->owner()->email }}</itunes:email>
         </itunes:owner>
         <itunes:category text="{{ $podcast->category }}" />
-        @if ($podcast->is_locked)
+        @if ($podcast->is_locked || $podcast->visibility === 'PRIVATE')
             <itunes:block>yes</itunes:block>
         @else
             <itunes:block>no</itunes:block>

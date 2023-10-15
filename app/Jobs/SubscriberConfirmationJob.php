@@ -10,10 +10,9 @@ use Illuminate\Queue\InteractsWithQueue;
 use App\Mail\SendSubscriptionWelcomeEmail;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
-use App\Mail\SendSubscriptionInvitationEmail;
 use Illuminate\Contracts\Queue\ShouldBeUnique;
 
-class SubscriberInvitationJob implements ShouldQueue
+class SubscriberConfirmationJob implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
@@ -33,7 +32,7 @@ class SubscriberInvitationJob implements ShouldQueue
     public function handle(): void
     {
         Mail::to($this->subscriber->email)->send(
-                new SendSubscriptionInvitationEmail($this->subscriber)
+                new SendSubscriptionWelcomeEmail($this->subscriber)
             );
     }
 }
