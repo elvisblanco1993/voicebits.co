@@ -7,7 +7,7 @@
 
 Open the link below to confirm or decline your subscription.
 
-[Verify subscription]({{ route('private.podcast.confirm', ['url' => $subscriber->token]) }})
+[Verify subscription]({{ route('private.podcast.confirm', ['token' => $subscriber->token]) }})
 
 Thanks,<br>
 {{ $subscriber->podcast->author }}

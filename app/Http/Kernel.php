@@ -69,5 +69,6 @@ class Kernel extends HttpKernel
         'podcast.exists' => \App\Http\Middleware\SetActivePodcast::class,
         'podcast.related' => \App\Http\Middleware\CheckUserAccessToPodcast::class,
         'downloads.counter' => \App\Http\Middleware\DownloadsCounter::class,
+        'private.podcast.auth' => \App\Http\Middleware\AuthenticatePrivatePodcast::class,
     ];
 }

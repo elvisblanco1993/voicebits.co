@@ -47,26 +47,13 @@
                     </thead>
                     <tbody>
                         @forelse ($subscribers as $subscriber)
-                            <tr class="hover:bg-slate-100">
+                            <tr class="hover:bg-slate-50">
                                 <td>{{ $subscriber->email }}</td>
                                 <td>923</td>
-                                <td class="flex justify-end">
-                                    <div x-data="{show: false}" class="relative">
-                                        <button @click="show = !show">
-                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.75a.75.75 0 110-1.5.75.75 0 010 1.5zM12 12.75a.75.75 0 110-1.5.75.75 0 010 1.5zM12 18.75a.75.75 0 110-1.5.75.75 0 010 1.5z" />
-                                            </svg>
-                                        </button>
-
-                                        <div class="absolute z-30 mt-2 w-48 rounded-lg shadow-lg origin-top-right right-0" x-show="show" @click.outside="show = false" x-focus x-cloak>
-                                            <div class="rounded-lg ring-1 ring-black ring-opacity-5 py-1 bg-white">
-                                                <div class="block px-4 py-2 text-xs text-gray-400">Manage subscriber</div>
-                                                @livewire('subscriber.actions.analytics', ['subscriber' => $subscriber], key('analytics'.$subscriber->id))
-                                                @livewire('subscriber.actions.send-link', ['subscriber' => $subscriber], key('sendlink'.$subscriber->id))
-                                                @livewire('subscriber.actions.delete', ['subscriber' => $subscriber], key('remove'.$subscriber->id))
-                                            </div>
-                                        </div>
-                                    </div>
+                                <td class="flex items-center space-x-4 justify-end">
+                                    @livewire('subscriber.actions.analytics', ['subscriber' => $subscriber], key('analytics'.$subscriber->id))
+                                    @livewire('subscriber.actions.send-link', ['subscriber' => $subscriber], key('sendlink'.$subscriber->id))
+                                    @livewire('subscriber.actions.delete', ['subscriber' => $subscriber], key('remove'.$subscriber->id))
                                 </td>
                             </tr>
                         @empty

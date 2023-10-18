@@ -7,7 +7,7 @@ You've been subscribed to the **{{ $subscriber->podcast->name }}** podcast by **
 
 Stay updated in real-time! Open the link below on your phone and tap it to add this podcast to your preferred podcast player.
 
-[Open podcast]({{ route('private.podcast.website', ['url' => $subscriber->token]) }})
+[Open podcast]({{ route('private.podcast.website', ['token' => $subscriber->token]) }})
 
 @if ($subscriber->podcast->passkey)
 Podcast password: {{ base64_decode($subscriber->podcast->passkey) }}

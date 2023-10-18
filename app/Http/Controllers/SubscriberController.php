@@ -19,15 +19,19 @@ class SubscriberController extends Controller
     public function show($token)
     {
         // Get the subscriber or fail
-        $this->subscriber = Subscriber::where('token', $token)->where('status', 'ACTIVE')->orWhere('status', 'OPT-OUT')->firstOrFail();
+        $this->subscriber = Subscriber::where('token', $token)
+                                ->whereIn('status', ['ACTIVE', 'OPT-OUT'])
+                                ->firstOrFail();
 
         // Get the podcast or fail
         $this->podcast = $this->subscriber->podcast;
 
+        $password = ($this->podcast->passkey) ? 'pwd=' . $this->podcast->passkey : '';
+
         // Displays the subscriber's private web page
         return view('podcast.private.show', [
             'subscriber' => $this->subscriber,
-            'deepFeedUrl' => Str::replace(['http://', 'https://'], '', route('private.podcast.feed', ['url' => $this->subscriber->token]))
+            'deepFeedUrl' => Str::replace(['http://', 'https://'], '', route('private.podcast.feed', ['token' => $this->subscriber->token, $password]))
         ]);
     }
 
@@ -39,13 +43,18 @@ class SubscriberController extends Controller
                                 ->whereIn('status', ['ACTIVE', 'OPT-OUT'])
                                 ->firstOrFail();
 
-        // 2. Serve the feed
-        // The feed will be automatically private,
-        // because of the database records.
         return response()
             ->view('podcast.feed', [
                 'podcast' => $this->subscriber->podcast,
                 'player' => 'prvt', // Private Player. Not really needed
             ])->header('Content-Type', 'application/xml');
+    }
+
+    public function authenticate($token)
+    {
+        $subscriber = Subscriber::where('token', $token)
+                                ->whereIn('status', ['ACTIVE', 'OPT-OUT'])
+                                ->firstOrFail();
+        $podcast = $subscriber->podcast;
     }
 }

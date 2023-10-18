@@ -29,7 +29,7 @@
                 <form wire:submit.prevent="save" class="mt-6">
                     @csrf
                     <label for="email" class="text-sm font-medium text-slate-800">Enter your email address</label>
-                    <x-input id="email" wire:model.live="email" class="mt-1 w-2/3 mx-auto text-center" />
+                    <x-input id="email" wire:model="email" class="mt-1 w-2/3 mx-auto text-center" />
                     <x-input-error for="email" />
 
                     <x-button class="mt-4">Save and subscribe</x-button>

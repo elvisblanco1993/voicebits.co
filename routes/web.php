@@ -22,9 +22,10 @@ Route::middleware('xframe.options')->group(function() {
 
     // Private podcast routes
     Route::get('/privatepodcast/{url}/invite', Url::class)->name('private.podcast.subscribe');
-    Route::get('/privatepodcast/{url}/confirm', App\Livewire\Subscriber\Invite\Confirmation::class)->name('private.podcast.confirm');
-    Route::get('/privatepodcast/{url}', [SubscriberController::class, 'show'])->name('private.podcast.website');
-    Route::get('/privatefeed/{url}', [SubscriberController::class, 'feed'])->name('private.podcast.feed');
+    Route::get('/privatepodcast/{token}/auth', \App\Livewire\Subscriber\Auth::class)->name('private.podcast.login');
+    Route::middleware('private.podcast.auth')->get('/privatepodcast/{token}/confirm', App\Livewire\Subscriber\Invite\Confirmation::class)->name('private.podcast.confirm');
+    Route::middleware('private.podcast.auth')->get('/privatepodcast/{token}', [SubscriberController::class, 'show'])->name('private.podcast.website');
+    Route::middleware('private.podcast.auth')->get('/privatefeed/{token}', [SubscriberController::class, 'feed'])->name('private.podcast.feed');
 });
 Route::get('/embed/{guid}/{player?}', [App\Http\Controllers\EpisodeController::class, 'embed'])->name('public.episode.embed');
 
