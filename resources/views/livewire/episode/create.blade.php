@@ -12,32 +12,6 @@
         <div class="mt-4 w-full bg-white rounded-lg shadow">
             <div class="p-6">
                 {{-- Content --}}
-                {{-- <div class="">
-                    <div class="relative h-16 rounded-lg border-dashed border border-gray-400 hover:border-indigo-400 bg-white hover:bg-indigo-50 transition-all flex justify-center items-center hover:cursor-pointer">
-                        <div class="absolute">
-                            <div class="flex items-center gap-2">
-                                @if ($track)
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-emerald-500">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                    </svg>
-
-                                    <div wire:loading wire:target="track">Uploading...</div>
-                                    <span class="block font-normal text-sm text-emerald-500">Ready!</span>
-                                    <div x-init="getTrackDuration('{{ $track->temporaryURL() }}')"></div>
-                                @else
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="currentColor" viewBox="0 0 16 16">
-                                        <path fill-rule="evenodd" d="M3.5 6.5A.5.5 0 0 1 4 7v1a4 4 0 0 0 8 0V7a.5.5 0 0 1 1 0v1a5 5 0 0 1-4.5 4.975V15h3a.5.5 0 0 1 0 1h-7a.5.5 0 0 1 0-1h3v-2.025A5 5 0 0 1 3 8V7a.5.5 0 0 1 .5-.5z"></path>
-                                        <path fill-rule="evenodd" d="M10 8V3a2 2 0 1 0-4 0v5a2 2 0 1 0 4 0zM8 0a3 3 0 0 0-3 3v5a3 3 0 0 0 6 0V3a3 3 0 0 0-3-3z"></path>
-                                    </svg>
-                                    <span class="block font-normal text-sm">Upload episode track<p class="text-xs text-gray-500">only .mp3 files are supported</p></span>
-                                @endif
-                            </div>
-                        </div>
-                        <input id="file-upload" wire:model.live="track" type="file" accept="audio/mpeg" class="h-full w-full opacity-0 cursor-pointer">
-                    </div>
-                    <x-input-error for="track" class="mt-2 text-sm text-red-600"/>
-                </div> --}}
-
                 @if ($track)
                     <div class="mb-6 flex items-center justify-between w-full px-3 py-2.5 text-sm rounded-full bg-emerald-50">
                         <div class="flex items-center space-x-3">
@@ -52,7 +26,7 @@
                             </div>
                         </div>
                         <button class="text-red-500" wire:click="deleteTrack">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 animate-spin">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                             </svg>
                         </button>
