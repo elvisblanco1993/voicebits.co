@@ -55,7 +55,10 @@ class Create extends Component
 
     public function render()
     {
-        $this->published_at = ($this->publish_now) ? now() : null;
+        if ($this->publish_now) {
+            $this->published_at = Carbon::parse(now())->format('Y-m-d\TH:i');
+        }
+
         return view('livewire.episode.create', [
             'podcast' => Podcast::findorfail(session('podcast'))
         ]);
@@ -107,7 +110,8 @@ class Create extends Component
         return [
             'title' => 'required',
             'description' => 'required',
-            'track' => 'required|file|mimes:mp3'
+            'track' => 'required|file|mimes:mp3',
+            'cover' => ['nullable', 'image', 'mimes:png,jpg', 'dimensions:min_width=1500,max_width=3000,aspect=0/0'],
         ];
     }
 
@@ -116,7 +120,12 @@ class Create extends Component
         $this->validateOnly($track, [
             'title' => 'required',
             'description' => 'required',
-            'track' => 'required|file|mimes:mp3|max:102400'
+            'track' => 'required|file|mimes:mp3|max:102400',
         ]);
+    }
+
+    public function deleteTrack()
+    {
+        $this->track = null;
     }
 }
