@@ -80,11 +80,11 @@
             <div class="col-span-6 md:col-span-2 p-4 border border-slate-200 bg-white rounded-lg">
                 <div class="">
                     <x-label for="season" value="Season number"/>
-                    <x-input type="number" id="season" wire:model.live="season" class="mt-1 w-full"/>
+                    <x-input type="number" id="season" wire:model="season" class="mt-1 w-full"/>
                 </div>
                 <div class="mt-4">
                     <x-label for="number" value="Episode number"/>
-                    <x-input type="number" id="number" wire:model.live="number" class="mt-1 w-full"/>
+                    <x-input type="number" id="number" wire:model="number" class="mt-1 w-full"/>
                 </div>
 
                 <div class="mt-4">

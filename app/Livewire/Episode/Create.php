@@ -6,7 +6,6 @@ use Carbon\Carbon;
 use App\Models\Episode;
 use App\Models\Podcast;
 use Livewire\Component;
-use Illuminate\Support\Str;
 use Livewire\WithFileUploads;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Gate;
@@ -15,6 +14,7 @@ class Create extends Component
 {
     use WithFileUploads;
 
+    public $podcast;
     public $title,
         $description,
         $published_at,
@@ -41,6 +41,16 @@ class Create extends Component
         if (!Gate::allows('edit_episodes')) {
             abort(401);
         }
+        $this->podcast = Podcast::findorfail(session('podcast'));
+        $latestEpisode = $this->podcast->episodes()->latest()->first();
+        if (!$latestEpisode) {
+            $this->season = 1;
+            $this->number = 1;
+            $this->type = 'trailer';
+        } else {
+            $this->season = $latestEpisode->season;
+            $this->number = $latestEpisode->number + 1;
+        }
     }
 
     public function render()
@@ -66,7 +76,7 @@ class Create extends Component
             // Create episode
             Episode::create([
                 'guid' => uniqid(),
-                'podcast_id' => session('podcast'),
+                'podcast_id' => $this->podcast->id,
                 'title' => $this->title,
                 'description' => $this->description,
                 'published_at' => ($this->published_at) ? Carbon::parse($this->published_at)->format('Y-m-d H:i:s') : null,

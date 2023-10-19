@@ -4,7 +4,7 @@
 
     <div class="py-6">
         <div class="flex items-center justify-between">
-            <div class="text-2xl font-bold">Episodes</div>
+        <x-input type="search" wire:model.live="search" placeholder="Search episodes by title" class="w-full sm:w-1/3"/>
             @can('upload_episodes', $podcast)
                 <a href="{{ route('podcast.episode.create') }}" class="btn-link">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5">
@@ -14,7 +14,6 @@
                 </a>
             @endcan
         </div>
-        <x-input type="search" wire:model.live="search" placeholder="Search episodes by title" class="mt-2 w-full sm:w-1/3"/>
         <div class="mt-4 overflow-x-auto shadow rounded-lg">
             <table class="w-full text-sm text-left text-gray-500">
                 <thead class="text-xs text-gray-700 uppercase bg-gray-50">

@@ -12,7 +12,7 @@
             @endif
             <div class="ml-6">
                 <h1 class="text-3xl font-bold">{{ $podcast->name }}</h1>
-                @if ($podcast->url && !$podcast->isPrivate())
+                @if ($podcast->url && !$podcast->isPrivate() && $podcast->episodes->count() > 0)
                     <a href="{{ route('public.podcast.website', ['url' => $podcast->url]) }}" target="_blank" class="text-sm bg-slate-200 text-slate-700 px-1 py-0.5 rounded">Visit website</a>
                 @endif
             </div>
@@ -35,12 +35,14 @@
             @can('manage_contributors')
                 <x-nav-link href="{{ route('podcast.contributors') }}" :active="request()->routeIs('podcast.contributors')">People</x-nav-link>
             @endcan
-            @can('manage_distribution')
-                <x-nav-link href="{{ route('podcast.distribution') }}" :active="request()->routeIs('podcast.distribution')">Distribution</x-nav-link>
-            @endcan
-            @can('manage_website')
-                <x-nav-link href="{{ route('podcast.website') }}" :active="request()->routeIs('podcast.website')">Website</x-nav-link>
-            @endcan
+            @if ($podcast->episodes->count() > 0)
+                @can('manage_distribution')
+                    <x-nav-link href="{{ route('podcast.distribution') }}" :active="request()->routeIs('podcast.distribution')">Distribution</x-nav-link>
+                @endcan
+                @can('manage_website')
+                    <x-nav-link href="{{ route('podcast.website') }}" :active="request()->routeIs('podcast.website')">Website</x-nav-link>
+                @endcan
+            @endif
         @endif
         @can('view_users')
             <x-nav-link href="{{ route('podcast.team') }}" :active="request()->routeIs('podcast.team')">Team</x-nav-link>

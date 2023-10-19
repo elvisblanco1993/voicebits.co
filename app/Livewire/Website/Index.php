@@ -15,6 +15,10 @@ class Index extends Component
     public function mount()
     {
         $this->podcast = Podcast::findorfail(session('podcast'));
+        if ($this->podcast->episodes->count() < 1) {
+            abort(401);
+        }
+
         $this->template = $this->podcast->website->template;
         $this->language = $this->podcast->website->language;
         $this->header_background = $this->podcast->website->header_background;

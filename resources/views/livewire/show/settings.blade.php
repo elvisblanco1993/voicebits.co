@@ -228,7 +228,7 @@
                     <p class="mt-2 text-slate-600">When this value is present and set to “yes”, the podcast feed cannot be imported or migrated to other platforms  that respect the tag.</p>
                     <div class="mt-2">
                         <label for="is_locked-btn" class="flex items-center">
-                            <input type="checkbox" name="is_locked" wire:model.live="is_locked" id="is_locked-btn" class="rounded">
+                            <input type="checkbox" name="is_locked" wire:model="is_locked" id="is_locked-btn" class="rounded">
                             @if ($is_locked)
                                 <span class="ml-3 text-sm font-semibold text-slate-600">Feed locked. Click to unlock.</span>
                             @else

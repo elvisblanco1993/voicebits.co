@@ -39,18 +39,18 @@
                     <x-label>Twitter URL</x-label>
                     <x-input type="text" id="twitter" wire:model.live="twitter" class="mt-1 w-full" />
                 </div>
-                <div class="mt-6 grid grid-cols-3 gap-8 items-center">
-                    <div class="col-span-3 md:col-span-1">
+                <div class="mt-6 grid grid-cols-4 gap-8 items-center">
+                    <div class="col-span-4 md:col-span-1">
                         @if ($avatar)
                             <img src="{{ ($avatar->temporaryUrl()) ? $avatar->temporaryUrl() : Storage::url($avatar) }}" class="w-full rounded-full shadow aspect-square object-center object-cover border-8 border-indigo-300">
                         @else
-                            <div class="flex-none w-full h-full aspect-square rounded-full bg-indigo-100 flex items-center justify-center border-8 border-indigo-300">
+                            <div class="flex-none w-full h-full aspect-square rounded-full bg-indigo-100 flex items-center justify-center shadow-inner shadow-indigo-200">
                                 <img src="{{ asset('logo-mark-dark.svg') }}" class="w-16 h-auto">
                             </div>
                         @endif
                     </div>
 
-                    <div class="col-span-3 md:col-span-2">
+                    <div class="col-span-4 md:col-span-3">
                         <div class="flex items-center">
                             <p class="text-sm font-boldblock font-medium text-gray-700">Avatar <span class="text-red-500">*</span></p>
                             @if ($avatar && !$avatar->temporaryUrl())

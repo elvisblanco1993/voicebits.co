@@ -52,7 +52,7 @@ class Settings extends Component
         $this->author = $this->podcast->author;
         $this->timezone = $this->podcast->timezone;
         $this->explicit = ($this->podcast->explicit) ? "true" : "false";
-        $this->is_locked = $this->podcast->is_locked;
+        $this->is_locked = ($this->podcast->is_locked) ? true : false;
         $this->funding = $this->podcast->funding;
         $this->funding_text = $this->podcast->funding_text;
         $this->funding_description = $this->podcast->funding_description;

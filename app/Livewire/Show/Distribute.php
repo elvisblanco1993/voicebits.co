@@ -20,6 +20,10 @@ class Distribute extends Component
         }
 
         $this->podcast = Podcast::findorfail(session('podcast'));
+        if ($this->podcast->episodes->count() < 1) {
+            abort(401);
+        }
+
         $this->podcastindex = $this->podcast->podcastindex;
         $this->apple = $this->podcast->apple;
         $this->spotify = $this->podcast->spotify;
