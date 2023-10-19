@@ -34,7 +34,7 @@
                     <div x-init="getTrackDuration('{{ $track->temporaryURL() }}')"></div>
                 @endif
 
-                <input type="file" accept="audio/mpeg" class="sr-only" wire:model.live="track" id="file-upload" />
+                <input type="file" accept="audio/mpeg" class="sr-only" wire:model="track" id="file-upload" />
                 <label for="file-upload" class="inline-flex items-center space-x-3 px-5 py-2.5 text-sm font-normal text-black cursor-pointer bg-yellow-300 hover:bg-yellow-400 transition-all rounded-full">
                     <span>@if ($track) Replace @else Upload @endif Podcast</span>
                     <svg wire:loading wire:target="track" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5 animate-spin">
