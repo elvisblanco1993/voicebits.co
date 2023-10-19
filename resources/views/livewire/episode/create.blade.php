@@ -31,6 +31,7 @@
                             </svg>
                         </button>
                     </div>
+                    <div x-init="getTrackDuration('{{ $track->temporaryURL() }}')"></div>
                 @endif
 
                 <input type="file" accept="audio/mpeg" class="sr-only" wire:model.live="track" id="file-upload" />
