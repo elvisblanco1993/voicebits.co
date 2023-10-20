@@ -118,7 +118,7 @@
                     <div class="col-span-6 md:col-span-5">
                         <label class="block">
                             <span class="block font-medium text-sm text-gray-700">Choose episode artwork</span>
-                            <input type="file" wire:model.live="cover" class="mt-1 block w-full text-sm text-slate-500
+                            <input type="file" accept=".png,.jpeg" wire:model.live="cover" class="mt-1 block w-full text-sm text-slate-500
                               file:mr-4 file:py-2 file:px-4
                               file:rounded-full file:border-0
                               file:text-sm file:font-semibold
