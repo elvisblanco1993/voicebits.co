@@ -75,7 +75,7 @@ class Edit extends Component
                 'explicit' => ($this->explicit === "true") ? 1 : 0,
                 'cover' => $artwork,
                 'track_url' => $this->track_url,
-                'track_size' => ($this->track) ? $this->track->getSize() : $this->episode->track_size,
+                'track_size' => ($this->track) ? $this->track_size : $this->episode->track_size,
                 'track_length' => ($this->track) ? $this->track_length : $this->episode->track_length,
                 'blocked' => ($this->blocked === "true") ? 1 : 0,
             ]);
@@ -107,6 +107,7 @@ class Edit extends Component
         $this->validateOnly($track, [
             'title' => 'required',
             'description' => 'required',
+            'track' => 'required|file|mimes:mp3,m4a|max:200000',
         ]);
         $this->getTrackInfo();
     }
