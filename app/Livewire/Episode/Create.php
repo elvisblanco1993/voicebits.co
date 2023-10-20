@@ -116,7 +116,7 @@ class Create extends Component
             'track' => 'required|file|mimes:mp3,m4a|max:200000',
         ]);
 
-        if ($track) {
+        if ($this->track) {
             $this->getTrackInfo();
         }
     }
