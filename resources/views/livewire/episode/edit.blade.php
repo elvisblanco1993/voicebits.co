@@ -1,223 +1,192 @@
 <div>
     @livewire('submenu')
-    <div class="py-6 max-w-5xl mx-auto px-4 sm:px-6 lg:px-0">
-        <div class="flex items-center justify-between">
-            <div class="flex items-center gap-3">
-                <a href="{{ route('podcast.episodes') }}" class="hover:text-indigo-600 transition-all">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M11 15l-3-3m0 0l3-3m-3 3h8M3 12a9 9 0 1118 0 9 9 0 01-18 0z" />
-                    </svg>
-                </a>
-                <div class="text-2xl font-bold">Episode details</div>
-            </div>
-            <x-button wire:click="save">Save episode</x-button>
+    <div class="py-6">
+        <div class="flex items-center space-x-3">
+            <a href="{{ route('podcast.episodes') }}" class="hover:text-indigo-600 transition-all">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M11 15l-3-3m0 0l3-3m-3 3h8M3 12a9 9 0 1118 0 9 9 0 01-18 0z" />
+                </svg>
+            </a>
+            <div class="text-2xl font-bold">Editing episode</div>
         </div>
-
-        {{-- Content section --}}
-        <div class="mt-4 w-full bg-white rounded-lg shadow p-8">
-            <div class="">
-                <div class="h-16 px-4 rounded-lg border-dashed border border-gray-400 bg-white flex items-center justify-between">
-                    <div class="flex items-center">
-                        <audio id="audio" src="{{ route('episode.preview', ['episode' => $episode->guid]) }}"></audio>
-                        <button id="audioPlayBtn" onclick="togglePlay()" class="text-slate-900">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+        <div class="mt-4 w-full bg-white rounded-lg shadow">
+            <div class="p-6">
+                {{-- Content --}}
+                <audio class="block mb-6 w-full rounded-full" controls src="{{ $currentEpisodeAudioTrack }}" preload></audio>
+                @if ($track)
+                    <div class="mb-6 flex items-center justify-between w-full px-3 py-2.5 text-sm rounded-full bg-emerald-50">
+                        <div class="flex items-center space-x-3">
+                            <div class="h-8 w-8 flex-none flex items-center justify-center rounded-full bg-emerald-300 text-emerald-700">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5">
+                                    <path d="M7 4a3 3 0 016 0v6a3 3 0 11-6 0V4z" />
+                                    <path d="M5.5 9.643a.75.75 0 00-1.5 0V10c0 3.06 2.29 5.585 5.25 5.954V17.5h-1.5a.75.75 0 000 1.5h4.5a.75.75 0 000-1.5h-1.5v-1.546A6.001 6.001 0 0016 10v-.357a.75.75 0 00-1.5 0V10a4.5 4.5 0 01-9 0v-.357z" />
+                                </svg>
+                            </div>
+                            <div>
+                                {{ $track->getClientOriginalName() }}
+                            </div>
+                        </div>
+                        <button class="text-red-500" wire:click="deleteTemporaryTrack">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                             </svg>
                         </button>
-                        <div class="ml-2 text-slate-600">
-                            <div>{{ $episode->title }}</div>
-                            <div class="text-xs">{{ ( is_numeric($episode->track_length) ) ? gmdate("i:s", (int) $episode->track_length) : $episode->track_length }}</div>
-                        </div>
                     </div>
+                @endif
 
-                    <label for="track" class="text-sm text-slate-600 px-3 py-2 rounded-lg border border-slate-200 hover:text-indigo-600 hover:bg-indigo-50 hover:border-indigo-200 transition-all cursor-pointer">
-                        <input id="track" wire:model.live="track" type="file" accept="audio/mpeg" class="sr-only">
-                        @if ($track)
-                            {{__("New track uploaded")}}
-                        @else
-                            {{__("Replace track")}}
-                        @endif
-                    </label>
-                    {{-- Get the audio duration --}}
-                    @if ($track)
-                        <div class="sr-only" x-init="getTrackDuration('{{ $track->temporaryURL() }}')"></div>
-                    @endif
-                    {{-- End of Get the audio duration --}}
+                <input type="file" accept="audio/mpeg" class="sr-only" wire:model.live="track" id="file-upload" />
+                <label for="file-upload" class="inline-flex items-center space-x-3 px-5 py-2.5 text-sm font-normal text-black cursor-pointer bg-yellow-300 hover:bg-yellow-400 transition-all rounded-full">
+                    <span>Replace Episode</span>
+                    <svg wire:loading.delay wire:loading.class="inline-block" wire:target="track" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="hidden w-5 h-5 animate-spin">
+                        <path fill-rule="evenodd" d="M15.312 11.424a5.5 5.5 0 01-9.201 2.466l-.312-.311h2.433a.75.75 0 000-1.5H3.989a.75.75 0 00-.75.75v4.242a.75.75 0 001.5 0v-2.43l.31.31a7 7 0 0011.712-3.138.75.75 0 00-1.449-.39zm1.23-3.723a.75.75 0 00.219-.53V2.929a.75.75 0 00-1.5 0V5.36l-.31-.31A7 7 0 003.239 8.188a.75.75 0 101.448.389A5.5 5.5 0 0113.89 6.11l.311.31h-2.432a.75.75 0 000 1.5h4.243a.75.75 0 00.53-.219z" clip-rule="evenodd" />
+                    </svg>
+                </label>
+                <p class="mt-1 text-xs text-slate-600">Supported formats: .mp3 or .m4a up to 200 megabytes.</p>
+
+                <div class="mt-6">
+                    <x-label for="title">Episode title <span class="text-red-500">*</span></x-label>
+                    <x-input type="text" wire:model.live="title" id="title" placeholder="What do you want to call this episode?" class="mt-1 w-full"/>
+                    <x-input-error for="title" class="mt-2 text-sm text-red-600"/>
                 </div>
-                <x-input-error for="track" class="mt-2 text-sm text-red-600"/>
-            </div>
-            <div class="mt-6">
-                <label for="title" class="block font-medium text-sm text-gray-700">Episode title <span class="text-red-500">*</span></label>
-                <x-input type="text" wire:model.live="title" id="title" placeholder="What do you want to call this episode?" class="mt-1 w-full"/>
-                <x-input-error for="title" class="mt-2 text-sm text-red-600"/>
-            </div>
-            <div class="mt-6">
-                <label for="description" class="block font-medium text-sm text-gray-700">Episode description <span class="text-red-500">*</span></label>
-                <textarea wire:model.live="description" id="description" rows="10" class="input"></textarea>
-                <x-input-error for="description" class="mt-2 text-sm text-red-600"/>
-            </div>
-            <div class="mt-6">
-                <label for="published_at" class="block font-medium text-sm text-gray-700">Publish date</label>
-                <x-input type="datetime-local" wire:model.live="published_at" id="published_at" class="mt-1"/>
-            </div>
-        </div>
-
-        {{-- Episode Options --}}
-        <div class="mt-6 text-xl font-bold">Options</div>
-        <div class="mt-4 w-full bg-white rounded-lg shadow p-8">
-            <div class="grid grid-cols-2 gap-8">
-                <div class="col-span-2 sm:col-span-1">
-                    @if ($episode->podcast->type === "serial")
-                    <div class="grid grid-cols-3 sm:gap-8">
-                        <div class="col-span-3 sm:col-span-1">
-                            <x-label for="season" value="Season number"/>
+                <div class="mt-6">
+                    <x-label for="description">Description <span class="text-red-500">*</span></x-label>
+                    <textarea wire:model.live="description" id="description" rows="6" class="input"></textarea>
+                    <x-input-error for="description" class="mt-2 text-sm text-red-600"/>
+                </div>
+                <div class="mt-6">
+                    <x-label for="published_at">Episode release date & time</x-label>
+                    <div class="flex items-center space-x-4">
+                        <div>
+                            <x-input type="datetime-local" wire:model.live="published_at" id="published_at" class="mt-1"/>
                         </div>
-                        <div class="col-span-3 sm:col-span-2 mt-1 sm:mt-0">
-                            <x-input type="text" id="season" wire:model.live="season" class="w-full"/>
-                        </div>
-                    </div>
-
-                    <div class="w-full border-t mt-4"></div>
-
-                    <div class="mt-4 grid grid-cols-3 sm:gap-8">
-                        <div class="col-span-3 sm:col-span-1">
-                            <x-label for="number" value="Episode number"/>
-                        </div>
-                        <div class="col-span-3 sm:col-span-2 mt-1 sm:mt-0">
-                            <x-input type="text" id="number" wire:model.live="number" class="w-full"/>
-                        </div>
-                    </div>
-
-                    <div class="w-full border-t mt-4"></div>
-                    @endif
-
-                    <div class="mt-4 grid grid-cols-3 sm:gap-8">
-                        <div class="col-span-3 sm:col-span-1">
-                            <x-label for="" value="Episode type"/>
-                        </div>
-                        <div class="col-span-3 sm:col-span-2 mt-1 sm:mt-0">
-                            <label for="full" class="flex items-center gap-2 text-sm">
-                                <input id="full" type="radio" wire:model.live="type" name="type" value="full">
-                                <span>Full</span>
-                            </label>
-                            <label for="trailer" class="mt-1 flex items-center gap-2 text-sm">
-                                <input id="trailer" type="radio" wire:model.live="type" name="type" value="trailer">
-                                <span>Trailer</span>
-                            </label>
-                            <label for="bonus" class="mt-1 flex items-center gap-2 text-sm">
-                                <input id="bonus" type="radio" wire:model.live="type" name="type" value="bonus">
-                                <span>Bonus</span>
-                            </label>
-                        </div>
-                    </div>
-
-                    <div class="w-full border-t mt-4"></div>
-
-                    <div class="mt-4 grid grid-cols-3 sm:gap-8">
-                        <div class="col-span-3 sm:col-span-1">
-                            <x-label for="" value="Content"/>
-                        </div>
-                        <div class="col-span-3 sm:col-span-2 mt-1 sm:mt-0">
-                            <label for="clean" class="flex items-center gap-2 text-sm">
-                                <input id="clean" type="radio" wire:model.live="explicit" name="explicit" value="false">
-                                <span>Clean</span>
-                            </label>
-                            <label for="explicit" class="mt-1 flex items-center gap-2 text-sm">
-                                <input id="explicit" type="radio" wire:model.live="explicit" name="explicit" value="true">
-                                <span>Explicit</span>
-                            </label>
-                        </div>
-                    </div>
-                    <div class="w-full border-t mt-4"></div>
-
-                    <div class="mt-4 grid grid-cols-3 sm:gap-8">
-                        <div class="col-span-3 sm:col-span-1 flex items-center justify-between" title="When the option 'Hidden' is selected, this option removes the episode from the podcatchers that support it.">
-                            <x-label for="" value="Feed status"/>
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9 5.25h.008v.008H12v-.008z" />
-                            </svg>
-                        </div>
-                        <div class="col-span-3 sm:col-span-2 mt-1 sm:mt-0">
-                            <label for="public" class="flex items-center gap-2 text-sm">
-                                <input id="public" type="radio" wire:model.live="blocked" name="blocked" value="false">
-                                <span>Public on podcatchers</span>
-                            </label>
-                            <label for="hidden" class="mt-1 flex items-center gap-2 text-sm">
-                                <input id="hidden" type="radio" wire:model.live="blocked" name="blocked" value="true">
-                                <span>Hidden on podcatchers</span>
-                            </label>
-                        </div>
+                        <x-label for="publish-now" class="flex items-center space-x-2">
+                            <x-checkbox id="publish-now" wire:model.live="publish_now"/>
+                            <span>Publish Now</span>
+                        </x-label>
                     </div>
                 </div>
 
-                <div class="col-span-2 sm:col-span-1 text-center">
-                    @if ($episode->cover && !$cover)
-                        <img src="{{ Storage::url($episode->cover) }}" class="w-1/2 mx-auto aspect-square object-center object-cover rounded-lg">
-                    @elseif($cover)
-                        <img src="{{ $cover->temporaryUrl() }}" class="w-1/2 mx-auto aspect-square object-center object-cover rounded-lg">
-                    @else
-                        <div class="w-1/2 mx-auto aspect-square bg-slate-100 rounded-lg shadow flex items-center justify-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="w-20 h-20 text-slate-500" fill="currentColor" class="bi bi-soundwave" viewBox="0 0 16 16">
-                                <path fill-rule="evenodd" d="M8.5 2a.5.5 0 0 1 .5.5v11a.5.5 0 0 1-1 0v-11a.5.5 0 0 1 .5-.5zm-2 2a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zm4 0a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zm-6 1.5A.5.5 0 0 1 5 6v4a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm8 0a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm-10 1A.5.5 0 0 1 3 7v2a.5.5 0 0 1-1 0V7a.5.5 0 0 1 .5-.5zm12 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0V7a.5.5 0 0 1 .5-.5z"/>
-                            </svg>
-                        </div>
-                    @endif
+                <div class="mt-6 grid grid-cols-2 gap-8">
+                    <div class="">
+                        <x-label for="season" value="Season number"/>
+                        <x-input type="number" id="season" wire:model="season" class="mt-1 w-full"/>
+                    </div>
+                    <div class="">
+                        <x-label for="number" value="Episode number"/>
+                        <x-input type="number" id="number" wire:model="number" class="mt-1 w-full"/>
+                    </div>
+                </div>
 
-                    <div class="mt-4">
-                        <label for="cover" class="text-sm text-slate-600 px-3 py-2 rounded-lg border border-slate-200 hover:text-indigo-600 hover:bg-indigo-50 hover:border-indigo-200 transition-all cursor-pointer">
-                            <input id="cover" type="file" accept=".png,.jpeg" wire:model.live="cover" class="sr-only">
-                            Upload episode art
+                <div class="mt-6 grid grid-cols-2 gap-8">
+                    <div class="">
+                        <x-label for="type" value="Episode type"/>
+                        <select wire:model.live="type" id="type" required
+                            class="border-slate-200 focus:ring focus:ring-indigo-100 focus:outline-none rounded-md block outline-none focus:border-indigo-200 mt-1 w-full">
+                            <option disabled>Select an option</option>
+                            <option value="full">Full episode</option>
+                            <option value="trailer">Trailer</option>
+                            <option value="bonus">Bonus</option>
+                        </select>
+                    </div>
+
+                    <div class="">
+                        <x-label for="type" value="Content type"/>
+                        <select wire:model.live="explicit" id="type" required
+                            class="border-slate-200 focus:ring focus:ring-indigo-100 focus:outline-none rounded-md block outline-none focus:border-indigo-200 mt-1 w-full">
+                            <option disabled>Select an option</option>
+                            <option value="false">Clean</option>
+                            <option value="true">Explicit</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="mt-6">
+                    <x-label value="Feed status"/>
+                    <div class="mt-1">
+                        <label for="public" class="flex items-center gap-2 text-sm">
+                            <input id="public" type="radio" wire:model.live="blocked" name="blocked" value="false"/>
+                            <span>Public on podcatchers</span>
+                        </label>
+                        <label for="hidden" class="mt-1 flex items-center gap-2 text-sm">
+                            <input id="hidden" type="radio" wire:model.live="blocked" name="blocked" value="true"/>
+                            <span>Hidden on podcatchers</span>
                         </label>
                     </div>
                 </div>
-            </div>
-        </div>
 
-        {{-- Sharing options --}}
-        <div class="mt-6 text-xl font-bold">Share</div>
-        <div class="mt-4 w-full bg-white rounded-lg shadow p-8">
-            <div class="">
-                <div class="flex items-center justify-between">
-                    <label for="embed" class="block font-medium text-sm text-gray-700">Embed</label>
-                    <button class="flex items-center space-x-2 text-sm text-slate-600 hover:text-indigo-600 transition-all" onclick="copyEmbed()">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                            <path d="M8 2a1 1 0 000 2h2a1 1 0 100-2H8z" />
-                            <path d="M3 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v6h-4.586l1.293-1.293a1 1 0 00-1.414-1.414l-3 3a1 1 0 000 1.414l3 3a1 1 0 001.414-1.414L10.414 13H15v3a2 2 0 01-2 2H5a2 2 0 01-2-2V5zM15 11h2a1 1 0 110 2h-2v-2z" />
-                        </svg>
-                        <span id="embed_alert">Copy</span>
-                    </button>
+                <div class="mt-6 border-t border-dashed border-slate-200"></div>
+
+                <div class="mt-6 grid grid-cols-6 gap-8 items-center">
+                    <div class="col-span-2 md:col-span-1">
+                        @if ($episode->cover && !$cover)
+                            <img src="{{ Storage::url($episode->cover) }}" class="w-full rounded-lg shadow aspect-square object-center object-cover">
+                        @elseif($cover)
+                            <img src="{{ $cover->temporaryUrl() }}" class="w-full rounded-lg shadow aspect-square object-center object-cover">
+                        @else
+                            <div class="flex-none w-full h-full aspect-square rounded-lg bg-slate-100 text-slate-500 flex items-center justify-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 001.5-1.5V6a1.5 1.5 0 00-1.5-1.5H3.75A1.5 1.5 0 002.25 6v12a1.5 1.5 0 001.5 1.5zm10.5-11.25h.008v.008h-.008V8.25zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
+                                </svg>
+                            </div>
+                        @endif
+                    </div>
+
+                    <div class="col-span-6 md:col-span-5">
+                        <label class="block">
+                            <span class="block font-medium text-sm text-gray-700">Choose episode artwork</span>
+                            <input type="file" wire:model.live="cover" class="mt-1 block w-full text-sm text-slate-500
+                              file:mr-4 file:py-2 file:px-4
+                              file:rounded-full file:border-0
+                              file:text-sm file:font-semibold
+                              file:bg-indigo-50 file:text-indigo-700
+                              hover:file:bg-indigo-100
+                              cursor-pointer
+                            "/>
+                        </label>
+                        <p class="mt-3 text-xs text-slate-600">Supported format: .png or .jpeg up to 3MB. Optimal resolution is 3000x3000px.</p>
+                        <x-input-error for="cover" />
+                    </div>
                 </div>
-                <pre class="mt-2 rounded overflow-auto bg-gray-800 py-1"><code class="text-xs text-green-400 px-2">{{$embed_url}}</code></pre>
+
+                <div class="mt-6 border-t border-dashed border-slate-200"></div>
+
+                <div class="mt-6">
+                    <div class="flex items-center justify-between">
+                        <label for="embed" class="block font-medium text-sm text-gray-700">Embed</label>
+                        <button class="flex items-center space-x-2 text-sm text-slate-600 hover:text-indigo-600 transition-all" onclick="copyEmbed()">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5">
+                                <path d="M7 3.5A1.5 1.5 0 018.5 2h3.879a1.5 1.5 0 011.06.44l3.122 3.12A1.5 1.5 0 0117 6.622V12.5a1.5 1.5 0 01-1.5 1.5h-1v-3.379a3 3 0 00-.879-2.121L10.5 5.379A3 3 0 008.379 4.5H7v-1z" />
+                                <path d="M4.5 6A1.5 1.5 0 003 7.5v9A1.5 1.5 0 004.5 18h7a1.5 1.5 0 001.5-1.5v-5.879a1.5 1.5 0 00-.44-1.06L9.44 6.439A1.5 1.5 0 008.378 6H4.5z" />
+                            </svg>
+                            <span id="embed_alert">Copy</span>
+                        </button>
+                    </div>
+                    <div class="mt-2 p-4 rounded-lg shadow-inner text-xs font-mono text-[#ecf0f1] bg-[#2c3e50]">
+                        {{$embed_url}}
+                    </div>
+                </div>
+                {{-- Content | End --}}
+            </div>
+
+            <div class="bg-slate-100 rounded-b-lg px-6 py-4 flex items-center justify-between">
+                @can('delete_episodes', $episode->podcast)
+                    @livewire('episode.delete', ['episode' => $episode->id])
+                @endcan
+
+                <x-button wire:loading.attr="disabled" wire:click="save">
+                    <span wire:loading.remove wire:target="save">
+                        Save changes
+                    </span>
+                    <span wire:loading wire:target="save">Uploading</span>
+                    <svg wire:loading wire:target="save" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="ml-3 w-5 h-5 animate-spin">
+                        <path fill-rule="evenodd" d="M15.312 11.424a5.5 5.5 0 01-9.201 2.466l-.312-.311h2.433a.75.75 0 000-1.5H3.989a.75.75 0 00-.75.75v4.242a.75.75 0 001.5 0v-2.43l.31.31a7 7 0 0011.712-3.138.75.75 0 00-1.449-.39zm1.23-3.723a.75.75 0 00.219-.53V2.929a.75.75 0 00-1.5 0V5.36l-.31-.31A7 7 0 003.239 8.188a.75.75 0 101.448.389A5.5 5.5 0 0113.89 6.11l.311.31h-2.432a.75.75 0 000 1.5h4.243a.75.75 0 00.53-.219z" clip-rule="evenodd" />
+                    </svg>
+                </x-button>
             </div>
         </div>
-
-        @can('delete_episodes', $episode->podcast)
-            <div class="mt-10 flex items-center justify-between">
-                <div class="text-xl font-bold text-red-600">Danger zone</div>
-            </div>
-            <div class="mt-4 w-full bg-red-200 rounded-lg p-8">
-                @livewire('episode.delete', ['episode' => $episode->id])
-            </div>
-        @endcan
     </div>
 
-    {{-- Audio previewer --}}
     <script>
-        var audio = document.getElementById("audio");
-        function togglePlay() {
-            return audio.paused ? audio.play() : audio.pause();
-        };
-        audio.onplaying = function() {
-            document.getElementById('audioPlayBtn').innerHTML = "<svg xmlns='http://www.w3.org/2000/svg' class='h-10 w-10' fill='none' viewBox='0 0 24 24' stroke='currentColor' stroke-width='2'><path stroke-linecap='round' stroke-linejoin='round' d='M10 9v6m4-6v6m7-3a9 9 0 11-18 0 9 9 0 0118 0z' /></svg>";
-        };
-        audio.onpause = function() {
-            document.getElementById('audioPlayBtn').innerHTML = "<svg xmlns='http://www.w3.org/2000/svg' class='h-10 w-10' fill='none' viewBox='0 0 24 24' stroke='currentColor' stroke-width='2'><path stroke-linecap='round' stroke-linejoin='round' d='M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z' /><path stroke-linecap='round' stroke-linejoin='round' d='M21 12a9 9 0 11-18 0 9 9 0 0118 0z' /></svg>";
-        };
-    </script>
-
-<script>
-        // Copy to clipboard
         function copyEmbed() {
             let source = '{!! $embed_url !!}';
             navigator.clipboard.writeText(source);
@@ -226,13 +195,6 @@
                 document.getElementById("embed_alert").innerText = "Copy";
             }, 5000);
         }
-
-        // Get track duration
-        function getTrackDuration(track) {
-            var tempTrack = new Audio(track);
-            tempTrack.onloadedmetadata = function() {
-                Livewire.dispatch('getAudioDuration', {duration: tempTrack.duration})
-            }
-        }
     </script>
 </div>
+

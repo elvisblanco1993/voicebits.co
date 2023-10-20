@@ -197,6 +197,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         App\Providers\FortifyServiceProvider::class,
         App\Providers\JetstreamServiceProvider::class,
+        Owenoj\LaravelGetId3\GetId3ServiceProvider::class,
     ],
 
     /*

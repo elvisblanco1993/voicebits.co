@@ -6,6 +6,7 @@ use Carbon\Carbon;
 use App\Models\Episode;
 use Livewire\Component;
 use Livewire\WithFileUploads;
+use Owenoj\LaravelGetId3\GetId3;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
 
@@ -14,6 +15,7 @@ class Edit extends Component
     use WithFileUploads;
 
     public $show, $episode, $title, $description, $published_at, $season, $number, $type, $explicit, $cover, $track, $track_url, $track_size, $track_length, $blocked, $embed_url;
+    public $currentEpisodeAudioTrack;
 
     protected $listeners = ['getAudioDuration'];
     public function getAudioDuration($duration)
@@ -35,6 +37,10 @@ class Edit extends Component
         $this->embed_url = route('public.episode.embed', ['guid' => $this->episode->guid, 'player' => 'embed']);
         $this->embed_url = '<embed width="100%" height="160" frameborder="no" scrolling="no" seamless src="' . $this->embed_url . '">';
         $this->blocked = ($this->episode->blocked) ? "true" : "false";
+
+        $this->currentEpisodeAudioTrack = Storage::disk('vultr')->temporaryUrl(
+            $this->episode->track_url, now()->addMinutes(30)
+        );
     }
 
     public function save()
@@ -102,5 +108,21 @@ class Edit extends Component
             'title' => 'required',
             'description' => 'required',
         ]);
+        $this->getTrackInfo();
+    }
+
+    public function getTrackInfo()
+    {
+        //instantiate class with file
+        $track = new GetId3($this->track->getRealPath());
+
+        // Get all necessary track information
+        $this->track_size = $track->extractInfo()['filesize']; // Size
+        $this->track_length = $track->getPlaytimeSeconds(); // Duration
+    }
+
+    public function deleteTemporaryTrack()
+    {
+        $this->track = null;
     }
 }

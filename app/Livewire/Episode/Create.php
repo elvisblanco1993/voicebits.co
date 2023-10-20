@@ -5,8 +5,10 @@ namespace App\Livewire\Episode;
 use Carbon\Carbon;
 use App\Models\Episode;
 use App\Models\Podcast;
+use Illuminate\Support\Facades\File;
 use Livewire\Component;
 use Livewire\WithFileUploads;
+use Owenoj\LaravelGetId3\GetId3;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Gate;
 
@@ -28,13 +30,6 @@ class Create extends Component
         $track_url,
         $track_size,
         $track_length;
-
-    protected $listeners = ['getAudioDuration'];
-
-    public function getAudioDuration($duration)
-    {
-        $this->track_length = $duration;
-    }
 
     public function mount()
     {
@@ -110,7 +105,7 @@ class Create extends Component
         return [
             'title' => 'required',
             'description' => 'required',
-            'track' => 'required|file|mimes:mp3',
+            'track' => 'required|file|mimes:mp3,m4a|max:200000',
             'cover' => ['nullable', 'image', 'mimes:png,jpg', 'dimensions:min_width=1500,max_width=3000,aspect=0/0'],
         ];
     }
@@ -120,8 +115,20 @@ class Create extends Component
         $this->validateOnly($track, [
             'title' => 'required',
             'description' => 'required',
-            'track' => 'required|file|mimes:mp3|max:102400',
+            'track' => 'required|file|mimes:mp3,m4a|max:200000',
         ]);
+
+        $this->getTrackInfo();
+    }
+
+    public function getTrackInfo()
+    {
+        //instantiate class with file
+        $track = new GetId3($this->track->getRealPath());
+
+        // Get all necessary track information
+        $this->track_size = $track->extractInfo()['filesize']; // Size
+        $this->track_length = $track->getPlaytimeSeconds(); // Duration
     }
 
     public function deleteTrack()

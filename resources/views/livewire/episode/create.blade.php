@@ -31,16 +31,16 @@
                             </svg>
                         </button>
                     </div>
-                    <div x-init="getTrackDuration('{{ $track->temporaryURL() }}')"></div>
                 @endif
 
                 <input type="file" accept="audio/mpeg" class="sr-only" wire:model.live="track" id="file-upload" />
                 <label for="file-upload" class="inline-flex items-center space-x-3 px-5 py-2.5 text-sm font-normal text-black cursor-pointer bg-yellow-300 hover:bg-yellow-400 transition-all rounded-full">
-                    <span>@if ($track) Replace @else Upload @endif Podcast</span>
+                    <span>@if ($track) Replace @else Upload @endif Episode</span>
                     <svg wire:loading.delay wire:loading.class="inline-block" wire:target="track" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="hidden w-5 h-5 animate-spin">
                         <path fill-rule="evenodd" d="M15.312 11.424a5.5 5.5 0 01-9.201 2.466l-.312-.311h2.433a.75.75 0 000-1.5H3.989a.75.75 0 00-.75.75v4.242a.75.75 0 001.5 0v-2.43l.31.31a7 7 0 0011.712-3.138.75.75 0 00-1.449-.39zm1.23-3.723a.75.75 0 00.219-.53V2.929a.75.75 0 00-1.5 0V5.36l-.31-.31A7 7 0 003.239 8.188a.75.75 0 101.448.389A5.5 5.5 0 0113.89 6.11l.311.31h-2.432a.75.75 0 000 1.5h4.243a.75.75 0 00.53-.219z" clip-rule="evenodd" />
                     </svg>
                 </label>
+                <p class="mt-1 text-xs text-slate-600">Supported formats: .mp3 or .m4a up to 200 megabytes.</p>
 
                 <div class="mt-6">
                     <x-label for="title">Episode title <span class="text-red-500">*</span></x-label>
@@ -126,7 +126,7 @@
                               cursor-pointer
                             "/>
                         </label>
-                        <p class="mt-3 text-xs text-slate-600">Recommended format: .PNG or .JPEG with a maximum size of 3MB. Optimal resolution is 3000x3000px.</p>
+                        <p class="mt-3 text-xs text-slate-600">Supported format: .png or .jpeg up to 3MB. Optimal resolution is 3000x3000px.</p>
                         <x-input-error for="cover" />
                     </div>
                 </div>
@@ -134,7 +134,7 @@
             </div>
 
             <div class="bg-slate-100 rounded-b-lg px-6 py-4 flex items-center justify-end">
-                <x-button wire:click="save">
+                <x-button wire:loading.attr="disabled" wire:click="save">
                     <span wire:loading.remove wire:target="save">
                         @if ($published_at)
                             Upload & Publish
@@ -143,19 +143,11 @@
                         @endif
                     </span>
                     <span wire:loading wire:target="save">Uploading</span>
-                    <svg wire:loading wire:target="save" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="ml-3 w-6 h-6 animate-spin">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99" />
+                    <svg wire:loading wire:target="save" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="ml-3 w-5 h-5 animate-spin">
+                        <path fill-rule="evenodd" d="M15.312 11.424a5.5 5.5 0 01-9.201 2.466l-.312-.311h2.433a.75.75 0 000-1.5H3.989a.75.75 0 00-.75.75v4.242a.75.75 0 001.5 0v-2.43l.31.31a7 7 0 0011.712-3.138.75.75 0 00-1.449-.39zm1.23-3.723a.75.75 0 00.219-.53V2.929a.75.75 0 00-1.5 0V5.36l-.31-.31A7 7 0 003.239 8.188a.75.75 0 101.448.389A5.5 5.5 0 0113.89 6.11l.311.31h-2.432a.75.75 0 000 1.5h4.243a.75.75 0 00.53-.219z" clip-rule="evenodd" />
                     </svg>
                 </x-button>
             </div>
         </div>
     </div>
-    <script type="text/javascript">
-        function getTrackDuration(track) {
-            var tempTrack = new Audio(track);
-            tempTrack.onloadedmetadata = function() {
-                Livewire.dispatch('getAudioDuration', {duration: tempTrack.duration})
-            }
-        }
-    </script>
 </div>

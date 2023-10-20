@@ -16,6 +16,10 @@ class CheckSubscriptionStatus
      */
     public function handle(Request $request, Closure $next)
     {
+        if (!session()->has('podcast')) {
+            return redirect()->route('podcast.catalog');
+        }
+
         $user = $request->user();
         // Check if the currently logged in user owns the podcast.
         $is_owner = $user->podcasts->find(session('podcast'))->pivot->role == "owner";
