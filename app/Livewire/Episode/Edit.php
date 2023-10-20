@@ -107,7 +107,9 @@ class Edit extends Component
         $this->validateOnly($track, [
             'track' => 'required|file|mimes:mp3,m4a|max:200000',
         ]);
-        $this->getTrackInfo();
+        if ($track) {
+            $this->getTrackInfo();
+        }
     }
 
     public function getTrackInfo()
