@@ -45,12 +45,12 @@
 
                 <div class="mt-6">
                     <x-label for="title">Episode title <span class="text-red-500">*</span></x-label>
-                    <x-input type="text" wire:model.live="title" id="title" placeholder="What do you want to call this episode?" class="mt-1 w-full"/>
+                    <x-input type="text" wire:model="title" id="title" placeholder="What do you want to call this episode?" class="mt-1 w-full"/>
                     <x-input-error for="title" class="mt-2 text-sm text-red-600"/>
                 </div>
                 <div class="mt-6">
                     <x-label for="description">Description <span class="text-red-500">*</span></x-label>
-                    <textarea wire:model.live="description" id="description" rows="6" class="input"></textarea>
+                    <textarea wire:model="description" id="description" rows="6" class="input"></textarea>
                     <x-input-error for="description" class="mt-2 text-sm text-red-600"/>
                 </div>
                 <div class="mt-6">
