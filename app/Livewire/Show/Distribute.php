@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Http;
 class Distribute extends Component
 {
     public $podcast;
-    public $podcastindex, $apple, $spotify, $google, $stitcher, $podcastaddict, $pocketcasts, $amazon, $pandora, $iheartradio, $castbox, $castro, $deezer;
+    public $podcastindex, $apple, $spotify, $stitcher, $podcastaddict, $pocketcasts, $amazon, $pandora, $iheartradio, $castbox, $castro, $deezer;
 
     public function mount()
     {
@@ -27,7 +27,6 @@ class Distribute extends Component
         $this->podcastindex = $this->podcast->podcastindex;
         $this->apple = $this->podcast->apple;
         $this->spotify = $this->podcast->spotify;
-        $this->google = $this->podcast->google;
         $this->stitcher = $this->podcast->stitcher;
         $this->pocketcasts = $this->podcast->pocketcasts;
         $this->amazon = $this->podcast->amazon;

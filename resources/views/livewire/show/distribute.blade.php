@@ -27,17 +27,6 @@
 
         <div class="my-12"></div>
 
-        {{-- <div class="w-full bg-white rounded-lg shadow">
-            <div class="p-8">
-                <p class="text-xl font-bold">Podcast Index</p>
-                <p class="text-slate-600">This is one of the biggest independent podcast aggregators out there. Follow this guide to make your show available in Podcast Index. Once you publish your feed, paste the url provided by Podcast Index in the field below.</p>
-                <x-input type="url" wire:model.live="podcastindex" class="mt-2 w-full" placeholder="https://podcastindex.org/podcast/123456789"/>
-            </div>
-            <div class="px-8 py-4 bg-slate-100 flex justify-end rounded-b-lg">
-                <x-button wire:click="publishToPodcastIndex">{{ __("Publish on Podcast Index") }}</x-button>
-            </div>
-        </div> --}}
-
         <div class="mt-12"></div>
         <div class="w-full bg-white rounded-lg shadow">
             <div class="p-8">
@@ -229,6 +218,7 @@
         </div>
 
         <div class="mt-12"></div>
+
         <div class="w-full bg-white rounded-lg shadow">
             <div class="p-8">
                 <div class="flex items-center space-x-3 fill-slate-600">
@@ -238,11 +228,10 @@
                     ]) xmlns="http://www.w3.org/2000/svg"><title>Castro</title><path d="M12 0C5.372 0 0 5.373 0 12s5.372 12 12 12c6.627 0 12-5.373 12-12S18.627 0 12 0zm-.002 13.991a2.052 2.052 0 1 1 0-4.105 2.052 2.052 0 0 1 0 4.105zm4.995 4.853l-2.012-2.791a5.084 5.084 0 1 0-5.982.012l-2.014 2.793A8.526 8.526 0 0 1 11.979 3.42a8.526 8.526 0 0 1 8.526 8.526 8.511 8.511 0 0 1-3.512 6.898z"/></svg>
                     <p class="text-xl font-bold">Castro</p>
                 </div>
-                <p class="mt-2 text-slate-600">Once you publish your feed, paste the url provided in the field below.</p>
+                <p class="mt-2 text-slate-600">To have your podcast featured on Castro, simply add it to Apple Podcasts. Castro sources its shows from there.</p>
                 <x-input type="url" wire:model.live="castro" class="mt-2 w-full" placeholder="https://podcasts.apple.com/us/podcast/your-awesome-podcast"/>
             </div>
-            <div class="px-8 py-4 bg-slate-100 flex justify-end sm:justify-between items-center rounded-b-lg">
-                <p class="hidden sm:block text-xs font-mono text-slate-600">{{ route('public.podcast.feed', ['url' => $podcast->url, 'player' => 'castro']) }}</p>
+            <div class="px-8 py-4 bg-slate-100 flex justify-end items-center rounded-b-lg">
                 <x-button wire:click="save">{{ __("Save changes") }}</x-button>
             </div>
         </div>

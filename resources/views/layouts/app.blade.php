@@ -17,7 +17,7 @@
     </head>
     <body class="font-sans antialiased">
         <x-banner />
-        <div class="min-h-screen bg-gray-100 relative">
+        <div class="min-h-screen bg-gray-50 relative">
 
             @if ( (Auth::user()->onTrial() && !Auth::user()->subscribed('voicebits')) && !request()->routeIs('signup') )
                 <div class="w-full bg-yellow-100">
