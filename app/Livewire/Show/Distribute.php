@@ -49,7 +49,6 @@ class Distribute extends Component
             $this->podcast->podcastindex = $this->podcastindex;
             $this->podcast->apple = $this->apple;
             $this->podcast->spotify = $this->spotify;
-            $this->podcast->google = $this->google;
             $this->podcast->stitcher = $this->stitcher;
             $this->podcast->pocketcasts = $this->pocketcasts;
             $this->podcast->amazon = $this->amazon;
