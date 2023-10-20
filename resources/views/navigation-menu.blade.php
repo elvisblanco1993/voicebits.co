@@ -10,6 +10,8 @@
                 @can('manage_platform')
                     <div class="mx-4 py-2 border-l border-l-slate-200"></div>
                     <x-nav-link href="{{ route('article.index') }}" :active="request()->routeIs('article.index')">Articles</x-nav-link>
+                    <x-nav-link href="{{ route('log-viewer.index') }}" :active="request()->routeIs('log-viewer.index')">System Logs</x-nav-link>
+                    <x-nav-link href="{{ route('horizon.index') }}" :active="request()->routeIs('horizon.index')" target="blank">Horizon</x-nav-link>
                 @endcan
             </div>
 
