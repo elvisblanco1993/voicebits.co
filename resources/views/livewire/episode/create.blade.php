@@ -53,6 +53,25 @@
                     <textarea wire:model="description" id="description" rows="6" class="input"></textarea>
                     <x-input-error for="description" class="mt-2 text-sm text-red-600"/>
                 </div>
+
+                <div class="mt-6">
+                    <label class="block">
+                        <span class="block font-medium text-sm text-gray-700">Upload transcript</span>
+                        <input type="file" accept="text/plain" wire:model.live="transcript" class="mt-1 block w-full text-sm text-slate-500
+                          file:mr-4 file:py-2 file:px-4
+                          file:rounded-full file:border-0
+                          file:text-sm file:font-semibold
+                          file:bg-teal-50 file:text-teal-700
+                          hover:file:bg-teal-100
+                          cursor-pointer
+                        "/>
+                    </label>
+                    <p class="mt-3 text-xs text-slate-600">Upload the TXT episode transcript.</p>
+                    <x-input-error for="transcript" />
+                </div>
+
+                <div class="mt-6 border-t border-dashed border-slate-200"></div>
+
                 <div class="mt-6">
                     <x-label for="published_at">Episode release date & time</x-label>
                     <div class="flex items-center space-x-4">
@@ -122,8 +141,8 @@
                               file:mr-4 file:py-2 file:px-4
                               file:rounded-full file:border-0
                               file:text-sm file:font-semibold
-                              file:bg-indigo-50 file:text-indigo-700
-                              hover:file:bg-indigo-100
+                              file:bg-teal-50 file:text-teal-700
+                              hover:file:bg-teal-100
                               cursor-pointer
                             "/>
                         </label>

@@ -29,14 +29,15 @@ class Create extends Component
         $track,
         $track_url,
         $track_size,
-        $track_length;
+        $track_length,
+        $transcript;
 
     public function mount()
     {
-        if (!Gate::allows('edit_episodes')) {
+        $this->podcast = Podcast::findorfail(session('podcast'));
+        if (!Gate::allows('edit_episodes') || $this->podcast->is_completed) {
             abort(401);
         }
-        $this->podcast = Podcast::findorfail(session('podcast'));
         $latestEpisode = $this->podcast->episodes()->latest()->first();
         if (!$latestEpisode) {
             $this->season = 1;
@@ -69,8 +70,10 @@ class Create extends Component
             // Upload artwork
             $artwork = ($this->cover) ?
                 $this->cover->storePublicly('podcasts/' . session('podcast') . '/covers', config('filesystems.default'))
-                :
-                null;
+                : null;
+            $transcript = ($this->transcript) ?
+                $this->transcript->storePublicly('podcasts/' . session('podcast') . '/episodes/transcripts', config('filesystems.default'))
+                : null;
             // Create episode
             Episode::create([
                 'guid' => uniqid(),
@@ -86,6 +89,7 @@ class Create extends Component
                 'track_url' => $this->track_url,
                 'track_size' => ($this->track) ? $this->track->getSize() : 0,
                 'track_length' => ($this->track) ? $this->track_length : 0,
+                'transcript' => $transcript,
             ]);
 
             session()->flash('flash.banner', 'Your new episode is now ready. See more retails below.');

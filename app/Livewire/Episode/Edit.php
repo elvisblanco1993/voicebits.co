@@ -4,17 +4,19 @@ namespace App\Livewire\Episode;
 
 use Carbon\Carbon;
 use App\Models\Episode;
+use App\Models\Podcast;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 use Owenoj\LaravelGetId3\GetId3;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Storage;
 
 class Edit extends Component
 {
     use WithFileUploads;
 
-    public $show, $episode, $title, $description, $published_at, $season, $number, $type, $explicit, $cover, $track, $track_url, $track_size, $track_length, $blocked, $embed_url;
+    public $podcast, $episode, $title, $description, $published_at, $season, $number, $type, $explicit, $cover, $track, $track_url, $track_size, $track_length, $blocked, $embed_url, $transcript;
     public $currentEpisodeAudioTrack;
 
     protected $listeners = ['getAudioDuration'];
@@ -25,6 +27,11 @@ class Edit extends Component
 
     public function mount()
     {
+        $this->podcast = Podcast::findorfail(session('podcast'));
+        if (!Gate::allows('edit_episodes') || $this->podcast->is_completed) {
+            abort(401);
+        }
+
         $this->episode = Episode::find($this->episode);
         $this->title = $this->episode->title;
         $this->description = $this->episode->description;
@@ -65,6 +72,10 @@ class Edit extends Component
                 $artwork = $this->episode->cover;
             }
 
+            $transcript = ($this->transcript) ?
+                $this->transcript->storePublicly('podcasts/' . session('podcast') . '/episodes/transcripts', config('filesystems.default'))
+                : $this->episode->transcript;
+
             $this->episode->update([
                 'title' => $this->title,
                 'description' => $this->description,
@@ -78,6 +89,7 @@ class Edit extends Component
                 'track_size' => ($this->track) ? $this->track_size : $this->episode->track_size,
                 'track_length' => ($this->track) ? $this->track_length : $this->episode->track_length,
                 'blocked' => ($this->blocked === "true") ? 1 : 0,
+                'transcript' => $transcript,
             ]);
             session()->flash('flash.banner', 'Your changes were saved.');
             session()->flash('flash.bannerStyle', 'success');

@@ -217,13 +217,28 @@
             </div>
         </div>
 
+        <div class="mt-12"></div>
+        <div class="w-full bg-white rounded-lg shadow">
+            <div class="p-6">
+                <p class="text-xl font-bold">✔️ Validate feed</p>
+                <p class="mt-2 text-slate-600">Some podcast players may ask you to validate your feed using a code. This is where you enter that information.</p>
+                <div class="mt-2">
+                    <x-label for="txt">Validation code</x-label>
+                    <x-input id="txt" type="text" wire:model="txt" class="mt-1 w-full"/>
+                </div>
+            </div>
+            <div class="px-6 py-4 bg-slate-100 flex justify-end rounded-b-lg">
+                <x-button wire:click="save">{{ __("Save changes") }}</x-button>
+            </div>
+        </div>
+
         {{-- Lock podcast --}}
         @if (!$podcast->isPrivate())
             <div class="mt-12"></div>
             <div class="w-full bg-white rounded-lg shadow">
                 <div class="p-6">
                     <div class="flex items-center space-x-3 fill-slate-600">
-                        <p class="text-xl font-bold">Lock feed</p>
+                        <p class="text-xl font-bold">🔒 Lock feed</p>
                     </div>
                     <p class="mt-2 text-slate-600">When this value is present and set to “yes”, the podcast feed cannot be imported or migrated to other platforms  that respect the tag.</p>
                     <div class="mt-2">
@@ -242,6 +257,29 @@
                 </div>
             </div>
         @endif
+
+        <div class="mt-12"></div>
+        <div class="w-full bg-white rounded-lg shadow">
+            <div class="p-6">
+                <div class="flex items-center space-x-3 fill-slate-600">
+                    <p class="text-xl font-bold">🔚 Mark podcast as completed</p>
+                </div>
+                <p class="mt-2 text-slate-600">Use this option when you are ready to end this podcast. After you mark it as closed you will not be able to upload any further episodes, and we will notify all podcast players that are connected to your show.</p>
+                <div class="mt-2">
+                    <label for="is_completed-btn" class="flex items-center">
+                        <input type="checkbox" name="is_completed" wire:model="is_completed" id="is_completed-btn" class="rounded">
+                        @if ($is_completed)
+                            <span class="ml-3 text-sm font-semibold text-slate-600">This podcast is complete</span>
+                        @else
+                            <span class="ml-3 text-sm font-semibold text-slate-600">Click to mark as complete</span>
+                        @endif
+                    </label>
+                </div>
+            </div>
+            <div class="px-6 py-4 bg-slate-100 flex justify-end rounded-b-lg">
+                <x-button wire:click="save">{{ __("Save changes") }}</x-button>
+            </div>
+        </div>
 
         @can('delete_podcast', $podcast)
             <div class="mt-12"></div>

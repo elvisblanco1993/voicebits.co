@@ -15,6 +15,6 @@
     }
 
     .primary-btn {
-        @apply text-center font-medium text-sm w-full px-5 py-2 rounded-full bg-indigo-500 hover:bg-indigo-600 text-white transition-all;
+        @apply text-center font-medium w-full px-5 py-2 rounded-full bg-indigo-500 hover:bg-indigo-600 text-white transition-all;
     }
 }

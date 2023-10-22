@@ -49,6 +49,7 @@ class Create extends Component
 
         try {
             $podcast = Podcast::create([
+                'guid' => str()->uuid(),
                 'name' => $this->name,
                 'description' => $this->description,
                 'category' => $this->category,

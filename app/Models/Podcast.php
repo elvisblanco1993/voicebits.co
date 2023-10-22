@@ -13,6 +13,7 @@ class Podcast extends Model
     use Searchable;
 
     protected $fillable = [
+        'guid',
         'team_id',
         'name',
         'description',
@@ -48,6 +49,8 @@ class Podcast extends Model
         'copyright',
         'welcome_email',
         'passkey',
+        'txt', // For verification purposes.
+        'is_completed', // Marks the podcast completed and cannot add new episodes.
     ];
 
     protected $with = 'episodes';

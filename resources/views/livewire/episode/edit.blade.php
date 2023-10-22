@@ -53,6 +53,25 @@
                     <textarea wire:model.live="description" id="description" rows="6" class="input"></textarea>
                     <x-input-error for="description" class="mt-2 text-sm text-red-600"/>
                 </div>
+
+                <div class="mt-6">
+                    <label class="block">
+                        <span class="block font-medium text-sm text-gray-700">Upload transcript</span>
+                        <input type="file" accept="text/plain" wire:model.live="transcript" class="mt-1 block w-full text-sm text-slate-500
+                          file:mr-4 file:py-2 file:px-4
+                          file:rounded-full file:border-0
+                          file:text-sm file:font-semibold
+                          file:bg-teal-50 file:text-teal-700
+                          hover:file:bg-teal-100
+                          cursor-pointer
+                        "/>
+                    </label>
+                    <p class="mt-3 text-xs text-slate-600">Upload the TXT episode transcript.</p>
+                    <x-input-error for="transcript" />
+                </div>
+
+                <div class="mt-6 border-t border-dashed border-slate-200"></div>
+
                 <div class="mt-6">
                     <x-label for="published_at">Episode release date & time</x-label>
                     <div class="flex items-center space-x-4">
@@ -81,7 +100,7 @@
                     <div class="">
                         <x-label for="type" value="Episode type"/>
                         <select wire:model.live="type" id="type" required
-                            class="border-slate-200 focus:ring focus:ring-indigo-100 focus:outline-none rounded-md block outline-none focus:border-indigo-200 mt-1 w-full">
+                            class="border-slate-200 focus:ring focus:ring-teal-100 focus:outline-none rounded-md block outline-none focus:border-teal-200 mt-1 w-full">
                             <option disabled>Select an option</option>
                             <option value="full">Full episode</option>
                             <option value="trailer">Trailer</option>
@@ -92,7 +111,7 @@
                     <div class="">
                         <x-label for="type" value="Content type"/>
                         <select wire:model.live="explicit" id="type" required
-                            class="border-slate-200 focus:ring focus:ring-indigo-100 focus:outline-none rounded-md block outline-none focus:border-indigo-200 mt-1 w-full">
+                            class="border-slate-200 focus:ring focus:ring-teal-100 focus:outline-none rounded-md block outline-none focus:border-teal-200 mt-1 w-full">
                             <option disabled>Select an option</option>
                             <option value="false">Clean</option>
                             <option value="true">Explicit</option>
@@ -138,8 +157,8 @@
                               file:mr-4 file:py-2 file:px-4
                               file:rounded-full file:border-0
                               file:text-sm file:font-semibold
-                              file:bg-indigo-50 file:text-indigo-700
-                              hover:file:bg-indigo-100
+                              file:bg-teal-50 file:text-teal-700
+                              hover:file:bg-teal-100
                               cursor-pointer
                             "/>
                         </label>
@@ -153,7 +172,7 @@
                 <div class="mt-6">
                     <div class="flex items-center justify-between">
                         <label for="embed" class="block font-medium text-sm text-gray-700">Embed</label>
-                        <button class="flex items-center space-x-2 text-sm text-slate-600 hover:text-indigo-600 transition-all" onclick="copyEmbed()">
+                        <button class="flex items-center space-x-2 text-sm text-slate-600 hover:text-teal-600 transition-all" onclick="copyEmbed()">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5">
                                 <path d="M7 3.5A1.5 1.5 0 018.5 2h3.879a1.5 1.5 0 011.06.44l3.122 3.12A1.5 1.5 0 0117 6.622V12.5a1.5 1.5 0 01-1.5 1.5h-1v-3.379a3 3 0 00-.879-2.121L10.5 5.379A3 3 0 008.379 4.5H7v-1z" />
                                 <path d="M4.5 6A1.5 1.5 0 003 7.5v9A1.5 1.5 0 004.5 18h7a1.5 1.5 0 001.5-1.5v-5.879a1.5 1.5 0 00-.44-1.06L9.44 6.439A1.5 1.5 0 008.378 6H4.5z" />

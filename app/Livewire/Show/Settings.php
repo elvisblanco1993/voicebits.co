@@ -34,7 +34,9 @@ class Settings extends Component
         $reply_to,
         $copyright,
         $welcome_email,
-        $passkey;
+        $passkey,
+        $txt,
+        $is_completed;
 
     public function mount()
     {
@@ -53,6 +55,7 @@ class Settings extends Component
         $this->timezone = $this->podcast->timezone;
         $this->explicit = ($this->podcast->explicit) ? "true" : "false";
         $this->is_locked = ($this->podcast->is_locked) ? true : false;
+        $this->is_completed = ($this->podcast->is_completed) ? true : false;
         $this->funding = $this->podcast->funding;
         $this->funding_text = $this->podcast->funding_text;
         $this->funding_description = $this->podcast->funding_description;
@@ -62,6 +65,7 @@ class Settings extends Component
         $this->copyright = $this->podcast->copyright;
         $this->welcome_email = $this->podcast->welcome_email;
         $this->passkey = $this->podcast->passkey;
+        $this->txt = $this->podcast->txt;
     }
 
     public function render()
@@ -113,7 +117,8 @@ class Settings extends Component
                 'url' => str($this->url)->slug(),
                 'cover' => ($this->cover) ? $new_cover_file : $this->podcast->cover,
                 'explicit' => ($this->explicit === "true") ? 1 : 0,
-                'is_locked' => $this->is_locked,
+                'is_locked' => $this->is_locked ? true : false,
+                'is_completed' => $this->is_completed ? true : false,
                 'funding' => $this->funding,
                 'funding_text' => $this->funding_text,
                 'funding_description' => $this->funding_description,
@@ -123,6 +128,7 @@ class Settings extends Component
                 'copyright' => $this->copyright,
                 'welcome_email' => $this->welcome_email,
                 'passkey' => base64_encode($this->passkey),
+                'txt' => $this->txt,
             ]);
 
             if ($this->url) {

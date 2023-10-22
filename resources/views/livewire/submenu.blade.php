@@ -21,7 +21,9 @@
     <ul class="h-12 flex items-center space-x-1 overflow-x-scroll sm:overflow-x-hidden">
         <x-nav-link href="{{ route('podcast.dashboard') }}" :active="request()->routeIs('podcast.dashboard')">Dashboard</x-nav-link>
         @can('view_episodes')
-            <x-nav-link href="{{ route('podcast.episodes') }}" :active="request()->routeIs('podcast.episodes')">Episodes</x-nav-link>
+            @if (!$podcast->is_completed)
+                <x-nav-link href="{{ route('podcast.episodes') }}" :active="request()->routeIs('podcast.episodes')">Episodes</x-nav-link>
+            @endif
         @endcan
         @if ($podcast->isPrivate())
             <x-nav-link href="{{ route('podcast.subscribers') }}" :active="request()->routeIs('podcast.subscribers')">Subscribers</x-nav-link>
