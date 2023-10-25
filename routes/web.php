@@ -14,23 +14,60 @@ use App\Livewire\Subscriber\Invite\Url;
  * Podcast routes
  */
 Route::middleware('xframe.options')->group(function() {
-    Route::get("/s/{url}", [PodcastController::class, 'show'])->name('public.podcast.website');
-    Route::get("/s/{url}/feed/{player?}", [PodcastController::class, 'feed'])->name('public.podcast.feed');
-    Route::get("/s/{url}/episode/{episode}", [PodcastController::class, 'episode'])->name('public.podcast.episode');
-    Route::get("/podcasts/{url}/covers/{cover}", [PodcastController::class, 'cover'])->name('public.podcast.cover');
-    Route::middleware('downloads.counter')->get("/s/{url}/play/{episode}/{player?}", [EpisodeController::class, 'play'])->name('public.episode.play');
 
-    // Private podcast routes
-    Route::get('/privatepodcast/{url}/invite', Url::class)->name('private.podcast.subscribe');
-    Route::get('/privatepodcast/{token}/auth', \App\Livewire\Subscriber\Auth::class)->name('private.podcast.login');
-    Route::middleware('private.podcast.auth')->get('/privatepodcast/{token}/confirm', App\Livewire\Subscriber\Invite\Confirmation::class)->name('private.podcast.confirm');
-    Route::middleware('private.podcast.auth')->get('/privatepodcast/{token}', [SubscriberController::class, 'show'])->name('private.podcast.website');
-    Route::middleware('private.podcast.auth')->get('/privatefeed/{token}', [SubscriberController::class, 'feed'])->name('private.podcast.feed');
+    /**
+     * Podcast Feed Route
+     */
+    Route::domain('feeds.' . preg_replace(['#^https?://#', '#:8000$#'], '', config('app.url')))->group( function () {
+        Route::get("/{url}/{player?}", [PodcastController::class, 'feed'])->name('public.podcast.feed');
+    });
+
+    /**
+     * Podcast Subdomain
+     */
+    Route::domain('{url}.' . preg_replace(['#^https?://#', '#:8000$#'], '', config('app.url')))->group( function () {
+
+        /**
+         * Public Podcast Routes
+         */
+        Route::get("/", [PodcastController::class, 'show'])->name('public.podcast.website');
+
+        Route::get("/episode/{episode}", [PodcastController::class, 'episode'])->name('public.podcast.episode');
+
+        Route::get("/artwork.jpeg", [PodcastController::class, 'cover'])->name('public.podcast.cover');
+
+        Route::get('/episode/{episode}/transcript', [PodcastController::class, 'transcript'])->name('public.podcast.transcript');
+
+        Route::middleware('downloads.counter')
+            ->get("/play/{episode}/{player?}", [EpisodeController::class, 'play'])
+            ->name('public.episode.play');
+
+        /**
+         * Private Podcast Routes
+         */
+        Route::get('/invite', Url::class)->name('private.podcast.subscribe');
+        Route::get('/{token}/auth', \App\Livewire\Subscriber\Auth::class)->name('private.podcast.login');
+
+        /**
+         * Private Protected Routes
+         */
+        Route::middleware('private.podcast.auth')->group( function () {
+            Route::get('/{token}/confirm', App\Livewire\Subscriber\Invite\Confirmation::class)->name('private.podcast.confirm');
+            Route::get('/privatepodcast/{token}', [SubscriberController::class, 'show'])->name('private.podcast.website');
+            Route::get('/privatefeed/{token}', [SubscriberController::class, 'feed'])->name('private.podcast.feed');
+        });
+    });
 });
-Route::get('/embed/{guid}/{player?}', [App\Http\Controllers\EpisodeController::class, 'embed'])->name('public.episode.embed');
 
 /**
- * Website routes
+ * Embedded Episode Route
+ */
+Route::domain('embed.' . preg_replace(['#^https?://#', '#:8000$#'], '', config('app.url')))
+    ->get('/{guid}/{player?}', [App\Http\Controllers\EpisodeController::class, 'embed'])
+    ->name('public.episode.embed');
+
+/**
+ * Website Routes
  */
 Route::middleware('xframe.options')->group(function () {
     Route::get('/', [WebController::class, 'home'])->name('home');

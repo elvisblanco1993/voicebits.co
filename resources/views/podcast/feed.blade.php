@@ -21,16 +21,16 @@
         <pubDate>{{ date(DateTime::RFC2822, strtotime($podcast->created_at)) }}</pubDate>
         <lastBuildDate>{{ date(DateTime::RFC2822, strtotime(now())) }}</lastBuildDate>
         <image>
-            <url>{{ config('app.url') . "/" . $podcast->cover . "?aid=rss_feed" }}</url>
+            <url>{{ route('public.podcast.cover', ['url' => $podcast->url]) . '?aid=rss_feed' }}</url>
             <title>{{ $podcast->name }}</title>
-            <link>{{ config('app.url') . "/s/" . $podcast->url }}</link>
+            <link>{{ route('public.podcast.website', ['url' => $podcast->url]) }}</link>
         </image>
         <link>{{ config('app.url') . "/s/" . $podcast->url }}</link>
         <itunes:type>{{ $podcast->type }}</itunes:type>
         <itunes:summary><![CDATA[{{ $podcast->description }}]]></itunes:summary>
         <itunes:author>{{ $podcast->author }}</itunes:author>
         <itunes:explicit>{{ ($podcast->explicit) ? 'true' : 'false' }}</itunes:explicit>
-        <itunes:image href="{{ config('app.url') . '/' . $podcast->cover  . '?aid=rss_feed' }}"/>
+        <itunes:image href="{{ route('public.podcast.cover', ['url' => $podcast->url]) }}?aid=rss_feed"/>
         <itunes:owner>
             <itunes:name>{{ $podcast->author }}</itunes:name>
             <itunes:email>{{ $podcast->owner()->email }}</itunes:email>
@@ -60,7 +60,7 @@
                     <description><![CDATA[{{ $episode->description }}]]></description>
                     <pubDate>{{ date(DateTime::RFC2822, strtotime($episode->created_at)) }}</pubDate>
                     <author>{{ $podcast->owner()->email }} ({{ $podcast->author }})</author>
-                    <link>{{ config('app.url') . "/s/" . $podcast->url }}</link>
+                    <link>{{ route('public.podcast.website', ['url' => $podcast->url]) }}</link>
                     @if ($podcast->funding)
                         <podcast:funding url="{{ $podcast->funding_url }}">{{ $podcast->funding_text }}</podcast:funding>
                     @endif
@@ -73,7 +73,7 @@
                     @endforelse
                     <content:encoded><![CDATA[{{ $episode->description }}]]></content:encoded>
                     <enclosure length="{{ $episode->track_size }}" type="audio/mpeg"
-                        url="{{ config('app.url') . '/s/' . $podcast->url . '/play/' . $episode->guid . '/' . $player . '.mp3' }}" />
+                        url="{{ route('public.episode.play', ['url' => $podcast->url, 'episode' => $episode->guid, 'player' => $player]) }}" />
                     <itunes:title>{{ $episode->title }}</itunes:title>
                     <itunes:author>{{ $podcast->author }}</itunes:author>
                     <itunes:duration>{{ $episode->track_length }}</itunes:duration>
@@ -88,7 +88,7 @@
                         <itunes:season>{{ $episode->season }}</itunes:season>
                     @endif
                     @if ($episode->transcript)
-                        <podcast:transcript url="{{ Storage::url($episode->transcript) }}" type="text/plain" />
+                        <podcast:transcript url="{{ route('public.podcast.transcript', ['url' => $podcast->url, 'episode' => $episode->guid]) }}" type="text/plain" />
                     @endif
                     <itunes:block>{{ $episode->blocked ? 'yes' : 'no' }}</itunes:block>
                 </item>

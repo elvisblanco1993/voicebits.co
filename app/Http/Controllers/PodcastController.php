@@ -17,6 +17,7 @@ class PodcastController extends Controller
     public function feed($url, $player) {
         return response()
             ->view('podcast.feed', [
+                'base_url' => preg_replace(['#^https?://#', '#:8000$#'], '', config('app.url')),
                 'podcast' => Podcast::where('url', $url)->first(),
                 'player' => $player,
             ])
@@ -44,13 +45,21 @@ class PodcastController extends Controller
 
     public function cover($url)
     {
-        $podcast = Podcast::findOrFail($url);
+        $podcast = Podcast::where('url', $url)->firstOrFail();
         $mime = Storage::mimeType($podcast->cover);
         $content = Storage::get($podcast->cover);
-
         $response = Response::make($content, 200);
         $response->header("Content-Type", $mime);
+        return $response;
+    }
 
+    public function transcript($url, $episode)
+    {
+        $episode = Episode::where('guid', $episode)->firstOrFail();
+        $content = Storage::get($episode->transcript);
+        $mime = Storage::mimeType($content);
+        $response = Response::make($content, 200);
+        $response->header("Content-Type", $mime);
         return $response;
     }
 }
