@@ -1,7 +1,7 @@
 @extends('website.layout')
 @section('content')
-    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-slate-800">
-        <div class="py-20">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="py-12">
             <div class="md:text-center max-w-5xl mx-auto">
                 <h1 class="text-4xl md:text-5xl font-bold leading-10">Unlock the full potential of your podcast without breaking the bank!</h1>
                 <p class="mt-6 text-lg">With Voicebits, hosting and distributing your podcasts has never been simpler or easier. Get started with a risk-free 14-day trial, and then enjoy a transparent monthly pricing plan that's based on your average monthly downloads. Say goodbye to hidden fees and hello to hassle-free podcasting with Voicebits!</p>
@@ -33,7 +33,7 @@
                         <div class="uppercase text-4xl font-black text-slate-400">Agency</div>
                     </div>
                 </div>
-                <div class="col-span-12 md:col-span-4 bg-gradient-to-tr from-indigo-50 to-indigo-200 px-6 py-8 rounded-lg">
+                <div class="col-span-12 md:col-span-4 bg-gradient-to-tr from-teal-50 to-teal-100 dark:text-black px-6 py-8 rounded-lg">
                     <h3 class="text-2xl font-bold">All plans include</h3>
                     <div class="mt-4">
                         <p class="flex items-center space-x-2 text-sm">
@@ -68,7 +68,7 @@
                         </p>
                     </div>
                     <p class="mt-6">
-                        <a href="{{ route('register') }}" class="primary-btn font-medium block">Get started with a free trial</a>
+                        <a href="{{ route('register') }}" class="px-5 py-2 block w-full font-semibold rounded-md border-2 border-slate-800 text-slate-800 hover:bg-slate-800 hover:text-teal-300 transition-all">Get started with a free trial</a>
                     </p>
                 </div>
             </div>

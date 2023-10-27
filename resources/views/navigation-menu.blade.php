@@ -7,12 +7,6 @@
                     <img src="{{ asset('logo-mark-dark.svg') }}" alt="Voicebits" class="h-6">
                 </a>
                 <x-nav-link href="{{ route('podcast.catalog') }}" :active="request()->routeIs('podcast.catalog')">My podcasts</x-nav-link>
-                @can('manage_platform')
-                    <div class="mx-4 py-2 border-l border-l-slate-200"></div>
-                    <x-nav-link href="{{ route('article.index') }}" :active="request()->routeIs('article.index')">Articles</x-nav-link>
-                    <x-nav-link href="{{ route('log-viewer.index') }}" :active="request()->routeIs('log-viewer.index')">System Logs</x-nav-link>
-                    <x-nav-link href="{{ route('horizon.index') }}" :active="request()->routeIs('horizon.index')" target="blank">Horizon</x-nav-link>
-                @endcan
             </div>
 
 
@@ -37,6 +31,16 @@
                         @endif
                     </x-slot>
                     <x-slot name="content">
+
+                        @can('manage_platform')
+                            <div class="block px-4 py-2 text-xs text-gray-400">
+                                {{ __('System') }}
+                            </div>
+                            <x-dropdown-link href="{{ route('article.index') }}">Articles</x-dropdown-link>
+                            <x-dropdown-link href="{{ route('log-viewer.index') }}">System Logs</x-dropdown-link>
+                            <x-dropdown-link href="{{ route('horizon.index') }}" target="blank">Horizon</x-dropdown-link>
+                        @endcan
+
                         <div class="block px-4 py-2 text-xs text-gray-400">
                             {{ __('Manage Account') }}
                         </div>
@@ -46,6 +50,7 @@
                                 {{ __('Billing') }}
                             </x-dropdown-link>
                         @endcan
+
                         <x-dropdown-link href="{{ route('profile.show') }}">
                             {{ __('Profile') }}
                         </x-dropdown-link>

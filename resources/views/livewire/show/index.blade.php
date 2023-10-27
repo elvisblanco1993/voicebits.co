@@ -7,10 +7,10 @@
         @can('create_podcasts')
             <div class="mt-6 sm:mt-0 flex items-center gap-4">
                 <a href="{{ route('podcast.import.start') }}">
-                    <span class="inline-block">Import <sup class="text-xs font-medium px-1 bg-yellow-400 text-amber-900 rounded">BETA</sup></span>
+                    <span class="inline-block">Import <sup class="text-xs font-medium px-1 bg-slate-200 text-slate-600 tracking-wider rounded">beta</sup></span>
                 </a>
                 <a href="{{ route('podcast.create') }}"
-                    class="btn-link"
+                    class="px-5 py-2 rounded-md bg-teal-300 hover:bg-teal-200 font-medium transition-all"
                 >{{ __("Create Podcast") }}</a>
             </div>
         @endcan

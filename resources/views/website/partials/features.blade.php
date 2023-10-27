@@ -1,32 +1,41 @@
-<div class="bg-slate-800">
-    <div class="block max-w-5xl mx-auto py-12 lg:py-24 px-4 sm:px-6 lg:px-8 text-white">
-        <h2 class="text-3xl md:text-4xl font-semibold md:text-center">Effortlessly <span class="text-teal-400">handle and share</span> your podcasts.</h2>
+<div>
+    <div class="block max-w-7xl mx-auto py-12 lg:py-24 px-4 sm:px-6 lg:px-8">
+        <div class="py-12 grid grid-cols-2 gap-8 sm:gap-12 items-center">
+            <div class="col-span-2 sm:col-span-1">
+                <img src="{{ asset('multiple-shows.webp') }}" alt="unlimited podcasts image" class="w-full h-auto rounded-lg shadow-lg">
+            </div>
+            <div class="col-span-2 sm:col-span-1">
+                <h2 class="text-3xl md:text-5xl font-bold">Host Unlimited Podcasts</h2>
+                <p class="mt-3 text-xl sm:text-2xl">Voicebits offers free hosting for all your shows, perfect for sharing with friends and listeners.</p>
+            </div>
+        </div>
 
-        <div class="mt-12 grid grid-cols-2 gap-8">
-            <div class="col-span-2 md:col-span-1">
-                <p class="text-lg font-semibold">Unlimited podcasts</p>
-                <p class="mt-2 text-slate-200">With Voicebits, you can create as many podcasts and episodes as you want.</p>
+        <div class="py-12 grid grid-cols-2 gap-8 sm:gap-12 items-center">
+            <div class="col-span-2 sm:col-span-1">
+                <h2 class="text-3xl md:text-5xl font-bold">Be Everywhere</h2>
+                <p class="mt-3 text-xl sm:text-2xl">Reach your listeners easily with our powerful publishing tools.</p>
             </div>
-            <div class="col-span-2 md:col-span-1">
-                <p class="text-lg font-semibold">Easy podcast publishing</p>
-                <p class="mt-2 text-slate-200">We help you publish your podcasts to every single podcast player there is.</p>
+            <div class="col-span-2 sm:col-span-1 order-first sm:order-last">
+                <img src="{{ asset('distribution.webp') }}" alt="podacst distribution image" class="w-full h-auto">
             </div>
-            <div class="col-span-2 md:col-span-1">
-                <p class="text-lg font-semibold">Detailed analytics</p>
-                <p class="mt-2 text-slate-200">Know how your podcasts are performing at a glance, with our simple-yet-powerful analytics dashboard.</p>
+        </div>
+
+        <div class="py-12 grid grid-cols-2 gap-8 sm:gap-12 items-center">
+            <div class="col-span-2 sm:col-span-1">
+                <img src="{{ asset('analytics.png') }}" alt="analytics image" class="w-full h-auto rounded-lg shadow-lg">
             </div>
-            <div class="col-span-2 md:col-span-1">
-                <p class="text-lg font-semibold">Embeddable player</p>
-                <p class="mt-2 text-slate-200">You can embed our episode player into your own websites.</p>
+            <div class="col-span-2 sm:col-span-1">
+                <h2 class="text-3xl md:text-5xl font-bold">Get Realtime Analytics</h2>
+                <p class="mt-3 text-xl sm:text-2xl">Get instant insights on your podcast's performance with our intuitive analytics dashboard.</p>
             </div>
-            <div class="col-span-2 md:col-span-1">
-                <p class="text-lg font-semibold">Crafted for teamwork</p>
-                <p class="mt-2 text-slate-200">Invite colleagues, customize permissions, and collaborate effectively.</p>
+        </div>
+
+        <div class="py-12 grid grid-cols-2 gap-8 sm:gap-12">
+            <div class="col-span-2 sm:col-span-1">
+                <h2 class="text-3xl md:text-5xl font-bold">Bring your Team Over</h2>
+                <p class="mt-3 text-xl sm:text-2xl">Invite colleagues, customize permissions, and collaborate effectively.</p>
             </div>
-            <div class="col-span-2 md:col-span-1">
-                <p class="text-lg font-semibold">Premium support</p>
-                <p class="mt-2 text-slate-200">Get expert, personalized support from real people whenever you need it.</p>
-            </div>
+            <div class="col-span-2 sm:col-span-1 order-first sm:order-last"></div>
         </div>
     </div>
 </div>

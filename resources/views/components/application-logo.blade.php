@@ -1,4 +1,82 @@
 <div class="flex items-center space-x-4">
-    <img src="{{ asset('logo-mark.svg') }}" alt="" class="h-6 w-auto">
-    <span class="text-xl font-medium text-white">Voicebits</span>
+    <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+        <svg class="h-6 w-auto fill-black dark:fill-white"
+        viewBox="0 0 460 290"
+        version="1.1"
+        id="svg9"
+        sodipodi:docname="logo-mark.svg"
+        inkscape:version="1.2.2 (b0a8486541, 2022-12-01)"
+        xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+        xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+        xmlns="http://www.w3.org/2000/svg"
+        xmlns:svg="http://www.w3.org/2000/svg">
+        <defs
+            id="defs13" />
+        <sodipodi:namedview
+            id="namedview11"
+            pagecolor="#ffffff"
+            bordercolor="#000000"
+            borderopacity="0.25"
+            inkscape:showpageshadow="2"
+            inkscape:pageopacity="0.0"
+            inkscape:pagecheckerboard="0"
+            inkscape:deskcolor="#d1d1d1"
+            showgrid="false"
+            inkscape:zoom="2.7217391"
+            inkscape:cx="203.73003"
+            inkscape:cy="145.49521"
+            inkscape:window-width="2560"
+            inkscape:window-height="1371"
+            inkscape:window-x="0"
+            inkscape:window-y="32"
+            inkscape:window-maximized="1"
+            inkscape:current-layer="svg9" />
+        <rect
+            style="fill-rule:nonzero;stroke-width:3.25565;paint-order:fill"
+            id="rect184"
+            width="93.103699"
+            height="55.862217"
+            x="98.448196"
+            y="-454.99997"
+            ry="27.931108"
+            transform="rotate(90)" />
+        <rect
+            style="fill-rule:nonzero;stroke-width:4.60418;paint-order:fill"
+            id="rect344"
+            width="186.2074"
+            height="55.862217"
+            x="5.3445029"
+            y="-356.46558"
+            ry="27.931108"
+            transform="rotate(90)" />
+        <rect
+            style="fill-rule:nonzero;stroke-width:5.63896;paint-order:fill"
+            id="rect346"
+            width="279.3111"
+            height="55.862217"
+            x="5.3445029"
+            y="-257.9313"
+            ry="27.931108"
+            transform="rotate(90)" />
+        <rect
+            style="fill-rule:nonzero;stroke-width:4.60418;paint-order:fill"
+            id="rect348"
+            width="186.2074"
+            height="55.862217"
+            x="98.448196"
+            y="-159.39632"
+            ry="27.931108"
+            transform="rotate(90)" />
+        <rect
+            style="fill-rule:nonzero;stroke-width:3.25565;paint-order:fill"
+            id="rect350"
+            width="93.103699"
+            height="55.862217"
+            x="98.448196"
+            y="-60.86219"
+            ry="27.931108"
+            transform="rotate(90)" />
+    </svg>
+
+    <span class="text-xl font-medium text-black dark:text-white">Voicebits</span>
 </div>

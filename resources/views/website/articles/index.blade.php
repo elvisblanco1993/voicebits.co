@@ -1,6 +1,6 @@
 @extends('website.layout')
 @section('content')
-    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-slate-800">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-slate-800 dark:text-white">
         <div class="mt-24 md:text-center">
             <div class="col-span-12 md:col-span-8">
                 <h1 class="text-4xl md:text-5xl font-bold leading-10">News and Updates from Voicebits</h1>
@@ -11,8 +11,8 @@
         <div class="mt-12 sm:flex items-center justify-between">
             <p class="text-2xl font-bold">Latest articles</p>
             <form action="?search=" method="get">
-                <input type="search" placeholder="Search..." name="search" value="{{$search}}"
-                class="border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-lg shadow-sm">
+                <input type="search" placeholder="Find articles..." name="search" value="{{$search}}"
+                    class="dark:placeholder:text-slate-300 dark:bg-slate-700 border-gray-300 dark:border-slate-600 focus:border-teal-600 focus:ring focus:ring-teal-200 focus:ring-opacity-50 rounded-lg shadow-sm">
             </form>
         </div>
 
@@ -28,7 +28,7 @@
                         <p class="mt-2 text-base">{{ strip_tags(str($article->content)->markdown()->words(35, '[...]')) }}</p>
                         <div class="mt-4 text-sm font-mono">
                             <span>Written by {{ $article->author }}</span>
-                            <span class="block mt-2">{{ Carbon\Carbon::parse($article->published_at)->format('M d, Y') }} &middot; <a href="{{ route('blog.article', ['article' => $article->slug]) }}" class="underline text-indigo-600">Read article</a></span>
+                            <span class="block mt-2">{{ Carbon\Carbon::parse($article->published_at)->format('M d, Y') }} &middot; <a href="{{ route('blog.article', ['article' => $article->slug]) }}" class="underline text-teal-500">Read article</a></span>
                         </div>
                     </article>
                 @else
@@ -45,18 +45,14 @@
                             <p class="mt-2 text-base">{{ strip_tags(str($article->content)->markdown()->words(35, '[...]')) }}</p>
                             <div class="mt-6 text-sm font-light font-mono">
                                 <span>Written by {{ $article->author }}</span>
-                                <span class="block mt-2">{{ Carbon\Carbon::parse($article->published_at)->format('M d, Y') }} &middot; <a href="{{ route('blog.article', ['article' => $article->slug]) }}" class="underline text-indigo-600">Read article</a></span>
+                                <span class="block mt-2">{{ Carbon\Carbon::parse($article->published_at)->format('M d, Y') }} &middot; <a href="{{ route('blog.article', ['article' => $article->slug]) }}" class="underline text-teal-500">Read article</a></span>
                             </div>
                         </div>
                     </article>
                 @endif
             @empty
-
+                <div>Oops! No articles were found. Please try again.</div>
             @endforelse
-
         </div>
-
     </div>
-    @include('website.partials.cta')
-
 @endsection

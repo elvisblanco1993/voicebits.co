@@ -28,7 +28,7 @@
         @vite('resources/css/app.css')
         @livewireStyles
     </head>
-    <body class="font-sans antialiased min-h-screen bg-slate-900 text-white">
+    <body class="font-sans antialiased min-h-screen bg-white text-black dark:bg-slate-800 dark:text-white">
 
         @include('website.partials.navbar')
         @yield('content')

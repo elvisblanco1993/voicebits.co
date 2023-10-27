@@ -4,7 +4,7 @@
 <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-0 mb-44">
     <header class="py-12 grid grid-cols-12 items-center gap-8">
         <div class="col-span-12 md:col-span-4">
-            <img src="{{ $podcast->cover ? Storage::url($podcast->cover) : null }}" alt="{{ $podcast->name }}" class="rounded-2xl shadow w-3/4 mx-auto md:w-full aspect-square object-center object-cover">
+            <img src="{{ $podcast->cover ? route('public.podcast.cover', ['url' => $podcast->url]) : null }}" alt="{{ $podcast->name }}" class="rounded-2xl shadow w-3/4 mx-auto md:w-full aspect-square object-center object-cover">
         </div>
 
         <div class="col-span-12 md:col-span-8 text-center sm:text-left">

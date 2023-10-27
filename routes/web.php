@@ -75,6 +75,15 @@ Route::middleware('xframe.options')->group(function () {
     Route::get('/pricing', [WebController::class, 'pricing'])->name('pricing');
     Route::get('/blog', [ArticleController::class, 'index'])->name('blog.index');
     Route::get('/blog/{article}', [ArticleController::class, 'show'])->name('blog.article');
+
+    /**
+     * Feature Routes
+     */
+    Route::get('features/hosting', function () { return view('website.features.hosting') ; });
+    Route::get('features/private-podcasts', function () { return view('website.features.private-podcasts') ; });
+    Route::get('features/analytics', function () { return view('website.features.analytics') ; });
+    Route::get('features/distribution', function () { return view('website.features.distribution') ; });
+    Route::get('features/podcast-website', function () { return view('website.features.website') ; });
 });
 
 /**

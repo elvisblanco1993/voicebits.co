@@ -23,25 +23,26 @@
         <script defer src="https://unpkg.com/@alpinejs/collapse@3.x.x/dist/cdn.min.js"></script>
         @vite('resources/js/app.js')
     </head>
-    <body class="font-sans antialiased min-h-screen bg-white">
+    <body class="font-sans antialiased min-h-screen bg-white dark:bg-slate-800">
         @include('website.partials.navbar')
-        <article class="md:mt-24 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-slate-800" itemtype="http://schema.org/Article">
+        <article class="py-12 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8" itemtype="http://schema.org/Article">
             <div>
-                <a href="{{ route('blog.index') }}" class="text-sm text-slate-400 underline hover:text-slate-600 transition-all">Voicebits blog</a>
+                <a href="{{ route('blog.index') }}" class="text-sm text-slate-400 underline hover:text-slate-600 transition-all"> <- Back to all articles</a>
             </div>
-            <h1 class="mt-6 text-4xl md:text-5xl lg:text-6xl font-bold">{{ $article->title }}</h1>
+            <h1 class="mt-6 text-4xl md:text-5xl lg:text-6xl font-bold text-black dark:text-white">{{ $article->title }}</h1>
             <img src="{{ asset($article->image) }}" alt="Image for {{ $article->title }}" class="mt-12 w-full rounded-xl aspect-video object-cover object-center">
-            <div class="my-12 text-sm font-light">
+            <div class="my-12 text-sm font-mono text-black dark:text-white">
                 <span>Written by {{ $article->author}} &middot; {{ Carbon\Carbon::parse($article->published_at)->format('M d, Y') }}</span>
             </div>
-            <div class="prose prose-indigo max-w-full">
-                {!! Str::of($article->content)->markdown() !!}
+
+            <div class="max-w-full prose prose-lg prose-teal dark:prose-invert">
+                {!! Str::markdown($article->content) !!}
             </div>
         </article>
 
         {{-- Maybe this can be separated into its own component --}}
         @if (App\Models\Article::whereNotNull('published_at')->where('slug', '!=', $article->slug)->count() > 0)
-            <div class="mt-12 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-slate-800">
+            <div class="py-12 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-slate-800">
                 <h3 class="text-2xl font-bold">You might also enjoy reading:</h3>
                 <ul class="mt-4 prose">
                     @forelse (App\Models\Article::whereNotNull('published_at')->where('slug', '!=', $article->slug)->orderBy('published_at', 'desc')->take(3)->get() as $related_article)
@@ -53,7 +54,6 @@
                 </ul>
             </div>
         @endif
-        @include('website.partials.cta')
         @include('website.partials.footer')
         @livewireScripts
     </body>
