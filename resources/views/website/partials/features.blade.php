@@ -30,12 +30,12 @@
             </div>
         </div>
 
-        <div class="py-12 grid grid-cols-2 gap-8 sm:gap-12">
+        {{-- <div class="py-12 grid grid-cols-2 gap-8 sm:gap-12">
             <div class="col-span-2 sm:col-span-1">
                 <h2 class="text-3xl md:text-5xl font-bold">Bring your Team Over</h2>
                 <p class="mt-3 text-xl sm:text-2xl">Invite colleagues, customize permissions, and collaborate effectively.</p>
             </div>
             <div class="col-span-2 sm:col-span-1 order-first sm:order-last"></div>
-        </div>
+        </div> --}}
     </div>
 </div>
