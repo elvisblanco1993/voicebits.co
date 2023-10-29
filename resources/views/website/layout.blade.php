@@ -27,6 +27,18 @@
         <link href="https://fonts.bunny.net/css?family=inter:100,200,300,400,500,600,700,800,900" rel="stylesheet" />
         @vite('resources/css/app.css')
         @livewireStyles
+
+        {{-- Google Analytics --}}
+        @env('production')
+            <!-- Google tag (gtag.js) - Only works on marketing site -->
+            <script async src="https://www.googletagmanager.com/gtag/js?id=G-T04X31BRC7"></script>
+            <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', 'G-T04X31BRC7');
+            </script>
+        @endenv
     </head>
     <body class="font-sans antialiased min-h-screen bg-white text-black dark:bg-slate-800 dark:text-white">
 
