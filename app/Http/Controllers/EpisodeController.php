@@ -28,33 +28,47 @@ class EpisodeController extends Controller
     public function play($url, $episode, $player)
     {
         $episode = Episode::where('guid', $episode)->first();
+
+        // Check if episode exists
+        if (!$episode) {
+            return response()->json(['message' => 'Episode not found'], 404);
+        }
+
+        if (!Storage::disk(config('filesystems.default'))->exists($episode->track_url)) {
+            return response()->json(['message' => 'Audio file not found'], 404);
+        }
+
         $file = Storage::disk(config('filesystems.default'))->get($episode->track_url);
         $size = Storage::disk(config('filesystems.default'))->size($episode->track_url);
 
         $responseCode = 200;
-        $range = '';
+        $headers = [
+            'Accept-Ranges' => "bytes",
+            'Accept-Encoding' => "gzip, deflate",
+            'Pragma' => 'public',
+            'Expires' => '0',
+            'Cache-Control' => 'must-revalidate',
+            'Content-Transfer-Encoding' => 'binary',
+            'Content-Disposition' => ' inline; filename='.$episode->track_url,
+            'Content-Length' => $size,
+            'Content-Type' => "audio/mpeg",
+            'Connection' => "Keep-Alive",
+            'X-Pad' => 'avoid browser bug',
+            'Etag' => md5($episode->track_url)
+        ];
 
-        if (request()->header('Range')) {
+        // Check and handle Range header
+        if ($rangeHeader = request()->header('Range')) {
             $responseCode = 206;
-            $range = request()->header('Range');
+            list($start, $end) = explode('-', substr($rangeHeader, 6));
+            $start = (int) $start;
+            $end = $end ? (int) $end : $size - 1;
+            $headers['Content-Length'] = ($end - $start) + 1;
+            $headers['Content-Range'] = "bytes {$start}-{$end}/{$size}";
+            $file = substr($file, $start, $headers['Content-Length']);
         }
 
-        return response($file, $responseCode)
-            ->withHeaders([
-                'Accept-Ranges' => "bytes",
-                'Accept-Encoding' => "gzip, deflate",
-                'Pragma' => 'public',
-                'Expires' => '0',
-                'Cache-Control' => 'must-revalidate',
-                'Content-Transfer-Encoding' => 'binary',
-                'Content-Disposition' => ' inline; filename='.$episode->track_url,
-                'Content-Length' => $size,
-                'Content-Type' => "audio/mpeg",
-                'Connection' => "Keep-Alive",
-                'Content-Range' => $range.'/'.$size,
-                'X-Pad' => 'avoid browser bug',
-                'Etag' => $episode->track_url,
-            ]);
+        return response($file, $responseCode)->withHeaders($headers);
     }
 
     /**
