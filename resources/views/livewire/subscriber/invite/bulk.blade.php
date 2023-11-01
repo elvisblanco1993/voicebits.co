@@ -14,8 +14,8 @@
                         file:mr-4 file:py-2 file:px-4
                         file:rounded-full file:border-0
                         file:text-sm file:font-semibold
-                        file:bg-indigo-50 file:text-indigo-700
-                        hover:file:bg-indigo-100"
+                        file:bg-amber-50 file:text-amber-700
+                        hover:file:bg-amber-100"
                         wire:model="file" required accept=".csv, .xlsx"
                     />
                     <x-input-error for="file" class="mt-1"/>

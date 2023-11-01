@@ -15,7 +15,7 @@
 
             <div class="hidden md:flex items-center justify-center gap-6">
                 <a href="{{ route('login') }}" class="inline-block text-slate-800 dark:text-white hover:text-slate-600 dark:hover:text-slate-400 transition-all">Login</a>
-                <a href="{{ route('register') }}" class="px-5 py-2 rounded-md border-2 border-slate-800 dark:border-white text-slate-800 dark:text-white hover:bg-slate-800 dark:hover:bg-white hover:text-teal-300 dark:hover:text-slate-900 transition-all">Start free trial</a>
+                <a href="{{ route('register') }}" class="px-5 py-2 rounded-md border-2 border-slate-800 dark:border-white text-slate-800 dark:text-white hover:bg-slate-800 dark:hover:bg-white hover:text-amber-300 dark:hover:text-slate-900 transition-all">Start free trial</a>
             </div>
 
             <button class="md:hidden bg-slate-200 dark:bg-slate-800 text-slate-800 dark:text-slate-400 rounded-md flex items-center justify-center p-2" x-on:click="burger = ! burger">
@@ -48,7 +48,7 @@
                 <a href="{{ route('login') }}" class="block w-full mt-2 py-3 px-5 text-center rounded-lg hover:bg-slate-200 dark:hover:bg-slate-800 transition-all">Sign in</a>
             </li>
             <li>
-                <a href="{{ route('register') }}" class="block w-full mt-2 py-3 px-5 rounded-lg border-2 border-slate-800 dark:border-white text-center text-slate-800 dark:text-white hover:bg-slate-800 dark:hover:bg-white hover:text-teal-300 dark:hover:text-slate-900 transition-all">Start Free Trial</a>
+                <a href="{{ route('register') }}" class="block w-full mt-2 py-3 px-5 rounded-lg border-2 border-slate-800 dark:border-white text-center text-slate-800 dark:text-white hover:bg-slate-800 dark:hover:bg-white hover:text-amber-300 dark:hover:text-slate-900 transition-all">Start Free Trial</a>
             </li>
         </ul>
     </div>

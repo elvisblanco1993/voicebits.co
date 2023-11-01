@@ -7,11 +7,11 @@
         <p class="mt-1 text-sm text-slate-700">by <span class="font-bold">{{ $subscriber->podcast->author }}</span></p>
 
         <div class="mt-6 px-4 py-8 bg-white shadow rounded-lg">
-            <div class="prose prose-blue">
+            <div class="pamber pamber-blue">
                 {{Illuminate\Mail\Markdown::parse($subscriber->podcast->description)}}
             </div>
             <div class="mt-4 border-t border-slate-300 w-44 mx-auto"></div>
-            <div class="mt-4 max-w-prose text-slate-600 mx-auto">
+            <div class="mt-4 max-w-pamber text-slate-600 mx-auto">
                 <p>Use the buttons below to confirm or decline your subscription to this private podcast.</p>
 
                 <div class="mt-4 flex items-center justify-center space-x-4">

@@ -15,7 +15,7 @@
         @forelse ($contributors as $contributor)
             <div class="col-span-3 md:col-span-1 bg-white shadow-sm rounded-md">
                 <div class="flex items-center space-x-4 p-4 rounded-t-md">
-                    <img src="{{ asset($contributor->avatar) }}" alt="" class="w-1/3 aspect-square object-center rounded-full flex-none border-8 border-indigo-100">
+                    <img src="{{ asset($contributor->avatar) }}" alt="" class="w-1/3 aspect-square object-center rounded-full flex-none border-8 border-amber-100">
                     <div class="w-auto">
                         <p class="text-lg font-semibold flex items-center">{{ $contributor->name }}
                             @if ($contributor->is_default)

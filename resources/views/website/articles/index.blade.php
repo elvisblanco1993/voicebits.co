@@ -12,7 +12,7 @@
             <p class="text-2xl font-bold">Latest articles</p>
             <form action="?search=" method="get">
                 <input type="search" placeholder="Find articles..." name="search" value="{{$search}}"
-                    class="dark:placeholder:text-slate-300 dark:bg-slate-700 border-gray-300 dark:border-slate-600 focus:border-teal-600 focus:ring focus:ring-teal-200 focus:ring-opacity-50 rounded-lg shadow-sm">
+                    class="dark:placeholder:text-slate-300 dark:bg-slate-700 border-gray-300 dark:border-slate-600 focus:border-amber-600 focus:ring focus:ring-amber-200 focus:ring-opacity-50 rounded-lg shadow-sm">
             </form>
         </div>
 
@@ -28,7 +28,7 @@
                         <p class="mt-2 text-base">{{ strip_tags(str($article->content)->markdown()->words(35, '[...]')) }}</p>
                         <div class="mt-4 text-sm font-mono">
                             <span>Written by {{ $article->author }}</span>
-                            <span class="block mt-2">{{ Carbon\Carbon::parse($article->published_at)->format('M d, Y') }} &middot; <a href="{{ route('blog.article', ['article' => $article->slug]) }}" class="underline text-teal-500">Read article</a></span>
+                            <span class="block mt-2">{{ Carbon\Carbon::parse($article->published_at)->format('M d, Y') }} &middot; <a href="{{ route('blog.article', ['article' => $article->slug]) }}" class="underline text-amber-500">Read article</a></span>
                         </div>
                     </article>
                 @else
@@ -45,7 +45,7 @@
                             <p class="mt-2 text-base">{{ strip_tags(str($article->content)->markdown()->words(35, '[...]')) }}</p>
                             <div class="mt-6 text-sm font-light font-mono">
                                 <span>Written by {{ $article->author }}</span>
-                                <span class="block mt-2">{{ Carbon\Carbon::parse($article->published_at)->format('M d, Y') }} &middot; <a href="{{ route('blog.article', ['article' => $article->slug]) }}" class="underline text-teal-500">Read article</a></span>
+                                <span class="block mt-2">{{ Carbon\Carbon::parse($article->published_at)->format('M d, Y') }} &middot; <a href="{{ route('blog.article', ['article' => $article->slug]) }}" class="underline text-amber-500">Read article</a></span>
                             </div>
                         </div>
                     </article>

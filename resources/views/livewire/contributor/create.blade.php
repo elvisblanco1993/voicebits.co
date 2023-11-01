@@ -42,9 +42,9 @@
                 <div class="mt-6 grid grid-cols-4 gap-8 items-center">
                     <div class="col-span-4 md:col-span-1">
                         @if ($avatar)
-                            <img src="{{ ($avatar->temporaryUrl()) ? $avatar->temporaryUrl() : Storage::url($avatar) }}" class="w-full rounded-full shadow aspect-square object-center object-cover border-8 border-indigo-300">
+                            <img src="{{ ($avatar->temporaryUrl()) ? $avatar->temporaryUrl() : Storage::url($avatar) }}" class="w-full rounded-full shadow aspect-square object-center object-cover border-8 border-amber-300">
                         @else
-                            <div class="flex-none w-full h-full aspect-square rounded-full bg-indigo-100 flex items-center justify-center shadow-inner shadow-indigo-200">
+                            <div class="flex-none w-full h-full aspect-square rounded-full bg-amber-100 flex items-center justify-center shadow-inner shadow-amber-200">
                                 <img src="{{ asset('logo-mark-dark.svg') }}" class="w-16 h-auto">
                             </div>
                         @endif

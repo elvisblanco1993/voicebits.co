@@ -36,7 +36,7 @@
 
     @if ($subscribers->count() > 0)
         <div class="mt-6 px-6 py-8 w-full bg-white rounded-lg shadow">
-            <div class="max-w-full prose">
+            <div class="max-w-full pamber">
                 <table class="w-full table-auto">
                     <thead>
                         <tr>

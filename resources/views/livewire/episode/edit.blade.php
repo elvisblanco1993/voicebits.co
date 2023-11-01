@@ -2,7 +2,7 @@
     @livewire('submenu')
     <div class="py-6">
         <div class="flex items-center space-x-3">
-            <a href="{{ route('podcast.episodes') }}" class="hover:text-indigo-600 transition-all">
+            <a href="{{ route('podcast.episodes') }}" class="hover:text-amber-600 transition-all">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M11 15l-3-3m0 0l3-3m-3 3h8M3 12a9 9 0 1118 0 9 9 0 01-18 0z" />
                 </svg>
@@ -61,8 +61,8 @@
                           file:mr-4 file:py-2 file:px-4
                           file:rounded-full file:border-0
                           file:text-sm file:font-semibold
-                          file:bg-teal-50 file:text-teal-700
-                          hover:file:bg-teal-100
+                          file:bg-amber-50 file:text-amber-700
+                          hover:file:bg-amber-100
                           cursor-pointer
                         "/>
                     </label>
@@ -100,7 +100,7 @@
                     <div class="">
                         <x-label for="type" value="Episode type"/>
                         <select wire:model.live="type" id="type" required
-                            class="border-slate-200 focus:ring focus:ring-teal-100 focus:outline-none rounded-md block outline-none focus:border-teal-200 mt-1 w-full">
+                            class="border-slate-200 focus:ring focus:ring-amber-100 focus:outline-none rounded-md block outline-none focus:border-amber-200 mt-1 w-full">
                             <option disabled>Select an option</option>
                             <option value="full">Full episode</option>
                             <option value="trailer">Trailer</option>
@@ -111,7 +111,7 @@
                     <div class="">
                         <x-label for="type" value="Content type"/>
                         <select wire:model.live="explicit" id="type" required
-                            class="border-slate-200 focus:ring focus:ring-teal-100 focus:outline-none rounded-md block outline-none focus:border-teal-200 mt-1 w-full">
+                            class="border-slate-200 focus:ring focus:ring-amber-100 focus:outline-none rounded-md block outline-none focus:border-amber-200 mt-1 w-full">
                             <option disabled>Select an option</option>
                             <option value="false">Clean</option>
                             <option value="true">Explicit</option>
@@ -157,8 +157,8 @@
                               file:mr-4 file:py-2 file:px-4
                               file:rounded-full file:border-0
                               file:text-sm file:font-semibold
-                              file:bg-teal-50 file:text-teal-700
-                              hover:file:bg-teal-100
+                              file:bg-amber-50 file:text-amber-700
+                              hover:file:bg-amber-100
                               cursor-pointer
                             "/>
                         </label>
@@ -172,7 +172,7 @@
                 <div class="mt-6">
                     <div class="flex items-center justify-between">
                         <label for="embed" class="block font-medium text-sm text-gray-700">Embed</label>
-                        <button class="flex items-center space-x-2 text-sm text-slate-600 hover:text-teal-600 transition-all" onclick="copyEmbed()">
+                        <button class="flex items-center space-x-2 text-sm text-slate-600 hover:text-amber-600 transition-all" onclick="copyEmbed()">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5">
                                 <path d="M7 3.5A1.5 1.5 0 018.5 2h3.879a1.5 1.5 0 011.06.44l3.122 3.12A1.5 1.5 0 0117 6.622V12.5a1.5 1.5 0 01-1.5 1.5h-1v-3.379a3 3 0 00-.879-2.121L10.5 5.379A3 3 0 008.379 4.5H7v-1z" />
                                 <path d="M4.5 6A1.5 1.5 0 003 7.5v9A1.5 1.5 0 004.5 18h7a1.5 1.5 0 001.5-1.5v-5.879a1.5 1.5 0 00-.44-1.06L9.44 6.439A1.5 1.5 0 008.378 6H4.5z" />

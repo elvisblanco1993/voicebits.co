@@ -67,7 +67,7 @@
         <div class="flex items-start justify-between md:space-x-8">
             <div class="hidden md:block w-full">
                 <h1 class="text-4xl font-semibold">{{ $podcast->name }}</h1>
-                <p class="mt-4 prose max-w-full">{!! str($podcast->description)->markdown() !!}</p>
+                <p class="mt-4 pamber max-w-full">{!! str($podcast->description)->markdown() !!}</p>
 
                 {{-- Podcatchers --}}
                 @if ($podcast->isConnectedToExternalPlayers())
@@ -100,7 +100,7 @@
             <div class="md:flex items-start justify-between md:space-x-8">
                 <div class="block w-full">
                     <h1 class="text-4xl font-semibold">{{ $podcast->funding_text }}</h1>
-                    <div class="mt-4 prose max-w-full">{!! str($podcast->funding_description)->markdown() !!}</div>
+                    <div class="mt-4 pamber max-w-full">{!! str($podcast->funding_description)->markdown() !!}</div>
                     <a href="{{ $podcast->funding_url }}" target="_blank" class="inline-flex items-center mt-6 px-5 py-2 text-white bg-gradient-to-tr from-cyan-500 to-green-500 hover:from-green-500 hover:to-cyan-500 transition-all rounded-lg">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box2-heart" viewBox="0 0 16 16">
                             <path d="M8 7.982C9.664 6.309 13.825 9.236 8 13 2.175 9.236 6.336 6.31 8 7.982Z"/>

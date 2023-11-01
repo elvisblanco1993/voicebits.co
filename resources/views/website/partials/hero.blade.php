@@ -1,7 +1,7 @@
 <div class="bg-cover bg-center bg-no-repeat"
     style="background-image: url('{{ asset('voicebits2022.webp') }}')"
 >
-    <div class="bg-teal-50/80 dark:bg-slate-900/80">
+    <div class="bg-amber-50/80 dark:bg-slate-900/80">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="py-12 lg:py-44 grid grid-cols-2 items-center gap-4 sm:gap-8">
                 <div class="col-span-2 sm:col-span-1">

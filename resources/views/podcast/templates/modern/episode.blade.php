@@ -43,7 +43,7 @@
                     <span>Play episode</span>
                 </button>
 
-                <div class="mt-6 prose prose-h1:text-3xl prose-h1:font-semibold max-w-full">{!! Str::markdown($episode->description) !!}</div>
+                <div class="mt-6 pamber pamber-h1:text-3xl pamber-h1:font-semibold max-w-full">{!! Str::markdown($episode->description) !!}</div>
             </div>
             <img src="{{ Storage::url($episode->cover ?? $podcast->cover) }}" alt="{{ $podcast->name }}" class="hidden md:block w-full md:w-1/3 object-center object-cover rounded">
         </div>

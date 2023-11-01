@@ -7,7 +7,7 @@
         <p class="mt-1 text-sm text-slate-700">by <span class="font-bold">{{ $subscriber->podcast->author }}</span></p>
 
         <div class="mt-6 px-4 py-8 bg-white shadow rounded-lg">
-            <div class="prose prose-blue">
+            <div class="pamber pamber-blue">
                 {{Illuminate\Mail\Markdown::parse($subscriber->podcast->description)}}
             </div>
 

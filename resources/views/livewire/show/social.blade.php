@@ -1,8 +1,7 @@
 <div>
     @livewire('submenu')
     <div class="py-6">
-        <div class="text-2xl font-bold">Social media</div>
-        <div class="mt-4 pt-8 w-full bg-white rounded-lg shadow">
+        <div class="pt-8 w-full bg-white rounded-lg shadow">
             <div class=" px-6">
                 <x-label for="twitter" value="Twitter" class=""/>
                 <x-input id="twitter" type="url" wire:model.live="twitter" pattern="https://.*" class="w-full mt-1"/>

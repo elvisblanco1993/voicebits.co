@@ -4,7 +4,7 @@
         @forelse (config('voicebits.faq') as $faq)
             <div class="accordion-item border-t border-t-slate-200 p-4 cursor-pointer"
                 x-data="{ isOpen: false }"
-                :class="{'bg-gradient-to-tr from-teal-50 to-teal-100 dark:text-black': isOpen}"
+                :class="{'bg-gradient-to-tr from-amber-50 to-amber-100 dark:text-black': isOpen}"
                 @click="isOpen = !isOpen"
                 @click.outside="isOpen = false"
             >

@@ -7,10 +7,10 @@
     [x-cloak] { display: none !important; }
 
     .input {
-        @apply border-slate-200 focus:ring focus:ring-indigo-100 focus:outline-none rounded-md block outline-none focus:border-indigo-200 mt-1 w-full;
+        @apply border-slate-200 focus:ring focus:ring-amber-100 focus:outline-none rounded-md block outline-none focus:border-amber-200 mt-1 w-full;
     }
 
     .primary-btn {
-        @apply text-center font-medium w-full px-5 py-2 rounded-full bg-indigo-500 hover:bg-indigo-600 text-white transition-all;
+        @apply text-center font-medium w-full px-5 py-2 rounded-full bg-amber-500 hover:bg-amber-600 text-white transition-all;
     }
 }

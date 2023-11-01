@@ -33,7 +33,7 @@
                         <div class="uppercase text-4xl font-black text-slate-400">Agency</div>
                     </div>
                 </div>
-                <div class="col-span-12 md:col-span-4 bg-gradient-to-tr from-teal-50 to-teal-100 dark:text-black px-6 py-8 rounded-lg">
+                <div class="col-span-12 md:col-span-4 bg-gradient-to-tr from-amber-50 to-amber-100 dark:text-black px-6 py-8 rounded-lg">
                     <h3 class="text-2xl font-bold">All plans include</h3>
                     <div class="mt-4">
                         <p class="flex items-center space-x-2 text-sm">
@@ -68,7 +68,7 @@
                         </p>
                     </div>
                     <p class="mt-6">
-                        <a href="{{ route('register') }}" class="px-5 py-2 block w-full font-semibold rounded-md border-2 border-slate-800 text-slate-800 hover:bg-slate-800 hover:text-teal-300 transition-all">Get started with a free trial</a>
+                        <a href="{{ route('register') }}" class="px-5 py-2 block w-full font-semibold rounded-md border-2 border-slate-800 text-slate-800 hover:bg-slate-800 hover:text-amber-300 transition-all">Get started with a free trial</a>
                     </p>
                 </div>
             </div>

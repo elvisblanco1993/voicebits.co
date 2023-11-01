@@ -8,10 +8,10 @@
 
     <div class="py-6 px-4 sm:px-6 lg:px-0">
         <input type="text" id="title" wire:model="title" placeholder="Title" autofocus
-            class="w-full border-none rounded-lg focus:ring focus:ring-indigo-200 text-2xl font-bold"/>
+            class="w-full border-none rounded-lg focus:ring focus:ring-amber-200 text-2xl font-bold"/>
         <x-input-error for="title" class="mt-1" />
         <textarea id="content" wire:model="content" cols="30" rows="25" placeholder="Write something amazing..."
-            class="mt-6 w-full border-none rounded-lg focus:ring focus:ring-indigo-200"
+            class="mt-6 w-full border-none rounded-lg focus:ring focus:ring-amber-200"
         ></textarea>
         <small class="text-slate-500">Markdown is supported here.</small>
         <x-input-error for="content" class="mt-1" />
@@ -23,7 +23,7 @@
                 @elseif($image)
                     <img src="{{ $image->temporaryUrl() }}" class="w-full rounded-lg shadow aspect-square object-center object-cover">
                 @else
-                    <div class="flex-none w-full h-full aspect-square rounded-lg bg-indigo-100 flex items-center justify-center">
+                    <div class="flex-none w-full h-full aspect-square rounded-lg bg-amber-100 flex items-center justify-center">
                         <img src="{{ asset('logo-mark-dark.svg') }}" class="w-12 h-auto">
                     </div>
                 @endif
@@ -58,14 +58,14 @@
         <div class="mt-6">
             <x-label for="keywords">Keywords</x-label>
             <textarea id="keywords" wire:model="keywords" rows="6" placeholder="Write your keywords here, separated by commas..."
-                class="mt-1 w-full border-none rounded-lg focus:ring focus:ring-indigo-200"
+                class="mt-1 w-full border-none rounded-lg focus:ring focus:ring-amber-200"
             ></textarea>
         </div>
 
         <div class="mt-6 flex items-end justify-between">
             <div class="w-1/2">
                 <x-label for="author">Author</x-label>
-                <input type="text" id="author" wire:model="author" placeholder="{{ Auth::user()->name }}" class="flex-none w-full border-none rounded-lg focus:ring focus:ring-indigo-200 text-sm"/>
+                <input type="text" id="author" wire:model="author" placeholder="{{ Auth::user()->name }}" class="flex-none w-full border-none rounded-lg focus:ring focus:ring-amber-200 text-sm"/>
                 <x-input-error for="author" class="mt-1" />
             </div>
             <div class="">

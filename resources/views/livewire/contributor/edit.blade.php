@@ -46,11 +46,11 @@
                 <div class="mt-6 grid grid-cols-3 gap-8 items-center">
                     <div class="col-span-3 md:col-span-1">
                         @if($contributor->avatar && !$avatar)
-                            <img src="{{ asset($contributor->avatar) }}" class="w-full rounded-full shadow aspect-square object-center object-cover border-8 border-indigo-300">
+                            <img src="{{ asset($contributor->avatar) }}" class="w-full rounded-full shadow aspect-square object-center object-cover border-8 border-amber-300">
                         @elseif ($avatar)
-                            <img src="{{ $avatar->temporaryUrl() }}" class="w-full rounded-full shadow aspect-square object-center object-cover border-8 border-indigo-300">
+                            <img src="{{ $avatar->temporaryUrl() }}" class="w-full rounded-full shadow aspect-square object-center object-cover border-8 border-amber-300">
                         @else
-                            <div class="flex-none w-full h-full aspect-square rounded-full bg-indigo-100 flex items-center justify-center border-8 border-indigo-300">
+                            <div class="flex-none w-full h-full aspect-square rounded-full bg-amber-100 flex items-center justify-center border-8 border-amber-300">
                                 <img src="{{ asset('logo-mark-dark.svg') }}" class="w-16 h-auto">
                             </div>
                         @endif

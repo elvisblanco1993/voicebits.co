@@ -6,11 +6,12 @@
         <div class="sm:flex items-center justify-between">
         <x-input type="search" wire:model.live="search" placeholder="Search episodes by title" class="w-full sm:w-1/3"/>
             @can('upload_episodes', $podcast)
-                <a href="{{ route('podcast.episode.create') }}" class="btn-link mt-4">
+                <a href="{{ route('podcast.episode.create') }}" class="flex items-center px-5 py-2 rounded-md bg-amber-300 hover:bg-amber-200 font-medium transition-all">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5">
-                        <path d="M10.75 4.75a.75.75 0 00-1.5 0v4.5h-4.5a.75.75 0 000 1.5h4.5v4.5a.75.75 0 001.5 0v-4.5h4.5a.75.75 0 000-1.5h-4.5v-4.5z" />
+                        <path d="M9.25 13.25a.75.75 0 001.5 0V4.636l2.955 3.129a.75.75 0 001.09-1.03l-4.25-4.5a.75.75 0 00-1.09 0l-4.25 4.5a.75.75 0 101.09 1.03L9.25 4.636v8.614z" />
+                        <path d="M3.5 12.75a.75.75 0 00-1.5 0v2.5A2.75 2.75 0 004.75 18h10.5A2.75 2.75 0 0018 15.25v-2.5a.75.75 0 00-1.5 0v2.5c0 .69-.56 1.25-1.25 1.25H4.75c-.69 0-1.25-.56-1.25-1.25v-2.5z" />
                     </svg>
-                    <span class="ml-2">New episode</span>
+                    <span class="ml-2">Add episode</span>
                 </a>
             @endcan
         </div>

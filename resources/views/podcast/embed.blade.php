@@ -71,7 +71,7 @@
 
                         <div class="mx-4 w-full flex items-center">
                             <div id="progress-bar" class="w-full bg-slate-100 h-3 rounded-full cursor-pointer">
-                                <div id="progress" class="h-full bg-indigo-400 rounded-full"></div>
+                                <div id="progress" class="h-full bg-amber-400 rounded-full"></div>
                             </div>
                             <div class="flex items-center text-xs text-slate-400">
                                 <span class="ml-4 bg-slate-100 rounded-md px-1 py-0.25 font-mono text-sm leading-6 md:block text-slate-500" id="currentTime">00:00</span>
