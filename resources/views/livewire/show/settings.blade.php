@@ -119,13 +119,19 @@
                     @if (!$podcast->isPrivate())
                         <div class="mt-6" id="show-url">
                             <x-label for="url" value="Podcast url" />
-                            <x-input type="text" wire:model.live="url" id="url" class="mt-1 w-full" placeholder="{{str($podcast->name)->slug()}}" autocomplete="off"/>
+                            <div class="flex items-center mt-1">
+                                <input type="text" wire:model.live="url" id="url" placeholder="{{str($podcast->name)->slug()}}" autocomplete="off"
+                                    class="border-gray-300 focus:border-amber-300 focus:ring focus:ring-amber-200 focus:ring-opacity-50 rounded-lg rounded-r-none border-r-0 shadow-sm"
+                                >
+                                <div class="border border-gray-300 py-2 px-3 rounded-r-lg">.{{ preg_replace(['#^https?://#', '#:8000$#'], '', config('app.url')) }}</div>
+                            </div>
+                            <x-input-error for="url" class="text-sm text-red-600 mt-2" />
                         </div>
                     @endif
 
                     <div class="mt-6">
                         <x-label for="copyright">Copyright</x-label>
-                        <x-input type="text" id="copyright" wire:model.live="copyright" class="mt-1 w-full" placeholder="i.e. &copy; {{ date('Y') . ' ' . $author }}"/>
+                        <x-input type="text" id="copyright" wire:model.live="copyright" class="mt-1 w-full" placeholder="{{ date('Y') . ' ' . $author }}"/>
                     </div>
                 </div>
 
@@ -259,7 +265,7 @@
             <div class="w-full bg-white rounded-lg shadow">
                 <div class="p-6">
                     <div class="flex items-center space-x-3 fill-slate-600">
-                        <p class="text-xl font-bold">🔚 Mark podcast as completed</p>
+                        <p class="text-xl font-bold">🔚 Mark podcast complete</p>
                     </div>
                     <p class="mt-2 text-slate-600">Use this option when you are ready to end this podcast. After you mark it as closed you will not be able to upload any further episodes, and we will notify all podcast players that are connected to your show.</p>
                     <div class="mt-2">

@@ -83,6 +83,7 @@ class Settings extends Component
             'type' => ['required'],
             'author' => 'required',
             'timezone' => 'required',
+            'url' => 'required|unique:podcasts,url,'.$this->podcast->id,
             'cover' => 'nullable|image|mimes:png,jpg|dimensions:min_width=1500,max_width=3000,aspect=0/0',
         ];
     }
