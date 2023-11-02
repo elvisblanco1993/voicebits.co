@@ -21,7 +21,6 @@ class Delete extends Component
     {
         try {
             Storage::delete($this->contributor->avatar);
-            $this->contributor->podcasts()->detach();
             $this->contributor->episodes()->detach();
             $this->contributor->delete();
             session()->flash('flash.banner', 'A contributor has been successfully deleted from this podcast!');
