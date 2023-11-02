@@ -1,8 +1,8 @@
 <div>
     <div class="grid grid-cols-4 gap-8">
         <div class="col-span-4 sm:col-span-2 md:col-span-1">
-            <div class="w-full rounded-lg p-4 bg-white shadow-sm cursor-help" title="This is the number of downloads your podcast had for the last 30 days.">
-                <p class="text-2xl font-extrabold">{{ $first7}}</p>
+            <div class="w-full rounded-lg p-4 bg-white shadow-sm cursor-help" title="The average number of downloads each episode receives within the first 7 days of its release.">
+                <p class="text-2xl font-extrabold">{{ $first7 }}</p>
                 <div class="flex items-center justify-between space-x-3">
                     <p class="text-xs text-slate-600">7 days after release</p>
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6 text-amber-200">
@@ -12,8 +12,8 @@
             </div>
         </div>
         <div class="col-span-4 sm:col-span-2 md:col-span-1">
-            <div class="w-full rounded-lg p-4 bg-white shadow-sm cursor-help" title="This is the number of downloads your podcast had for the last 60 days.">
-                <p class="text-2xl font-extrabold">{{ $first14}}</p>
+            <div class="w-full rounded-lg p-4 bg-white shadow-sm cursor-help" title="The average number of downloads each episode receives within the first 14 days of its release.">
+                <p class="text-2xl font-extrabold">{{ $first14 }}</p>
                 <div class="flex items-center justify-between space-x-3">
                     <p class="text-xs text-slate-600">14 days after release</p>
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6 text-amber-200">
@@ -23,8 +23,8 @@
             </div>
         </div>
         <div class="col-span-4 sm:col-span-2 md:col-span-1">
-            <div class="w-full rounded-lg p-4 bg-white shadow-sm cursor-help" title="This is the number of downloads your podcast had for the last 90 days.">
-                <p class="text-2xl font-extrabold">{{ $first30}}</p>
+            <div class="w-full rounded-lg p-4 bg-white shadow-sm cursor-help" title="The average number of downloads each episode receives within the first 30 days of its release.">
+                <p class="text-2xl font-extrabold">{{ $first30 }}</p>
                 <div class="flex items-center justify-between space-x-3">
                     <p class="text-xs text-slate-600">30 days after release</p>
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6 text-amber-200">
@@ -34,8 +34,8 @@
             </div>
         </div>
         <div class="col-span-4 sm:col-span-2 md:col-span-1">
-            <div class="w-full rounded-lg p-4 bg-white shadow-sm cursor-help" title="This is the number of downloads your podcast had for the last year.">
-                <p class="text-2xl font-extrabold">{{ $first60}}</p>
+            <div class="w-full rounded-lg p-4 bg-white shadow-sm cursor-help" title="The average number of downloads each episode receives within the first 60 days of its release.">
+                <p class="text-2xl font-extrabold">{{ $first60 }}</p>
                 <div class="flex items-center justify-between space-x-3">
                     <p class="text-xs text-slate-600">60 days after release</p>
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6 text-amber-200">
