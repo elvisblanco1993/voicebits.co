@@ -19,6 +19,7 @@ class Create extends Component
     public $podcast;
     public $title,
         $description,
+        $scheduled_for,
         $published_at,
         $publish_now,
         $season,
@@ -52,6 +53,7 @@ class Create extends Component
     public function render()
     {
         if ($this->publish_now) {
+            $this->scheduled_for = null;
             $this->published_at = Carbon::parse(now())->format('Y-m-d\TH:i');
         }
 
@@ -67,20 +69,35 @@ class Create extends Component
         try {
             // Upload track
             $this->track_url = $this->track->store('podcasts/' . session('podcast') . '/episodes', config('filesystems.default'));
+
             // Upload artwork
             $artwork = ($this->cover) ?
                 $this->cover->storePublicly('podcasts/' . session('podcast') . '/covers', config('filesystems.default'))
                 : null;
+
+            // Upload episode transcript
             $transcript = ($this->transcript) ?
                 $this->transcript->storePublicly('podcasts/' . session('podcast') . '/episodes/transcripts', config('filesystems.default'))
                 : null;
+
+            // Setup the schedule if needed.
+            $this->scheduled_for = (!$this->publish_now && $this->published_at > now())
+                ? Carbon::parse($this->published_at)->format('Y-m-d H:i:s')
+                : null;
+
+            // Publish episode inmediately
+            $this->published_at = ($this->publish_now)
+                ? Carbon::now()->format('Y-m-d H:i:s')
+                : null;
+
             // Create episode
             Episode::create([
                 'guid' => uniqid(),
                 'podcast_id' => $this->podcast->id,
                 'title' => $this->title,
                 'description' => $this->description,
-                'published_at' => ($this->published_at) ? Carbon::parse($this->published_at)->format('Y-m-d H:i:s') : null,
+                'scheduled_for' => $this->scheduled_for,
+                'published_at' => $this->published_at,
                 'season' => $this->season,
                 'number' => $this->number,
                 'type' => $this->type,

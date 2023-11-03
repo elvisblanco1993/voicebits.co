@@ -16,6 +16,7 @@ class Episode extends Model
         'podcast_id',
         'title',
         'description',
+        'scheduled_for',
         'published_at',
         'season',
         'number',

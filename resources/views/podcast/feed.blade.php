@@ -5,9 +5,14 @@
     xmlns:atom="http://www.w3.org/2005/Atom"
     xmlns:dc="http://purl.org/dc/elements/1.1/"
     xmlns:content="http://purl.org/rss/1.0/modules/content/"
+    xmlns:podcast="https://github.com/Podcastindex-org/podcast-namespace/blob/main/docs/1.0.md"
 >
     <channel>
-        <atom:link xmlns:atom="http://www.w3.org/2005/Atom" rel="self" type="application/rss+xml" href="{{ url()->current() }}"/>
+        <atom:link xmlns:atom="http://www.w3.org/2005/Atom" rel="self" type="application/rss+xml" href="{{ url()->current() }}" title="MP3 Podcast Audio"/>
+        <atom:link rel="hub" href="https://pubsubhubbub.appspot.com/"/>
+        <podcast:podping usesPodping="true"/>
+        <podcast:medium>podcast</podcast:medium>
+
         <generator>{{ config('app.url') }}</generator>
         <podcast:guid>{{$podcast->guid}}</podcast:guid>
         <title>{{ $podcast->name }}</title>
