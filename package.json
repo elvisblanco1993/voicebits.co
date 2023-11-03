@@ -2,7 +2,7 @@
     "private": true,
     "scripts": {
         "dev": "vite",
-        "build": "vite build && cp ./resources/js/player.js ./public/js/player.js"
+        "build": "vite build && cp ./resources/js/player.js ./public/js/player.js && cp ./resources/css/feed.xsl ./public/styles/feed.xsl"
     },
     "devDependencies": {
         "@tailwindcss/forms": "^0.5.2",

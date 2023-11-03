@@ -23,13 +23,10 @@
                             Title
                         </th>
                         <th scope="col" class="py-3 px-6">
-                            Length
+                            Status
                         </th>
                         <th scope="col" class="py-3 px-6">
                             Published at
-                        </th>
-                        <th scope="col" class="py-3 px-6">
-                            Status
                         </th>
                         <th scope="col" class="py-3 px-6">
                             <span class="sr-only">Edit</span>
@@ -42,18 +39,18 @@
                             <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap">
                                 {{ $episode->title }}
                             </th>
+
                             <td class="py-4 px-6">
-                                {{  ( is_numeric($episode->track_length) ) ? gmdate("i:s", (int) $episode->track_length) : $episode->track_length }}
-                            </td>
-                            <td class="py-4 px-6">
-                                {{ Carbon\Carbon::parse($episode->published_at)->format("M d, Y") }}
-                            </td>
-                            <td class="py-4 px-6">
-                                @if (!$episode->published_at || $episode->published_at > now())
-                                    <span class="text-xs font-medium text-slate-600 bg-slate-200 px-3 py-1 rounded-lg uppercase tracking-wider">{{__("Draft")}}</span>
+                                @if (!$episode->published_at && !$episode->scheduled_for)
+                                    <span class="text-xs font-medium text-slate-600 bg-slate-200 px-2 py-0.5 rounded-full uppercase tracking-wider">{{__("Draft")}}</span>
+                                @elseif ($episode->scheduled_for)
+                                    <span class="text-xs font-medium text-pink-600 bg-pink-200 px-2 py-0.5 rounded-full uppercase tracking-wider">{{__("Scheduled")}}</span>
                                 @else
-                                    <span class="text-xs font-medium text-green-600 bg-green-200 px-3 py-1 rounded-lg uppercase tracking-wider">{{__("Published")}}</span>
+                                    <span class="text-xs font-medium text-green-600 bg-green-200 px-2 py-0.5 rounded-full uppercase tracking-wider">{{__("Published")}}</span>
                                 @endif
+                            </td>
+                            <td class="py-4 px-6">
+                                {{ ($episode->published_at) ? Carbon\Carbon::parse($episode->published_at)->format("M d, Y") : '-' }}
                             </td>
                             <td class="py-4 px-6 text-right">
                                 @can('edit_episodes', $episode->podcast)

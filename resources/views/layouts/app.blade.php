@@ -17,7 +17,7 @@
     </head>
     <body class="font-sans antialiased">
         <x-banner />
-        <div class="min-h-screen bg-gray-50 relative">
+        <div class="min-h-screen bg-gray-100 relative">
 
             @if ( (Auth::user()->onTrial() && !Auth::user()->subscribed('voicebits')) && !request()->routeIs('signup') )
                 <div class="w-full bg-yellow-100">
@@ -38,7 +38,7 @@
             <main class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
                 {{ $slot }}
             </main>
-
+            <div class="py-6"></div>
         </div>
 
         @stack('modals')

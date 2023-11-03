@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="{{ asset('styles/feed.xsl') }}"?>
 <rss version="2.0"
     xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd"
     xmlns:podcast="https://podcastindex.org/namespace/1.0"
     xmlns:atom="http://www.w3.org/2005/Atom"
     xmlns:dc="http://purl.org/dc/elements/1.1/"
     xmlns:content="http://purl.org/rss/1.0/modules/content/"
-    xmlns:podcast="https://github.com/Podcastindex-org/podcast-namespace/blob/main/docs/1.0.md"
 >
     <channel>
         <atom:link xmlns:atom="http://www.w3.org/2005/Atom" rel="self" type="application/rss+xml" href="{{ url()->current() }}" title="MP3 Podcast Audio"/>
@@ -30,7 +30,7 @@
             <title>{{ $podcast->name }}</title>
             <link>{{ route('public.podcast.website', ['url' => $podcast->url]) }}</link>
         </image>
-        <link>{{ config('app.url') . "/s/" . $podcast->url }}</link>
+        <link>{{ route('public.podcast.website', ['url' => $podcast->url]) }}</link>
         <itunes:type>{{ $podcast->type }}</itunes:type>
         <itunes:summary><![CDATA[{{ $podcast->description }}]]></itunes:summary>
         <itunes:author>{{ $podcast->author }}</itunes:author>
