@@ -7,16 +7,16 @@ use Illuminate\Notifications\Notification;
 use Illuminate\Notifications\Slack\SlackMessage;
 use Illuminate\Notifications\Slack\BlockKit\Blocks\SectionBlock;
 
-class NewAccountAlert extends Notification
+class PodPingFailAlert extends Notification
 {
     use Queueable;
 
-    public $name, $email;
-
-    public function __construct($name, $email)
+    /**
+     * Create a new notification instance.
+     */
+    public function __construct()
     {
-        $this->name = $name;
-        $this->email = $email;
+        //
     }
 
     /**
@@ -29,19 +29,13 @@ class NewAccountAlert extends Notification
         return ['slack'];
     }
 
-    /**
-     * Get the array representation of the notification.
-     *
-     * @return array<string, mixed>
-     */
     public function toSlack(object $notifiable): SlackMessage
     {
         return (new SlackMessage)
-            ->headerBlock('New User')
+            ->headerBlock('PodPing Failed')
             ->sectionBlock(function (SectionBlock $block) {
-                $block->text('You have got a new user.');
-                $block->field("*Name:*\n$this->name")->markdown();
-                $block->field("*Email:*\n$this->email")->markdown();
+                $block->text('Voicebits failed to update the PodPing System.');
+                $block->text('Check the logs for more information');
             });
     }
 }
