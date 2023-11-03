@@ -3,6 +3,7 @@
 namespace App\Console;
 
 use App\Jobs\BillingStartNotification;
+use App\Jobs\ReleaseScheduledEpisodes;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -17,6 +18,7 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         $schedule->job(new BillingStartNotification)->dailyAt('08:30'); // runs every day at 8:30 am
+        $schedule->job(new ReleaseScheduledEpisodes)->everyMinute();
     }
 
     /**
