@@ -80,15 +80,16 @@ class Create extends Component
                 $this->transcript->storePublicly('podcasts/' . session('podcast') . '/episodes/transcripts', config('filesystems.default'))
                 : null;
 
-            // Setup the schedule if needed.
-            $this->scheduled_for = (!$this->publish_now && $this->published_at > now())
-                ? Carbon::parse($this->published_at)->format('Y-m-d H:i:s')
-                : null;
-
-            // Publish episode inmediately
-            $this->published_at = ($this->publish_now)
-                ? Carbon::now()->format('Y-m-d H:i:s')
-                : null;
+            if ($this->publish_now) {
+                $this->scheduled_for = null;
+                $this->published_at = Carbon::now()->format('Y-m-d H:i:s');
+            } elseif ($this->published_at && $this->published_at > now()) {
+                $this->scheduled_for = Carbon::parse($this->published_at)->format('Y-m-d H:i:s');
+                $this->published_at = null;
+            } elseif ($this->published_at && $this->published_at <= now()) {
+                $this->scheduled_for = null;
+                $this->published_at = Carbon::parse($this->published_at)->format('Y-m-d H:i:s');
+            }
 
             // Create episode
             Episode::create([
