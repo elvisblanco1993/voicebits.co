@@ -162,5 +162,9 @@ return [
     'inject_morph_markers' => true,
 
     'navigate' => true,
+    'navigate' => [
+        'show_progress_bar' => true,
+        'progress_bar_color' => 'white',
+    ],
 
 ];

@@ -32,13 +32,18 @@ Route::middleware('xframe.options')->group(function() {
          * Public Podcast Routes
          */
         Route::get("/", [PodcastController::class, 'show'])->name('public.podcast.website');
-
+        Route::get("/episodes", [PodcastController::class, 'episodes'])->name('public.podcast.episodes');
         Route::get("/episode/{episode}", [PodcastController::class, 'episode'])->name('public.podcast.episode');
+        Route::get("/people", [PodcastController::class, 'people'])->name('public.podcast.people');
+        Route::get("/people/{person}", [PodcastController::class, 'person'])->name('public.podcast.person');
+        Route::get("/subscribe", [PodcastController::class, 'subscribe'])->name('public.podcast.subscribe');
 
         Route::get("/artwork.jpeg", [PodcastController::class, 'cover'])->name('public.podcast.cover');
-
         Route::get('/episode/{episode}/transcript', [PodcastController::class, 'transcript'])->name('public.podcast.transcript');
 
+        /**
+         * Download counter
+         */
         Route::middleware('downloads.counter')
             ->get("/play/{episode}/{player?}", [EpisodeController::class, 'play'])
             ->name('public.episode.play');

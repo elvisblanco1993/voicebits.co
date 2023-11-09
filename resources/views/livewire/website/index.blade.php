@@ -31,6 +31,19 @@
                     </div>
                 </div>
             </label>
+
+            <label wire:click="setTemplate" for="edges" class="col-span-4 md:col-span-2 lg:col-span-1 bg-white rounded-xl border">
+                <img src="{{ asset('modern-podcast.webp') }}" alt="Modern theme image" class="w-full aspect-video object-cover object-center rounded-t-xl">
+                <div class="p-4">
+                    <div class="flex items-center justify-between">
+                        <p class="text-xl font-bold text-slate-600 dark:text-slate-700">Edges</p>
+                        <input type="radio" name="template" id="edges" value="edges" wire:model.live="template" class="">
+                    </div>
+                    <div class="mt-2 text-sm text-slate-600">
+                        Refreshed template with top slim player.
+                    </div>
+                </div>
+            </label>
         </div>
 
         @if (config('app.env') == 'local')

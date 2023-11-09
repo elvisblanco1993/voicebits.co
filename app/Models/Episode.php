@@ -52,4 +52,12 @@ class Episode extends Model
             'title' => $this->title,
         ];
     }
+
+    /**
+     * Gets the published episodes
+     */
+    public function scopePublished($query)
+    {
+        return $query->where('published_at', '<', now())->orderBy('published_at', 'desc');
+    }
 }

@@ -15,8 +15,6 @@ let tmp = localStorage.getItem('guid') ?? null;
 window.onload = () => {
     if (document.querySelectorAll('.episode-btn')[0]) {
         let first_episode = document.querySelectorAll('.episode-btn')[0].getAttribute('id');
-        // setPlayerUrl(first_episode);
-        // Initialize temp button.
         tmp = first_episode;
     }
 }
