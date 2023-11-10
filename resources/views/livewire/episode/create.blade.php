@@ -68,7 +68,7 @@
                           cursor-pointer
                         "/>
                     </label>
-                    <p class="mt-3 text-xs text-slate-600">Upload the TXT episode transcript.</p>
+                    <p class="mt-3 text-xs text-slate-600">Upload the episode transcript in .txt format.</p>
                     <x-input-error for="transcript" />
                 </div>
 
