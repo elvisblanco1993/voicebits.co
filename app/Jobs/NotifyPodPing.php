@@ -36,11 +36,17 @@ class NotifyPodPing implements ShouldQueue
             $podcastFeedUrl = route('public.podcast.feed', ['url' => $this->podcast->url, 'player' => 'podping']);
 
             // Send feed update to PodPing
-            Http::get('https://podping.cloud', [
+            $request = Http::withHeaders([
+                    'Authorization' => config('podping.token'),
+                    'User-Agent' => 'Voicebits',
+                ])
+                ->get('https://podping.cloud', [
                 'url' => $podcastFeedUrl,
                 'reason' => 'updated',
                 'medium' => 'podcast'
             ]);
+
+            Log::info($request);
 
         } catch (\Throwable $th) {
             // Log Failure & Send Slack alert
