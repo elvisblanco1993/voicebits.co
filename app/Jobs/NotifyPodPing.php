@@ -33,7 +33,7 @@ class NotifyPodPing implements ShouldQueue
     {
         try {
             // Prepare the feed url
-            $podcastFeedUrl = route('public.podcast.feed', ['url' => $this->podcast->url, 'player' => 'podping']);
+            $podcastFeedUrl = route('public.podcast.feed', ['url' => $this->podcast->url, 'player' => 'podcastindex']);
 
             // Send feed update to PodPing
             Http::withHeaders([
