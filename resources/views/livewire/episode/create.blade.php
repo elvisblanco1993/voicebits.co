@@ -58,7 +58,7 @@
 
                 <div class="mt-6">
                     <label class="block">
-                        <span class="block font-medium text-sm text-gray-700">Upload transcript</span>
+                        <span class="block font-medium text-sm text-gray-700">Episode transcript</span>
                         <input type="file" accept="text/plain" wire:model.live="transcript" class="mt-1 block w-full text-sm text-slate-500
                           file:mr-4 file:py-2 file:px-4
                           file:rounded-full file:border-0
