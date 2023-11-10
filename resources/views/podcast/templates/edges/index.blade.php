@@ -12,6 +12,7 @@
                 <h2 class="page-subheading text-slate-500 uppercase text-sm font-semibold">{{__("Episodes")}}</h2>
 
                 <div class="mt-4"></div>
+
                 @forelse ($episodes as $episode)
                     <div class="border-t border-slate-300 py-4">
                         <time class="order-first font-mono text-sm leading-7 text-slate-500" datetime="{{ $episode->published_at }}">{{ \Carbon\Carbon::parse($episode->published_at)->format("M d, Y") }}</time>
@@ -54,6 +55,7 @@
             {{-- Right side --}}
             <div class="hidden md:block md:col-span-2">
                 <h2 class="page-subheading text-slate-500 uppercase text-sm font-semibold">{{__("Listen on")}}</h2>
+                @include('podcast.templates.edges.partials.podcatchers')
             </div>
         </div>
     </main>
