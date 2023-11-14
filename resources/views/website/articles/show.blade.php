@@ -35,7 +35,7 @@
                 <span>Written by {{ $article->author}} &middot; {{ Carbon\Carbon::parse($article->published_at)->format('M d, Y') }}</span>
             </div>
 
-            <div class="max-w-full prose prose-lg prose-amber dark:prose-invert">
+            <div class="max-w-full prose prose-lg prose-indigo dark:prose-invert">
                 {!! Str::markdown($article->content) !!}
             </div>
         </article>
