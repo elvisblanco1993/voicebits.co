@@ -42,12 +42,12 @@
 
         {{-- Maybe this can be separated into its own component --}}
         @if (App\Models\Article::whereNotNull('published_at')->where('slug', '!=', $article->slug)->count() > 0)
-            <div class="py-12 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-slate-800">
+            <div class="py-12 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-slate-800 dark:text-white">
                 <h3 class="text-2xl font-bold">You might also enjoy reading:</h3>
                 <ul class="mt-4 prose">
                     @forelse (App\Models\Article::whereNotNull('published_at')->where('slug', '!=', $article->slug)->orderBy('published_at', 'desc')->take(3)->get() as $related_article)
                     <li class="list-none">
-                        <a href="{{ route('blog.article', ['article' => $related_article->slug]) }}" class="text-indigo-600 underline hover:text-indigo-700">{{ $related_article->title }}</a>
+                        <a href="{{ route('blog.article', ['article' => $related_article->slug]) }}" class="text-indigo-600 dark:text-indigo-400 underline hover:text-indigo-700 dark:hover:text-indigo-600">{{ $related_article->title }}</a>
                     </li>
                     @empty
                     @endforelse
