@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Http;
 class Distribute extends Component
 {
     public $podcast;
-    public $podcastindex, $apple, $spotify, $stitcher, $podcastaddict, $pocketcasts, $amazon, $pandora, $iheartradio, $castbox, $castro, $deezer;
+    public $podcastindex, $apple, $spotify, $stitcher, $podcastaddict, $pocketcasts, $amazon, $pandora, $iheartradio, $castbox, $radiopublic, $deezer;
 
     public function mount()
     {
@@ -34,8 +34,8 @@ class Distribute extends Component
         $this->iheartradio = $this->podcast->iheartradio;
         $this->podcastaddict = $this->podcast->podcastaddict;
         $this->castbox = $this->podcast->castbox;
-        $this->castro = $this->podcast->castro;
         $this->deezer = $this->podcast->deezer;
+        $this->radiopublic = $this->podcast->radiopublic;
     }
 
     public function render()
@@ -49,14 +49,13 @@ class Distribute extends Component
             $this->podcast->podcastindex = $this->podcastindex;
             $this->podcast->apple = $this->apple;
             $this->podcast->spotify = $this->spotify;
-            $this->podcast->stitcher = $this->stitcher;
             $this->podcast->pocketcasts = $this->pocketcasts;
             $this->podcast->amazon = $this->amazon;
             $this->podcast->pandora = $this->pandora;
             $this->podcast->iheartradio = $this->iheartradio;
             $this->podcast->podcastaddict = $this->podcastaddict;
             $this->podcast->castbox = $this->castbox;
-            $this->podcast->castro = $this->castro;
+            $this->podcast->radiopublic = $this->radiopublic;
             $this->podcast->deezer = $this->deezer;
             $this->podcast->save();
             session()->flash('flash.banner', 'Your changes have been saved.');

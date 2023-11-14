@@ -51,7 +51,7 @@ class ImportEpisodes implements ShouldQueue, ShouldBeUnique
             // Get episode track
             if ($episode->track_url) {
                 $track_data = file_get_contents($episode->track_url);
-                $track_name = uniqid() . '.' . pathinfo($episode->track_url)['extension'];
+                $track_name = uniqid() . '.mp3'; // Strictly use mp3 for now.
                 Storage::disk(config('filesystems.default'))->put('podcasts/' . $episode->podcast_id . '/episodes/' . $track_name, $track_data);
             }
 

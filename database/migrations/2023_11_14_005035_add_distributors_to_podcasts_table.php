@@ -11,13 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('podcatchers', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('podcast_id');
-            $table->string('name');
-            $table->string('icon');
-            $table->string('url');
-            $table->timestamps();
+        Schema::table('podcasts', function (Blueprint $table) {
+            $table->dropColumn(['stitcher', 'castro']); // Drops deprecated distribution channels
+            $table->string('radiopublic')->after('deezer')->nullable();
         });
     }
 
@@ -26,6 +22,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('podcatchers');
+        Schema::table('podcasts', function (Blueprint $table) {
+            $table->dropColumn('radiopublic');
+        });
     }
 };
