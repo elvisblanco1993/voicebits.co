@@ -33,16 +33,18 @@ class PodcastController extends Controller
 
         return view('podcast.templates.' . $podcast->website->template . '/index', [
             'podcast' => $podcast,
-            'episodes' => $podcast->episodes()->where('published_at', '<', now())->orderBy('published_at', $episodesOrder)->take(10)->get()
+            'episodes' => $podcast->episodes()->where('published_at', '<', now())->orderBy('published_at', $episodesOrder)->take(10)->simplePaginate(12)
         ]);
     }
 
-    public function episodes($url)
+    public function episodes($url, Request $request)
     {
-        $podcast = Podcast::where('url', $url)->firstOrFail();
+        $query = $request->has('search') ? $request->search : '';
+
+        $podcast = Podcast::where('url', $url)->with('episodes')->firstOrFail();
         return view('podcast.templates.' . $podcast->website->template . '/episodes', [
             'podcast' => $podcast,
-            'episodes' => $podcast->episodes()->published()->paginate(12),
+            'episodes' => $podcast->episodes()->published()->where('title', 'like', '%' . $query . '%')->paginate(12),
         ]);
     }
 

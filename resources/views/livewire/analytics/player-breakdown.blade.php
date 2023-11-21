@@ -17,7 +17,7 @@
                 @forelse ($dbdata as $data)
                     <tr @class(['bg-white hover:bg-emerald-50', 'border-b' => !$loop->last])>
                         <td class="px-6 py-4 capitalize">
-                            {{ Str::replace('.mp3', '', $data['player']) }}
+                            {{ $data['player'] }}
                         </td>
                         <td class="px-6 py-4 text-right">
                             {{ $data['total'] }}

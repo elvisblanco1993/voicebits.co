@@ -1,4 +1,4 @@
-<div x-data="audioPlayer()" x-cloak x-show="showPlayer" x-on:set-episode.window="setEpisode($event.detail)" class="w-full md:w-[500px] md:absolute md:bottom-6 md:right-6 border md:rounded-lg shadow-sm bg-white">
+<div x-data="audioPlayer()" x-cloak x-show="showPlayer" x-on:set-episode.window="setEpisode($event.detail)" class="w-full md:w-[500px] md:fixed md:bottom-6 md:right-6 border md:rounded-lg shadow-sm bg-white">
     <div class="flex items-center space-x-3 px-4 py-2">
         <button x-on:click="playPause" id="play" x-on:click="playPause" class="text-slate-800 hover:text-slate-600 transition-all h-20 w-20">
             <svg x-cloak x-show="!isPlaying && !isLoading" xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="w-16 h-16" viewBox="0 0 16 16">
@@ -18,7 +18,7 @@
             <p class="text-sm text-black font-semibold truncate" x-ref="trackTitle"></p>
 
             <div x-ref="progressBar" class="block w-full bg-slate-100 h-2.5 my-1 rounded-full cursor-pointer" title="Click to update track position">
-                <div x-ref="progress" class="h-full bg-blue-400 rounded-full"></div>
+                <div x-ref="progress" class="h-full progress-bar rounded-full"></div>
             </div>
 
             <div class="flex items-center justify-between">

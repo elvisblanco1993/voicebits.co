@@ -1,9 +1,9 @@
 <div>
     <p class="text-xl font-semibold text-slate-900">Episode breakdown</p>
 
-    <div class="mt-2 relative overflow-x-auto shadow     sm:rounded-lg">
+    <div class="mt-2 relative overflow-x-auto shadow  sm:rounded-lg bg-white">
         <table class="w-full text-sm text-left text-gray-500">
-            <thead class="text-xs text-gray-700 uppercase bg-white">
+            <thead class="text-xs text-gray-700 uppercase">
                 <tr>
                     <th scope="col" class="px-6 py-3">
                         Episode
@@ -33,5 +33,9 @@
                 @endforelse
             </tbody>
         </table>
+
+        <div class="my-3 px-6">
+            {{ $episodes->links() }}
+        </div>
     </div>
 </div>

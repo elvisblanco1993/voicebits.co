@@ -11,6 +11,7 @@ class Index extends Component
     public $podcast, $template, $language;
     public $header_background, $header_text_color, $header_link_color;
     public $body_background, $body_text_color, $body_link_color;
+    public $custom_styles;
 
     public function mount()
     {
@@ -27,6 +28,7 @@ class Index extends Component
         $this->body_background = $this->podcast->website->body_background;
         $this->body_text_color = $this->podcast->website->body_text_color;
         $this->body_link_color = $this->podcast->website->body_link_color;
+        $this->custom_styles = $this->podcast->website->custom_styles;
     }
 
     public function render()
@@ -45,6 +47,7 @@ class Index extends Component
                 'body_background'   => $this->body_background,
                 'body_text_color'   => $this->body_text_color,
                 'body_link_color'   => $this->body_link_color,
+                'custom_styles'   => $this->custom_styles,
             ]);
         } catch (\Throwable $th) {
             Log::error($th);

@@ -1,5 +1,5 @@
-<footer class="mt-12 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="py-10 border-t-2 border-b border-slate-200">
+<footer class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="py-6 border-t-2 border-b border-slate-200">
         @include('podcast.templates.edges.partials.social')
 
         @if ($podcast->copyright)

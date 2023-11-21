@@ -50,6 +50,7 @@ class Edit extends Component
 
             $this->contributor->update([
                 'name' => $this->name,
+                'slug' => str($this->name)->slug(),
                 'bio' => $this->bio,
                 'role' => $this->role,
                 'website' => $this->website,

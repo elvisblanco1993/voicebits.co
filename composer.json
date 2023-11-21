@@ -1,10 +1,11 @@
 {
     "name": "laravel/laravel",
     "type": "project",
-    "description": "The Laravel Framework.",
+    "description": "Voicebits - A podcast platform.",
     "keywords": [
-        "framework",
-        "laravel"
+        "podcasting",
+        "podcast platform",
+        "podcast hosting"
     ],
     "license": "MIT",
     "require": {

@@ -35,8 +35,9 @@ class Create extends Component
         ]);
 
         try {
-            $contributor = Contributor::create([
+            Contributor::create([
                 'name' => $this->name,
+                'slug' => str($this->name)->slug(),
                 'bio' => $this->bio,
                 'role' => $this->role,
                 'website' => $this->website,

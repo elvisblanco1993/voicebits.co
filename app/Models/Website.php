@@ -17,6 +17,7 @@ class Website extends Model
         'body_background',
         'body_text_color',
         'body_link_color',
+        'custom_styles',
     ];
 
     public function podcast()

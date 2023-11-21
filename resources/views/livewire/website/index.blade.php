@@ -6,7 +6,7 @@
         <p class="text-base text-slate-600 font-medium">Select a template for your podcast website.</p>
 
         <div class="py-6 grid grid-cols-4 gap-8">
-            <label wire:click="setTemplate" for="classic" class="col-span-4 md:col-span-2 lg:col-span-1 bg-white rounded-xl border">
+            {{-- <label wire:click="setTemplate" for="classic" class="col-span-4 md:col-span-2 lg:col-span-1 bg-white rounded-xl border">
                 <img src="https://images.unsplash.com/photo-1530564386-40be0e9dea6f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=764&q=80" alt="Classic theme image" class="w-full aspect-video object-cover object-center rounded-t-xl">
                 <div class="p-4">
                     <div class="flex items-center justify-between">
@@ -30,23 +30,22 @@
                         Refreshed template with top slim player.
                     </div>
                 </div>
-            </label>
+            </label> --}}
 
             <label wire:click="setTemplate" for="edges" class="col-span-4 md:col-span-2 lg:col-span-1 bg-white rounded-xl border">
-                <img src="{{ asset('modern-podcast.webp') }}" alt="Modern theme image" class="w-full aspect-video object-cover object-center rounded-t-xl">
+                <img src="{{ asset('edges-template.png') }}" alt="Edges theme image" class="w-full aspect-video object-cover object-center rounded-t-xl">
                 <div class="p-4">
                     <div class="flex items-center justify-between">
                         <p class="text-xl font-bold text-slate-600 dark:text-slate-700">Edges</p>
                         <input type="radio" name="template" id="edges" value="edges" wire:model.live="template" class="">
                     </div>
                     <div class="mt-2 text-sm text-slate-600">
-                        Refreshed template with top slim player.
+                        Fresh and simple podcast template.
                     </div>
                 </div>
             </label>
         </div>
 
-        @if (config('app.env') == 'local')
         <div class="my-6 border-t"></div>
 
         <div class="py-6">
@@ -123,9 +122,11 @@
 
         <div class="py-6">
             <div class="text-xl font-bold">Custom styles</div>
-            <textarea name="" id="" cols="30" rows="10" class="mt-4 input" placeholder="You can include custom CSS here to replace any stiles in your page."></textarea>
+            <textarea wire:model="custom_styles" cols="30" rows="10" class="mt-4 input" placeholder="You can include custom CSS here to replace any stiles in your page."></textarea>
+            <div class="mt-4 flex justify-end">
+                <x-button wire:click="save">Save changes</x-button>
+            </div>
         </div>
-        @endif
 
     </div>
 </div>

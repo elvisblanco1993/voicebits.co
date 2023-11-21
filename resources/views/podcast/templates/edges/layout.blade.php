@@ -9,35 +9,63 @@
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=inter:100,200,300,400,500,600,700,800,900" rel="stylesheet" />
 
-        {{-- Used-defined styles --}}
+        {{-- Scripts --}}
+        @vite('resources/css/app.css')
+        @livewireStyles
+
         <style>
             * {
                 font-family: 'Inter', sans-serif;
             }
 
+            #header,
+            .person-badge {
+                background-color: {{ $podcast->website->header_background }};
+                color: {{ $podcast->website->header_text_color }};
+            }
+
+            #nav {
+                background-color: {{ $podcast->website->header_background }};
+            }
+
+            .nav-container {
+                color: {{ $podcast->website->body_background }};
+            }
+
             .nav-link {
-                color: #ffffff;
                 padding: 1rem 0;
                 font-weight: 700;
             }
-            .nav-link:hover {
-                color: #b8b8b8
+
+            .nav-link:hover,
+            .nav-link-selected {
+                color: {{ $podcast->website->header_link_color }};
             }
 
-            /* DB website style columns
-            header_background
-            header_text_color
-            header_link_color
-            body_background
-            body_text_color
-            body_link_color
+            /*
+                Body Elements
             */
+            .search-input:focus {
+                border: 1px solid {{ $podcast->website->body_link_color }};
+                outline-offset: 0px;
+                outline-color: {{ $podcast->website->body_link_color }};
+            }
 
+            #body {
+                background: {{ $podcast->website->body_background }};
+                color: {{ $podcast->website->body_text_color }};
+            }
+
+            .body-btn {
+                color: {{ $podcast->website->body_link_color }};
+            }
+
+            .progress-bar {
+                background-color: {{ $podcast->website->body_link_color }};
+            }
+            /* User-defined Styles */
+            {!! $podcast->website->custom_styles !!}
         </style>
-
-        {{-- Scripts --}}
-        @vite('resources/css/app.css')
-        @livewireStyles
     </head>
     <body class="antialiased min-h-screen text-black bg-white">
         @yield('content')
