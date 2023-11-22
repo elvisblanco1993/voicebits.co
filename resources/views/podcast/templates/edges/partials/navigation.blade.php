@@ -1,6 +1,6 @@
-<div id="nav">
+<div id="nav" class="-mt-6">
     <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        <nav class="flex items-center justify-start space-x-6 text-sm font-medium uppercase tracking-wider nav-container">
+        <nav class="flex items-center justify-start space-x-6 font-medium text-lg capitalize tracking-wider nav-container">
             <a @class(['nav-link transition-all', 'nav-link-selected' => request()->routeIs('public.podcast.website')])
                 href="/"
                 wire:navigate

@@ -18,7 +18,7 @@
                     <div class="border-t border-slate-300/20 py-4">
                         <time class="order-first font-mono text-sm leading-7 text-slate-500" datetime="{{ $episode->published_at }}">{{ \Carbon\Carbon::parse($episode->published_at)->format("M d, Y") }}</time>
                         <h3 class="mt-2 text-lg font-bold">
-                            <a href="#">{{ $episode->title }}</a>
+                            <a wire:navigate href="{{ route('public.podcast.episode', ['url' => $podcast->url, 'episode' => $episode->guid]) }}">{{ $episode->title }}</a>
                         </h3>
                         <p class="mt-1 text-base leading-7 text-slate-600">{!! str($episode->description)->limit(200) !!}</p>
 
@@ -40,7 +40,9 @@
 
                             <span aria-hidden="true" class="text-sm font-bold text-slate-400">/</span>
 
-                            <a class="flex items-center text-sm font-bold body-btn" aria-label="Show notes {{ $episode->title }}" href="">Show notes</a>
+                            <a wire:navigate class="flex items-center text-sm font-bold body-btn" aria-label="Show notes {{ $episode->title }}"
+                                href="{{ route('public.podcast.episode', ['url' => $podcast->url, 'episode' => $episode->guid]) }}"
+                            >Show notes</a>
                         </div>
                     </div>
                 @empty
