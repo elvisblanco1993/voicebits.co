@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "aws/aws-crt-php",
-            "version": "v1.2.3",
+            "version": "v1.2.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/awslabs/aws-crt-php.git",
-                "reference": "5545a4fa310aec39f54279fdacebcce33b3ff382"
+                "reference": "eb0c6e4e142224a10b08f49ebf87f32611d162b2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/awslabs/aws-crt-php/zipball/5545a4fa310aec39f54279fdacebcce33b3ff382",
-                "reference": "5545a4fa310aec39f54279fdacebcce33b3ff382",
+                "url": "https://api.github.com/repos/awslabs/aws-crt-php/zipball/eb0c6e4e142224a10b08f49ebf87f32611d162b2",
+                "reference": "eb0c6e4e142224a10b08f49ebf87f32611d162b2",
                 "shasum": ""
             },
             "require": {
@@ -56,22 +56,22 @@
             ],
             "support": {
                 "issues": "https://github.com/awslabs/aws-crt-php/issues",
-                "source": "https://github.com/awslabs/aws-crt-php/tree/v1.2.3"
+                "source": "https://github.com/awslabs/aws-crt-php/tree/v1.2.4"
             },
-            "time": "2023-10-16T20:10:06+00:00"
+            "time": "2023-11-08T00:42:13+00:00"
         },
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.287.1",
+            "version": "3.289.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "efe7b6e370cf12af6c2ee9503aa2aba61350ed03"
+                "reference": "c8aafbfb34e33b8fb002f2f81c241c1df3a82b54"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/efe7b6e370cf12af6c2ee9503aa2aba61350ed03",
-                "reference": "efe7b6e370cf12af6c2ee9503aa2aba61350ed03",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/c8aafbfb34e33b8fb002f2f81c241c1df3a82b54",
+                "reference": "c8aafbfb34e33b8fb002f2f81c241c1df3a82b54",
                 "shasum": ""
             },
             "require": {
@@ -151,9 +151,9 @@
             "support": {
                 "forum": "https://forums.aws.amazon.com/forum.jspa?forumID=80",
                 "issues": "https://github.com/aws/aws-sdk-php/issues",
-                "source": "https://github.com/aws/aws-sdk-php/tree/3.287.1"
+                "source": "https://github.com/aws/aws-sdk-php/tree/3.289.0"
             },
-            "time": "2023-11-20T20:12:54+00:00"
+            "time": "2023-11-27T03:48:32+00:00"
         },
         {
             "name": "bacon/bacon-qr-code",
@@ -3292,23 +3292,23 @@
         },
         {
             "name": "moneyphp/money",
-            "version": "v4.2.0",
+            "version": "v4.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/moneyphp/money.git",
-                "reference": "f660ab7f1d7a4c2ffdd30f50c55ed2c95c26fc3f"
+                "reference": "50ddfd15b2be01d4bed3bcb0c975a6af5f78a183"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/moneyphp/money/zipball/f660ab7f1d7a4c2ffdd30f50c55ed2c95c26fc3f",
-                "reference": "f660ab7f1d7a4c2ffdd30f50c55ed2c95c26fc3f",
+                "url": "https://api.github.com/repos/moneyphp/money/zipball/50ddfd15b2be01d4bed3bcb0c975a6af5f78a183",
+                "reference": "50ddfd15b2be01d4bed3bcb0c975a6af5f78a183",
                 "shasum": ""
             },
             "require": {
                 "ext-bcmath": "*",
                 "ext-filter": "*",
                 "ext-json": "*",
-                "php": "~8.0.0 || ~8.1.0 || ~8.2.0"
+                "php": "~8.0.0 || ~8.1.0 || ~8.2.0 || ~8.3.0"
             },
             "require-dev": {
                 "cache/taggable-cache": "^1.1.0",
@@ -3323,11 +3323,10 @@
                 "php-http/message": "^1.11.0",
                 "php-http/mock-client": "^1.4.1",
                 "phpbench/phpbench": "^1.2.5",
-                "phpspec/phpspec": "^7.3",
                 "phpunit/phpunit": "^9.5.4",
                 "psalm/plugin-phpunit": "^0.18.4",
                 "psr/cache": "^1.0.1",
-                "vimeo/psalm": "~5.3.0"
+                "vimeo/psalm": "~5.15.0"
             },
             "suggest": {
                 "ext-gmp": "Calculate without integer limits",
@@ -3375,9 +3374,9 @@
             ],
             "support": {
                 "issues": "https://github.com/moneyphp/money/issues",
-                "source": "https://github.com/moneyphp/money/tree/v4.2.0"
+                "source": "https://github.com/moneyphp/money/tree/v4.3.0"
             },
-            "time": "2023-08-16T14:31:24+00:00"
+            "time": "2023-11-22T09:46:30+00:00"
         },
         {
             "name": "monolog/monolog",
@@ -3944,16 +3943,16 @@
         },
         {
             "name": "opcodesio/log-viewer",
-            "version": "v3.1.8",
+            "version": "v3.1.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/opcodesio/log-viewer.git",
-                "reference": "2fd70515e8c10190fe62e27c32066462f593e847"
+                "reference": "f5ac2dffd6ca734e54995807d12cef5db7304940"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/opcodesio/log-viewer/zipball/2fd70515e8c10190fe62e27c32066462f593e847",
-                "reference": "2fd70515e8c10190fe62e27c32066462f593e847",
+                "url": "https://api.github.com/repos/opcodesio/log-viewer/zipball/f5ac2dffd6ca734e54995807d12cef5db7304940",
+                "reference": "f5ac2dffd6ca734e54995807d12cef5db7304940",
                 "shasum": ""
             },
             "require": {
@@ -4016,7 +4015,7 @@
             ],
             "support": {
                 "issues": "https://github.com/opcodesio/log-viewer/issues",
-                "source": "https://github.com/opcodesio/log-viewer/tree/v3.1.8"
+                "source": "https://github.com/opcodesio/log-viewer/tree/v3.1.9"
             },
             "funding": [
                 {
@@ -4028,7 +4027,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2023-11-19T09:15:38+00:00"
+            "time": "2023-11-24T12:28:21+00:00"
         },
         {
             "name": "opcodesio/mail-parser",
@@ -4085,16 +4084,16 @@
         },
         {
             "name": "openspout/openspout",
-            "version": "v4.20.0",
+            "version": "v4.22.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/openspout/openspout.git",
-                "reference": "74c9e23ec512856f326fea96503646660919b8f6"
+                "reference": "ad3dd535cf01623551da401fe170355f56f4f929"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/openspout/openspout/zipball/74c9e23ec512856f326fea96503646660919b8f6",
-                "reference": "74c9e23ec512856f326fea96503646660919b8f6",
+                "url": "https://api.github.com/repos/openspout/openspout/zipball/ad3dd535cf01623551da401fe170355f56f4f929",
+                "reference": "ad3dd535cf01623551da401fe170355f56f4f929",
                 "shasum": ""
             },
             "require": {
@@ -4104,14 +4103,14 @@
                 "ext-libxml": "*",
                 "ext-xmlreader": "*",
                 "ext-zip": "*",
-                "php": "~8.1.0 || ~8.2.0"
+                "php": "~8.1.0 || ~8.2.0 || ~8.3.0"
             },
             "require-dev": {
                 "ext-zlib": "*",
-                "friendsofphp/php-cs-fixer": "^3.38.2",
+                "friendsofphp/php-cs-fixer": "^3.39.0",
                 "infection/infection": "^0.27.8",
                 "phpbench/phpbench": "^1.2.14",
-                "phpstan/phpstan": "^1.10.43",
+                "phpstan/phpstan": "^1.10.44",
                 "phpstan/phpstan-phpunit": "^1.3.15",
                 "phpstan/phpstan-strict-rules": "^1.5.2",
                 "phpunit/phpunit": "^10.4.2"
@@ -4162,7 +4161,7 @@
             ],
             "support": {
                 "issues": "https://github.com/openspout/openspout/issues",
-                "source": "https://github.com/openspout/openspout/tree/v4.20.0"
+                "source": "https://github.com/openspout/openspout/tree/v4.22.0"
             },
             "funding": [
                 {
@@ -4174,7 +4173,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2023-11-20T10:10:28+00:00"
+            "time": "2023-11-22T15:34:18+00:00"
         },
         {
             "name": "owen-oj/laravel-getid3",
@@ -8877,16 +8876,16 @@
         },
         {
             "name": "phpunit/php-code-coverage",
-            "version": "10.1.8",
+            "version": "10.1.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-code-coverage.git",
-                "reference": "84838eed9ded511f61dc3e8b5944a52d9017b297"
+                "reference": "a56a9ab2f680246adcf3db43f38ddf1765774735"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/84838eed9ded511f61dc3e8b5944a52d9017b297",
-                "reference": "84838eed9ded511f61dc3e8b5944a52d9017b297",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/a56a9ab2f680246adcf3db43f38ddf1765774735",
+                "reference": "a56a9ab2f680246adcf3db43f38ddf1765774735",
                 "shasum": ""
             },
             "require": {
@@ -8943,7 +8942,7 @@
             "support": {
                 "issues": "https://github.com/sebastianbergmann/php-code-coverage/issues",
                 "security": "https://github.com/sebastianbergmann/php-code-coverage/security/policy",
-                "source": "https://github.com/sebastianbergmann/php-code-coverage/tree/10.1.8"
+                "source": "https://github.com/sebastianbergmann/php-code-coverage/tree/10.1.9"
             },
             "funding": [
                 {
@@ -8951,7 +8950,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2023-11-15T13:31:15+00:00"
+            "time": "2023-11-23T12:23:20+00:00"
         },
         {
             "name": "phpunit/php-file-iterator",
