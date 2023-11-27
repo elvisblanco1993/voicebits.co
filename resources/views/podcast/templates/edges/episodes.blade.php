@@ -4,7 +4,7 @@
     @include('podcast.templates.edges.partials.header')
     @include('podcast.templates.edges.partials.navigation')
 
-    <div id="body" class="py-6">
+    <div class="py-6">
         <main class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between">
                 <h2 class="text-2xl font-semibold">{{__("All episodes")}}</h2>

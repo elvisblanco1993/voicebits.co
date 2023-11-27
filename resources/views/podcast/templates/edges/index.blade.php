@@ -6,7 +6,7 @@
         @include('podcast.templates.edges.partials.navigation')
     </div>
 
-    <div id="body" class="py-6">
+    <div class="py-6">
         <main class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-8 gap-8">
                 <div class="col-span-8 md:col-span-6">

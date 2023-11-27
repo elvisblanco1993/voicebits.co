@@ -6,7 +6,7 @@
         @include('podcast.templates.edges.partials.navigation')
     </div>
 
-    <div id="body">
+    <div>
         <main class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="my-6">
                 <h2 class="text-2xl font-semibold">{{__("Subscribe and Listen")}}</h2>

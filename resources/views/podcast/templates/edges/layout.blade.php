@@ -67,7 +67,7 @@
             {!! $podcast->website->custom_styles !!}
         </style>
     </head>
-    <body class="antialiased min-h-screen text-black bg-white">
+    <body id="body" class="antialiased min-h-screen text-black bg-white">
         @yield('content')
         @livewireScripts
         @vite('resources/js/app.js')
