@@ -35,7 +35,7 @@ class SubscriberController extends Controller
         ]);
     }
 
-    public function feed($token)
+    public function feed($url, $token)
     {
         // This is the subscriber's private feedS
         // 1. Check the subscriber exists
