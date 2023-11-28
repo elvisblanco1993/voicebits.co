@@ -58,8 +58,8 @@ Route::middleware('xframe.options')->group(function() {
          * Private Protected Routes
          */
         Route::middleware('private.podcast.auth')->group( function () {
-            Route::get('/{token}/confirm', App\Livewire\Subscriber\Invite\Confirmation::class)->name('private.podcast.confirm');
             Route::get('/{token}', [SubscriberController::class, 'show'])->name('private.podcast.website');
+            Route::get('/{token}/confirm', App\Livewire\Subscriber\Invite\Confirmation::class)->name('private.podcast.confirm');
             Route::get('/privatefeed/{token}', [SubscriberController::class, 'feed'])->name('private.podcast.feed');
         });
     });
