@@ -41,7 +41,7 @@ class Auth extends Component
                 'url' => $this->podcast->url,
                 'token' => $this->subscriber->token
             ]);
-            $redirectUrl = $url . '?pwd=' . urlencode($this->podcast->passkey);
+            $redirectUrl = $url . '?pwd=' . $this->password;
             return redirect($redirectUrl);
         }
     }
