@@ -37,6 +37,7 @@ class Auth extends Component
             $this->addError('password', "Invalid password. Try again.");
         } else {
             return redirect()->route('private.podcast.website', [
+                'url' => $this->podcast->url,
                 'token' => $this->subscriber->token,
                 'pwd=' . $this->podcast->passkey
             ]);
