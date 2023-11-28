@@ -44,7 +44,7 @@
                     </div>
                 </div>
                 <div class="mt-4 border-t border-slate-200"></div>
-                <button id="feed-to-clipboard" onclick="copyToClipboard('https:\/\/{{$deepFeedUrl}}')"
+                <button id="feed-to-clipboard" onclick='copyToClipboard("https://{{$deepFeedUrl}}")'
                     class="mt-4 w-full block px-4 py-3 rounded-md font-medium bg-slate-200 text-slate-700 hover:bg-slate-300 transition-all"
                 >Copy feed to clipboard</button>
             </div>
