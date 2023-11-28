@@ -39,8 +39,7 @@ class Auth extends Component
             return redirect()->route('private.podcast.website', [
                 'url' => $this->podcast->url,
                 'token' => $this->subscriber->token,
-                'pwd=' . $this->podcast->passkey
-            ]);
+            ]) . '?pwd=' . urlencode($this->podcast->passkey);
         }
     }
 }
