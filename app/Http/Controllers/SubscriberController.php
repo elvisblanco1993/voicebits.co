@@ -31,7 +31,7 @@ class SubscriberController extends Controller
         // Displays the subscriber's private web page
         return view('podcast.private.show', [
             'subscriber' => $this->subscriber,
-            'deepFeedUrl' => Str::replace(['http://', 'https://'], '', route('private.podcast.feed', ['url' => $url, 'token' => $this->subscriber->token, $password]))
+            'deepFeedUrl' => Str::replace(['http://', 'https://'], '', route('private.podcast.feed', ['url' => $url, 'token' => $this->subscriber->token])) . $password
         ]);
     }
 
