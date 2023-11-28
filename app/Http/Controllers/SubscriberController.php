@@ -16,10 +16,9 @@ class SubscriberController extends Controller
      * Returns the private podcast website. Checks podcast password if exists
      * and provides deep links for adding the feed to several players.
      */
-    public function show($token)
+    public function show($url, $token)
     {
         // Get the subscriber or fail
-        dd($token);
         $this->subscriber = Subscriber::where('token', $token)
                                 ->whereIn('status', ['ACTIVE', 'OPT-OUT'])
                                 ->firstOrFail();
