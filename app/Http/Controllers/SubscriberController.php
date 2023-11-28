@@ -19,6 +19,7 @@ class SubscriberController extends Controller
     public function show($token)
     {
         // Get the subscriber or fail
+        dd($token);
         $this->subscriber = Subscriber::where('token', $token)
                                 ->whereIn('status', ['ACTIVE', 'OPT-OUT'])
                                 ->firstOrFail();
