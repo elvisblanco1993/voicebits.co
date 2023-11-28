@@ -26,8 +26,6 @@ class AuthenticatePrivatePodcast
             return $next($request);
         }
 
-        dd(base64_encode($request->get('pwd')));
-
         if (!$request->has('pwd') || base64_encode($request->get('pwd')) != $podcast->passkey) {
             return redirect()->route('private.podcast.login', ['url' => $podcast->url, 'token' => $subscriber->token]);
         }
