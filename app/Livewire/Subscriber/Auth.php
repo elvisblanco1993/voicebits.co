@@ -37,13 +37,13 @@ class Auth extends Component
             $this->addError('password', "Invalid password. Try again.");
         } else {
 
-            dd($this->password);
 
             $url = route('private.podcast.website', [
                 'url' => $this->podcast->url,
                 'token' => $this->subscriber->token
             ]);
             $redirectUrl = $url . '?pwd=' . $this->password;
+            dd($redirectUrl);
             return redirect($redirectUrl);
         }
     }
