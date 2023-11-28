@@ -1,7 +1,7 @@
 <div>
     <div class="max-w-3xl mx-auto py-12 lg:py-24 px-4 sm:px-6 lg:px-8 text-center">
         @if ($podcast->cover)
-            <img src="{{ asset($podcast->cover) }}" alt="{{ $podcast->name }}" class="w-16 h-16 md:w-24 md:h-24 mx-auto rounded-md aspect-square">
+            <img src="{{ route('public.podcast.cover', ['url' => $podcast->url]) }}" alt="{{ $podcast->name }}" class="w-16 h-16 md:w-24 md:h-24 mx-auto rounded-md aspect-square">
         @endif
         <h1 class="mt-3 text-2xl font-extrabold text-slate-700">{{ $podcast->name }}</h1>
         <p class="mt-1 text-sm text-slate-700">by <span class="font-bold">{{ $podcast->author }}</span></p>
