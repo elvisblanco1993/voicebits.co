@@ -26,7 +26,7 @@ class SubscriberController extends Controller
         // Get the podcast or fail
         $this->podcast = $this->subscriber->podcast;
 
-        $password = ($this->podcast->passkey) ? '?pwd=' . $this->podcast->passkey : '';
+        $password = ($this->podcast->passkey) ? '?pwd=' . base64_decode($this->podcast->passkey) : '';
 
         // Displays the subscriber's private web page
         return view('podcast.private.show', [
