@@ -32,6 +32,7 @@ class Auth extends Component
             'password' => 'required',
         ]);
 
+        dd(base64_encode($this->password) . "   " . $this->podcast->passkey);
         // Validates the password entered and redirect if it matches with DB
         if (base64_encode($this->password) != $this->podcast->passkey) {
             $this->addError('password', "Invalid password. Try again.");
