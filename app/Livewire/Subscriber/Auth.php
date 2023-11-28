@@ -36,10 +36,12 @@ class Auth extends Component
         if (base64_encode($this->password) != $this->podcast->passkey) {
             $this->addError('password', "Invalid password. Try again.");
         } else {
-            return redirect()->route('private.podcast.website', [
+            $url = route('private.podcast.website', [
                 'url' => $this->podcast->url,
-                'token' => $this->subscriber->token,
-            ]) . '?pwd=' . urlencode($this->podcast->passkey);
+                'token' => $this->subscriber->token
+            ]);
+            $redirectUrl = $url . '?pwd=' . urlencode($this->podcast->passkey);
+            return redirect($redirectUrl);
         }
     }
 }
