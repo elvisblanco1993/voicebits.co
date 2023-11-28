@@ -28,9 +28,11 @@
                 <p class="mt-1 text-sm text-slate-700 max-w-lg mx-auto">You're invited to join this exclusive podcast. Input your email below, and we'll send you a link to your personalized podcast page.</p>
                 <form wire:submit.prevent="save" class="mt-6">
                     @csrf
-                    <label for="email" class="text-sm font-medium text-slate-800">Enter your email address</label>
-                    <x-input id="email" wire:model="email" class="mt-1 w-2/3 mx-auto text-center" />
-                    <x-input-error for="email" />
+                    <div>
+                        <label for="email" class="block text-sm font-medium text-slate-800">Enter your email address</label>
+                        <x-input id="email" wire:model="email" class="mt-1 w-2/3 mx-auto text-center" />
+                        <x-input-error for="email" />
+                    </div>
 
                     <x-button class="mt-4">Save and subscribe</x-button>
                 </form>
