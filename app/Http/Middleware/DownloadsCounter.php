@@ -6,6 +6,7 @@ use Closure;
 use App\Models\Episode;
 use App\Models\Podcast;
 use App\Models\PlaysCounter;
+use App\Models\Statistics;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Log;
@@ -29,9 +30,9 @@ class DownloadsCounter
 
             $token = hash('sha512', $request['player'] . $location->ip . $episode->id . $podcast->id);
 
-            if ( ( PlaysCounter::where('token', $token)->count() == 0 ) || ( PlaysCounter::where('token', $token)->where('updated_at', '<', Carbon::now()->subMinutes(30))->count() > 0) ) {
+            if ( ( Statistics::where('token', $token)->count() == 0 ) || ( Statistics::where('token', $token)->where('updated_at', '<', Carbon::now()->subMinutes(30))->count() > 0) ) {
                 if ($request['player'] !== 'apple') {
-                    PlaysCounter::create([
+                    Statistics::create([
                         'podcast_id' => $podcast->id,
                         'episode_id' => $episode->id,
                         'token' => $token,

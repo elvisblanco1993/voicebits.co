@@ -68,9 +68,9 @@ class Podcast extends Model
         return $this->hasMany(Contributor::class);
     }
 
-    public function plays()
+    public function statistics()
     {
-        return $this->hasMany(PlaysCounter::class);
+        return $this->hasMany(Statistics::class);
     }
 
     public function website()
@@ -107,11 +107,6 @@ class Podcast extends Model
         return $this->belongsToMany(User::class)
             ->wherePivot('role', 'owner')
             ->first();
-    }
-
-    public function downloads()
-    {
-        return $this->hasMany(PlaysCounter::class);
     }
 
     public function isConnectedToExternalPlayers()

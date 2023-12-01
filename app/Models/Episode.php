@@ -5,6 +5,8 @@ namespace App\Models;
 use Laravel\Scout\Searchable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Episode extends Model
 {
@@ -35,14 +37,14 @@ class Episode extends Model
         return $this->belongsTo(Podcast::class);
     }
 
-    public function contributors()
+    public function contributors(): BelongsToMany
     {
         return $this->belongsToMany(Contributor::class);
     }
 
-    public function plays()
+    public function statistics(): HasMany
     {
-        return $this->hasMany(PlaysCounter::class);
+        return $this->hasMany(Statistics::class);
     }
 
     public function toSearchableArray()

@@ -19,7 +19,7 @@ class EpisodesBreakdown extends Component
 
     public function render()
     {
-        $episodes = $this->podcast->episodes()->withCount('plays')->orderBy('plays_count', 'DESC')->simplePaginate(5);
+        $episodes = $this->podcast->episodes()->withCount('statistics')->orderBy('statistics_count', 'DESC')->simplePaginate(5);
 
         return view('livewire.analytics.episodes-breakdown', [
             'episodes' => $episodes,

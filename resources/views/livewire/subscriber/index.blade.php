@@ -36,21 +36,21 @@
 
     @if ($subscribers->count() > 0)
         <div class="mt-6 px-6 py-8 w-full bg-white rounded-lg shadow">
-            <div class="max-w-full pamber">
-                <table class="w-full table-auto">
+            <div class="max-w-full text-left prose">
+                <table class="w-full table-fixed">
                     <thead>
                         <tr>
-                            <th>Subscriber</th>
-                            <th>Downloads</th>
-                            <th class="flex justify-end">Actions</th>
+                            <th class="px-2">Subscriber</th>
+                            <th class="px-2">Downloads</th>
+                            <th class="flex justify-end px-2">Actions</th>
                         </tr>
                     </thead>
                     <tbody>
                         @forelse ($subscribers as $subscriber)
                             <tr class="hover:bg-slate-50">
-                                <td>{{ $subscriber->email }}</td>
-                                <td>923</td>
-                                <td class="flex items-center space-x-4 justify-end">
+                                <td class="px-2 py-2">{{ $subscriber->email }}</td>
+                                <td class="px-2 py-2">{{ $subscriber->statistics_count }}</td>
+                                <td class="px-2 py-2 pr-2 flex items-center space-x-4 justify-end">
                                     @livewire('subscriber.actions.analytics', ['subscriber' => $subscriber], key('analytics'.$subscriber->id))
                                     @livewire('subscriber.actions.send-link', ['subscriber' => $subscriber], key('sendlink'.$subscriber->id))
                                     @livewire('subscriber.actions.delete', ['subscriber' => $subscriber], key('remove'.$subscriber->id))

@@ -4,7 +4,7 @@ namespace App\Livewire\Analytics;
 
 use App\Models\Podcast;
 use Livewire\Component;
-use App\Models\PlaysCounter;
+use App\Models\Statistics;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
 
@@ -26,7 +26,7 @@ class Regions extends Component
 
     public function fetchData()
     {
-        $data = PlaysCounter::where('podcast_id', $this->podcast->id)
+        $data = Statistics::where('podcast_id', $this->podcast->id)
             ->select(DB::raw("country, region, city, COUNT('token') as total"))
             ->whereBetween('created_at', [
                 Carbon::parse(session('range_start'))->startOfDay() ?? now()->subDays(7),

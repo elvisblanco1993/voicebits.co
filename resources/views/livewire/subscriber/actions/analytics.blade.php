@@ -13,12 +13,38 @@
                     </svg>
                 </div>
                 <div>
-                    <div>Usage Statistics</div>
+                    <div>Usage Stats</div>
                     <div class="block text-sm font-normal">{{ $subscriber->email }}</div>
                 </div>
             </div>
         </x-slot>
-        <x-slot name="content"></x-slot>
-        <x-slot name="footer"></x-slot>
+        <x-slot name="content">
+            {{-- Downloads per episode stats, for the 10 most downloaded episodes. --}}
+            <div class="prose max-w-full">
+                <table class="w-full table-fixed">
+                    <thead>
+                        <tr>
+                            <th class="px-2">{{ __("Episode title") }}</th>
+                            <th class="px-2">{{ __("Downloads") }}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @forelse ($episodes as $episode)
+                            <tr @class([
+                                'text-amber-900 bg-amber-100' => $episode->total > 15,
+                                'text-rose-900 bg-rose-100' => $episode->total > 25
+                            ])>
+                                <td class="px-2">{{ $episode->title }}</td>
+                                <td class="px-2">{{ $episode->total }}</td>
+                            </tr>
+                        @empty
+                        @endforelse
+                    </tbody>
+                </table>
+            </div>
+        </x-slot>
+        <x-slot name="footer">
+            <x-secondary-button wire:click="$toggle('modal')">{{ __("Close") }}</x-secondary-button>
+        </x-slot>
     </x-dialog-modal>
 </div>

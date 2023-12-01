@@ -1,22 +1,21 @@
 <?php
 
 use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\blueprint;
+use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
     /**
      * Run the migrations.
-     *
-     * @return void
      */
-    public function up()
+    public function up(): void
     {
-        Schema::create('plays_counters', function (blueprint $table) {
+        Schema::create('statistics', function (Blueprint $table) {
             $table->id();
             $table->foreignId('podcast_id');
             $table->foreignId('episode_id');
+            $table->foreignId('subscriber_id')->nullable();
             $table->string('token');
             $table->string('country');
             $table->string('region');
@@ -28,11 +27,9 @@ return new class extends Migration
 
     /**
      * Reverse the migrations.
-     *
-     * @return void
      */
-    public function down()
+    public function down(): void
     {
-        Schema::dropIfExists('plays_counters');
+        Schema::dropIfExists('statistics');
     }
 };

@@ -26,7 +26,7 @@
                             {{ Carbon\Carbon::parse($episode->created_at)->format('M d, Y') }}
                         </td>
                         <td class="px-6 py-4 text-right">
-                            {{ $episode->plays_count }}
+                            {{ $episode->statistics_count }}
                         </td>
                     </tr>
                 @empty

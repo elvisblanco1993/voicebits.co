@@ -22,7 +22,7 @@ class Index extends Component
     public function render()
     {
         return view('livewire.subscriber.index', [
-            'subscribers' => $this->podcast->subscribers()->where('email', 'like', '%' . $this->search . '%')->paginate(10)
+            'subscribers' => $this->podcast->subscribers()->withCount('statistics')->where('email', 'like', '%' . $this->search . '%')->paginate(10)
         ]);
     }
 }

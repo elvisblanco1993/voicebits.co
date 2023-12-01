@@ -20,7 +20,7 @@
                     <div class="mt-6 grid grid-cols-6 gap-8 items-center">
                         <div class="col-span-2 md:col-span-1">
                             @if ($podcast->cover && !$cover)
-                                    <img src="{{ Storage::url($podcast->cover) }}" class="w-full rounded-lg shadow aspect-square object-center object-cover">
+                                    <img src="{{ route('public.podcast.cover', ['url' => $podcast->url]) }}" class="w-full rounded-lg shadow aspect-square object-center object-cover">
                             @elseif($cover)
                                 <img src="{{ $cover->temporaryUrl() }}" class="w-full rounded-lg shadow aspect-square object-center object-cover">
                             @else
