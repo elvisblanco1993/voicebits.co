@@ -37,7 +37,7 @@
                 @forelse ($podcasts as $podcast)
                     <button wire:click="goto({{$podcast->id}})" class="col-span-4 sm:col-span-2 md:col-span-1 w-full text-left group transition-all">
                         @if ($podcast->cover)
-                            <img src="{{ Storage::url($podcast->cover) }}" alt="{{ $podcast->name }}" class="w-full aspect-square rounded-lg object-center object-cover">
+                            <img src="{{ route('public.podcast.cover', ['url' => $podcast->url]) }}" alt="{{ $podcast->name }}" class="w-full aspect-square rounded-lg object-center object-cover">
                         @else
                             <div class="w-full aspect-square rounded-lg bg-gradient-to-tr from-slate-50 group-hover:from-amber-50 to-slate-200 group-hover:to-amber-200 flex items-center justify-center">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-12 h-12">
