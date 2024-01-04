@@ -42,9 +42,9 @@
                 <div class="mt-2 space-y-2 text-sm font-light">
                     {{-- <a href="#" class="block hover:text-amber-300 transition-all">How to start a podcast?</a> --}}
                     <a href="{{ route('blog.index') }}" class="block hover:text-amber-300 transition-all">Our Blog</a>
-                    <a href="https://voicebits.tawk.help" target="blank" class="block hover:text-amber-300 transition-all">Guides & Support</a>
-                    <a href="https://voicebits.co/s/voicebits-unplugged" target="blank" class="block hover:text-amber-300 transition-all">Our Podcast</a>
-                    <a href="https://status.voicebits.co" target="blank" class="block hover:text-amber-300 transition-all">Service Status</a>
+                    <a href="https://voicebits.tawk.help" target="_support" class="block hover:text-amber-300 transition-all">Guides & Support</a>
+                    <a href="https://voicebits-unplugged.voicebits.co" target="_voicebitspodcast" class="block hover:text-amber-300 transition-all">Our Podcast</a>
+                    <a href="https://status.voicebits.co" target="_status" class="block hover:text-amber-300 transition-all">Service Status</a>
                 </div>
             </div>
         </div>

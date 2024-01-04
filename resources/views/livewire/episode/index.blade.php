@@ -3,7 +3,7 @@
     @livewire('submenu')
 
     <div class="py-6">
-        <div class="sm:flex items-center justify-between">
+        <div class="space-y-3 sm:space-y-0 sm:flex items-center justify-between">
         <x-input type="search" wire:model.live="search" placeholder="Search episodes by title" class="w-full sm:w-1/3"/>
             @can('upload_episodes', $podcast)
                 <a href="{{ route('podcast.episode.create') }}" class="flex items-center px-5 py-2 rounded-md bg-amber-300 hover:bg-amber-200 font-medium transition-all">
