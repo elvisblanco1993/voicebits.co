@@ -59,7 +59,7 @@ class Create extends Component
                 'timezone' => $this->timezone,
                 'visibility' => $this->visibility ? 'PRIVATE' : 'PUBLIC',
                 'is_locked' => $this->visibility ? true : false,
-                'url' => $this->visibility ? str()->uuid() : null, // If the show is private, create an unique URL automatically
+                'url' => $this->visibility ? str()->uuid() : str($this->name)->slug(), // If the show is private, create an unique URL automatically
             ]);
 
             // Upload artwork
