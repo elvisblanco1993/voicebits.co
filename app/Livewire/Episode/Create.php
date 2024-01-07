@@ -127,7 +127,7 @@ class Create extends Component
         return [
             'title' => 'required',
             'description' => 'required',
-            'track' => 'required|file|mimetypes:audio/mp4,audio/mpeg|max:200000',
+            'track' => 'required|file|mime:mp3,m4a,mp4a|max:200000',
             'cover' => ['nullable', 'image', 'mimes:png,jpg', 'dimensions:min_width=1500,max_width=3000,aspect=0/0'],
         ];
     }
@@ -135,7 +135,7 @@ class Create extends Component
     public function updated($track)
     {
         $this->validateOnly($track, [
-            'track' => 'required|file|mimetypes:audio/mp4,audio/mpeg|max:200000',
+            'track' => 'required|file|mime:mp3,m4a,mp4a|max:200000',
         ]);
 
         if ($this->track) {
