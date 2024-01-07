@@ -135,7 +135,7 @@ class Create extends Component
     public function updated($track)
     {
         dd(
-            $track->guessExtension()
+            $this->track->guessExtension()
         );
         $this->validateOnly($track, [
             'track' => 'required|file|mimes:mp3,m4a,mp4a|max:200000',
