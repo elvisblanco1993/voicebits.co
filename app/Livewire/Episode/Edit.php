@@ -64,7 +64,7 @@ class Edit extends Component
         $this->embed_url = '<embed width="100%" height="160" frameborder="no" scrolling="no" seamless src="' . $this->embed_url . '">';
         $this->blocked = ($this->episode->blocked) ? "true" : "false";
 
-        $this->currentEpisodeAudioTrack = Storage::disk('vultr')->temporaryUrl(
+        $this->currentEpisodeAudioTrack = Storage::disk(config('filesystems.default'))->temporaryUrl(
             $this->episode->track_url, now()->addMinutes(30)
         );
     }
