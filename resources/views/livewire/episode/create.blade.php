@@ -13,7 +13,7 @@
             <div class="p-6">
                 {{-- Content --}}
                 @if ($track)
-                    <div class="mb-6 flex items-center justify-between w-full px-3 py-2.5 text-sm rounded-full bg-emerald-50">
+                    <div class="mb-6 inline-flex items-center justify-between w-full px-3 py-2.5 text-sm rounded-full bg-emerald-50">
                         <div class="flex items-center space-x-3">
                             <div class="h-8 w-8 flex-none flex items-center justify-center rounded-full bg-emerald-300 text-emerald-700">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5">
@@ -21,7 +21,7 @@
                                     <path d="M5.5 9.643a.75.75 0 00-1.5 0V10c0 3.06 2.29 5.585 5.25 5.954V17.5h-1.5a.75.75 0 000 1.5h4.5a.75.75 0 000-1.5h-1.5v-1.546A6.001 6.001 0 0016 10v-.357a.75.75 0 00-1.5 0V10a4.5 4.5 0 01-9 0v-.357z" />
                                 </svg>
                             </div>
-                            <div class="truncate">
+                            <div class="text-elipsis overflow-hidden">
                                 {{ $track->getClientOriginalName() }}
                             </div>
                         </div>
