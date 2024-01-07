@@ -127,7 +127,7 @@ class Create extends Component
         return [
             'title' => 'required',
             'description' => 'required',
-            'track' => 'required|file|mimes:mp3,m4a,mp4a|max:200000',
+            'track' => 'required|file|mimes:mp3,m4a,mp4a,mp4|max:200000',
             'cover' => ['nullable', 'image', 'mimes:png,jpg', 'dimensions:min_width=1500,max_width=3000,aspect=0/0'],
         ];
     }
@@ -138,7 +138,7 @@ class Create extends Component
             $this->track->guessExtension()
         );
         $this->validateOnly($track, [
-            'track' => 'required|file|mimes:mp3,m4a,mp4a|max:200000',
+            'track' => 'required|file|mimes:mp3,m4a,mp4a,mp4|max:200000',
         ]);
 
         if ($this->track) {
