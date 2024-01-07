@@ -174,4 +174,13 @@ class Edit extends Component
     {
         $this->track = null;
     }
+
+    public function deleteTranscript()
+    {
+        Storage::disk(config('filesystems.default'))->delete($this->episode->transcript);
+        $this->episode->update([
+            'transcript' => null,
+        ]);
+        return redirect()->route('podcast.episode.edit', ['episode' => $this->episode]);
+    }
 }
