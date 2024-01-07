@@ -135,7 +135,7 @@ class Create extends Component
     public function updated($track)
     {
         $this->validateOnly($track, [
-            'track' => 'required|file|mimes:mp3,m4a|max:200000',
+            'track' => 'required|file|mimetypes:audio/mp4,audio/mpeg|max:200000',
         ]);
 
         if ($this->track) {
