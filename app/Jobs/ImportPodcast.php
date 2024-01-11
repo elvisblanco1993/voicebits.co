@@ -5,6 +5,7 @@ namespace App\Jobs;
 use Carbon\Carbon;
 use App\Models\User;
 use App\Models\Podcast;
+use Illuminate\Support\Str;
 use Illuminate\Bus\Queueable;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Bus;
@@ -46,7 +47,7 @@ class ImportPodcast implements ShouldQueue, ShouldBeUnique
         try {
             $podcast = Podcast::create([
                 'name' => $this->temp_podcast->name,
-                'url' => str($this->temp_podcast->name)->slug(),
+                'url' => str(Str::random(16))->slug(),
                 'description' => $feed->channel->description->__toString(),
                 'category' => $feed->xpath("//itunes:category")[0]['text']->__toString(),
                 'language' => $feed->channel->language[0]->__toString(),
