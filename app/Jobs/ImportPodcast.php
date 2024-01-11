@@ -77,9 +77,8 @@ class ImportPodcast implements ShouldQueue, ShouldBeUnique
             $cover_data = file_get_contents($cover);
             $cover_name = pathinfo($cover)['basename'];
 
-            Log::info(
-                Storage::disk(config('filesystems.default'))->put('podcasts/' . $podcast->id . '/covers/' . $cover_name, $cover_data, 'public')
-            );
+            Storage::disk(config('filesystems.default'))->put('podcasts/' . $podcast->id . '/covers/' . $cover_name, $cover_data, 'public');
+
             $podcast->update([
                 'cover' => 'podcasts/' . $podcast->id . '/covers/' . $cover_name,
             ]);

@@ -6,7 +6,7 @@ use App\Models\Episode;
 use App\Models\Podcast;
 use Livewire\Component;
 use App\Models\Contributor;
-use App\Models\PlaysCounter;
+use App\Models\Statistics;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Storage;
@@ -48,7 +48,7 @@ class Delete extends Component
 
             // Removes Podcast Directory
             Storage::disk(config('filesystems.default'))
-                ->deleteDirectory($this->podcast->id);
+                ->deleteDirectory('podcasts/'.$this->podcast->id);
         }
         return redirect()->route('podcast.catalog');
     }
@@ -71,7 +71,7 @@ class Delete extends Component
     private function deletePlays()
     {
         try {
-            PlaysCounter::where('podcast_id', $this->podcast->id)->delete();
+            Statistics::where('podcast_id', $this->podcast->id)->delete();
         } catch (\Throwable $th) {
             Log::error($th);
         }

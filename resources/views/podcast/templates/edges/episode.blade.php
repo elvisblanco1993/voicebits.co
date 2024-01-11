@@ -47,7 +47,7 @@
 
                 {{-- Right side --}}
                 <div class="hidden md:block md:col-span-2">
-                    <img src="{{ ($episode->cover) ? Storage::url($episode->cover) : Storage::url($podcast->cover) }}" class="w-full aspect-square rounded-md">
+                    <img src="{{ ($episode->cover) ?  : Storage::url($podcast->cover) }}" class="w-full aspect-square rounded-md">
                     <h4 class="mt-8 page-subheading text-slate-500 uppercase text-sm font-semibold">{{__("Listen on")}}</h4>
                     <div class="my-4 border-t border-slate-300"></div>
                     @include('podcast.templates.edges.partials.podcatchers')
