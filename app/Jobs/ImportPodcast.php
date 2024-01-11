@@ -62,6 +62,12 @@ class ImportPodcast implements ShouldQueue, ShouldBeUnique
                 'podcast_id' => $podcast->id,
             ]);
 
+            dd(
+                Storage::disk(config('filesystems.default'))
+                ->makeDirectory('podcasts/'.$podcast->id)
+            );
+
+
             $user = User::findOrFail($this->temp_podcast->user_id);
             $user->podcasts()->attach($podcast->id, [
                 'role' => 'owner',
