@@ -3,6 +3,7 @@
 namespace App\Livewire\Show;
 
 use App\Models\Podcast;
+use App\Models\Website;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 use Illuminate\Support\Facades\Log;
@@ -60,6 +61,10 @@ class Create extends Component
                 'visibility' => $this->visibility ? 'PRIVATE' : 'PUBLIC',
                 'is_locked' => $this->visibility ? true : false,
                 'url' => $this->visibility ? str()->uuid() : str($this->name)->slug(), // If the show is private, create an unique URL automatically
+            ]);
+
+            Website::create([
+                'podcast_id' => $podcast->id,
             ]);
 
             // Upload artwork

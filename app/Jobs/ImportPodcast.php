@@ -5,6 +5,7 @@ namespace App\Jobs;
 use Carbon\Carbon;
 use App\Models\User;
 use App\Models\Podcast;
+use App\Models\Website;
 use Illuminate\Support\Str;
 use Illuminate\Bus\Queueable;
 use Illuminate\Support\Facades\DB;
@@ -54,6 +55,10 @@ class ImportPodcast implements ShouldQueue, ShouldBeUnique
                 'type' => $feed->xpath("//itunes:type")[0]->__toString(),
                 'author' => $this->temp_podcast->owner_name,
                 'timezone' => "-05:00", // defaults to US Eastern Time
+            ]);
+
+            Website::create([
+                'podcast_id' => $podcast->id,
             ]);
 
             $user = User::findOrFail($this->temp_podcast->user_id);
