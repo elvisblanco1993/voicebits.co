@@ -45,6 +45,10 @@ class Delete extends Component
             $this->deletePlays();
             $this->unlinkPeople();
             $this->deletePodcast();
+
+            // Removes Podcast Directory
+            Storage::disk(config('filesystems.default'))
+                ->deleteDirectory($this->podcast->id);
         }
         return redirect()->route('podcast.catalog');
     }
