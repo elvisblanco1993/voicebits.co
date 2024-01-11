@@ -104,7 +104,7 @@ class Settings extends Component
                 if ($this->podcast->cover) {
                     Storage::disk(config('filesystems.default'))->delete($this->podcast->cover);
                 }
-                $new_cover_file = $this->cover->storePublicly('podcasts/'.$this->podcast->id.'/covers', config('filesystems.default'));
+                $new_cover_file = $this->cover->storePublicly('podcasts/'.$this->podcast->uuid.'/covers', config('filesystems.default'));
             }
         } catch (\Throwable $th) {
             Log::error($th);

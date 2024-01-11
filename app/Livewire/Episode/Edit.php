@@ -76,7 +76,7 @@ class Edit extends Component
             // Upload track
             if ($this->track) {
                 Storage::disk(config('filesystems.default'))->delete($this->episode->track_url);
-                $this->track_url = $this->track->store('podcasts/' . $this->episode->podcast_id . '/episodes', config('filesystems.default'));
+                $this->track_url = $this->track->store('podcasts/' . $this->episode->podcast->uuid . '/episodes', config('filesystems.default'));
             } else {
                 $this->track_url = $this->episode->track_url;
             }
@@ -86,13 +86,13 @@ class Edit extends Component
                 if ($this->episode->cover) {
                     Storage::disk(config('filesystems.default'))->delete($this->episode->cover);
                 }
-                $artwork = $this->cover->storePublicly('podcasts/' . $this->episode->podcast_id . '/covers', config('filesystems.default'));
+                $artwork = $this->cover->storePublicly('podcasts/' . $this->podcast->uuid . '/covers', config('filesystems.default'));
             } else {
                 $artwork = $this->episode->cover;
             }
 
             $transcript = ($this->transcript) ?
-                $this->transcript->storePublicly('podcasts/' . session('podcast') . '/episodes/transcripts', config('filesystems.default'))
+                $this->transcript->storePublicly('podcasts/' . $this->podcast->uuid . '/episodes/transcripts', config('filesystems.default'))
                 : $this->episode->transcript;
 
             if ($this->publish_now) {

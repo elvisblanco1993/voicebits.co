@@ -69,7 +69,7 @@ class Create extends Component
 
             // Upload artwork
             if ($this->cover) {
-                $artwork = $this->cover->storePublicly('podcasts/'.$podcast->id.'/covers', config('filesystems.default'));
+                $artwork = $this->cover->storePublicly('podcasts/'.$podcast->uuid.'/covers', config('filesystems.default'));
                 $podcast->cover = $artwork;
                 $podcast->save();
             }

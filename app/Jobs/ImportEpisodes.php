@@ -45,14 +45,14 @@ class ImportEpisodes implements ShouldQueue, ShouldBeUnique
             if ($episode->cover) {
                 $cover_data = file_get_contents($episode->cover);
                 $cover_name = uniqid() . '.' . pathinfo($episode->cover)['extension'];
-                Storage::disk(config('filesystems.default'))->put('podcasts/' . $episode->podcast_id . '/covers/' . $cover_name, $cover_data, 'public');
+                Storage::disk(config('filesystems.default'))->put('podcasts/' . $episode->podcast->uuid . '/covers/' . $cover_name, $cover_data, 'public');
             }
 
             // Get episode track
             if ($episode->track_url) {
                 $track_data = file_get_contents($episode->track_url);
                 $track_name = uniqid() . '.mp3'; // Strictly use mp3 for now.
-                Storage::disk(config('filesystems.default'))->put('podcasts/' . $episode->podcast_id . '/episodes/' . $track_name, $track_data);
+                Storage::disk(config('filesystems.default'))->put('podcasts/' . $episode->podcast->uuid . '/episodes/' . $track_name, $track_data);
             }
 
             // Submit to podcast episodes
@@ -66,8 +66,8 @@ class ImportEpisodes implements ShouldQueue, ShouldBeUnique
                 'number' => $episode->number,
                 'type' => $episode->type,
                 'explicit' => $episode->explicit,
-                'cover' => ($episode->cover) ? 'podcasts/' . $episode->podcast_id . '/covers/' . $cover_name : null,
-                'track_url' => 'podcasts/' . $episode->podcast_id . '/episodes/' . $track_name,
+                'cover' => ($episode->cover) ? 'podcasts/' . $episode->podcast->uuid . '/covers/' . $cover_name : null,
+                'track_url' => 'podcasts/' . $episode->podcast->uuid . '/episodes/' . $track_name,
                 'track_size' => $episode->track_size,
                 'track_length' => $episode->track_length,
             ]);

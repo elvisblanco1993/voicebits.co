@@ -68,16 +68,16 @@ class Create extends Component
 
         try {
             // Upload track
-            $this->track_url = $this->track->store('podcasts/' . session('podcast') . '/episodes', config('filesystems.default'));
+            $this->track_url = $this->track->store('podcasts/' . $this->podcast->uuid . '/episodes', config('filesystems.default'));
 
             // Upload artwork
             $artwork = ($this->cover) ?
-                $this->cover->storePublicly('podcasts/' . session('podcast') . '/covers', config('filesystems.default'))
+                $this->cover->storePublicly('podcasts/' . $this->podcast->uuid . '/covers', config('filesystems.default'))
                 : null;
 
             // Upload episode transcript
             $transcript = ($this->transcript) ?
-                $this->transcript->storePublicly('podcasts/' . session('podcast') . '/episodes/transcripts', config('filesystems.default'))
+                $this->transcript->storePublicly('podcasts/' . $this->podcast->uuid . '/episodes/transcripts', config('filesystems.default'))
                 : null;
 
             if ($this->publish_now) {

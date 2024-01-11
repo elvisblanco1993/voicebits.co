@@ -47,6 +47,7 @@ class ImportPodcast implements ShouldQueue, ShouldBeUnique
         // Create Podcast
         try {
             $podcast = Podcast::create([
+                'guid' => str()->uuid(),
                 'name' => $this->temp_podcast->name,
                 'url' => str(Str::random(16))->slug(),
                 'description' => $feed->channel->description->__toString(),
@@ -61,6 +62,14 @@ class ImportPodcast implements ShouldQueue, ShouldBeUnique
                 'podcast_id' => $podcast->id,
             ]);
 
+            try {
+                Storage::disk(
+                    config('filesystems.default')
+                )->makeDirectory('podcasts/' . $podcast->uuid);
+            } catch (\Throwable $th) {
+                throw $th;
+            }
+
             $user = User::findOrFail($this->temp_podcast->user_id);
             $user->podcasts()->attach($podcast->id, [
                 'role' => 'owner',
@@ -72,9 +81,9 @@ class ImportPodcast implements ShouldQueue, ShouldBeUnique
             $cover_data = file_get_contents($cover);
             $cover_name = pathinfo($cover)['basename'];
 
-            Storage::disk(config('filesystems.default'))->put('podcasts/' . $podcast->id . '/covers/' . $cover_name, $cover_data, 'public');
+            Storage::disk(config('filesystems.default'))->put('podcasts/' . $podcast->uuid . '/covers/' . $cover_name, $cover_data, 'public');
             $podcast->update([
-                'cover' => 'podcasts/' . $podcast->id . '/covers/' . $cover_name,
+                'cover' => 'podcasts/' . $podcast->uuid . '/covers/' . $cover_name,
             ]);
         } catch (\Throwable $th) {
             Log::error($th);
