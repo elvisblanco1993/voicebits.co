@@ -62,7 +62,7 @@ class ImportPodcast implements ShouldQueue, ShouldBeUnique
                 'podcast_id' => $podcast->id,
             ]);
 
-            dd(
+            Log::info(
                 Storage::disk(config('filesystems.default'))
                 ->makeDirectory('podcasts/'.$podcast->id)
             );
