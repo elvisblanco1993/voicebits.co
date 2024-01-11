@@ -62,10 +62,8 @@ class ImportPodcast implements ShouldQueue, ShouldBeUnique
                 'podcast_id' => $podcast->id,
             ]);
 
-            Log::info(
-                Storage::disk(config('filesystems.default'))
-                ->makeDirectory('podcasts/'.$podcast->id)
-            );
+            Storage::disk(config('filesystems.default'))
+                ->makeDirectory('podcasts/'.$podcast->id);
 
 
             $user = User::findOrFail($this->temp_podcast->user_id);
@@ -79,7 +77,9 @@ class ImportPodcast implements ShouldQueue, ShouldBeUnique
             $cover_data = file_get_contents($cover);
             $cover_name = pathinfo($cover)['basename'];
 
-            Storage::disk(config('filesystems.default'))->put('podcasts/' . $podcast->id . '/covers/' . $cover_name, $cover_data, 'public');
+            Log::info(
+                Storage::disk(config('filesystems.default'))->put('podcasts/' . $podcast->id . '/covers/' . $cover_name, $cover_data, 'public')
+            );
             $podcast->update([
                 'cover' => 'podcasts/' . $podcast->id . '/covers/' . $cover_name,
             ]);
