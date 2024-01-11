@@ -46,6 +46,7 @@ class ImportPodcast implements ShouldQueue, ShouldBeUnique
         try {
             $podcast = Podcast::create([
                 'name' => $this->temp_podcast->name,
+                'url' => str($this->temp_podcast->name)->slug(),
                 'description' => $feed->channel->description->__toString(),
                 'category' => $feed->xpath("//itunes:category")[0]['text']->__toString(),
                 'language' => $feed->channel->language[0]->__toString(),
