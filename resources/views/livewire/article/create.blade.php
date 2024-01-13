@@ -52,6 +52,7 @@
             <textarea id="keywords" wire:model="keywords" rows="6" placeholder="Write your keywords here, separated by commas..."
                 class="mt-1 w-full border-none rounded-lg focus:ring focus:ring-amber-200"
             ></textarea>
+            <x-nput-error for="keywords" class="mt-1">
         </div>
 
         <div class="mt-6 flex items-end justify-between">
