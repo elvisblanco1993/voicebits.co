@@ -32,7 +32,7 @@ class Create extends Component
             'content' => 'required|min:10',
             'image' => 'required|image|mimes:webp|max:2048',
             'author' => 'required',
-            'keywords' => 'required',
+            'keywords' => 'required|max:255',
         ]);
 
         try {
