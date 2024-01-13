@@ -42,21 +42,16 @@ class Create extends Component
             session()->flash('flash.bannerStyle', 'danger');
         }
 
-        try {
-            $article = Article::create([
-                'title' => $this->title,
-                'slug' => str($this->title)->slug(),
-                'content' => $this->content,
-                'image' => $stored_image,
-                'author' => $this->author,
-                'keywords' => $this->keywords,
-            ]);
-            session()->flash('flash.banner', 'Article created!');
-            session()->flash('flash.bannerStyle', 'success');
-        } catch (\Throwable $th) {
-            session()->flash('flash.banner', $th->getMessage());
-            session()->flash('flash.bannerStyle', 'danger');
-        }
+        $article = Article::create([
+            'title' => $this->title,
+            'slug' => str($this->title)->slug(),
+            'content' => $this->content,
+            'image' => $stored_image,
+            'author' => $this->author,
+            'keywords' => $this->keywords,
+        ]);
+        session()->flash('flash.banner', 'Article created!');
+        session()->flash('flash.bannerStyle', 'success');
 
         return redirect()->route('article.edit', ['article' => $article->id]);
     }
