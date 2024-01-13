@@ -32,6 +32,7 @@ class Create extends Component
             'content' => 'required|min:10',
             'image' => 'required|image|mimes:webp|max:2048',
             'author' => 'required',
+            'keywords' => 'required',
         ]);
 
         try {
@@ -42,16 +43,21 @@ class Create extends Component
             session()->flash('flash.bannerStyle', 'danger');
         }
 
-        $article = Article::create([
-            'title' => $this->title,
-            'slug' => str($this->title)->slug(),
-            'content' => $this->content,
-            'image' => $stored_image,
-            'author' => $this->author,
-            'keywords' => $this->keywords,
-        ]);
-        session()->flash('flash.banner', 'Article created!');
-        session()->flash('flash.bannerStyle', 'success');
+        try {
+            $article = Article::create([
+                'title' => $this->title,
+                'slug' => str($this->title)->slug(),
+                'content' => $this->content,
+                'image' => $stored_image,
+                'author' => $this->author,
+                'keywords' => $this->keywords,
+            ]);
+            session()->flash('flash.banner', 'Article created!');
+            session()->flash('flash.bannerStyle', 'success');
+        } catch (\Throwable $th) {
+            session()->flash('flash.banner', $th->getMessage());
+            session()->flash('flash.bannerStyle', 'danger');
+        }
 
         return redirect()->route('article.edit', ['article' => $article->id]);
     }
