@@ -42,7 +42,14 @@ class ImportPodcast implements ShouldQueue, ShouldBeUnique
      */
     public function handle()
     {
-        $feed = simplexml_load_file($this->temp_podcast->feed_url);
+        $feed = new \SimplePie\SimplePie();
+        $feed->set_feed_url($this->temp_podcast->feed_url);
+        $feed->cache_location = storage_path('simplepie');
+        $feed->init();
+        $feed->handle_content_type();
+
+        // Feed Namespaces
+        $itunes = \SimplePie\SimplePie::NAMESPACE_ITUNES;
 
         // Create Podcast
         try {
@@ -50,21 +57,22 @@ class ImportPodcast implements ShouldQueue, ShouldBeUnique
                 'guid' => str()->uuid(),
                 'name' => $this->temp_podcast->name,
                 'url' => str(Str::random(16))->slug(),
-                'description' => $feed->channel->description->__toString(),
-                'category' => $feed->xpath("//itunes:category")[0]['text']->__toString(),
-                'language' => $feed->channel->language[0]->__toString(),
-                'type' => $feed->xpath("//itunes:type")[0]->__toString(),
+                'description' => $feed->get_description(),
+                'category' => $feed->get_categories() ?? $feed->get_channel_tags($itunes, 'category')[0]['attribs']['']['text'],
+                'language' => $feed->get_language(),
+                'type' => $feed->get_channel_tags($itunes, 'type')[0]['data'],
                 'author' => $this->temp_podcast->owner_name,
                 'timezone' => "-05:00", // defaults to US Eastern Time
             ]);
 
+            // Create podcast website in database
             Website::create([
                 'podcast_id' => $podcast->id,
             ]);
 
+            // Make root directory for podcast
             Storage::disk(config('filesystems.default'))
                 ->makeDirectory('podcasts/'.$podcast->id);
-
 
             $user = User::findOrFail($this->temp_podcast->user_id);
             $user->podcasts()->attach($podcast->id, [
@@ -73,7 +81,7 @@ class ImportPodcast implements ShouldQueue, ShouldBeUnique
             ]);
 
             // Upload the podcast cover to storage
-            $cover = ( !empty($feed->channel->image->url) ) ? $feed->channel->image->url->__toString() : $feed->xpath("//itunes:image")[0]['href']->__toString();
+            $cover = $feed->get_image_url();
             $cover_data = file_get_contents($cover);
             $cover_name = pathinfo($cover)['basename'];
 
@@ -88,28 +96,28 @@ class ImportPodcast implements ShouldQueue, ShouldBeUnique
 
         // Add episodes metadata to temporary table
         try {
-            foreach ($feed->channel->item as $episode) {
-                DB::table('temporary_episodes')
-                    ->insert([
-                        'guid' => $episode->guid,
-                        'temp_podcast_id' => $this->temp_podcast->id,
-                        'podcast_id' => $podcast->id,
-                        'title' => $episode->title,
-                        'description' => $episode->description,
-                        'created_at' => Carbon::createFromTimestamp(strtotime($episode->pubDate))->toDateTimeString(),
-                        'updated_at' => Carbon::createFromTimestamp(strtotime($episode->pubDate))->toDateTimeString(),
-                        'published_at' => Carbon::createFromTimestamp(strtotime($episode->pubDate))->toDateTimeString(),
-                        'season' => ( !empty($feed->channel->item->xpath("//itunes:season")) && !empty( $episode->xpath("./itunes:season")[0] ) ) ? $episode->xpath("./itunes:season")[0] : null,
-                        'number' => ( !empty($feed->channel->item->xpath("//itunes:episode")) && !empty( $episode->xpath("./itunes:episode")[0] ) ) ? $episode->xpath("./itunes:episode")[0] : null,
-                        'type' => $episode->xpath("//itunes:episodeType")[0] ?? $episode->episodeType,
-                        'explicit' => ( !empty($feed->channel->item->xpath("//itunes:explicit")) && !empty( $episode->xpath("./itunes:explicit")[0] ) )
-                            ? ( ($episode->xpath("./itunes:explicit")[0] == 'yes' || $episode->xpath("./itunes:explicit")[0] == 1) ? 1 : 0 )
-                            : 0,
-                        'cover' => $episode->xpath("//itunes:image")[0]['href']->__toString(),
-                        'track_url' => $episode->enclosure['url'],
-                        'track_size' => $episode->enclosure['length'],
-                        'track_length' => ( !empty($feed->channel->item->xpath("//itunes:duration")) && !empty( $episode->xpath("./itunes:duration")[0] ) ) ? $episode->xpath("./itunes:duration")[0] : 0,
-                    ]);
+            foreach ($feed->get_items() as $episode) {
+                Log::error($episode->get_item_tags($itunes, 'number')[0]['data'] ?? null);
+                $data = [
+                    'guid' => $episode->get_id(),
+                    'temp_podcast_id' => $this->temp_podcast->id,
+                    'podcast_id' => $podcast->id,
+                    'title' => $episode->get_title(),
+                    'description' => $episode->get_description(),
+                    'created_at' => Carbon::createFromTimestamp(strtotime($episode->get_date()))->toDateTimeString(),
+                    'updated_at' => Carbon::createFromTimestamp(strtotime($episode->get_date()))->toDateTimeString(),
+                    'published_at' => Carbon::createFromTimestamp(strtotime($episode->get_date()))->toDateTimeString(),
+                    'season' => $episode->get_item_tags($itunes, 'season')[0]['data'] ?? null,
+                    'number' => $episode->get_item_tags($itunes, 'number')[0]['data'] ?? null,
+                    'type' => $episode->get_item_tags($itunes, 'episodeType')[0]['data'],
+                    'explicit' => ($episode->get_item_tags($itunes, 'explicit')[0]['data'] == 'true') ? 1 : 0,
+                    'cover' => $episode->get_thumbnail() ?? null,
+                    'track_url' => $episode->get_enclosure()->link,
+                    'track_size' => $episode->get_enclosure()->length,
+                    'track_length' => $episode->get_enclosure()->duration,
+                ];
+
+                DB::table('temporary_episodes')->insert($data);
             }
 
         } catch (\Throwable $th) {

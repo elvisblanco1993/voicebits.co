@@ -17,10 +17,8 @@
         <div class="mt-2 text-base font-normal">Paste your current feed's URL here to get started.</div>
 
         <x-input type="url" id="url" wire:model.live="url" class="mt-4 w-full" placeholder="https://" />
-        <x-input-error for="url"/>
-        @if (session()->has('error'))
-            <p class="text-sm text-red-600">{{ session()->get('error') }}</p>
-        @endif
+        <x-input-error for="url" class="mt-1"/>
+
         <x-button wire:click="save" class="mt-4">Start importing my show</x-button>
     </div>
 </div>

@@ -19,21 +19,27 @@ class GetUrl extends Component
     {
         $this->validate();
 
+        $feed = new \SimplePie\SimplePie();
+        $feed->set_feed_url($this->url);
+        $feed->cache_location = storage_path('simplepie');
+        $feed->init();
+        $feed->handle_content_type();
+
+        // dd(
+        //     $feed->get_items()[0]->get_item_tags(\SimplePie\SimplePie::NAMESPACE_ITUNES, 'season')[0]['data']
+        // );
+
         // Validate the feed url
-        try {
-            $feed = simplexml_load_file($this->url);
-        } catch (\Throwable $th) {
-            return redirect()->to('/show/import')->with('error', 'Failed to load feed. Please make sure this is a working RSS feed link and try again.');
+        if ($feed->error()) {
+            session()->flash('flash.banner', substr($feed->error(), 0, strpos($feed->error, ';')));
+            session()->flash('flash.bannerStyle', 'danger');
+            return redirect()->route('podcast.import.start');
         }
 
-        if (empty($feed)) {
-            return redirect()->to('/show/import')->with('error', 'Failed to load feed. Please make sure this is a working RSS feed link and try again.');
-        }
-
-        $this->name = $feed->channel->title->__toString();
-        $this->owner_name = $feed->xpath("//itunes:owner//itunes:name")[0]->__toString();
-        $this->owner_email = $feed->xpath("//itunes:owner//itunes:email")[0]->__toString();
-        $this->cover = ( $feed->channel->image->url ) ? $feed->channel->image->url->__toString() : $feed->xpath("//itunes:image")[0]['href']->__toString();
+        $this->name = $feed->get_title();
+        $this->owner_name = $feed->get_channel_tags(\SimplePie\SimplePie::NAMESPACE_ITUNES, 'owner')[0]['child'][\SimplePie\SimplePie::NAMESPACE_ITUNES]['name'][0]['data'];
+        $this->owner_email = $feed->get_channel_tags(\SimplePie\SimplePie::NAMESPACE_ITUNES, 'owner')[0]['child'][\SimplePie\SimplePie::NAMESPACE_ITUNES]['email'][0]['data'];
+        $this->cover = $feed->get_image_url();
 
         $temporary_podcast = DB::table('temporary_podcasts')
             ->insertGetId([

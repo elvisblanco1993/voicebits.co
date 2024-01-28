@@ -128,6 +128,19 @@ Route::middleware([
         Route::get('/import', App\Livewire\Show\Import\GetUrl::class)->name('podcast.import.start');
         Route::get('/import/{temporary_podcast}/verify', App\Livewire\Show\Import\VerifyEmail::class)->name('podcast.import.verify');
         Route::get('/import/{podcast_id}/confirm/{uniqid}', App\Livewire\Show\Import\ConfirmOwnership::class)->name('podcast.import.confirm');
+
+        Route::get('import/v2/', function () {
+            $feedUrl = request('url');
+            $feed = new SimplePie\SimplePie();
+            $feed->set_feed_url($feedUrl);
+            $feed->cache_location = storage_path('simplepie');
+            $feed->init();
+            $feed->handle_content_type();
+
+            foreach ($feed->get_items() as $item) {
+                dump($item->get_enclosure());
+            }
+        });
     });
 
     Route::middleware(['subscribed', 'podcast.related', 'podcast.exists'])->group(function () {

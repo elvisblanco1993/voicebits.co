@@ -26,6 +26,7 @@
         "opcodesio/log-viewer": "^3.1",
         "owen-oj/laravel-getid3": "^2.2",
         "predis/predis": "^2.0",
+        "simplepie/simplepie": "^1.8",
         "simplesoftwareio/simple-qrcode": "^4.2",
         "spatie/simple-excel": "^3.2",
         "stevebauman/location": "^6.5"

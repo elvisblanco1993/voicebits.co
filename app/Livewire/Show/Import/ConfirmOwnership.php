@@ -17,6 +17,9 @@ class ConfirmOwnership extends Component
         // Check that the $uniqid matches the $podcast_id
         $this->podcast = DB::table('temporary_podcasts')->find($this->podcast_id);
         if ($this->podcast->magic_code && $this->podcast->magic_code !== $this->uniqid) {
+            $this->podcast->delete(); // Deletes temporary record from database
+            session()->flash('flash.banner', 'The code you entered does not match our records. Please try again.');
+            session()->flash('flash.bannerStyle', 'danger');
             return redirect()->route('show.import.start');
         }
 
