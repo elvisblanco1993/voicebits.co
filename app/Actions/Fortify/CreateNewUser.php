@@ -26,6 +26,14 @@ class CreateNewUser implements CreatesNewUsers
      */
     public function create(array $input)
     {
+        if ($input['zip']) {
+            DB::table('blacklist')
+                ->insert([
+                    'ip_address' => request()->ip()
+                ]);
+            abort(403);
+        }
+
         Validator::make($input, [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],

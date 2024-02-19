@@ -4,10 +4,14 @@
             <a href="{{ route('home') }}" class="flex items-center justify-center gap-3">
                 <img src="{{ asset('logo-mark-dark.svg') }}" alt="" class="block h-12 w-auto">
             </a>
-            <div class="mt-8 block w-full mx-auto text-lg sm:text-xl lg:text-xl font-bold">Sign up and Start your 14-day Free Trial</div>
+            <div class="mt-8 block w-full mx-auto text-lg sm:text-xl lg:text-xl font-bold">{{ __("Sign up and Start your 14-day Free Trial") }}</div>
         </x-slot>
         <form method="POST" action="{{ route('register') }}" class="mt-6 block w-full">
             @csrf
+
+            <div class="hidden">
+                <input type="text" name="zip">
+            </div>
 
             <div>
                 <x-label for="name" value="{{ __('Full Name') }}" />
