@@ -26,7 +26,7 @@ class CreateNewUser implements CreatesNewUsers
      */
     public function create(array $input)
     {
-        if ($input['zip']) {
+        if (! empty($input['fax'])) {
             DB::table('blacklist')
                 ->insert([
                     'ip_address' => request()->ip()
