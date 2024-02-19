@@ -20,8 +20,8 @@
                 </svg>
             </div>
             <div class="">
-                <h1 class="text-2xl font-bold text-slate-700">Create a podcast</h1>
-                <p class="mt-1 text-slate-600">Start by adding some basic information. You can always change the details later.</p>
+                <h1 class="text-2xl font-bold text-slate-700">{{__("Create a podcast")}}</h1>
+                <p class="mt-1 text-slate-600">{{__("Start by adding some basic information. You can always change the details later.")}}</p>
             </div>
         </div>
 
@@ -35,9 +35,9 @@
                 </div>
                 <div class="mt-6">
                     <x-label for="description">{{ __("Description") }} <span class="text-red-600">*</span></x-label>
-                    <textarea wire:model.live="description" id="description" rows="6" class="input"
+                    <x-textarea wire:model.live="description" id="description" rows="6" class="w-full"
                         placeholder="Write a description for your show. We recommend one or two sentences."
-                    ></textarea>
+                    ></x-textarea>
                     <x-input-error for="description" class="text-sm text-red-600 mt-2"/>
                 </div>
                 <div class="mt-6 grid grid-cols-6 gap-8 items-center">
